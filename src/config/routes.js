@@ -7,7 +7,7 @@ const routes = [
   {
     exact: true,
     path: "/",
-    component: lazy(() => import("views/notFound"))
+    component: lazy(() => import("views/auth/signIn/signIn"))
   }
 ];
 

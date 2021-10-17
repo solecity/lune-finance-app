@@ -1,3 +1,6 @@
+// base
+import React from "react";
+
 // routes
 import Routes from "routes/routes";
 

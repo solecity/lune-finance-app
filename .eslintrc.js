@@ -1,12 +1,13 @@
 module.exports = {
   extends: [
-    "../.eslintrc.js",
+    "prettier",
+    "plugin:json/recommended",
     "react-app",
     "react-app/jest",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
-  plugins: ["react"],
+  plugins: ["prettier", "react"],
   parser: "babel-eslint",
   rules: {
     "prettier/prettier": "warn",

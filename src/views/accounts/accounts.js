@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 
 // custom components
 import { Header } from "shared/components";
-import { Form, Table } from "./components";
+import { Form, Cards } from "./components";
 
 const Accounts = () => {
   const [data, setData] = useState([]);
@@ -28,7 +28,7 @@ const Accounts = () => {
     <Container>
       <Header title={"Accounts"} />
       <Form />
-      <Table data={data} />
+      <Cards data={data} />
     </Container>
   );
 };

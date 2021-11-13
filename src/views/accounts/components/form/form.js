@@ -38,7 +38,7 @@ const Form = ({ account }) => {
     mode: "onBlur",
     defaultValues: {
       name: account.name || "",
-      type: account.type || 0,
+      type: account.type || "",
       balance: account.balance || 0,
       card: account.hasCard || false
     }

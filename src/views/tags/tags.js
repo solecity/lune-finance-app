@@ -6,13 +6,14 @@ import Container from "@mui/material/Container";
 
 // custom components
 import { Header } from "shared/components";
-import { Categories } from "./components";
+import { Categories, Recipients } from "./components";
 
 const Tags = () => {
   return (
     <Container>
       <Header title={"Tags"} />
       <Categories />
+      <Recipients />
     </Container>
   );
 };

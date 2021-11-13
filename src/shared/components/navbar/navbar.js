@@ -2,7 +2,6 @@
 import React from "react";
 
 // external components
-import { Drawer, Paper } from "@mui/material";
 import Box from "@mui/material/Box";
 
 // custom components

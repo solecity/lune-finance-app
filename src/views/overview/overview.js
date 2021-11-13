@@ -8,6 +8,7 @@ import OverviewService from "shared/services/overview";
 import Container from "@mui/material/Container";
 
 // custom components
+import { Header } from "shared/components";
 
 const Overview = () => {
   const [typeStats, setTypeStats] = useState({});
@@ -24,7 +25,7 @@ const Overview = () => {
 
   return (
     <Container>
-      <h1>Overview</h1>
+      <Header title={"Overview"} />
       <h4>Income: {typeStats.income}</h4>
       <h4>Expenses: {typeStats.expense}</h4>
       <h4>Savings: {typeStats.savings}</h4>

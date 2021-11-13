@@ -8,7 +8,6 @@ import { Controller } from "react-hook-form";
 // external components
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import InputBase from "@mui/material/InputBase";
 import InputLabel from "@mui/material/InputLabel";
 
 const InputSelect = ({ label, name, control, isRequired, children }) => {
@@ -22,7 +21,6 @@ const InputSelect = ({ label, name, control, isRequired, children }) => {
           <Select
             label={label}
             variant="outlined"
-            input={<InputBase />}
             value={field.value}
             {...field}
           >

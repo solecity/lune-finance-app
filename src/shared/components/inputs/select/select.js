@@ -6,14 +6,15 @@ import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 
 // external components
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
+
+// styled components
+import { StyledFormControl, StyledSelect, StyledLabel } from "./styles";
 
 const InputSelect = ({ label, name, control, isRequired, children }) => {
   return (
-    <FormControl fullWidth size="small" required={isRequired}>
-      <InputLabel>{label}</InputLabel>
+    <StyledFormControl fullWidth size="small" required={isRequired}>
+      <StyledLabel>{label}</StyledLabel>
       <Controller
         name={name}
         control={control}
@@ -21,6 +22,7 @@ const InputSelect = ({ label, name, control, isRequired, children }) => {
           <Select
             label={label}
             variant="outlined"
+            input={<StyledSelect />}
             value={field.value}
             {...field}
           >
@@ -28,7 +30,7 @@ const InputSelect = ({ label, name, control, isRequired, children }) => {
           </Select>
         )}
       />
-    </FormControl>
+    </StyledFormControl>
   );
 };
 

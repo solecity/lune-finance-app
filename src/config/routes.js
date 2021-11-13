@@ -24,6 +24,11 @@ const routes = [
         exact: true,
         path: "/overview",
         component: lazy(() => import("views/overview/overview"))
+      },
+      {
+        exact: true,
+        path: "/transactions",
+        component: lazy(() => import("views/transactions/transactions"))
       }
     ]
   }

@@ -2,13 +2,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// custom components
+// styled components
+import { StyledContainer, StyledWrapper } from "./styles";
 
 const Main = ({ children }) => {
   return (
-    <div>
-      <div>{children}</div>
-    </div>
+    <StyledContainer>
+      <StyledWrapper>{children}</StyledWrapper>
+    </StyledContainer>
   );
 };
 

@@ -6,4 +6,14 @@ const isLoggedIn = atom({
   default: false
 });
 
-export { isLoggedIn };
+const settingsState = atom({
+  key: "settingsState",
+  default: {
+    currency: "EUR",
+    currencySymbol: "€",
+    language: "EN",
+    theme: "light"
+  }
+});
+
+export { isLoggedIn, settingsState };

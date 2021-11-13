@@ -9,7 +9,7 @@ import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 // custom components
 import { Table, ActionButton } from "shared/components";
 
-const TransactionsTable = () => {
+const TransactionsTable = ({ data }) => {
   const COLUMNS = [
     {
       Header: "Date",
@@ -82,10 +82,11 @@ const TransactionsTable = () => {
     }
   ];
 
-  return <Table columns={COLUMNS} data={[]} />;
+  return <Table columns={COLUMNS} data={data} />;
 };
 
 TransactionsTable.propTypes = {
+  data: PropTypes.array.isRequired,
   row: PropTypes.object
 };
 

@@ -4,20 +4,21 @@ import PropTypes from "prop-types";
 
 // external components
 import Tooltip from "@mui/material/Tooltip";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+
+// styled components
+import { StyledIconButton, StyledButton } from "./styles";
 
 const ActionButton = ({ tooltip, hasIcon, icon, text, action }) => {
   return (
     <Tooltip title={tooltip}>
       {hasIcon ? (
-        <IconButton size="small" onClick={action}>
+        <StyledIconButton size="small" onClick={action}>
           {icon}
-        </IconButton>
+        </StyledIconButton>
       ) : (
-        <Button variant="contained" onClick={action}>
+        <StyledButton variant="contained" onClick={action}>
           {text}
-        </Button>
+        </StyledButton>
       )}
     </Tooltip>
   );

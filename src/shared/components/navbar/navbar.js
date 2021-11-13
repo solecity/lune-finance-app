@@ -9,21 +9,28 @@ import Box from "@mui/material/Box";
 import { NavItem } from "./components";
 
 // styled components
+import {
+  StyledDrawer,
+  StyledPaper,
+  StyledNavBarBox,
+  StyledMenuList,
+  StyledMenuBox
+} from "./styles";
 
 // config
 import { menuItems, footerItems } from "config/navbar";
 
 const NavBar = () => {
   return (
-    <Drawer
-      PaperProps={{ component: Paper }}
+    <StyledDrawer
+      PaperProps={{ component: StyledPaper }}
       anchor="left"
       open
       variant="permanent"
     >
-      <Box>
-        <Box>
-          <Box>
+      <StyledNavBarBox>
+        <StyledMenuList>
+          <StyledMenuBox>
             {menuItems.map((item) => (
               <NavItem
                 key={item.name}
@@ -32,7 +39,7 @@ const NavBar = () => {
                 href={item.href}
               />
             ))}
-          </Box>
+          </StyledMenuBox>
 
           <Box>
             <Box>
@@ -46,9 +53,9 @@ const NavBar = () => {
               ))}
             </Box>
           </Box>
-        </Box>
-      </Box>
-    </Drawer>
+        </StyledMenuList>
+      </StyledNavBarBox>
+    </StyledDrawer>
   );
 };
 

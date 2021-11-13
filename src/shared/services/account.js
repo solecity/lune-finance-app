@@ -6,6 +6,13 @@ const getMany = async (params) => {
   return res ? res.data : { accounts: [], totalPages: 0 };
 };
 
+const post = async (payload) => {
+  const res = await api().post("/accounts", payload);
+
+  return res.data;
+};
+
 export default {
-  getMany
+  getMany,
+  post
 };

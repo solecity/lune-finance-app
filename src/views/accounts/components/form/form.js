@@ -1,13 +1,15 @@
 // base
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
 
+// api
+import AccountService from "shared/services/account";
+
 // external components
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -16,10 +18,13 @@ import InputAdornment from "@mui/material/InputAdornment";
 import {
   InputTextField,
   InputSelect,
-  InputDatePicker,
   InputCheckbox,
+  InputDatePicker,
   FormButton
 } from "shared/components";
+
+// styled components
+import { StyledContainer, StyledCheckbox } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -27,13 +32,14 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { TYPES } from "constants/general";
 
-const Form = ({ account }) => {
+const Form = ({ account, handleModal }) => {
   const settings = useRecoilValue(settingsState);
 
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    reset,
+    formState: { isSubmitSuccessful, errors }
   } = useForm({
     mode: "onBlur",
     defaultValues: {
@@ -46,11 +52,22 @@ const Form = ({ account }) => {
 
   const onSubmit = async (payload) => {
     try {
+      const res = await AccountService.post(payload);
+
+      if (res) {
+        handleModal();
+      }
     } catch (error) {}
   };
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ name: "", type: 0, balance: 0, card: false });
+    }
+  }, [isSubmitSuccessful, reset]);
+
   return (
-    <Container>
+    <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
@@ -93,20 +110,20 @@ const Form = ({ account }) => {
               label="Opening Date"
             />
           </Grid>
-          <Grid item xs={12}>
+          <StyledCheckbox item xs={12}>
             <InputCheckbox control={control} name="card" label="Has Card" />
+          </StyledCheckbox>
+        </Grid>
+        <Grid container item spacing={1}>
+          <Grid item xs={6}>
+            <FormButton text="Cancel" />
           </Grid>
-          <Grid container item spacing={1}>
-            <Grid item xs={6}>
-              <FormButton text="Cancel" />
-            </Grid>
-            <Grid item xs={6}>
-              <FormButton text="Save" />
-            </Grid>
+          <Grid item xs={6}>
+            <FormButton text="Save" />
           </Grid>
         </Grid>
       </form>
-    </Container>
+    </StyledContainer>
   );
 };
 
@@ -115,7 +132,8 @@ Form.defaultProps = {
 };
 
 Form.propTypes = {
-  account: PropTypes.object
+  account: PropTypes.object,
+  handleModal: PropTypes.func.isRequired
 };
 
 export default Form;

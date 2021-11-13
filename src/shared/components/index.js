@@ -5,6 +5,7 @@ import InputSelect from "./inputs/select/select";
 import InputDatePicker from "./inputs/datepicker/datepicker";
 import FormButton from "./buttons/formButton/formButton";
 import ActionButton from "./buttons/actionButton/actionButton";
+import Table from "./table/table";
 
 export {
   NavBar,
@@ -13,5 +14,6 @@ export {
   InputSelect,
   InputDatePicker,
   FormButton,
-  ActionButton
+  ActionButton,
+  Table
 };

@@ -7,9 +7,9 @@ import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 
 // custom components
-import { ActionButton } from "shared/components";
+import { Table, ActionButton } from "shared/components";
 
-const TransactionsTable = ({}) => {
+const TransactionsTable = () => {
   const COLUMNS = [
     {
       Header: "Date",
@@ -82,7 +82,7 @@ const TransactionsTable = ({}) => {
     }
   ];
 
-  return "tt";
+  return <Table columns={COLUMNS} data={[]} />;
 };
 
 TransactionsTable.propTypes = {

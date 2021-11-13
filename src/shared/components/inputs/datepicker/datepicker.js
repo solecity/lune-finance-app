@@ -6,9 +6,10 @@ import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 
 // external components
-import FormControl from "@mui/material/FormControl";
 import DatePicker from "@mui/lab/DatePicker";
-import TextField from "@mui/material/TextField";
+
+// styled components
+import { StyledDatePicker, StyledTextField } from "./styles";
 
 // constants
 import { DATE_FORMAT } from "constants/general";
@@ -22,7 +23,7 @@ const InputDatePicker = ({
   helperText
 }) => {
   return (
-    <FormControl fullWidth size="small" required={isRequired}>
+    <StyledDatePicker fullWidth size="small" required={isRequired}>
       <Controller
         name={name}
         control={control}
@@ -32,12 +33,12 @@ const InputDatePicker = ({
             error={error}
             helperText={helperText}
             inputFormat={DATE_FORMAT}
-            renderInput={(params) => <TextField {...params} />}
+            renderInput={(params) => <StyledTextField {...params} />}
             {...field}
           />
         )}
       />
-    </FormControl>
+    </StyledDatePicker>
   );
 };
 

@@ -3,33 +3,20 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // libraries
-import { useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
 
 // external components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import MenuItem from "@mui/material/MenuItem";
-import InputAdornment from "@mui/material/InputAdornment";
 
 // custom components
 import {
   InputTextField,
-  InputSelect,
-  InputDatePicker,
-  InputCheckbox,
+  InputColourSlider,
   FormButton
 } from "shared/components";
 
-// atom
-import { settingsState } from "shared/recoil/atoms";
-
-// constants
-import { TYPES } from "constants/general";
-
-const Form = ({ account }) => {
-  const settings = useRecoilValue(settingsState);
-
+const Form = ({ recipient }) => {
   const {
     control,
     handleSubmit,
@@ -37,10 +24,8 @@ const Form = ({ account }) => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      name: account.name || "",
-      type: account.type || 0,
-      balance: account.balance || 0,
-      card: account.hasCard || false
+      name: recipient.name || "",
+      colour: recipient.colour || ""
     }
   });
 
@@ -61,6 +46,7 @@ const Form = ({ account }) => {
             name="name"
             type="text"
           />
+          <InputColourSlider />
           <Grid container item spacing={1}>
             <Grid item xs={6}>
               <FormButton text="Cancel" />
@@ -76,11 +62,11 @@ const Form = ({ account }) => {
 };
 
 Form.defaultProps = {
-  account: {}
+  recipient: {}
 };
 
 Form.propTypes = {
-  account: PropTypes.object
+  recipient: PropTypes.object
 };
 
 export default Form;

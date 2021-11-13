@@ -16,8 +16,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import {
   InputTextField,
   InputSelect,
-  InputDatePicker,
-  InputCheckbox,
+  InputColourSlider,
   FormButton
 } from "shared/components";
 
@@ -27,7 +26,7 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { TYPES } from "constants/general";
 
-const Form = ({ account }) => {
+const Form = ({ category }) => {
   const settings = useRecoilValue(settingsState);
 
   const {
@@ -37,10 +36,10 @@ const Form = ({ account }) => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      name: account.name || "",
-      type: account.type || 0,
-      balance: account.balance || 0,
-      card: account.hasCard || false
+      name: category.name || "",
+      type: category.type || 0,
+      monthlyBudget: category.monthlyBudget || 0,
+      colour: category.colour || ""
     }
   });
 
@@ -84,6 +83,7 @@ const Form = ({ account }) => {
               )
             }}
           />
+          <InputColourSlider />
           <Grid container item spacing={1}>
             <Grid item xs={6}>
               <FormButton text="Cancel" />
@@ -99,11 +99,11 @@ const Form = ({ account }) => {
 };
 
 Form.defaultProps = {
-  account: {}
+  category: {}
 };
 
 Form.propTypes = {
-  account: PropTypes.object
+  category: PropTypes.object
 };
 
 export default Form;

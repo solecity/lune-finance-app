@@ -7,23 +7,18 @@ import { Controller } from "react-hook-form";
 
 // external components
 import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
 
-const InputTextField = ({
-  name,
-  control,
-  isRequired,
-  error,
-  helperText,
-  ...props
-}) => {
+// styled components
+import { StyledTextField } from "./styles";
+
+const InputTextField = ({ name, control, error, helperText, ...props }) => {
   return (
-    <FormControl fullWidth size="small" required={isRequired}>
+    <FormControl fullWidth size="small">
       <Controller
         name={name}
         control={control}
         render={({ field }) => (
-          <TextField
+          <StyledTextField
             error={error}
             helperText={helperText}
             variant="outlined"
@@ -39,8 +34,7 @@ const InputTextField = ({
 };
 
 InputTextField.defaultProps = {
-  label: "",
-  isRequired: false
+  label: ""
 };
 
 InputTextField.propTypes = {
@@ -48,7 +42,6 @@ InputTextField.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   control: PropTypes.any,
-  isRequired: PropTypes.bool,
   error: PropTypes.bool,
   helperText: PropTypes.string
 };

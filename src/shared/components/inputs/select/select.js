@@ -7,50 +7,44 @@ import { Controller } from "react-hook-form";
 
 // external components
 import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import InputBase from "@mui/material/InputBase";
+import InputLabel from "@mui/material/InputLabel";
 
-const InputTextField = ({
-  name,
-  control,
-  isRequired,
-  error,
-  helperText,
-  ...props
-}) => {
+const InputSelect = ({ label, name, control, isRequired, children }) => {
   return (
     <FormControl fullWidth size="small" required={isRequired}>
+      <InputLabel>{label}</InputLabel>
       <Controller
         name={name}
         control={control}
         render={({ field }) => (
-          <TextField
-            error={error}
-            helperText={helperText}
+          <Select
+            label={label}
             variant="outlined"
-            size="small"
-            fullWidth
-            {...props}
+            input={<InputBase />}
+            value={field.value}
             {...field}
-          />
+          >
+            {children}
+          </Select>
         )}
       />
     </FormControl>
   );
 };
 
-InputTextField.defaultProps = {
+InputSelect.defaultProps = {
   label: "",
   isRequired: false
 };
 
-InputTextField.propTypes = {
+InputSelect.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
-  type: PropTypes.string,
   control: PropTypes.any,
   isRequired: PropTypes.bool,
-  error: PropTypes.bool,
-  helperText: PropTypes.string
+  children: PropTypes.any
 };
 
-export default InputTextField;
+export default InputSelect;

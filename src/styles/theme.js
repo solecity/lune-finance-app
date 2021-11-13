@@ -14,33 +14,35 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const general = {
+  error: "rgba(208, 86, 37, 1)",
+  white: "rgba(255, 255, 255, 1)",
+  black: "rgba(28, 28, 28, 1)",
+  grey: "rgba(186, 193, 198, 1)",
+  green: "rgba(139, 186, 93, 1)"
+};
+
 const Light = {
   colors: {
-    background: "#f4f4f4", // rgba(244, 244, 244, 1)
-    inputBackground: "#fcfcfc", // rgba(252, 252, 252, 1)
-    primary: "#0a4863", // rgba(10, 72, 99, 1)
-    secondary: "#9fb9ca", // rgba(159, 185, 202, 1)
-    lightSecondary: "#dde5ea", // rgba(221, 229, 234, 1)
-    accent: "#ffc832", // rgba(255, 200, 50, 1)
-    error: "#d05625", // rgba(208, 86, 37, 1)
-    white: "#fff", // rgba(255, 255, 255, 1)
-    black: "#0b0b0b", // rgba(11, 11, 11, 1)
-    grey: "#bac1c6",
-    green: "#8bba5d"
+    background: "rgba(244, 244, 244, 1)",
+    inputBackground: "rgba(252, 252, 252, 1)",
+    primary: "rgba(10, 72, 99, 1)",
+    secondary: "rgba(159, 185, 202, 1)",
+    lightSecondary: "rgba(221, 229, 234, 1)",
+    accent: "rgba(255, 200, 50, 1)",
+    ...general
   }
 };
 
 const Dark = {
   colors: {
-    background: "#f4f4f4",
-    primary: "#0a4863",
-    secondary: "#9fb9ca",
-    lightSecondary: "#dae2e7",
-    accent: "#ffc832",
-    secondaryAccent: "#ffd6be",
-    white: "#fff",
-    darkText: "#19242A",
-    error: "#d1653a"
+    background: "rgba(244, 244, 244, 1)",
+    inputBackground: "rgba(252, 252, 252, 1)",
+    primary: "rgba(10, 72, 99, 1)",
+    secondary: "rgba(159, 185, 202, 1)",
+    lightSecondary: "rgba(221, 229, 234, 1)",
+    accent: "rgba(255, 200, 50, 1)",
+    ...general
   }
 };
 

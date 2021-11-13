@@ -2,6 +2,14 @@ import NavBar from "./navbar/navbar";
 import Header from "./header/header";
 import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
+import InputDatePicker from "./inputs/datepicker/datepicker";
 import FormButton from "./buttons/formButton/formButton";
 
-export { NavBar, Header, InputTextField, InputSelect, FormButton };
+export {
+  NavBar,
+  Header,
+  InputTextField,
+  InputSelect,
+  InputDatePicker,
+  FormButton
+};

@@ -7,17 +7,19 @@ import { Controller } from "react-hook-form";
 
 // external components
 import FormControl from "@mui/material/FormControl";
-import Checkbox from "@mui/material/Checkbox";
+
+// styled components
+import { StyledLabel, StyledCheckbox } from "./styles";
 
 const InputCheckbox = ({ label, name, control }) => {
   return (
     <FormControl fullWidth size="small">
-      <label>{label}</label>
+      <StyledLabel>{label}</StyledLabel>
       <Controller
         name={name}
         control={control}
         render={({ field }) => (
-          <Checkbox
+          <StyledCheckbox
             label={label}
             variant="outlined"
             size="small"

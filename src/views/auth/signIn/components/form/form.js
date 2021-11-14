@@ -11,7 +11,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Grid from "@mui/material/Grid";
 
 // custom components
-import { InputTextField, FormButton } from "shared/components";
+import { FormButton } from "shared/components";
+
+// styled components
+import { StyledInputTextField } from "./styles";
 
 // api
 import { signIn } from "shared/recoil/auth";
@@ -51,7 +54,7 @@ const SignInForm = ({ onSubmitSuccess }) => {
     <Grid container justifyContent="center">
       <Grid item xs={12} sm={4}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <InputTextField
+          <StyledInputTextField
             error={Boolean(errors.password?.message)}
             helperText={errors.password?.message}
             control={control}

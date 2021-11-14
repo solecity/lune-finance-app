@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // external components
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+import Typography, { typographyClasses } from "@mui/material/Typography";
 
 const StyledContainer = styled(Container)`
   height: 100vh;
@@ -13,8 +13,10 @@ const StyledContainer = styled(Container)`
   justify-content: center;
 `;
 
-const StyledTitle = styled(Typography)`
-  margin-bottom: 16px;
-`;
+const StyledTitle = styled(Typography)(() => ({
+  [`&.${typographyClasses.root}`]: {
+    marginBottom: "16px"
+  }
+}));
 
 export { StyledContainer, StyledTitle };

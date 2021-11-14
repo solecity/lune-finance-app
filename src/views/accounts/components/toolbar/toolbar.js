@@ -9,7 +9,14 @@ import Typography from "@mui/material/Typography";
 // custom components
 import { ActionButton } from "shared/components";
 
-const Toolbar = ({ handleModal }) => {
+const Toolbar = ({ handleModal, setIsEdit, setAccount }) => {
+  const openForm = () => {
+    setIsEdit(false);
+    setAccount({});
+
+    handleModal();
+  };
+
   return (
     <Grid container>
       <Grid item xs={6}>
@@ -19,11 +26,7 @@ const Toolbar = ({ handleModal }) => {
       </Grid>
       <Grid container item xs={6} justifyContent="flex-end">
         <Grid item xs={2}>
-          <ActionButton
-            tooltip="New account"
-            text={"Add"}
-            action={() => handleModal()}
-          />
+          <ActionButton text={"Add"} action={openForm} />
         </Grid>
       </Grid>
     </Grid>
@@ -31,7 +34,9 @@ const Toolbar = ({ handleModal }) => {
 };
 
 Toolbar.propTypes = {
-  handleModal: PropTypes.func.isRequired
+  handleModal: PropTypes.func.isRequired,
+  setIsEdit: PropTypes.func.isRequired,
+  setAccount: PropTypes.func.isRequired
 };
 
 export default Toolbar;

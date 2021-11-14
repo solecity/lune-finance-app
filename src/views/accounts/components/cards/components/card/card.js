@@ -22,7 +22,7 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { TYPES } from "constants/general";
 
-const AccountCard = ({ account }) => {
+const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
   const settings = useRecoilValue(settingsState);
 
   const getType = (type) => {
@@ -35,9 +35,16 @@ const AccountCard = ({ account }) => {
     return value;
   };
 
+  const openForm = () => {
+    setIsEdit(true);
+    setAccount(account);
+
+    handleModal();
+  };
+
   return (
     <Card>
-      <StyledCardAction>
+      <StyledCardAction onClick={openForm}>
         <CardContent>
           <Grid container>
             <Grid container item xs={10}>
@@ -86,7 +93,10 @@ const AccountCard = ({ account }) => {
 };
 
 AccountCard.propTypes = {
-  account: PropTypes.object.isRequired
+  account: PropTypes.object.isRequired,
+  handleModal: PropTypes.func.isRequired,
+  setIsEdit: PropTypes.func.isRequired,
+  setAccount: PropTypes.func.isRequired
 };
 
 export default AccountCard;

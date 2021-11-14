@@ -6,7 +6,8 @@ const CONSTANTS = {
   PAYED: "Payed",
   NOT_PAYED: "Not payed",
   COMPLETED: "Completed",
-  NOT_COMPLETED: "Not completed"
+  NOT_COMPLETED: "Not completed",
+  INITIAL_ACCOUNT_TYPE: "cash"
 };
 
 const TYPES = {

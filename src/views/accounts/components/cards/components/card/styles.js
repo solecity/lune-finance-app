@@ -26,10 +26,10 @@ const StyledCreditCard = styled(CreditCard)`
   width: 22px;
   padding-left: 10px;
   &.green {
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colours.green};
   }
   &.disabled {
-    color: ${({ theme }) => theme.colors.grey};
+    color: ${({ theme }) => theme.colours.grey};
   }
 `;
 

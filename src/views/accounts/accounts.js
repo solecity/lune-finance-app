@@ -14,8 +14,10 @@ import { Toolbar, Form, Cards } from "./components";
 const Accounts = () => {
   const [data, setData] = useState([]);
   const [account, setAccount] = useState({});
-  const [title, setTitle] = useState("New Account");
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const name = "account";
 
   const getData = async () => {
     const { data } = await AccountService.getMany();
@@ -23,16 +25,7 @@ const Accounts = () => {
     setData(data.accounts);
   };
 
-  const handleModal = (el) => {
-    if (el) {
-      setTitle("Edit Account");
-      setAccount(el);
-    } else {
-      setTitle("New Account");
-    }
-
-    setOpen(!open);
-  };
+  const handleModal = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     getData();
@@ -41,11 +34,25 @@ const Accounts = () => {
   return (
     <Container>
       <Header title={"Accounts"} />
-      <Toolbar handleModal={handleModal} />
-      <Modal title={title} open={open} handleModal={handleModal}>
+      <Toolbar
+        handleModal={handleModal}
+        setIsEdit={setIsEdit}
+        setAccount={setAccount}
+      />
+      <Modal
+        name={name}
+        handleModal={handleModal}
+        isOpen={isOpen}
+        isEdit={isEdit}
+      >
         <Form account={account} handleModal={handleModal} />
       </Modal>
-      <Cards data={data} />
+      <Cards
+        data={data}
+        handleModal={handleModal}
+        setIsEdit={setIsEdit}
+        setAccount={setAccount}
+      />
     </Container>
   );
 };

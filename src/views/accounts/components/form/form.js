@@ -15,22 +15,22 @@ import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
 
 // custom components
-import {
-  InputTextField,
-  InputSelect,
-  InputCheckbox,
-  InputDatePicker,
-  FormButton
-} from "shared/components";
+import { InputCheckbox, FormButton, ActionButton } from "shared/components";
 
 // styled components
-import { StyledContainer, StyledCheckbox } from "./styles";
+import {
+  StyledContainer,
+  StyledInputTextField,
+  StyledInputSelect,
+  StyledInputDatePicker,
+  StyledCheckbox
+} from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
 // constants
-import { TYPES } from "constants/general";
+import { CONSTANTS, TYPES } from "constants/general";
 
 const Form = ({ account, handleModal }) => {
   const settings = useRecoilValue(settingsState);
@@ -44,8 +44,9 @@ const Form = ({ account, handleModal }) => {
     mode: "onBlur",
     defaultValues: {
       name: account.name || "",
-      type: account.type || "",
+      type: account.type || CONSTANTS.INITIAL_ACCOUNT_TYPE,
       balance: account.balance || 0,
+      openingDate: account.openingDate || new Date(),
       card: account.hasCard || false
     }
   });
@@ -62,7 +63,13 @@ const Form = ({ account, handleModal }) => {
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      reset({ name: "", type: 0, balance: 0, card: false });
+      reset({
+        name: "",
+        type: CONSTANTS.INITIAL_ACCOUNT_TYPE,
+        balance: 0,
+        openingDate: new Date(),
+        card: false
+      });
     }
   }, [isSubmitSuccessful, reset]);
 
@@ -70,8 +77,8 @@ const Form = ({ account, handleModal }) => {
     <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
-          <Grid item xs={6}>
-            <InputTextField
+          <Grid item xs={12} sm={6}>
+            <StyledInputTextField
               error={Boolean(errors.name?.message)}
               helperText={errors.name?.message}
               control={control}
@@ -79,11 +86,11 @@ const Form = ({ account, handleModal }) => {
               name="name"
               type="text"
             />
-            <InputTextField
+            <StyledInputTextField
               error={Boolean(errors.balance?.message)}
               helperText={errors.balance?.message}
               control={control}
-              label="Balance"
+              label="Initial Balance"
               name="balance"
               type="number"
               InputProps={{
@@ -96,29 +103,29 @@ const Form = ({ account, handleModal }) => {
               }}
             />
           </Grid>
-          <Grid item xs={6}>
-            <InputSelect label="Type" name="type" control={control}>
+          <Grid item xs={12} sm={6}>
+            <StyledInputSelect label="Type" name="type" control={control}>
               {TYPES.ACCOUNT.map((el, i) => (
                 <MenuItem key={i} value={el.value}>
                   {el.name}
                 </MenuItem>
               ))}
-            </InputSelect>
-            <InputDatePicker
+            </StyledInputSelect>
+            <StyledInputDatePicker
               control={control}
               name="openingDate"
               label="Opening Date"
             />
           </Grid>
           <StyledCheckbox item xs={12}>
-            <InputCheckbox control={control} name="card" label="Has Card" />
+            <InputCheckbox control={control} name="card" label="Card" />
           </StyledCheckbox>
         </Grid>
         <Grid container item spacing={1}>
-          <Grid item xs={6}>
-            <FormButton text="Cancel" />
+          <Grid item xs={12} sm={6}>
+            <ActionButton text="Cancel" action={() => handleModal()} />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <FormButton text="Save" />
           </Grid>
         </Grid>

@@ -22,8 +22,6 @@ const Accounts = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
-  const name = "account";
-
   const getData = async () => {
     const { data } = await AccountService.getMany();
 
@@ -34,7 +32,7 @@ const Accounts = () => {
 
   useEffect(() => {
     getData();
-  }, [data]);
+  }, []);
 
   return (
     <Container>
@@ -52,6 +50,7 @@ const Accounts = () => {
               handleModal={handleModal}
               setIsEdit={setIsEdit}
               setAccount={setAccount}
+              getData={getData}
             />
           </StyledListContainer>
         </Grid>
@@ -60,12 +59,12 @@ const Accounts = () => {
         </Grid>
       </StyledGridContainer>
       <Modal
-        name={name}
+        name="account"
         handleModal={handleModal}
         isOpen={isOpen}
         isEdit={isEdit}
       >
-        <Form account={account} handleModal={handleModal} />
+        <Form account={account} handleModal={handleModal} getData={getData} />
       </Modal>
     </Container>
   );

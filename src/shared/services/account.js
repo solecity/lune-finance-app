@@ -12,7 +12,14 @@ const post = async (payload) => {
   return res.data;
 };
 
+const deleteOne = async (id) => {
+  const res = await api().delete(`/accounts/${id}`);
+
+  return res.data;
+};
+
 export default {
   getMany,
-  post
+  post,
+  deleteOne
 };

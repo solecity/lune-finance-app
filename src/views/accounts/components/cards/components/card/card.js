@@ -1,9 +1,12 @@
 // base
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
+
+// api
+import AccountService from "shared/services/account";
 
 // external components
 import Grid from "@mui/material/Grid";
@@ -14,7 +17,7 @@ import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 
 // custom components
-import { ActionButton } from "shared/components";
+import { ActionButton, ConfirmDelete } from "shared/components";
 
 // styled components
 import {
@@ -34,8 +37,16 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { TYPES } from "constants/general";
 
-const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
+const AccountCard = ({
+  account,
+  handleModal,
+  setIsEdit,
+  setAccount,
+  getData
+}) => {
   const settings = useRecoilValue(settingsState);
+
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   const getType = (type) => {
     let value = "";
@@ -52,6 +63,17 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
     setAccount(account);
 
     handleModal();
+  };
+
+  const handleConfirm = () => setOpenConfirm(!openConfirm);
+
+  const handleDelete = async () => {
+    const res = await AccountService.deleteOne(account._id);
+
+    if (res) {
+      setOpenConfirm(false);
+      getData();
+    }
   };
 
   return (
@@ -117,12 +139,19 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
               <ActionButton
                 isAction={false}
                 icon={<TrashAlt />}
-                action={() => {}}
+                action={handleConfirm}
               />
             </StyledDeleteButton>
           </StyledActions>
         </Grid>
       </StyledContent>
+      <ConfirmDelete
+        open={openConfirm}
+        handleClose={handleConfirm}
+        handleDelete={handleDelete}
+        item="account"
+        name={account.name}
+      />
     </StyledCard>
   );
 };
@@ -131,7 +160,8 @@ AccountCard.propTypes = {
   account: PropTypes.object.isRequired,
   handleModal: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
-  setAccount: PropTypes.func.isRequired
+  setAccount: PropTypes.func.isRequired,
+  getData: PropTypes.func.isRequired
 };
 
 export default AccountCard;

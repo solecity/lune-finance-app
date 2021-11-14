@@ -37,7 +37,7 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { CONSTANTS, TYPES } from "constants/general";
 
-const Form = ({ account, handleModal }) => {
+const Form = ({ account, handleModal, getData }) => {
   const settings = useRecoilValue(settingsState);
 
   const {
@@ -63,6 +63,7 @@ const Form = ({ account, handleModal }) => {
 
       if (res) {
         handleModal();
+        getData();
       }
     } catch (error) {}
   };
@@ -150,7 +151,8 @@ Form.defaultProps = {
 
 Form.propTypes = {
   account: PropTypes.object,
-  handleModal: PropTypes.func.isRequired
+  handleModal: PropTypes.func.isRequired,
+  getData: PropTypes.func
 };
 
 export default Form;

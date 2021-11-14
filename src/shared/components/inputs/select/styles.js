@@ -14,7 +14,7 @@ const StyledFormControl = styled(FormControl)(({ theme }) => ({
 
 const StyledSelect = styled(InputBase)(({ theme }) => ({
   [`&.${inputBaseClasses.root}`]: {
-    backgroundColor: theme.colors.inputBackground,
+    backgroundColor: theme.colours.inputBackground,
     height: "35px",
     width: "100%",
     padding: "0.35rem 0.75rem 0 0.75rem",
@@ -28,7 +28,7 @@ const StyledSelect = styled(InputBase)(({ theme }) => ({
     height: "35px",
     paddingTop: 0,
     paddingBottom: 0,
-    color: theme.colors.black,
+    color: theme.colours.black,
     boxShadow: "inset 0px 2px 4px rgba(10, 72, 99, 0.5)"
   }
 }));
@@ -45,7 +45,7 @@ const StyledLabel = styled(InputLabel)(({ theme }) => ({
   },
 
   [`&.${inputLabelClasses.shrink}`]: {
-    transform: "translate(10px, -16px) scale(0.75)"
+    transform: "translate(7px, -18px) scale(0.75)"
   }
 }));
 

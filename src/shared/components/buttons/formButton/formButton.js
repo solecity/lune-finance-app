@@ -2,23 +2,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// external components
-import Button from "@mui/material/Button";
+// styled components
+import { StyledButton } from "./styles";
 
-const FormButton = ({ variant, text }) => {
+const FormButton = ({ variant, type, text }) => {
   return (
-    <Button variant={variant} type="submit">
+    <StyledButton variant={variant} type={type}>
       {text}
-    </Button>
+    </StyledButton>
   );
 };
 
 FormButton.defaultProps = {
-  variant: "contained"
+  variant: "contained",
+  type: "submit"
 };
 
 FormButton.propTypes = {
   variant: PropTypes.string,
+  type: PropTypes.string,
   text: PropTypes.string
 };
 

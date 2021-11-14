@@ -6,9 +6,9 @@ import FormControl, { formControlClasses } from "@mui/material/FormControl";
 import InputBase, { inputBaseClasses } from "@mui/material/InputBase";
 import InputLabel, { inputLabelClasses } from "@mui/material/InputLabel";
 
-const StyledFormControl = styled(FormControl)(({ theme }) => ({
+const StyledFormControl = styled(FormControl)(() => ({
   [`&.${formControlClasses.root}`]: {
-    marginBottom: "35px"
+    marginBottom: "45px"
   }
 }));
 

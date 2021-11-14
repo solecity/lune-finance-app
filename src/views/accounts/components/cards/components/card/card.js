@@ -109,14 +109,14 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
               <ActionButton
                 isAction={false}
                 tooltip="Edit"
-                text={<Pencil />}
+                icon={<Pencil />}
                 action={openForm}
               />
             </StyledEditButton>
             <StyledDeleteButton item xs={6}>
               <ActionButton
                 isAction={false}
-                text={<TrashAlt />}
+                icon={<TrashAlt />}
                 action={() => {}}
               />
             </StyledDeleteButton>

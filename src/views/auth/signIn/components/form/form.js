@@ -7,6 +7,9 @@ import { useSetRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+// api
+import { signIn } from "shared/recoil/auth";
+
 // external components
 import Grid from "@mui/material/Grid";
 
@@ -15,9 +18,6 @@ import { FormButton } from "shared/components";
 
 // styled components
 import { StyledInputTextField } from "./styles";
-
-// api
-import { signIn } from "shared/recoil/auth";
 
 // schemas
 import { schemaSignIn } from "constants/schemas";

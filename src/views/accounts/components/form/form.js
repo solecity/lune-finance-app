@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 // libraries
 import { useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 // api
 import AccountService from "shared/services/account";
@@ -15,16 +16,20 @@ import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
 
 // custom components
-import { InputCheckbox, FormButton, ActionButton } from "shared/components";
+import {
+  InputTextField,
+  InputSelect,
+  InputDatePicker,
+  InputCheckbox,
+  FormButton,
+  ActionButton
+} from "shared/components";
 
 // styled components
-import {
-  StyledContainer,
-  StyledInputTextField,
-  StyledInputSelect,
-  StyledInputDatePicker,
-  StyledCheckbox
-} from "./styles";
+import { StyledContainer, StyledCheckbox } from "./styles";
+
+// schemas
+import { schemaAccount } from "constants/schemas";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -48,7 +53,8 @@ const Form = ({ account, handleModal }) => {
       balance: account.balance || 0,
       openingDate: account.openingDate || new Date(),
       card: account.hasCard || false
-    }
+    },
+    resolver: yupResolver(schemaAccount)
   });
 
   const onSubmit = async (payload) => {
@@ -78,7 +84,7 @@ const Form = ({ account, handleModal }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
-            <StyledInputTextField
+            <InputTextField
               error={Boolean(errors.name?.message)}
               helperText={errors.name?.message}
               control={control}
@@ -86,11 +92,11 @@ const Form = ({ account, handleModal }) => {
               name="name"
               type="text"
             />
-            <StyledInputTextField
+            <InputTextField
               error={Boolean(errors.balance?.message)}
               helperText={errors.balance?.message}
               control={control}
-              label="Initial Balance"
+              label="Balance"
               name="balance"
               type="text"
               InputProps={{
@@ -108,14 +114,14 @@ const Form = ({ account, handleModal }) => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <StyledInputSelect label="Type" name="type" control={control}>
+            <InputSelect label="Type" name="type" control={control}>
               {TYPES.ACCOUNT.map((el, i) => (
                 <MenuItem key={i} value={el.value}>
                   {el.name}
                 </MenuItem>
               ))}
-            </StyledInputSelect>
-            <StyledInputDatePicker
+            </InputSelect>
+            <InputDatePicker
               control={control}
               name="openingDate"
               label="Opening Date"

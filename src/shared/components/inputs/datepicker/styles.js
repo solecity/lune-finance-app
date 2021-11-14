@@ -2,19 +2,23 @@
 import styled from "styled-components";
 
 // external components
-import FormControl from "@mui/material/FormControl";
+import FormControl, { formControlClasses } from "@mui/material/FormControl";
 import TextField, { textFieldClasses } from "@mui/material/TextField";
 
-const StyledDatePicker = styled(FormControl)`
-  .MuiInputAdornment-root {
-    margin-left: 0 !important;
-  }
+const StyledFormControl = styled(FormControl)(({ theme }) => ({
+  [`&.${formControlClasses.root}`]: {
+    marginBottom: "45px"
+  },
 
-  .MuiSvgIcon-root {
-    color: ${({ theme }) => theme.colours.inputBackground};
-    font-size: 1.3rem !important;
+  "& .MuiInputAdornment-root": {
+    marginLeft: "0 !important"
+  },
+
+  "& .MuiSvgIcon-root": {
+    color: theme.colours.inputBackground,
+    fontSize: "1.3rem !important"
   }
-`;
+}));
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   [`&.${textFieldClasses.root}`]: {
@@ -53,4 +57,4 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   }
 }));
 
-export { StyledDatePicker, StyledTextField };
+export { StyledFormControl, StyledTextField };

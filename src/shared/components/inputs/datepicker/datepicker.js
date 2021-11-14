@@ -9,7 +9,7 @@ import { Controller } from "react-hook-form";
 import DatePicker from "@mui/lab/DatePicker";
 
 // styled components
-import { StyledDatePicker, StyledTextField } from "./styles";
+import { StyledFormControl, StyledTextField } from "./styles";
 
 // constants
 import { DATE_FORMAT } from "constants/general";
@@ -23,7 +23,7 @@ const InputDatePicker = ({
   helperText
 }) => {
   return (
-    <StyledDatePicker fullWidth size="small" required={isRequired}>
+    <StyledFormControl fullWidth size="small" required={isRequired}>
       <Controller
         name={name}
         control={control}
@@ -38,7 +38,7 @@ const InputDatePicker = ({
           />
         )}
       />
-    </StyledDatePicker>
+    </StyledFormControl>
   );
 };
 

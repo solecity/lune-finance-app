@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 // styled components
 import { StyledActionButton, StyledCardButton } from "./styles";
 
-const ActionButton = ({ isAction, variant, text, action }) => {
+const ActionButton = ({ isAction, variant, text, icon, action }) => {
   return (
     <>
       {isAction ? (
@@ -14,7 +14,7 @@ const ActionButton = ({ isAction, variant, text, action }) => {
         </StyledActionButton>
       ) : (
         <StyledCardButton variant={variant} onClick={action}>
-          {text}
+          {icon}
         </StyledCardButton>
       )}
     </>
@@ -29,7 +29,8 @@ ActionButton.defaultProps = {
 ActionButton.propTypes = {
   isAction: PropTypes.bool,
   variant: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  icon: PropTypes.any,
   action: PropTypes.func.isRequired
 };
 

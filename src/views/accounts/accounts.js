@@ -34,7 +34,7 @@ const Accounts = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [data]);
 
   return (
     <Container>

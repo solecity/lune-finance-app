@@ -2,7 +2,14 @@
 import styled from "styled-components";
 
 // external components
+import FormControl, { formControlClasses } from "@mui/material/FormControl";
 import TextField, { textFieldClasses } from "@mui/material/TextField";
+
+const StyledFormControl = styled(FormControl)(({ theme }) => ({
+  [`&.${formControlClasses.root}`]: {
+    marginBottom: "45px"
+  }
+}));
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   [`&.${textFieldClasses.root}`]: {
@@ -52,4 +59,4 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   }
 }));
 
-export { StyledTextField };
+export { StyledFormControl, StyledTextField };

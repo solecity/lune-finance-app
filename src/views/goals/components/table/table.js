@@ -7,7 +7,7 @@ import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 
 // custom components
-import { Table, ActionButton } from "shared/components";
+import { Table, IconButton } from "shared/components";
 
 const AccountsTable = ({ data }) => {
   const COLUMNS = [
@@ -57,13 +57,13 @@ const AccountsTable = ({ data }) => {
       disableSortBy: true,
       accessor: ({ row }) => (
         <div>
-          <ActionButton
+          <IconButton
             tooltip="Edit"
             hasIcon
             icon={<Pencil />}
             action={() => {}}
           />
-          <ActionButton
+          <IconButton
             tooltip="Delete"
             hasIcon
             icon={<TrashAlt />}

@@ -9,9 +9,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 // styled components
 import { StyledContent } from "./styles";
 
-const Modal = ({ title, open, handleModal, children }) => {
+const Modal = ({ name, handleModal, isOpen, isEdit, children }) => {
+  const title = isEdit ? `Edit ${name}` : `New ${name}`;
+
   return (
-    <Dialog open={open} onClose={handleModal}>
+    <Dialog open={isOpen} onClose={handleModal}>
       <DialogTitle>{title}</DialogTitle>
       <StyledContent>{children}</StyledContent>
     </Dialog>
@@ -19,9 +21,10 @@ const Modal = ({ title, open, handleModal, children }) => {
 };
 
 Modal.propTypes = {
-  title: PropTypes.string,
-  open: PropTypes.bool,
+  name: PropTypes.string,
   handleModal: PropTypes.func,
+  isOpen: PropTypes.bool,
+  isEdit: PropTypes.bool,
   children: PropTypes.any
 };
 

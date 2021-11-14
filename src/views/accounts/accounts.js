@@ -64,7 +64,12 @@ const Accounts = () => {
         isOpen={isOpen}
         isEdit={isEdit}
       >
-        <Form account={account} handleModal={handleModal} getData={getData} />
+        <Form
+          account={account}
+          handleModal={handleModal}
+          getData={getData}
+          isEdit={isEdit}
+        />
       </Modal>
     </Container>
   );

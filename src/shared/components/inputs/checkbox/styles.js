@@ -21,7 +21,7 @@ const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
 }));
 
 const StyledIcon = styled(CreditCard)`
-  width: "1.8rem";
+  width: 1.5rem;
 `;
 
 export { StyledLabel, StyledCheckbox, StyledIcon };

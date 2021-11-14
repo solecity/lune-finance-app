@@ -50,12 +50,12 @@ const StyledActions = styled(Grid)`
 `;
 
 const StyledEditButton = styled(Grid)`
-  border-right: 1px solid ${({ theme }) => theme.colours.white};
+  border-left: 1px solid ${({ theme }) => theme.colours.white};
   text-align: center;
 `;
 
 const StyledDeleteButton = styled(Grid)`
-  border-left: 1px solid ${({ theme }) => theme.colours.white};
+  border-right: 1px solid ${({ theme }) => theme.colours.white};
   text-align: center;
 `;
 

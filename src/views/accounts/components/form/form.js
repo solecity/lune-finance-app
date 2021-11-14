@@ -37,7 +37,7 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { CONSTANTS, TYPES } from "constants/general";
 
-const Form = ({ account, handleModal, getData }) => {
+const Form = ({ account, handleModal, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const {
@@ -52,14 +52,16 @@ const Form = ({ account, handleModal, getData }) => {
       type: account.type || CONSTANTS.INITIAL_ACCOUNT_TYPE,
       balance: account.balance || 0,
       openingDate: account.openingDate || new Date(),
-      card: account.hasCard || false
+      hasCard: account.hasCard || false
     },
     resolver: yupResolver(schemaAccount)
   });
 
   const onSubmit = async (payload) => {
     try {
-      const res = await AccountService.post(payload);
+      const res = isEdit
+        ? await AccountService.put(account._id, payload)
+        : await AccountService.post(payload);
 
       if (res) {
         handleModal();
@@ -75,7 +77,7 @@ const Form = ({ account, handleModal, getData }) => {
         type: CONSTANTS.INITIAL_ACCOUNT_TYPE,
         balance: 0,
         openingDate: new Date(),
-        card: false
+        hasCard: false
       });
     }
   }, [isSubmitSuccessful, reset]);
@@ -129,7 +131,7 @@ const Form = ({ account, handleModal, getData }) => {
             />
           </Grid>
           <StyledCheckbox item xs={12}>
-            <InputCheckbox control={control} name="card" label="Card" />
+            <InputCheckbox control={control} name="hasCard" label="Card" />
           </StyledCheckbox>
         </Grid>
         <Grid container item spacing={1}>
@@ -152,7 +154,8 @@ Form.defaultProps = {
 Form.propTypes = {
   account: PropTypes.object,
   handleModal: PropTypes.func.isRequired,
-  getData: PropTypes.func
+  getData: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired
 };
 
 export default Form;

@@ -127,6 +127,13 @@ const AccountCard = ({
             </Grid>
           </StyledGrid>
           <StyledActions container alignItems="center">
+            <StyledDeleteButton item xs={6}>
+              <ActionButton
+                isAction={false}
+                icon={<TrashAlt />}
+                action={handleConfirm}
+              />
+            </StyledDeleteButton>
             <StyledEditButton item xs={6}>
               <ActionButton
                 isAction={false}
@@ -135,13 +142,6 @@ const AccountCard = ({
                 action={openForm}
               />
             </StyledEditButton>
-            <StyledDeleteButton item xs={6}>
-              <ActionButton
-                isAction={false}
-                icon={<TrashAlt />}
-                action={handleConfirm}
-              />
-            </StyledDeleteButton>
           </StyledActions>
         </Grid>
       </StyledContent>

@@ -12,6 +12,12 @@ const post = async (payload) => {
   return res.data;
 };
 
+const put = async (id, payload) => {
+  const res = await api().put(`/accounts/${id}`, payload);
+
+  return res.data;
+};
+
 const deleteOne = async (id) => {
   const res = await api().delete(`/accounts/${id}`);
 
@@ -21,5 +27,6 @@ const deleteOne = async (id) => {
 export default {
   getMany,
   post,
+  put,
   deleteOne
 };

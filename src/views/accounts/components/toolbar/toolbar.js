@@ -9,6 +9,9 @@ import Typography from "@mui/material/Typography";
 // custom components
 import { ActionButton } from "shared/components";
 
+// styled components
+import { StyledContainer } from "./styles";
+
 const Toolbar = ({ handleModal, setIsEdit, setAccount }) => {
   const openForm = () => {
     setIsEdit(false);
@@ -18,7 +21,7 @@ const Toolbar = ({ handleModal, setIsEdit, setAccount }) => {
   };
 
   return (
-    <Grid container>
+    <StyledContainer container>
       <Grid item xs={6}>
         <Typography component="div" variant="body1" noWrap>
           Sort by
@@ -29,7 +32,7 @@ const Toolbar = ({ handleModal, setIsEdit, setAccount }) => {
           <ActionButton text={"Add"} action={openForm} />
         </Grid>
       </Grid>
-    </Grid>
+    </StyledContainer>
   );
 };
 

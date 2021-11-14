@@ -3,14 +3,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // external components
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+
+// styled components
+import { StyledContainer } from "./styles";
 
 const Header = ({ title }) => {
   return (
-    <Container>
+    <StyledContainer>
       <Typography variant="h4">{title}</Typography>
-    </Container>
+    </StyledContainer>
   );
 };
 

@@ -92,9 +92,13 @@ const Form = ({ account, handleModal }) => {
               control={control}
               label="Initial Balance"
               name="balance"
-              type="number"
+              type="text"
               InputProps={{
-                inputProps: { min: 0 },
+                inputProps: {
+                  min: 0,
+                  inputMode: "numeric",
+                  pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                },
                 startAdornment: (
                   <InputAdornment position="start">
                     {settings.currencySymbol}

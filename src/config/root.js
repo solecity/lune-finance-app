@@ -20,6 +20,9 @@ import { settingsState } from "shared/recoil/atoms";
 // theme
 import { GlobalStyles, Light, Dark } from "styles/theme";
 
+// styles
+import "simplebar/dist/simplebar.min.css";
+
 const Root = () => {
   const settings = useRecoilValue(settingsState);
 

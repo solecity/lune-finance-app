@@ -59,7 +59,7 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
       <StyledContent>
         <Grid container>
           <StyledGrid container direction="row" item xs={12}>
-            <Grid container item xs={10}>
+            <Grid container item xs={9}>
               <Grid container item xs={1}>
                 <Avatar sx={{ bgcolor: account.colour, width: 25, height: 25 }}>
                   <RadioCircle />
@@ -90,7 +90,7 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
                 )}
               </StyledInfo>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <Grid
                 container
                 item

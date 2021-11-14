@@ -6,10 +6,15 @@ import AccountService from "shared/services/account";
 
 // external components
 import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 
 // custom components
 import { Header, Modal } from "shared/components";
 import { Toolbar, Form, Cards } from "./components";
+
+// styled components
+import { StyledGridContainer, StyledListContainer } from "./styles";
 
 const Accounts = () => {
   const [data, setData] = useState([]);
@@ -39,6 +44,21 @@ const Accounts = () => {
         setIsEdit={setIsEdit}
         setAccount={setAccount}
       />
+      <StyledGridContainer container spacing={1}>
+        <Grid item xs={5}>
+          <StyledListContainer scrollbarMaxSize={200}>
+            <Cards
+              data={data}
+              handleModal={handleModal}
+              setIsEdit={setIsEdit}
+              setAccount={setAccount}
+            />
+          </StyledListContainer>
+        </Grid>
+        <Grid item xs={7}>
+          <Paper style={{ height: "calc(100vh - 200px)" }}></Paper>
+        </Grid>
+      </StyledGridContainer>
       <Modal
         name={name}
         handleModal={handleModal}
@@ -47,12 +67,6 @@ const Accounts = () => {
       >
         <Form account={account} handleModal={handleModal} />
       </Modal>
-      <Cards
-        data={data}
-        handleModal={handleModal}
-        setIsEdit={setIsEdit}
-        setAccount={setAccount}
-      />
     </Container>
   );
 };

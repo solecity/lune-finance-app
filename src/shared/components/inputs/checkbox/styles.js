@@ -12,7 +12,6 @@ const StyledLabel = styled.label`
 
 const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
   [`&.${checkboxClasses.root}`]: {
-    width: "3rem",
     color: theme.colours.grey
   },
 

@@ -30,4 +30,8 @@ const TYPES = {
   ]
 };
 
-export { DATE_FORMAT, CONSTANTS, TYPES };
+const VALIDATIONS = {
+  ACCOUNT: ["cash", "bank", "savings", "investment"]
+};
+
+export { DATE_FORMAT, CONSTANTS, TYPES, VALIDATIONS };

@@ -2,17 +2,27 @@
 import styled from "styled-components";
 
 // external components
-import Checkbox from "@mui/material/Checkbox";
+import Checkbox, { checkboxClasses } from "@mui/material/Checkbox";
+import { CreditCard } from "@styled-icons/boxicons-regular/CreditCard";
 
 const StyledLabel = styled.label`
   margin-left: 5px;
   font-size: 14px;
 `;
 
-const StyledCheckbox = styled(Checkbox)`
-  &.Mui-checked {
-    color: ${({ theme }) => theme.colors.secondary} !important;
+const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
+  [`&.${checkboxClasses.root}`]: {
+    width: "3rem",
+    color: theme.colours.grey
+  },
+
+  "&.Mui-checked": {
+    color: `${theme.colours.green} !important`
   }
+}));
+
+const StyledIcon = styled(CreditCard)`
+  width: "1.8rem";
 `;
 
-export { StyledLabel, StyledCheckbox };
+export { StyledLabel, StyledCheckbox, StyledIcon };

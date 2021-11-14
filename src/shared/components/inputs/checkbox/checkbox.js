@@ -9,7 +9,7 @@ import { Controller } from "react-hook-form";
 import FormControl from "@mui/material/FormControl";
 
 // styled components
-import { StyledLabel, StyledCheckbox } from "./styles";
+import { StyledLabel, StyledCheckbox, StyledIcon } from "./styles";
 
 const InputCheckbox = ({ label, name, control }) => {
   return (
@@ -23,6 +23,8 @@ const InputCheckbox = ({ label, name, control }) => {
             label={label}
             variant="outlined"
             size="small"
+            icon={<StyledIcon />}
+            checkedIcon={<StyledIcon />}
             checked={field.value}
             {...field}
           />

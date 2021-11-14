@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
     transition: background 0.2s ease-in, color 0.2s ease-in;
     font-family: 'Roboto', sans-serif;
   }
+
+  svg {
+    width: 1.2rem;
+  }
   
   .MuiPaper-root {
     border-radius: 0 !important;
@@ -20,6 +24,10 @@ const GlobalStyles = createGlobalStyle`
 
   .MuiPickersDay-root {
     color: ${({ theme }) => `${theme.colours.black} !important`} 
+  }
+
+  .MuiIconButton-colorPrimary {
+    color: ${({ theme }) => `${theme.colours.white} !important`};
   }
   
   .Mui-selected {

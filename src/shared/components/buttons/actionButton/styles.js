@@ -6,11 +6,20 @@ import Button, { buttonClasses } from "@mui/material/Button";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
-    backgroundColor: theme.colours.primary,
-    height: "35px",
     width: "100%",
     color: theme.colours.white,
-    borderRadius: 0,
+    borderRadius: 0
+  },
+
+  "&:hover": {
+    borderRadius: "none"
+  }
+}));
+
+const StyledActionButton = styled(StyledButton)(({ theme }) => ({
+  [`&.${buttonClasses.root}`]: {
+    backgroundColor: theme.colours.primary,
+    height: "35px",
     boxShadow: "0px 2px 4px rgba(21, 41, 44, 0.3)"
   },
 
@@ -19,4 +28,15 @@ const StyledButton = styled(Button)(({ theme }) => ({
   }
 }));
 
-export { StyledButton };
+const StyledCardButton = styled(StyledButton)(({ theme }) => ({
+  [`&.${buttonClasses.root}`]: {
+    backgroundColor: theme.colours.secondary,
+    boxShadow: "none"
+  },
+
+  "&:hover": {
+    backgroundColor: `${theme.colours.lightSecondary} !important`
+  }
+}));
+
+export { StyledActionButton, StyledCardButton };

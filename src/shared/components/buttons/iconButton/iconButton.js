@@ -4,16 +4,14 @@ import PropTypes from "prop-types";
 
 // external components
 import Tooltip from "@mui/material/Tooltip";
-
-// styled components
-import { StyledIconButton } from "./styles";
+import { default as MuiIconButton } from "@mui/material/IconButton";
 
 const IconButton = ({ tooltip, icon, action }) => {
   return (
     <Tooltip title={tooltip}>
-      <StyledIconButton size="small" onClick={action}>
+      <MuiIconButton size="small" color="primary" onClick={action}>
         {icon}
-      </StyledIconButton>
+      </MuiIconButton>
     </Tooltip>
   );
 };

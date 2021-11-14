@@ -7,14 +7,26 @@ import { useRecoilValue } from "recoil";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import { RadioCircle } from "@styled-icons/boxicons-regular/RadioCircle";
+import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
+import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
+
+// custom components
+import { ActionButton } from "shared/components";
 
 // styled components
-import { StyledCardAction, StyledInfo, StyledCardIcon } from "./styles";
+import {
+  StyledCard,
+  StyledContent,
+  StyledGrid,
+  StyledInfo,
+  StyledCardIcon,
+  StyledActions,
+  StyledEditButton,
+  StyledDeleteButton
+} from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -43,10 +55,10 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
   };
 
   return (
-    <Card>
-      <StyledCardAction onClick={openForm}>
-        <CardContent>
-          <Grid container>
+    <StyledCard>
+      <StyledContent>
+        <Grid container>
+          <StyledGrid container direction="row" item xs={12}>
             <Grid container item xs={10}>
               <Grid container item xs={1}>
                 <Avatar sx={{ bgcolor: account.colour, width: 25, height: 25 }}>
@@ -79,16 +91,39 @@ const AccountCard = ({ account, handleModal, setIsEdit, setAccount }) => {
               </StyledInfo>
             </Grid>
             <Grid item xs={2}>
-              <Grid container item xs={12} justifyContent="flex-end">
+              <Grid
+                container
+                item
+                xs={12}
+                justifyContent="flex-end"
+                alignItems="center"
+              >
                 <Typography component="div" variant="body1">
                   {account.balance} {settings.currencySymbol}
                 </Typography>
               </Grid>
             </Grid>
-          </Grid>
-        </CardContent>
-      </StyledCardAction>
-    </Card>
+          </StyledGrid>
+          <StyledActions container alignItems="center">
+            <StyledEditButton item xs={6}>
+              <ActionButton
+                isAction={false}
+                tooltip="Edit"
+                text={<Pencil />}
+                action={openForm}
+              />
+            </StyledEditButton>
+            <StyledDeleteButton item xs={6}>
+              <ActionButton
+                isAction={false}
+                text={<TrashAlt />}
+                action={() => {}}
+              />
+            </StyledDeleteButton>
+          </StyledActions>
+        </Grid>
+      </StyledContent>
+    </StyledCard>
   );
 };
 

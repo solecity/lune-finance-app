@@ -6,17 +6,21 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
-import CardActionArea, {
-  cardActionAreaClasses
-} from "@mui/material/CardActionArea";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import { CreditCard } from "@styled-icons/boxicons-regular/CreditCard";
 
-const StyledCardAction = styled(CardActionArea)(() => ({
-  [`&.${cardActionAreaClasses.root}`]: {
-    borderRadius: 0,
-    minHeight: 100
-  }
-}));
+const StyledCard = styled(Card)`
+  margin-top: 2px;
+`;
+
+const StyledContent = styled(CardContent)`
+  padding: 0 !important;
+`;
+
+const StyledGrid = styled(Grid)`
+  padding: 16px;
+`;
 
 const StyledInfo = styled(Grid)`
   padding-left: 15px;
@@ -41,4 +45,27 @@ const StyledCardIcon = styled(({ bool }) =>
   )
 )``;
 
-export { StyledCardAction, StyledInfo, StyledCardIcon };
+const StyledActions = styled(Grid)`
+  background-color: ${({ theme }) => theme.colours.secondary};
+`;
+
+const StyledEditButton = styled(Grid)`
+  border-right: 1px solid ${({ theme }) => theme.colours.white};
+  text-align: center;
+`;
+
+const StyledDeleteButton = styled(Grid)`
+  border-left: 1px solid ${({ theme }) => theme.colours.white};
+  text-align: center;
+`;
+
+export {
+  StyledCard,
+  StyledContent,
+  StyledGrid,
+  StyledInfo,
+  StyledCardIcon,
+  StyledActions,
+  StyledEditButton,
+  StyledDeleteButton
+};

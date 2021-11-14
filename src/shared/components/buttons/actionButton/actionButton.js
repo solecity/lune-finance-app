@@ -3,23 +3,33 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
-import { StyledButton } from "./styles";
+import { StyledActionButton, StyledCardButton } from "./styles";
 
-const ActionButton = ({ variant, text, action }) => {
+const ActionButton = ({ isAction, variant, text, action }) => {
   return (
-    <StyledButton variant={variant} onClick={action}>
-      {text}
-    </StyledButton>
+    <>
+      {isAction ? (
+        <StyledActionButton variant={variant} onClick={action}>
+          {text}
+        </StyledActionButton>
+      ) : (
+        <StyledCardButton variant={variant} onClick={action}>
+          {text}
+        </StyledCardButton>
+      )}
+    </>
   );
 };
 
 ActionButton.defaultProps = {
+  isAction: true,
   variant: "contained"
 };
 
 ActionButton.propTypes = {
+  isAction: PropTypes.bool,
   variant: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired
 };
 

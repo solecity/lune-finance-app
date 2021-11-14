@@ -7,6 +7,7 @@ import InputCheckbox from "./inputs/checkbox/checkbox";
 import InputColourSlider from "./inputs/colourSlider/colourSlider";
 import FormButton from "./buttons/formButton/formButton";
 import ActionButton from "./buttons/actionButton/actionButton";
+import IconButton from "./buttons/iconButton/iconButton";
 import Modal from "./modal/modal";
 import Table from "./table/table";
 
@@ -20,6 +21,7 @@ export {
   InputColourSlider,
   FormButton,
   ActionButton,
+  IconButton,
   Modal,
   Table
 };

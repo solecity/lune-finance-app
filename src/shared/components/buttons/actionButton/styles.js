@@ -2,15 +2,21 @@
 import styled from "styled-components";
 
 // external components
-import IconButton, { iconButtonClasses } from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
+import Button, { buttonClasses } from "@mui/material/Button";
 
-const StyledIconButton = styled(IconButton)(() => ({
-  [`&.${iconButtonClasses.root}`]: {
-    width: "1.8rem"
+const StyledButton = styled(Button)(({ theme }) => ({
+  [`&.${buttonClasses.root}`]: {
+    backgroundColor: theme.colours.primary,
+    height: "35px",
+    width: "100%",
+    color: theme.colours.white,
+    borderRadius: 0,
+    boxShadow: "0px 2px 4px rgba(21, 41, 44, 0.3)"
+  },
+
+  "&:hover": {
+    backgroundColor: `${theme.colours.secondary} !important`
   }
 }));
 
-const StyledButton = styled(Button)``;
-
-export { StyledIconButton, StyledButton };
+export { StyledButton };

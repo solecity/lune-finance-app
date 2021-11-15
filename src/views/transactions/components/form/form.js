@@ -1,5 +1,5 @@
 // base
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // libraries
@@ -26,15 +26,26 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { TYPES } from "constants/general";
 
-const Form = () => {
+const Form = ({ transaction, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    reset,
+    formState: { isSubmitSuccessful, errors }
   } = useForm({
-    mode: "onBlur"
+    mode: "onBlur",
+    defaultValues: {
+      description: transaction.description || "",
+      category: transaction.category || "",
+      subCategory: transaction.subCategory || "",
+      quantity: transaction.quantity || 0,
+      amount: transaction.amount || 0,
+      date: transaction.date || new Date(),
+      recipient: transaction.recipient || "",
+      account: transaction.account || ""
+    }
   });
 
   const onSubmit = async (payload) => {
@@ -42,10 +53,25 @@ const Form = () => {
     } catch (error) {}
   };
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({
+        description: "",
+        category: "",
+        subCategory: "",
+        quantity: 0,
+        amount: 0,
+        date: new Date(),
+        recipient: "",
+        account: ""
+      });
+    }
+  }, [isSubmitSuccessful, reset]);
+
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={1}>
+        <Grid container>
           <Grid item xs={12}>
             <InputSelect label="Type" name="type" control={control}>
               {TYPES.TRANSACTION.map((el, i) => (
@@ -125,9 +151,6 @@ const Form = () => {
           </Grid>
           <Grid container item spacing={1}>
             <Grid item xs={6}>
-              <FormButton text="Cancel" />
-            </Grid>
-            <Grid item xs={6}>
               <FormButton text="Save" />
             </Grid>
           </Grid>
@@ -137,6 +160,14 @@ const Form = () => {
   );
 };
 
-Form.propTypes = {};
+Form.defaultProps = {
+  transaction: {}
+};
+
+Form.propTypes = {
+  transaction: PropTypes.object,
+  getData: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired
+};
 
 export default Form;

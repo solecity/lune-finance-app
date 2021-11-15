@@ -17,10 +17,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 
 // custom components
 import {
-  ColourPicker,
   InputTextField,
   InputSelect,
   InputDatePicker,
+  InputColourPicker,
   InputCheckbox,
   FormButton,
   ActionButton,
@@ -163,7 +163,7 @@ const Form = ({ account, handleModal, getData, isEdit }) => {
               <StyledPicker container item xs={6} justifyContent="flex-end">
                 <ColourButton colour={colour} action={handleColour} />
                 {isColourOpen && (
-                  <ColourPicker
+                  <InputColourPicker
                     colour={colour}
                     setColour={setColour}
                     handleColour={handleColour}

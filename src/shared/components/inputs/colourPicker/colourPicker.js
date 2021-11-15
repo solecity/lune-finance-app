@@ -11,7 +11,7 @@ import { StyledPopOver, StyledCover } from "./styles";
 // constants
 import { CONSTANTS } from "constants/general";
 
-const ColourPicker = ({ colour, setColour, handleColour }) => {
+const InputColourPicker = ({ colour, setColour, handleColour }) => {
   const handleChange = (colour) => setColour(colour.hex);
 
   return (
@@ -22,14 +22,14 @@ const ColourPicker = ({ colour, setColour, handleColour }) => {
   );
 };
 
-ColourPicker.defaultProps = {
+InputColourPicker.defaultProps = {
   colour: CONSTANTS.INITIAL_ACCOUNT_TYPE
 };
 
-ColourPicker.propTypes = {
+InputColourPicker.propTypes = {
   colour: PropTypes.string.isRequired,
   setColour: PropTypes.func.isRequired,
   handleColour: PropTypes.func.isRequired
 };
 
-export default ColourPicker;
+export default InputColourPicker;

@@ -4,7 +4,7 @@ import Table from "./table/table";
 import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
 import InputDatePicker from "./inputs/datepicker/datepicker";
-import ColourPicker from "./inputs/colourPicker/colourPicker";
+import InputColourPicker from "./inputs/colourPicker/colourPicker";
 import InputCheckbox from "./inputs/checkbox/checkbox";
 import FormButton from "./buttons/formButton/formButton";
 import ActionButton from "./buttons/actionButton/actionButton";
@@ -20,7 +20,7 @@ export {
   InputTextField,
   InputSelect,
   InputDatePicker,
-  ColourPicker,
+  InputColourPicker,
   InputCheckbox,
   FormButton,
   ActionButton,

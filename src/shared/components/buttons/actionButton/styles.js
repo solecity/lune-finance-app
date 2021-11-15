@@ -35,7 +35,7 @@ const StyledCardButton = styled(StyledButton)(({ theme }) => ({
   },
 
   "&:hover": {
-    backgroundColor: `${theme.colours.lightSecondary} !important`
+    backgroundColor: `${theme.colours.accent} !important`
   },
 
   "& .MuiIconButton-colorPrimary": {

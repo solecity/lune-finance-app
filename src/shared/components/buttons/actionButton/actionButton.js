@@ -5,15 +5,15 @@ import PropTypes from "prop-types";
 // styled components
 import { StyledActionButton, StyledCardButton } from "./styles";
 
-const ActionButton = ({ isAction, variant, text, icon, action }) => {
+const ActionButton = ({ isAction, text, icon, action }) => {
   return (
     <>
       {isAction ? (
-        <StyledActionButton variant={variant} onClick={action}>
+        <StyledActionButton variant="contained" onClick={action}>
           {text}
         </StyledActionButton>
       ) : (
-        <StyledCardButton variant={variant} onClick={action}>
+        <StyledCardButton variant="contained" onClick={action}>
           {icon}
         </StyledCardButton>
       )}
@@ -22,13 +22,11 @@ const ActionButton = ({ isAction, variant, text, icon, action }) => {
 };
 
 ActionButton.defaultProps = {
-  isAction: true,
-  variant: "contained"
+  isAction: true
 };
 
 ActionButton.propTypes = {
   isAction: PropTypes.bool,
-  variant: PropTypes.string,
   text: PropTypes.string,
   icon: PropTypes.any,
   action: PropTypes.func.isRequired

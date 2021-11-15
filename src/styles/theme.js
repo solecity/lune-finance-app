@@ -54,8 +54,7 @@ const Light = {
     inputBackground: "rgba(252, 252, 252, 1)",
     primary: "rgba(10, 72, 99, 1)",
     secondary: "rgba(171, 195, 211, 1)",
-    lightSecondary: "rgba(210, 220, 227, 1)",
-    accent: "rgba(255, 208, 79, 1)",
+    accent: "rgba(210, 220, 227, 1)",
     ...general
   }
 };
@@ -66,8 +65,7 @@ const Dark = {
     inputBackground: "rgba(252, 252, 252, 1)",
     primary: "rgba(10, 72, 99, 1)",
     secondary: "rgba(159, 185, 202, 1)",
-    lightSecondary: "rgba(221, 229, 234, 1)",
-    accent: "rgba(255, 200, 50, 1)",
+    accent: "rgba(221, 229, 234, 1)",
     ...general
   }
 };

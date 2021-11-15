@@ -1,4 +1,3 @@
-import Categories from "./categories/categories";
-import Recipients from "./recipients/recipients";
+import Tabs from "./tabs/tabs";
 
-export { Categories, Recipients };
+export { Tabs };

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { InputTextField } from "shared/components";
 
 const StyledInputTextField = styled(InputTextField)`
-  margin-bottom: 45px !important;
+  margin-bottom: 40px !important;
 `;
 
 export { StyledInputTextField };

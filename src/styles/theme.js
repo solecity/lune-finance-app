@@ -21,6 +21,10 @@ const GlobalStyles = createGlobalStyle`
   .MuiFormControl-root {
     display: block !important;
   }
+  
+  .MuiFormHelperText-root {
+    margin-left: 10px !important;
+  }
 
   .MuiPickersDay-root {
     color: ${({ theme }) => `${theme.colours.black} !important`} 
@@ -33,6 +37,10 @@ const GlobalStyles = createGlobalStyle`
   .Mui-selected {
     background-color: ${({ theme }) => theme.colours.secondary} !important;
     color: ${({ theme }) => `${theme.colours.white} !important`};
+  }
+  
+  .Mui-error {
+    color: ${({ theme }) => theme.colours.error} !important;
   }
 `;
 

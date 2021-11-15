@@ -6,7 +6,6 @@ import Checkbox, { checkboxClasses } from "@mui/material/Checkbox";
 import { CreditCard } from "@styled-icons/boxicons-regular/CreditCard";
 
 const StyledLabel = styled.label`
-  margin-left: 5px;
   font-size: 14px;
 `;
 

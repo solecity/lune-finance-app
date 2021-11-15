@@ -2,20 +2,13 @@
 import styled from "styled-components";
 
 // external components
-import FormControl, { formControlClasses } from "@mui/material/FormControl";
 import InputBase, { inputBaseClasses } from "@mui/material/InputBase";
 import InputLabel, { inputLabelClasses } from "@mui/material/InputLabel";
-
-const StyledFormControl = styled(FormControl)(() => ({
-  [`&.${formControlClasses.root}`]: {
-    marginBottom: "45px"
-  }
-}));
 
 const StyledSelect = styled(InputBase)(({ theme }) => ({
   [`&.${inputBaseClasses.root}`]: {
     backgroundColor: theme.colours.inputBackground,
-    height: "35px",
+    height: "36px",
     width: "100%",
     padding: "0.35rem 0.75rem 0 0.75rem",
     boxShadow: "inset 0px 2px 4px rgba(43, 71, 75, 0.3)",
@@ -35,18 +28,19 @@ const StyledSelect = styled(InputBase)(({ theme }) => ({
 
 const StyledLabel = styled(InputLabel)(({ theme }) => ({
   [`&.${inputLabelClasses.root}`]: {
-    transform: "translate(14px, 10px) scale(0.9)",
-    color: "rgba(11, 11, 11, 0.4)"
+    transform: "translate(10px, 10px) scale(0.9)",
+    color: "rgba(28, 28, 28, 0.4) !important"
   },
 
   [`&.${inputLabelClasses.root}.Mui-focused`]: {
     transform: "translate(10px, -16px) scale(0.75)",
-    color: "rgba(11, 11, 11, 0.4)"
+    color: "rgba(28, 28, 28, 0.4) !important"
   },
 
   [`&.${inputLabelClasses.shrink}`]: {
-    transform: "translate(7px, -18px) scale(0.75)"
+    transform: "translate(10px, -18px) scale(0.75)",
+    color: "rgba(28, 28, 28, 0.4) !important"
   }
 }));
 
-export { StyledFormControl, StyledSelect, StyledLabel };
+export { StyledSelect, StyledLabel };

@@ -2,19 +2,12 @@
 import styled from "styled-components";
 
 // external components
-import FormControl, { formControlClasses } from "@mui/material/FormControl";
 import TextField, { textFieldClasses } from "@mui/material/TextField";
-
-const StyledFormControl = styled(FormControl)(({ theme }) => ({
-  [`&.${formControlClasses.root}`]: {
-    marginBottom: "45px"
-  }
-}));
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   [`&.${textFieldClasses.root}`]: {
     backgroundColor: theme.colours.secondary,
-    height: "35px"
+    height: "36px"
   },
 
   "& .MuiInputBase-input": {
@@ -29,7 +22,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 
   "& .MuiInputBase-input:focus": {
-    height: "35px",
+    height: "36px",
     paddingTop: 0,
     paddingBottom: 0,
     color: theme.colours.black,
@@ -41,13 +34,17 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 
   "& .MuiInputLabel-root": {
-    transform: "translate(14px, 10px) scale(0.9)",
+    transform: "translate(10px, 10px) scale(0.9)",
     color: "rgba(28, 28, 28, 0.4)"
   },
 
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: theme.colours.primary
+  },
+
   "& .MuiInputLabel-shrink": {
-    transform: "translate(7px, -18px) scale(0.75)",
-    color: "rgba(11, 11, 11, 0.4) !important"
+    transform: "translate(10px, -18px) scale(0.75)",
+    color: "rgba(28, 28, 28, 0.4)"
   },
 
   "& .MuiInputAdornment-root": {
@@ -59,4 +56,4 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   }
 }));
 
-export { StyledFormControl, StyledTextField };
+export { StyledTextField };

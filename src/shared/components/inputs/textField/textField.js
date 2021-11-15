@@ -5,12 +5,22 @@ import PropTypes from "prop-types";
 // libraries
 import { Controller } from "react-hook-form";
 
-// styled components
-import { StyledFormControl, StyledTextField } from "./styles";
+// external components
+import FormControl from "@mui/material/FormControl";
 
-const InputTextField = ({ name, control, error, helperText, ...props }) => {
+// styled components
+import { StyledTextField } from "./styles";
+
+const InputTextField = ({
+  name,
+  control,
+  error,
+  helperText,
+  isRequired,
+  ...props
+}) => {
   return (
-    <StyledFormControl fullWidth size="small">
+    <FormControl fullWidth size="small" required={isRequired}>
       <Controller
         name={name}
         control={control}
@@ -26,7 +36,7 @@ const InputTextField = ({ name, control, error, helperText, ...props }) => {
           />
         )}
       />
-    </StyledFormControl>
+    </FormControl>
   );
 };
 
@@ -40,7 +50,8 @@ InputTextField.propTypes = {
   type: PropTypes.string,
   control: PropTypes.any,
   error: PropTypes.bool,
-  helperText: PropTypes.string
+  helperText: PropTypes.string,
+  isRequired: PropTypes.bool
 };
 
 export default InputTextField;

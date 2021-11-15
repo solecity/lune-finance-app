@@ -29,10 +29,6 @@ const GlobalStyles = createGlobalStyle`
   .MuiPickersDay-root {
     color: ${({ theme }) => `${theme.colours.black} !important`} 
   }
-
-  .MuiIconButton-colorPrimary {
-    color: ${({ theme }) => `${theme.colours.white} !important`};
-  }
   
   .Mui-selected {
     background-color: ${({ theme }) => theme.colours.secondary} !important;

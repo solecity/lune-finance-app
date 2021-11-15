@@ -9,8 +9,27 @@ const StyledContainer = styled(Container)`
   padding: 25px;
 `;
 
-const StyledCheckbox = styled(Grid)`
-  margin: -30px 0 10px 0 !important;
+const StyledFirstGrid = styled(Grid)`
+  margin-bottom: 45px;
 `;
 
-export { StyledContainer, StyledCheckbox };
+const StyledLastGrid = styled(Grid)`
+  margin: 15px 0 20px 0 !important;
+`;
+
+const StyledCheckbox = styled(Grid)`
+  padding-left: 0 !important;
+`;
+
+const StyledPicker = styled(Grid)`
+  margin: auto;
+  padding: 0;
+`;
+
+export {
+  StyledContainer,
+  StyledFirstGrid,
+  StyledLastGrid,
+  StyledCheckbox,
+  StyledPicker
+};

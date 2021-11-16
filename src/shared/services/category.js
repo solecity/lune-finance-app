@@ -13,8 +13,8 @@ const post = async (payload) => {
   return res.data;
 };
 
-const put = async (id, payload) => {
-  const res = await api().put(`/categories/${id}`, payload);
+const patch = async (id, payload) => {
+  const res = await api().patch(`/categories/${id}`, payload);
 
   return res.data;
 };
@@ -28,6 +28,6 @@ const deleteOne = async (id) => {
 export default {
   getMany,
   post,
-  put,
+  patch,
   deleteOne
 };

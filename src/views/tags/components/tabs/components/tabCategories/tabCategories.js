@@ -36,7 +36,7 @@ const Categories = () => {
         setIsEdit={setIsEdit}
         setCategory={setCategory}
       />
-      <Table data={data} />
+      <Table data={data} getData={getData} />
       <Modal
         name="category"
         handleModal={handleModal}

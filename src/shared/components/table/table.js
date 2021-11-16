@@ -7,7 +7,6 @@ import { usePagination, useSortBy, useTable } from "react-table";
 
 // external components
 import Paper from "@mui/material/Paper";
-import TableContainer from "@mui/material/TableContainer";
 import { default as MUITable } from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
@@ -18,6 +17,9 @@ import TableFooter from "@mui/material/TableFooter";
 
 // custom components
 import { EmptyTable } from "./components";
+
+// styled components
+import { StyledContainer } from "./styles";
 
 const Table = ({ columns, data }) => {
   const { getTableProps, getTableBodyProps, headerGroups, prepareRow, page } =
@@ -80,7 +82,7 @@ const Table = ({ columns, data }) => {
 
   return (
     <Paper>
-      <TableContainer>
+      <StyledContainer>
         <MUITable stickyHeader size="small" {...getTableProps()}>
           <RenderHeader />
           <RenderBody />
@@ -88,7 +90,7 @@ const Table = ({ columns, data }) => {
             <TableRow></TableRow>
           </TableFooter>
         </MUITable>
-      </TableContainer>
+      </StyledContainer>
     </Paper>
   );
 };

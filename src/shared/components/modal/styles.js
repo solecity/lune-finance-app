@@ -8,6 +8,7 @@ import DialogContent, {
 
 const StyledContent = styled(DialogContent)(() => ({
   [`&.${dialogContentClasses.root}`]: {
+    minWidth: "350px",
     padding: "0px"
   }
 }));

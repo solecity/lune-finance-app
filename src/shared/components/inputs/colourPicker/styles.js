@@ -1,19 +1,13 @@
 // libraries
 import styled from "styled-components";
 
-const StyledPopOver = styled.div`
-  position: absolute;
-  z-index: 1;
-  top: 35px;
-  right: 65px;
+// external components
+import { ChromePicker } from "react-color";
+
+const StyledPicker = styled(ChromePicker)`
+  div {
+    border-radius: 0 !important;
+  }
 `;
 
-const StyledCover = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-`;
-
-export { StyledPopOver, StyledCover };
+export { StyledPicker };

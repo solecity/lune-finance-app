@@ -3,22 +3,21 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // external components
-import { ChromePicker } from "react-color";
+import Dialog from "@mui/material/Dialog";
 
 // styled components
-import { StyledPopOver, StyledCover } from "./styles";
+import { StyledPicker } from "./styles";
 
 // constants
 import { CONSTANTS } from "constants/general";
 
-const InputColourPicker = ({ colour, setColour, handleColour }) => {
+const InputColourPicker = ({ isOpen, handleColour, colour, setColour }) => {
   const handleChange = (colour) => setColour(colour.hex);
 
   return (
-    <StyledPopOver>
-      <StyledCover onClick={handleColour} />
-      <ChromePicker color={colour} onChange={handleChange} disableAlpha />
-    </StyledPopOver>
+    <Dialog open={isOpen} onClose={handleColour}>
+      <StyledPicker color={colour} onChange={handleChange} disableAlpha />
+    </Dialog>
   );
 };
 
@@ -27,9 +26,10 @@ InputColourPicker.defaultProps = {
 };
 
 InputColourPicker.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleColour: PropTypes.func.isRequired,
   colour: PropTypes.string.isRequired,
-  setColour: PropTypes.func.isRequired,
-  handleColour: PropTypes.func.isRequired
+  setColour: PropTypes.func.isRequired
 };
 
 export default InputColourPicker;

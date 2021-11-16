@@ -162,13 +162,12 @@ const Form = ({ account, handleModal, getData, isEdit }) => {
               </StyledCheckbox>
               <StyledPicker container item xs={6} justifyContent="flex-end">
                 <ColourButton colour={colour} action={handleColour} />
-                {isColourOpen && (
-                  <InputColourPicker
-                    colour={colour}
-                    setColour={setColour}
-                    handleColour={handleColour}
-                  />
-                )}
+                <InputColourPicker
+                  isOpen={isColourOpen}
+                  handleColour={handleColour}
+                  colour={colour}
+                  setColour={setColour}
+                />
               </StyledPicker>
             </StyledLastGrid>
           </Grid>

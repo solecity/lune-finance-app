@@ -3,10 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // external components
+import Grid from "@mui/material/Grid";
 import Dialog from "@mui/material/Dialog";
 
 // styled components
-import { StyledPicker } from "./styles";
+import { StyledPicker, StyledSwatch } from "./styles";
 
 // constants
 import { CONSTANTS } from "constants/general";
@@ -16,7 +17,12 @@ const InputColourPicker = ({ isOpen, handleColour, colour, setColour }) => {
 
   return (
     <Dialog open={isOpen} onClose={handleColour}>
-      <StyledPicker color={colour} onChange={handleChange} disableAlpha />
+      <Grid container spacing={1}>
+        <Grid item>
+          <StyledPicker color={colour} onChange={handleChange} disableAlpha />
+        </Grid>
+        <StyledSwatch item colour={colour} />
+      </Grid>
     </Dialog>
   );
 };

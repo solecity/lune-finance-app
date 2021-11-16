@@ -23,7 +23,10 @@ const Categories = () => {
     setData(data.categories);
   };
 
-  const handleModal = () => setIsOpen(!isOpen);
+  const handleForm = (value) => {
+    setCategory(value);
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     getData();
@@ -31,21 +34,22 @@ const Categories = () => {
 
   return (
     <StyledContainer>
-      <Toolbar
-        handleModal={handleModal}
+      <Toolbar handleForm={handleForm} setIsEdit={setIsEdit} />
+      <Table
+        data={data}
+        getData={getData}
+        handleForm={handleForm}
         setIsEdit={setIsEdit}
-        setCategory={setCategory}
       />
-      <Table data={data} getData={getData} />
       <Modal
         name="category"
-        handleModal={handleModal}
+        handleModal={handleForm}
         isOpen={isOpen}
         isEdit={isEdit}
       >
         <Form
           category={category}
-          handleModal={handleModal}
+          handleForm={handleForm}
           getData={getData}
           isEdit={isEdit}
         />

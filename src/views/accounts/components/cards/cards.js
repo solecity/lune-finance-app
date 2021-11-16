@@ -8,14 +8,14 @@ import Grid from "@mui/material/Grid";
 // custom components
 import { Card } from "./components";
 
-const Cards = ({ data, handleModal, setIsEdit, setAccount, getData }) => {
+const Cards = ({ data, handleForm, setIsEdit, setAccount, getData }) => {
   return (
     <Grid container spacing={1}>
       {data.map((account, i) => (
         <Grid item xs={12} key={i}>
           <Card
             account={account}
-            handleModal={handleModal}
+            handleForm={handleForm}
             setIsEdit={setIsEdit}
             setAccount={setAccount}
             getData={getData}
@@ -28,7 +28,7 @@ const Cards = ({ data, handleModal, setIsEdit, setAccount, getData }) => {
 
 Cards.propTypes = {
   data: PropTypes.array.isRequired,
-  handleModal: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
   setAccount: PropTypes.func.isRequired,
   getData: PropTypes.func.isRequired

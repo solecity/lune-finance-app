@@ -28,7 +28,7 @@ const Accounts = () => {
     setData(data.accounts);
   };
 
-  const handleModal = () => setIsOpen(!isOpen);
+  const handleForm = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     getData();
@@ -38,7 +38,7 @@ const Accounts = () => {
     <Container>
       <Header title={"Accounts"} />
       <Toolbar
-        handleModal={handleModal}
+        handleForm={handleForm}
         setIsEdit={setIsEdit}
         setAccount={setAccount}
       />
@@ -47,7 +47,7 @@ const Accounts = () => {
           <StyledListContainer scrollbarMaxSize={200}>
             <Cards
               data={data}
-              handleModal={handleModal}
+              handleForm={handleForm}
               setIsEdit={setIsEdit}
               setAccount={setAccount}
               getData={getData}
@@ -60,13 +60,13 @@ const Accounts = () => {
       </StyledGridContainer>
       <Modal
         name="account"
-        handleModal={handleModal}
+        handleModal={handleForm}
         isOpen={isOpen}
         isEdit={isEdit}
       >
         <Form
           account={account}
-          handleModal={handleModal}
+          handleForm={handleForm}
           getData={getData}
           isEdit={isEdit}
         />

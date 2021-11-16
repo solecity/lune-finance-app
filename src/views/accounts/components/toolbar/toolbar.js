@@ -12,12 +12,12 @@ import { ActionButton } from "shared/components";
 // styled components
 import { StyledContainer } from "./styles";
 
-const Toolbar = ({ handleModal, setIsEdit, setAccount }) => {
+const Toolbar = ({ handleForm, setIsEdit, setAccount }) => {
   const openForm = () => {
     setIsEdit(false);
     setAccount({});
 
-    handleModal();
+    handleForm();
   };
 
   return (
@@ -37,7 +37,7 @@ const Toolbar = ({ handleModal, setIsEdit, setAccount }) => {
 };
 
 Toolbar.propTypes = {
-  handleModal: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
   setAccount: PropTypes.func.isRequired
 };

@@ -45,7 +45,7 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { CONSTANTS, TYPES } from "constants/general";
 
-const Form = ({ account, handleModal, getData, isEdit }) => {
+const Form = ({ account, handleForm, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isColourOpen, setIsColourOpen] = useState(false);
@@ -81,7 +81,7 @@ const Form = ({ account, handleModal, getData, isEdit }) => {
         : await AccountService.post(payload);
 
       if (res) {
-        handleModal();
+        handleForm();
         getData();
       }
     } catch (error) {}
@@ -173,7 +173,7 @@ const Form = ({ account, handleModal, getData, isEdit }) => {
           </Grid>
           <Grid container item spacing={1}>
             <Grid item xs={12} sm={6}>
-              <ActionButton text="Cancel" action={() => handleModal()} />
+              <ActionButton text="Cancel" action={() => handleForm()} />
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormButton text="Save" />
@@ -191,7 +191,7 @@ Form.defaultProps = {
 
 Form.propTypes = {
   account: PropTypes.object,
-  handleModal: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
   getData: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired
 };

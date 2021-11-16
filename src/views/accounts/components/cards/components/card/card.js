@@ -39,7 +39,7 @@ import { TYPES } from "constants/general";
 
 const AccountCard = ({
   account,
-  handleModal,
+  handleForm,
   setIsEdit,
   setAccount,
   getData
@@ -62,7 +62,7 @@ const AccountCard = ({
     setIsEdit(true);
     setAccount(account);
 
-    handleModal();
+    handleForm();
   };
 
   const handleConfirm = () => setOpenConfirm(!openConfirm);
@@ -158,7 +158,7 @@ const AccountCard = ({
 
 AccountCard.propTypes = {
   account: PropTypes.object.isRequired,
-  handleModal: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
   setAccount: PropTypes.func.isRequired,
   getData: PropTypes.func.isRequired

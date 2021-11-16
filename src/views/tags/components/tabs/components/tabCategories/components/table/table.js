@@ -26,7 +26,7 @@ import { StyledCenterColumn } from "./styles";
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const CategoriesTable = ({ data, getData }) => {
+const CategoriesTable = ({ data, getData, handleForm, setIsEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [category, setCategory] = useState({});
@@ -83,7 +83,7 @@ const CategoriesTable = ({ data, getData }) => {
             tooltip="Edit"
             hasIcon
             icon={<Pencil />}
-            action={() => {}}
+            action={() => handleEdit(row.original)}
           />
           <IconButton
             tooltip="Delete"
@@ -95,6 +95,12 @@ const CategoriesTable = ({ data, getData }) => {
       )
     }
   ];
+
+  const handleEdit = (category) => {
+    setIsEdit(true);
+
+    handleForm(category);
+  };
 
   const handleConfirm = (category) => {
     setOpenConfirm(!openConfirm);
@@ -127,6 +133,8 @@ const CategoriesTable = ({ data, getData }) => {
 CategoriesTable.propTypes = {
   data: PropTypes.array.isRequired,
   getData: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
+  setIsEdit: PropTypes.func.isRequired,
   row: PropTypes.object
 };
 

@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 import { useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
 
+// api
+import CategoryService from "shared/services/category";
+
 // external components
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
@@ -30,7 +33,7 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { CONSTANTS, TYPES } from "constants/general";
 
-const Form = ({ category, handleModal, getData, isEdit }) => {
+const Form = ({ category, handleForm, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isColourOpen, setIsColourOpen] = useState(false);
@@ -57,6 +60,16 @@ const Form = ({ category, handleModal, getData, isEdit }) => {
 
   const onSubmit = async (payload) => {
     try {
+      payload.colour = colour;
+
+      const res = isEdit
+        ? await CategoryService.patch(category._id, payload)
+        : await CategoryService.post(payload);
+
+      if (res) {
+        handleForm();
+        getData();
+      }
     } catch (error) {}
   };
 
@@ -104,9 +117,13 @@ const Form = ({ category, handleModal, getData, isEdit }) => {
                 control={control}
                 label="Monthly Budget"
                 name="monthlyBudget"
-                type="number"
+                type="text"
                 InputProps={{
-                  inputProps: { min: 0 },
+                  inputProps: {
+                    min: 0,
+                    inputMode: "numeric",
+                    pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                  },
                   startAdornment: (
                     <InputAdornment position="start">
                       {settings.currencySymbol}
@@ -129,7 +146,7 @@ const Form = ({ category, handleModal, getData, isEdit }) => {
         </Grid>
         <Grid container item spacing={1}>
           <Grid item xs={12} sm={6}>
-            <ActionButton text="Cancel" action={() => handleModal()} />
+            <ActionButton text="Cancel" action={() => handleForm()} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormButton text="Save" />
@@ -146,7 +163,7 @@ Form.defaultProps = {
 
 Form.propTypes = {
   category: PropTypes.object,
-  handleModal: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
   getData: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired
 };

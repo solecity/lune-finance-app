@@ -1,6 +1,7 @@
 import NavBar from "./navbar/navbar";
 import Header from "./header/header";
 import Table from "./table/table";
+import ColourCard from "./colourCard/colourCard";
 import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
 import InputDatePicker from "./inputs/datepicker/datepicker";
@@ -17,6 +18,7 @@ export {
   NavBar,
   Header,
   Table,
+  ColourCard,
   InputTextField,
   InputSelect,
   InputDatePicker,

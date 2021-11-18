@@ -47,8 +47,13 @@ const routes = [
       },
       {
         exact: true,
-        path: "/tags",
-        component: lazy(() => import("views/tags/tags"))
+        path: "/categories",
+        component: lazy(() => import("views/categories/categories"))
+      },
+      {
+        exact: true,
+        path: "/recipients",
+        component: lazy(() => import("views/recipients/recipients"))
       }
     ]
   }

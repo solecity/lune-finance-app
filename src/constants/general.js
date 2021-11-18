@@ -11,6 +11,7 @@ const CONSTANTS = {
   COMPLETED: "Completed",
   NOT_COMPLETED: "Not completed",
   INITIAL_ACCOUNT_TYPE: "cash",
+  EXPENSE: "expense",
   DEFAULT_COLOUR: "#c1c1c1",
   LIGHT: "light"
 };
@@ -45,7 +46,8 @@ const COLOURS = {
 };
 
 const VALIDATIONS = {
-  ACCOUNT: ["cash", "bank", "savings", "investment"]
+  ACCOUNT: ["cash", "bank", "savings", "investment"],
+  CATEGORY: ["income", "expense"]
 };
 
 export { DATE_FORMAT, CONSTANTS, TYPES, COLOURS, VALIDATIONS };

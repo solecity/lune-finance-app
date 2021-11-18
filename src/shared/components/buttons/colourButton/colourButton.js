@@ -9,13 +9,7 @@ import { StyledButton } from "./styles";
 import { CONSTANTS } from "constants/general";
 
 const ColourButton = ({ colour, action }) => {
-  return (
-    <StyledButton
-      variant="container"
-      colour={colour}
-      onClick={action}
-    ></StyledButton>
-  );
+  return <StyledButton variant="container" colour={colour} onClick={action} />;
 };
 
 ColourButton.defaultProps = {

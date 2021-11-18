@@ -22,8 +22,10 @@ const StyledCheckbox = styled(Grid)`
 `;
 
 const StyledPicker = styled(Grid)`
-  margin: auto;
   padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export {

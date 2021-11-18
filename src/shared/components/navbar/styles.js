@@ -13,7 +13,7 @@ const StyledDrawer = styled(Drawer)`
   overflow-x: hidden;
 
   &:hover {
-    width: 200px;
+    width: 180px;
     transition: width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95);
   }
 
@@ -29,7 +29,7 @@ const StyledPaper = styled(Paper)`
   padding-top: 45px;
 
   &:hover {
-    width: 200px;
+    width: 180px;
     transition: width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95);
   }
 

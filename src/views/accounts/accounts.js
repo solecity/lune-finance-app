@@ -44,7 +44,7 @@ const Accounts = () => {
       />
       <StyledGrid container spacing={1}>
         <Grid item xs={5}>
-          <StyledList scrollbarMaxSize={200}>
+          <StyledList>
             <Cards
               data={data}
               getData={getData}

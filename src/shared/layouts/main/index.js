@@ -6,13 +6,15 @@ import PropTypes from "prop-types";
 import { NavBar } from "shared/components";
 
 // styled components
-import { StyledContainer, StyledWrapper } from "./styles";
+import { StyledContainer, StyledWrapper, StyledScroll } from "./styles";
 
 const Main = ({ children }) => {
   return (
     <StyledContainer>
       <NavBar />
-      <StyledWrapper>{children}</StyledWrapper>
+      <StyledWrapper>
+        <StyledScroll>{children}</StyledScroll>
+      </StyledWrapper>
     </StyledContainer>
   );
 };

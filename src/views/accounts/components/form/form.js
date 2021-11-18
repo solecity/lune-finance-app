@@ -73,18 +73,16 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
   const handleColour = () => setIsColourOpen(!isColourOpen);
 
   const onSubmit = async (payload) => {
-    try {
-      payload.colour = colour;
+    payload.colour = colour;
 
-      const res = isEdit
-        ? await AccountService.put(account._id, payload)
-        : await AccountService.post(payload);
+    const res = isEdit
+      ? await AccountService.put(account._id, payload)
+      : await AccountService.post(payload);
 
-      if (res) {
-        handleForm();
-        getData();
-      }
-    } catch (error) {}
+    if (res) {
+      handleForm();
+      getData();
+    }
   };
 
   useEffect(() => {
@@ -160,7 +158,7 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
               <StyledCheckbox item xs={6}>
                 <InputCheckbox control={control} name="hasCard" label="Card" />
               </StyledCheckbox>
-              <StyledPicker container item xs={6} justifyContent="flex-end">
+              <StyledPicker item xs={6}>
                 <ColourButton colour={colour} action={handleColour} />
                 <InputColourPicker
                   isOpen={isColourOpen}

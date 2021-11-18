@@ -43,7 +43,7 @@ ActionButton.propTypes = {
   isSmall: PropTypes.bool,
   text: PropTypes.string,
   icon: PropTypes.any,
-  colour: PropTypes.string,
+  colour: PropTypes.object,
   action: PropTypes.func.isRequired
 };
 

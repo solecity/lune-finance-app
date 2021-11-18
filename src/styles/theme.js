@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
   }
   
   .Mui-selected {
-    background-color: ${({ theme }) => theme.colours.secondary} !important;
+    background-color: ${({ theme }) => theme.colours.primary} !important;
     color: ${({ theme }) => `${theme.colours.white} !important`};
   }
   
@@ -56,7 +56,7 @@ const Light = {
   colours: {
     background: "rgba(244, 244, 244, 1)",
     inputBackground: "rgba(252, 252, 252, 1)",
-    primary: "rgba(10, 72, 99, 1)",
+    primary: "rgba(42, 81, 115, 1)",
     secondary: "rgba(171, 195, 211, 1)",
     accent: "rgba(210, 220, 227, 1)",
     boxShadow: "rgba(43, 71, 75, 0.3)",
@@ -68,7 +68,7 @@ const Dark = {
   colours: {
     background: "rgba(244, 244, 244, 1)",
     inputBackground: "rgba(252, 252, 252, 1)",
-    primary: "rgba(10, 72, 99, 1)",
+    primary: "rgba(42, 81, 115, 1)",
     secondary: "rgba(159, 185, 202, 1)",
     accent: "rgba(221, 229, 234, 1)",
     boxShadow: "rgba(43, 71, 75, 0.3)",

@@ -10,11 +10,14 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledGrid = styled(Grid)`
-  margin-bottom: 45px;
+  margin-bottom: 38px !important;
+
+  &.picker {
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 `;
 
-const StyledPicker = styled(Grid)`
-  padding: 0;
-`;
-
-export { StyledContainer, StyledGrid, StyledPicker };
+export { StyledContainer, StyledGrid };

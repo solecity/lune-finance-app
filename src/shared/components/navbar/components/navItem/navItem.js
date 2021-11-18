@@ -6,18 +6,19 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // external components
-import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
+
+// styled components
+import { StyledItem, StyledIcon, StyledLabel } from "./styles";
 
 const NavItem = ({ label, icon: Icon, href }) => {
   return (
-    <ListItem button component={Link} to={href}>
-      <ListItemIcon>{Icon && <Icon size="20" />}</ListItemIcon>
+    <StyledItem button component={Link} to={href}>
+      <StyledIcon>{Icon && <Icon size="20" />}</StyledIcon>
       <ListItemText>
-        <span>{label}</span>
+        <StyledLabel>{label}</StyledLabel>
       </ListItemText>
-    </ListItem>
+    </StyledItem>
   );
 };
 

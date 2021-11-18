@@ -1,3 +1,6 @@
+// theme
+import { Light, Dark } from "styles/theme";
+
 const DATE_FORMAT = "dd/MM/yyyy";
 
 const CONSTANTS = {
@@ -8,7 +11,8 @@ const CONSTANTS = {
   COMPLETED: "Completed",
   NOT_COMPLETED: "Not completed",
   INITIAL_ACCOUNT_TYPE: "cash",
-  DEFAULT_COLOUR: "#c1c1c1"
+  DEFAULT_COLOUR: "#c1c1c1",
+  LIGHT: "light"
 };
 
 const TYPES = {
@@ -31,8 +35,17 @@ const TYPES = {
   ]
 };
 
+const COLOURS = {
+  WHITE: Light.colours.white,
+  SECONDARY_LIGHT: Light.colours.secondary,
+  SECONDARY_DARK: Dark.colours.secondary,
+  ACCENT_LIGHT: Light.colours.accent,
+  ACCENT_DARK: Light.colours.accent,
+  BOX_SHADOW: Light.colours.boxShadow
+};
+
 const VALIDATIONS = {
   ACCOUNT: ["cash", "bank", "savings", "investment"]
 };
 
-export { DATE_FORMAT, CONSTANTS, TYPES, VALIDATIONS };
+export { DATE_FORMAT, CONSTANTS, TYPES, COLOURS, VALIDATIONS };

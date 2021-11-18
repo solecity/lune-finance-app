@@ -142,7 +142,6 @@ const Form = ({ category, handleForm, getData, isEdit }) => {
               />
             </StyledPicker>
           </StyledGrid>
-          subcategories
         </Grid>
         <Grid container item spacing={1}>
           <Grid item xs={12} sm={6}>

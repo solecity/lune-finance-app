@@ -5,11 +5,11 @@ import styled from "styled-components";
 import Grid from "@mui/material/Grid";
 import SimpleBar from "simplebar-react";
 
-const StyledGridContainer = styled(Grid)`
+const StyledGrid = styled(Grid)`
   padding: 10px 0;
 `;
 
-const StyledListContainer = styled(SimpleBar)`
+const StyledList = styled(SimpleBar)`
   max-height: calc(100vh - 200px);
 
   .simplebar-scrollbar::before {
@@ -17,4 +17,4 @@ const StyledListContainer = styled(SimpleBar)`
   }
 `;
 
-export { StyledGridContainer, StyledListContainer };
+export { StyledGrid, StyledList };

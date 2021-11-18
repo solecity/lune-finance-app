@@ -3,15 +3,27 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
-import { StyledActionButton, StyledCardButton } from "./styles";
+import {
+  StyledActionButton,
+  StyledCardButton,
+  StyledSmallCardButton
+} from "./styles";
 
-const ActionButton = ({ isAction, text, icon, action }) => {
+const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
   return (
     <>
       {isAction ? (
         <StyledActionButton variant="contained" onClick={action}>
           {text}
         </StyledActionButton>
+      ) : isSmall ? (
+        <StyledSmallCardButton
+          variant="contained"
+          colour={colour}
+          onClick={action}
+        >
+          {icon}
+        </StyledSmallCardButton>
       ) : (
         <StyledCardButton variant="contained" onClick={action}>
           {icon}
@@ -22,13 +34,16 @@ const ActionButton = ({ isAction, text, icon, action }) => {
 };
 
 ActionButton.defaultProps = {
-  isAction: true
+  isAction: true,
+  isSmall: false
 };
 
 ActionButton.propTypes = {
   isAction: PropTypes.bool,
+  isSmall: PropTypes.bool,
   text: PropTypes.string,
   icon: PropTypes.any,
+  colour: PropTypes.string,
   action: PropTypes.func.isRequired
 };
 

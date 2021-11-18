@@ -9,8 +9,9 @@ const StyledContainer = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-  width: 100%;
-  margin: 0 1rem;
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
 `;
 
 export { StyledContainer, StyledWrapper };

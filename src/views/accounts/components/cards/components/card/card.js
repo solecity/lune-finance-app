@@ -26,9 +26,7 @@ import {
   StyledGrid,
   StyledInfo,
   StyledCardIcon,
-  StyledActions,
-  StyledEditButton,
-  StyledDeleteButton
+  StyledCardButton
 } from "./styles";
 
 // atom
@@ -38,11 +36,11 @@ import { settingsState } from "shared/recoil/atoms";
 import { TYPES } from "constants/general";
 
 const AccountCard = ({
-  account,
+  getData,
   handleForm,
-  setIsEdit,
+  account,
   setAccount,
-  getData
+  setIsEdit
 }) => {
   const settings = useRecoilValue(settingsState);
 
@@ -126,23 +124,22 @@ const AccountCard = ({
               </Grid>
             </Grid>
           </StyledGrid>
-          <StyledActions container alignItems="center">
-            <StyledDeleteButton item xs={6}>
+          <Grid container spacing={0.125} alignItems="center">
+            <StyledCardButton item xs={6} className="left">
               <ActionButton
                 isAction={false}
                 icon={<TrashAlt />}
                 action={handleConfirm}
               />
-            </StyledDeleteButton>
-            <StyledEditButton item xs={6}>
+            </StyledCardButton>
+            <StyledCardButton item xs={6}>
               <ActionButton
                 isAction={false}
-                tooltip="Edit"
                 icon={<Pencil />}
                 action={openForm}
               />
-            </StyledEditButton>
-          </StyledActions>
+            </StyledCardButton>
+          </Grid>
         </Grid>
       </StyledContent>
       <ConfirmDelete
@@ -157,11 +154,11 @@ const AccountCard = ({
 };
 
 AccountCard.propTypes = {
-  account: PropTypes.object.isRequired,
+  getData: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
-  setIsEdit: PropTypes.func.isRequired,
+  account: PropTypes.object.isRequired,
   setAccount: PropTypes.func.isRequired,
-  getData: PropTypes.func.isRequired
+  setIsEdit: PropTypes.func.isRequired
 };
 
 export default AccountCard;

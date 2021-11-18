@@ -29,9 +29,11 @@ const StyledInfo = styled(Grid)`
 const StyledCreditCard = styled(CreditCard)`
   width: 22px;
   padding-left: 10px;
+
   &.green {
     color: ${({ theme }) => theme.colours.green};
   }
+
   &.disabled {
     color: ${({ theme }) => theme.colours.grey};
   }
@@ -45,17 +47,7 @@ const StyledCardIcon = styled(({ bool }) =>
   )
 )``;
 
-const StyledActions = styled(Grid)`
-  background-color: ${({ theme }) => theme.colours.secondary};
-`;
-
-const StyledEditButton = styled(Grid)`
-  border-left: 1px solid ${({ theme }) => theme.colours.white};
-  text-align: center;
-`;
-
-const StyledDeleteButton = styled(Grid)`
-  border-right: 1px solid ${({ theme }) => theme.colours.white};
+const StyledCardButton = styled(Grid)`
   text-align: center;
 `;
 
@@ -65,7 +57,5 @@ export {
   StyledGrid,
   StyledInfo,
   StyledCardIcon,
-  StyledActions,
-  StyledEditButton,
-  StyledDeleteButton
+  StyledCardButton
 };

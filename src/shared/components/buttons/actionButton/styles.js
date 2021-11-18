@@ -31,16 +31,33 @@ const StyledActionButton = styled(StyledButton)(({ theme }) => ({
 const StyledCardButton = styled(StyledButton)(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     backgroundColor: theme.colours.secondary,
-    boxShadow: "none"
+    boxShadow: "none",
+    minWidth: "0 !important",
+    padding: "6px !important"
   },
 
   "&:hover": {
     backgroundColor: `${theme.colours.accent} !important`
-  },
-
-  "& .MuiIconButton-colorPrimary": {
-    color: `${theme.colours.white} !important`
   }
 }));
 
-export { StyledActionButton, StyledCardButton };
+const StyledSmallCardButton = styled(StyledButton)(({ colour }) => ({
+  [`&.${buttonClasses.root}`]: {
+    backgroundColor: colour.bg,
+    boxShadow: `${colour.inset} 0px 2px 4px ${colour.boxShadow}`,
+    minWidth: "0 !important",
+    padding: "6px !important",
+    color: `${colour.font} !important`
+  },
+
+  [`&.${buttonClasses.root}:hover`]: {
+    boxShadow: `${colour.insetHover} 0px 2px 4px ${colour.boxShadow}`
+  },
+
+  "&:hover": {
+    backgroundColor: `${colour.bgHover} !important`,
+    boxShadow: "none"
+  }
+}));
+
+export { StyledActionButton, StyledCardButton, StyledSmallCardButton };

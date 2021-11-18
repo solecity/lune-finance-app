@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 const StyledDrawer = styled(Drawer)`
-  width: 55px;
+  width: 50px;
   flex-shrink: 0;
   white-space: nowrap;
   overflow-x: hidden;
@@ -23,7 +23,7 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const StyledPaper = styled(Paper)`
-  width: 55px;
+  width: 50px;
   overflow-x: hidden;
   border-radius: 0px;
   padding-top: 45px;
@@ -43,10 +43,8 @@ const StyledNavBarBox = styled(Box)`
 `;
 
 const StyledMenuList = styled(Box)`
-  width: 70;
   overflow: hidden;
-  padding-top: 30;
-  padding-bottom: 0;
+  padding-top: 30px;
 
   &:hover {
     overflow: visible;

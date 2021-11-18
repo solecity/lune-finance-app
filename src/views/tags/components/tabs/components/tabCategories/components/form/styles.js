@@ -14,7 +14,6 @@ const StyledGrid = styled(Grid)`
 `;
 
 const StyledPicker = styled(Grid)`
-  margin: auto;
   padding: 0;
 `;
 

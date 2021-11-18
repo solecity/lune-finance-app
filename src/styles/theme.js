@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   
   .MuiPaper-root {
     border-radius: 0 !important;
-    color: ${({ theme }) => `${theme.colours.black} !important`} ;
+    color: ${({ theme }) => `${theme.colours.black} !important`};
   }
 
   .MuiFormControl-root {
@@ -27,7 +27,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .MuiPickersDay-root {
-    color: ${({ theme }) => `${theme.colours.black} !important`} 
+    color: ${({ theme }) => `${theme.colours.black} !important`};
+  }
+
+  .MuiDivider-root {
+    border-color: ${({ theme }) => `${theme.colours.grey} !important`};
   }
   
   .Mui-selected {
@@ -44,7 +48,7 @@ const general = {
   error: "rgba(208, 86, 37, 1)",
   white: "rgba(255, 255, 255, 1)",
   black: "rgba(28, 28, 28, 1)",
-  grey: "rgba(186, 193, 198, 1)",
+  grey: "rgba(213, 217, 219, 1)",
   green: "rgba(139, 186, 93, 1)"
 };
 
@@ -55,6 +59,7 @@ const Light = {
     primary: "rgba(10, 72, 99, 1)",
     secondary: "rgba(171, 195, 211, 1)",
     accent: "rgba(210, 220, 227, 1)",
+    boxShadow: "rgba(43, 71, 75, 0.3)",
     ...general
   }
 };
@@ -66,6 +71,7 @@ const Dark = {
     primary: "rgba(10, 72, 99, 1)",
     secondary: "rgba(159, 185, 202, 1)",
     accent: "rgba(221, 229, 234, 1)",
+    boxShadow: "rgba(43, 71, 75, 0.3)",
     ...general
   }
 };

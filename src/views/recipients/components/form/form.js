@@ -55,8 +55,6 @@ const Form = ({ recipient, handleForm, getData, isEdit }) => {
         ? await RecipientService.put(recipient._id, payload)
         : await RecipientService.post(payload);
 
-      console.log({ res });
-
       if (res) {
         handleForm();
         getData();

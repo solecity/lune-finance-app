@@ -11,4 +11,12 @@ const ACCOUNT = {
   INVALID_OPENING_DATE: "Invalid opening data"
 };
 
-export { SIGNIN, ACCOUNT };
+const CATEGORY = {
+  REQUIRED_NAME: "Name is a required field",
+  REQUIRED_TYPE: "Type is a required field",
+  INVALID_TYPE: "Invalid type value",
+  INVALID_MONTHLY_BUDGET: "Invalid monthly budget value",
+  INVALID_COLOUR: "Invalid colour value"
+};
+
+export { SIGNIN, ACCOUNT, CATEGORY };

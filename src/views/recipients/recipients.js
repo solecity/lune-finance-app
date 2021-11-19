@@ -4,8 +4,11 @@ import React, { useState, useEffect } from "react";
 // api
 import RecipientService from "shared/services/recipient";
 
+// external components
+import Container from "@mui/material/Container";
+
 // custom components
-import { Modal } from "shared/components";
+import { Header, Modal } from "shared/components";
 import { Toolbar, Form, Table } from "./components";
 
 // styled components
@@ -33,28 +36,31 @@ const Recipients = () => {
   }, []);
 
   return (
-    <StyledContainer>
-      <Toolbar handleForm={handleForm} setIsEdit={setIsEdit} />
-      <Table
-        data={data}
-        getData={getData}
-        handleForm={handleForm}
-        setIsEdit={setIsEdit}
-      />
-      <Modal
-        name="recipient"
-        handleModal={handleForm}
-        isOpen={isOpen}
-        isEdit={isEdit}
-      >
-        <Form
-          recipient={recipient}
-          handleForm={handleForm}
+    <Container>
+      <Header title={"Recipients"} />
+      <StyledContainer>
+        <Toolbar handleForm={handleForm} setIsEdit={setIsEdit} />
+        <Table
+          data={data}
           getData={getData}
-          isEdit={isEdit}
+          handleForm={handleForm}
+          setIsEdit={setIsEdit}
         />
-      </Modal>
-    </StyledContainer>
+        <Modal
+          name="recipient"
+          handleModal={handleForm}
+          isOpen={isOpen}
+          isEdit={isEdit}
+        >
+          <Form
+            recipient={recipient}
+            handleForm={handleForm}
+            getData={getData}
+            isEdit={isEdit}
+          />
+        </Modal>
+      </StyledContainer>
+    </Container>
   );
 };
 

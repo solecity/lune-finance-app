@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 import SimpleBar from "simplebar-react";
 
 const StyledBoard = styled(Grid)`
@@ -51,11 +52,18 @@ const StyledColumn = styled(Grid)`
   margin-right: 10px !important;
 `;
 
+const StyledColumnButton = styled(Card)`
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+`;
+
 export {
   StyledBoard,
   StyledGrid,
   StyledScroll,
   StyledInnerScroll,
   StyledScrollWrapper,
-  StyledColumn
+  StyledColumn,
+  StyledColumnButton
 };

@@ -1,5 +1,5 @@
 // base
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // libraries
@@ -39,7 +39,7 @@ const Form = ({ transaction, getData, isEdit }) => {
     defaultValues: {
       description: transaction.description || "",
       category: transaction.category || "",
-      subCategory: transaction.subCategory || "",
+      subcategory: transaction.subcategory || "",
       quantity: transaction.quantity || 0,
       amount: transaction.amount || 0,
       date: transaction.date || new Date(),
@@ -58,7 +58,7 @@ const Form = ({ transaction, getData, isEdit }) => {
       reset({
         description: "",
         category: "",
-        subCategory: "",
+        subcategory: "",
         quantity: 0,
         amount: 0,
         date: new Date(),
@@ -90,7 +90,7 @@ const Form = ({ transaction, getData, isEdit }) => {
           <Grid item xs={6}>
             <InputSelect
               label="SubCategory"
-              name="subCategory"
+              name="subcategory"
               control={control}
             >
               <MenuItem value={0}>---</MenuItem>

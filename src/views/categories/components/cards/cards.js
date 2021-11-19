@@ -1,15 +1,14 @@
 // base
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
 import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
-import { IconButton } from "shared/components";
-import { CategoryCard, SubCategoryCard } from "./components";
+import { Modal, ActionButton } from "shared/components";
+import { CategoryCard, SubCategoryCard, SubCategoryForm } from "./components";
 
 // styled components
 import {
@@ -18,10 +17,24 @@ import {
   StyledScroll,
   StyledInnerScroll,
   StyledScrollWrapper,
-  StyledColumn
+  StyledColumn,
+  StyledColumnButton
 } from "./styles";
 
 const Cards = ({ data, getData, handleForm, setCategory, setIsEdit }) => {
+  const [subcategory, setSubCategory] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEditSub, setIsEditSub] = useState(false);
+
+  const handleSubCategoryForm = () => setIsOpen(!isOpen);
+
+  const handleAddSubCategoryForm = (category) => {
+    setSubCategory({ category });
+    setIsEditSub(false);
+
+    handleSubCategoryForm(category);
+  };
+
   return (
     <StyledBoard container>
       <StyledGrid>
@@ -38,25 +51,46 @@ const Cards = ({ data, getData, handleForm, setCategory, setIsEdit }) => {
                 />
                 <Grid item>
                   <StyledInnerScroll>
-                    {category.subCategories.map((subCategory, i) => (
-                      <SubCategoryCard key={i} subCategory={subCategory} />
+                    {category.subCategories.map((el, i) => (
+                      <SubCategoryCard
+                        key={i}
+                        getData={getData}
+                        handleForm={handleSubCategoryForm}
+                        category={category}
+                        subcategory={el}
+                        setSubCategory={setSubCategory}
+                        setIsEditSub={setIsEditSub}
+                      />
                     ))}
                   </StyledInnerScroll>
                 </Grid>
-                <Grid item xs={12} style={{ marginBottom: "15px" }}>
-                  <Card style={{ display: "flex", justifyContent: "center" }}>
-                    <IconButton
-                      tooltip="Add"
+                <Grid item xs={12}>
+                  <StyledColumnButton>
+                    <ActionButton
+                      isAction={false}
                       icon={<PlusCircle />}
-                      action={() => {}}
+                      action={() => handleAddSubCategoryForm(category)}
                     />
-                  </Card>
+                  </StyledColumnButton>
                 </Grid>
               </StyledColumn>
             ))}
           </StyledScrollWrapper>
         </StyledScroll>
       </StyledGrid>
+      <Modal
+        name="sub-category"
+        handleModal={handleSubCategoryForm}
+        isOpen={isOpen}
+        isEdit={isEditSub}
+      >
+        <SubCategoryForm
+          subcategory={subcategory}
+          handleForm={handleSubCategoryForm}
+          getData={getData}
+          isEdit={isEditSub}
+        />
+      </Modal>
     </StyledBoard>
   );
 };

@@ -1,4 +1,5 @@
 import CategoryCard from "./categoryCard/categoryCard";
-import SubCategoryCard from "./subCategoryCard/subCategoryCard";
+import SubCategoryCard from "./subcategoryCard/subcategoryCard";
+import SubCategoryForm from "./subcategoryForm/subcategoryForm";
 
-export { CategoryCard, SubCategoryCard };
+export { CategoryCard, SubCategoryCard, SubCategoryForm };

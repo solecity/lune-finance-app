@@ -31,7 +31,14 @@ import { settingsState } from "shared/recoil/atoms";
 // constants
 import { CONSTANTS, COLOURS } from "constants/general";
 
-const SubCategoryCard = ({ subCategory }) => {
+const SubCategoryCard = ({
+  getData,
+  handleForm,
+  category,
+  subcategory,
+  setSubCategory,
+  setIsEditSub
+}) => {
   const settings = useRecoilValue(settingsState);
 
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -64,10 +71,28 @@ const SubCategoryCard = ({ subCategory }) => {
   };
 
   const openForm = () => {
-    console.log("open");
+    setIsEditSub(true);
+    setSubCategory({ ...subcategory, category });
+
+    handleForm();
   };
 
   const handleConfirm = () => setOpenConfirm(!openConfirm);
+
+  const handleDelete = async () => {
+    subcategory.action = "delete";
+
+    const res = await CategoryService.patchSubCategory(
+      category._id,
+      subcategory._id,
+      subcategory
+    );
+
+    if (res) {
+      setOpenConfirm(false);
+      getData();
+    }
+  };
 
   return (
     <StyledCard>
@@ -75,7 +100,7 @@ const SubCategoryCard = ({ subCategory }) => {
         <StyledTypography container item xs={10}>
           <Grid item>
             <Typography component="div" variant="body2" noWrap>
-              {subCategory.name}
+              {subcategory.name}
             </Typography>
           </Grid>
         </StyledTypography>
@@ -100,12 +125,24 @@ const SubCategoryCard = ({ subCategory }) => {
           </Grid>
         </Grid>
       </StyledContent>
+      <ConfirmDelete
+        open={openConfirm}
+        handleClose={handleConfirm}
+        handleDelete={handleDelete}
+        item="sub-category"
+        name={subcategory.name}
+      />
     </StyledCard>
   );
 };
 
 SubCategoryCard.propTypes = {
-  subCategory: PropTypes.object.isRequired
+  getData: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
+  category: PropTypes.object.isRequired,
+  subcategory: PropTypes.object.isRequired,
+  setSubCategory: PropTypes.func.isRequired,
+  setIsEditSub: PropTypes.func.isRequired
 };
 
 export default SubCategoryCard;

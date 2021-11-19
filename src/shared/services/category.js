@@ -19,6 +19,21 @@ const patch = async (id, payload) => {
   return res.data;
 };
 
+const patchSubCategories = async (id, payload) => {
+  const res = await api().patch(`/categories/${id}/subcategory`, payload);
+
+  return res.data;
+};
+
+const patchSubCategory = async (category, id, payload) => {
+  const res = await api().patch(
+    `/categories/${category}/subcategory/${id}`,
+    payload
+  );
+
+  return res.data;
+};
+
 const deleteOne = async (id) => {
   const res = await api().delete(`/categories/${id}`);
 
@@ -29,5 +44,7 @@ export default {
   getMany,
   post,
   patch,
+  patchSubCategories,
+  patchSubCategory,
   deleteOne
 };

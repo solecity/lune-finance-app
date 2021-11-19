@@ -39,10 +39,10 @@ const TransactionsTable = ({ data, accounts }) => {
     },
     {
       Header: "Sub-Category",
-      id: "subCategory",
-      key: "subCategory",
+      id: "subcategory",
+      key: "subcategory",
       align: "center",
-      accessor: ({ subCategory }) => subCategory || "---",
+      accessor: ({ subcategory }) => subcategory || "---",
       Cell: (row) => <StyledCenterColumn>{row.value}</StyledCenterColumn>
     },
     {

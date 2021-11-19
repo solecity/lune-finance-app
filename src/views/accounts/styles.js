@@ -13,7 +13,7 @@ const StyledList = styled(SimpleBar)`
   max-height: calc(100vh - 200px);
 
   .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.accent};
+    background-color: ${({ theme }) => theme.colours.primary};
   }
 `;
 

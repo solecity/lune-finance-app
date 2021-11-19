@@ -30,14 +30,14 @@ const StyledActionButton = styled(StyledButton)(({ theme }) => ({
 
 const StyledCardButton = styled(StyledButton)(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
-    backgroundColor: theme.colours.secondary,
+    backgroundColor: theme.colours.accent,
     boxShadow: "none",
     minWidth: "0 !important",
     padding: "6px !important"
   },
 
   "&:hover": {
-    backgroundColor: `${theme.colours.accent} !important`
+    backgroundColor: `${theme.colours.secondary} !important`
   }
 }));
 

@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   svg {
-    width: 1rem;
+    width: 1.1rem;
   }
   
   .MuiPaper-root {

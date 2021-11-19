@@ -3,7 +3,7 @@ import * as yup from "yup";
 
 // constants
 import { VALIDATIONS } from "../general";
-import { CATEGORY } from "../messages";
+import { CATEGORY, SUBCATEGORY } from "../messages";
 
 const schemaCategory = yup.object().shape({
   name: yup.string().max(255).required(CATEGORY.REQUIRED_NAME),
@@ -21,4 +21,8 @@ const schemaCategory = yup.object().shape({
   colour: yup.string().typeError(CATEGORY.INVALID_COLOUR)
 });
 
-export default schemaCategory;
+const schemaSubCategory = yup.object().shape({
+  name: yup.string().max(255).required(SUBCATEGORY.REQUIRED_NAME)
+});
+
+export { schemaCategory, schemaSubCategory };

@@ -23,4 +23,4 @@ const schemaAccount = yup.object().shape({
   hasCard: yup.bool()
 });
 
-export default schemaAccount;
+export { schemaAccount };

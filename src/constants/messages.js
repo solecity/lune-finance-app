@@ -19,4 +19,8 @@ const CATEGORY = {
   INVALID_COLOUR: "Invalid colour value"
 };
 
-export { SIGNIN, ACCOUNT, CATEGORY };
+const SUBCATEGORY = {
+  REQUIRED_NAME: "Name is a required field"
+};
+
+export { SIGNIN, ACCOUNT, CATEGORY, SUBCATEGORY };

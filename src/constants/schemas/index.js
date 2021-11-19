@@ -1,5 +1,5 @@
-import schemaSignIn from "./signIn";
-import schemaAccount from "./account";
-import schemaCategory from "./category";
+import { schemaSignIn } from "./signIn";
+import { schemaAccount } from "./account";
+import { schemaCategory, schemaSubCategory } from "./category";
 
-export { schemaSignIn, schemaAccount, schemaCategory };
+export { schemaSignIn, schemaAccount, schemaCategory, schemaSubCategory };

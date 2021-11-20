@@ -8,17 +8,22 @@ import DebtService from "shared/services/debt";
 import Container from "@mui/material/Container";
 
 // custom components
-import { Header } from "shared/components";
-import { Form, Table } from "./components";
+import { Header, Toolbar, Modal } from "shared/components";
+import { Form, Cards } from "./components";
 
 const Debts = () => {
   const [data, setData] = useState([]);
+  const [debt, setDebt] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   const getData = async () => {
     const { data } = await DebtService.getMany();
 
     setData(data.debts);
   };
+
+  const handleForm = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     getData();
@@ -27,8 +32,31 @@ const Debts = () => {
   return (
     <Container>
       <Header title={"Debts"} />
-      <Form />
-      <Table data={data} />
+      <Toolbar
+        handleForm={handleForm}
+        setIsEdit={setIsEdit}
+        setElement={setDebt}
+      />
+      <Cards
+        data={data}
+        getData={getData}
+        handleForm={handleForm}
+        setDebt={setDebt}
+        setIsEdit={setIsEdit}
+      />
+      <Modal
+        name="debt"
+        handleModal={handleForm}
+        isOpen={isOpen}
+        isEdit={isEdit}
+      >
+        <Form
+          debt={debt}
+          handleForm={handleForm}
+          getData={getData}
+          isEdit={isEdit}
+        />
+      </Modal>
     </Container>
   );
 };

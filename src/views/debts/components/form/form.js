@@ -1,13 +1,16 @@
 // base
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+// api
+import DebtService from "shared/services/debt";
 
 // external components
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -17,78 +20,120 @@ import {
   InputTextField,
   InputSelect,
   InputDatePicker,
-  FormButton
+  FormButton,
+  ActionButton
 } from "shared/components";
+
+// styled components
+import { StyledContainer, StyledGrid } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const Form = ({ debt }) => {
+const Form = ({ debt, handleForm, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    reset,
+    formState: { isSubmitSuccessful, errors }
   } = useForm({
     mode: "onBlur",
     defaultValues: {
       name: debt.name || "",
       amount: debt.amount || 0,
       recipient: debt.recipient || "",
-      deadline: debt.deadline || new Date(),
-      status: debt.status || ""
+      deadline: debt.deadline || null
     }
   });
 
   const onSubmit = async (payload) => {
-    try {
-    } catch (error) {}
+    const res = isEdit
+      ? await DebtService.put(debt._id, payload)
+      : await DebtService.post(payload);
+
+    if (res) {
+      handleForm();
+      getData();
+    }
   };
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({
+        name: "",
+        amount: 0,
+        recipient: "",
+        deadline: null
+      });
+    }
+  }, [isSubmitSuccessful, reset]);
+
   return (
-    <Container>
+    <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
-          <InputTextField
-            error={Boolean(errors.name?.message)}
-            helperText={errors.name?.message}
-            control={control}
-            label="Name"
-            name="name"
-            type="text"
-          />
-          <InputTextField
-            error={Boolean(errors.amount?.message)}
-            helperText={errors.amount?.message}
-            control={control}
-            label="Amount"
-            name="amount"
-            type="number"
-            InputProps={{
-              inputProps: { min: 0 },
-              startAdornment: (
-                <InputAdornment position="start">
-                  {settings.currencySymbol}
-                </InputAdornment>
-              )
-            }}
-          />
-          <InputSelect label="Recipient" name="recipient" control={control}>
-            <MenuItem value="none">---</MenuItem>
-          </InputSelect>
-          <InputDatePicker control={control} name="deadline" label="Deadline" />
-          <Grid container item spacing={1}>
-            <Grid item xs={6}>
-              <FormButton text="Cancel" />
-            </Grid>
-            <Grid item xs={6}>
-              <FormButton text="Save" />
-            </Grid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputTextField
+              error={Boolean(errors.name?.message)}
+              helperText={errors.name?.message}
+              control={control}
+              label="Name *"
+              name="name"
+              type="text"
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputTextField
+              error={Boolean(errors.recipient?.message)}
+              helperText={errors.recipient?.message}
+              control={control}
+              label="Recipient *"
+              name="recipient"
+              type="text"
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputTextField
+              error={Boolean(errors.amount?.message)}
+              helperText={errors.amount?.message}
+              control={control}
+              label="Amount *"
+              name="amount"
+              type="text"
+              InputProps={{
+                inputProps: {
+                  min: 0,
+                  inputMode: "numeric",
+                  pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    {settings.currencySymbol}
+                  </InputAdornment>
+                )
+              }}
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputDatePicker
+              control={control}
+              name="deadline"
+              label="Deadline"
+            />
+          </StyledGrid>
+        </Grid>
+        <Grid container item spacing={1}>
+          <Grid item xs={12} sm={6}>
+            <ActionButton text="Cancel" action={handleForm} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormButton text="Save" />
           </Grid>
         </Grid>
       </form>
-    </Container>
+    </StyledContainer>
   );
 };
 
@@ -97,7 +142,10 @@ Form.defaultProps = {
 };
 
 Form.propTypes = {
-  debt: PropTypes.object
+  debt: PropTypes.object,
+  handleForm: PropTypes.func.isRequired,
+  getData: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired
 };
 
 export default Form;

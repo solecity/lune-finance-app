@@ -10,6 +10,7 @@ import GoalService from "shared/services/goal";
 
 // external components
 import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
@@ -19,7 +20,6 @@ import { ActionButton, ConfirmDelete } from "shared/components";
 
 // styled components
 import {
-  StyledCard,
   StyledContent,
   StyledGrid,
   StyledCardMedia,
@@ -31,6 +31,9 @@ import {
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
+// constants
+import { IMG } from "constants/general";
+
 const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   const settings = useRecoilValue(settingsState);
 
@@ -38,7 +41,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [openConfirm, setOpenConfirm] = useState(false);
 
-  const image = goal.image || "/static/images/no-image.png";
+  const image = goal.image || IMG;
   const remainingAmount = goal.amount - totalAmount;
 
   const getTotalAmount = useCallback(() => {
@@ -60,7 +63,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
 
   const handleConfirm = async () => setOpenConfirm(!openConfirm);
 
-  const handleDelete = async (goal) => {
+  const handleDelete = async () => {
     const res = await GoalService.deleteOne(goal._id);
 
     if (res) {
@@ -78,7 +81,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   }, [getPercentage]);
 
   return (
-    <StyledCard>
+    <Card>
       <StyledCardMedia component="img" image={image} alt={goal.name} />
       <StyledContent>
         <StyledGrid>
@@ -123,7 +126,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
         item="goal"
         name={goal.name}
       />
-    </StyledCard>
+    </Card>
   );
 };
 

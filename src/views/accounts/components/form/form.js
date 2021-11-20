@@ -98,88 +98,86 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <>
-      <StyledContainer>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container>
-            <StyledFirstGrid container spacing={1}>
-              <Grid item xs={12} sm={6}>
-                <InputTextField
-                  error={Boolean(errors.name?.message)}
-                  helperText={errors.name?.message}
-                  control={control}
-                  label="Name"
-                  name="name"
-                  type="text"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <InputSelect label="Type" name="type" control={control}>
-                  {TYPES.ACCOUNT.map((el, i) => (
-                    <MenuItem key={i} value={el.value}>
-                      {el.name}
-                    </MenuItem>
-                  ))}
-                </InputSelect>
-              </Grid>
-            </StyledFirstGrid>
-            <Grid container spacing={1}>
-              <Grid item xs={12} sm={6}>
-                <InputTextField
-                  error={Boolean(errors.balance?.message)}
-                  helperText={errors.balance?.message}
-                  control={control}
-                  label="Balance"
-                  name="balance"
-                  type="text"
-                  InputProps={{
-                    inputProps: {
-                      min: 0,
-                      inputMode: "numeric",
-                      pattern: "[+-]?([0-9]*[.])?[0-9]+"
-                    },
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {settings.currencySymbol}
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <InputDatePicker
-                  control={control}
-                  name="openingDate"
-                  label="Opening Date"
-                />
-              </Grid>
-            </Grid>
-            <StyledLastGrid container spacing={1}>
-              <StyledCheckbox item xs={6}>
-                <InputCheckbox control={control} name="hasCard" label="Card" />
-              </StyledCheckbox>
-              <StyledPicker item xs={6}>
-                <ColourButton colour={colour} action={handleColour} />
-                <InputColourPicker
-                  isOpen={isColourOpen}
-                  handleColour={handleColour}
-                  colour={colour}
-                  setColour={setColour}
-                />
-              </StyledPicker>
-            </StyledLastGrid>
-          </Grid>
-          <Grid container item spacing={1}>
+    <StyledContainer>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Grid container>
+          <StyledFirstGrid container spacing={1}>
             <Grid item xs={12} sm={6}>
-              <ActionButton text="Cancel" action={() => handleForm()} />
+              <InputTextField
+                error={Boolean(errors.name?.message)}
+                helperText={errors.name?.message}
+                control={control}
+                label="Name *"
+                name="name"
+                type="text"
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormButton text="Save" />
+              <InputSelect label="Type *" name="type" control={control}>
+                {TYPES.ACCOUNT.map((el, i) => (
+                  <MenuItem key={i} value={el.value}>
+                    {el.name}
+                  </MenuItem>
+                ))}
+              </InputSelect>
+            </Grid>
+          </StyledFirstGrid>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={6}>
+              <InputTextField
+                error={Boolean(errors.balance?.message)}
+                helperText={errors.balance?.message}
+                control={control}
+                label="Balance *"
+                name="balance"
+                type="text"
+                InputProps={{
+                  inputProps: {
+                    min: 0,
+                    inputMode: "numeric",
+                    pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                  },
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      {settings.currencySymbol}
+                    </InputAdornment>
+                  )
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <InputDatePicker
+                control={control}
+                name="openingDate"
+                label="Opening Date"
+              />
             </Grid>
           </Grid>
-        </form>
-      </StyledContainer>
-    </>
+          <StyledLastGrid container spacing={1}>
+            <StyledCheckbox item xs={6}>
+              <InputCheckbox control={control} name="hasCard" label="Card" />
+            </StyledCheckbox>
+            <StyledPicker item xs={6}>
+              <ColourButton colour={colour} action={handleColour} />
+              <InputColourPicker
+                isOpen={isColourOpen}
+                handleColour={handleColour}
+                colour={colour}
+                setColour={setColour}
+              />
+            </StyledPicker>
+          </StyledLastGrid>
+        </Grid>
+        <Grid container item spacing={1}>
+          <Grid item xs={12} sm={6}>
+            <ActionButton text="Cancel" action={handleForm} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormButton text="Save" />
+          </Grid>
+        </Grid>
+      </form>
+    </StyledContainer>
   );
 };
 

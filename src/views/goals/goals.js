@@ -45,7 +45,7 @@ const Goals = () => {
         setIsEdit={setIsEdit}
       />
       <Modal
-        name="account"
+        name="goal"
         handleModal={handleForm}
         isOpen={isOpen}
         isEdit={isEdit}

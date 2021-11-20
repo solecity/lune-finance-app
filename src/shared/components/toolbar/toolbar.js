@@ -39,7 +39,7 @@ const Toolbar = ({ handleForm, setIsEdit, setData }) => {
 Toolbar.propTypes = {
   handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
-  setAccount: PropTypes.func.isRequired
+  setData: PropTypes.func.isRequired
 };
 
 export default Toolbar;

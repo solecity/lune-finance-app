@@ -6,13 +6,8 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CreditCard } from "@styled-icons/boxicons-regular/CreditCard";
-
-const StyledCard = styled(Card)`
-  margin-top: 2px;
-`;
 
 const StyledContent = styled(CardContent)`
   padding: 0 !important;
@@ -59,7 +54,6 @@ const StyledAmount = styled(Grid)`
 `;
 
 export {
-  StyledCard,
   StyledContent,
   StyledGrid,
   StyledInfo,

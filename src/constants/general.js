@@ -3,6 +3,8 @@ import { Light, Dark } from "styles/theme";
 
 const DATE_FORMAT = "dd/MM/yyyy";
 
+const IMG = "/static/images/no-image.png";
+
 const CONSTANTS = {
   YES: "Yes",
   NO: "No",
@@ -50,4 +52,4 @@ const VALIDATIONS = {
   CATEGORY: ["income", "expense"]
 };
 
-export { DATE_FORMAT, CONSTANTS, TYPES, COLOURS, VALIDATIONS };
+export { DATE_FORMAT, IMG, CONSTANTS, TYPES, COLOURS, VALIDATIONS };

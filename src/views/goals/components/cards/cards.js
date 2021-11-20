@@ -12,7 +12,7 @@ const Cards = ({ data, getData, handleForm, setGoal, setIsEdit }) => {
   return (
     <Grid container spacing={1}>
       {data.map((goal, i) => (
-        <Grid item xs={12} sm={6} md={4} key={i}>
+        <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
           <Card
             getData={getData}
             handleForm={handleForm}

@@ -10,6 +10,7 @@ import AccountService from "shared/services/account";
 
 // external components
 import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import { RadioCircle } from "@styled-icons/boxicons-regular/RadioCircle";
@@ -21,7 +22,6 @@ import { ActionButton, ConfirmDelete } from "shared/components";
 
 // styled components
 import {
-  StyledCard,
   StyledContent,
   StyledGrid,
   StyledInfo,
@@ -76,7 +76,7 @@ const AccountCard = ({
   };
 
   return (
-    <StyledCard>
+    <Card>
       <StyledContent>
         <StyledGrid container>
           <Grid container item xs={9}>
@@ -142,7 +142,7 @@ const AccountCard = ({
         item="account"
         name={account.name}
       />
-    </StyledCard>
+    </Card>
   );
 };
 

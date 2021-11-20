@@ -10,11 +10,11 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
 // custom components
-import { Header, Modal } from "shared/components";
-import { Toolbar, Form, Cards } from "./components";
+import { Header, Toolbar, Modal } from "shared/components";
+import { Form, Cards } from "./components";
 
 // styled components
-import { StyledGrid, StyledList } from "./styles";
+import { StyledGrid } from "./styles";
 
 const Accounts = () => {
   const [data, setData] = useState([]);
@@ -40,19 +40,17 @@ const Accounts = () => {
       <Toolbar
         handleForm={handleForm}
         setIsEdit={setIsEdit}
-        setAccount={setAccount}
+        setData={setAccount}
       />
       <StyledGrid container spacing={1}>
         <Grid item xs={5}>
-          <StyledList>
-            <Cards
-              data={data}
-              getData={getData}
-              handleForm={handleForm}
-              setIsEdit={setIsEdit}
-              setAccount={setAccount}
-            />
-          </StyledList>
+          <Cards
+            data={data}
+            getData={getData}
+            handleForm={handleForm}
+            setIsEdit={setIsEdit}
+            setAccount={setAccount}
+          />
         </Grid>
         <Grid item xs={7}>
           <Paper style={{ height: "calc(100vh - 200px)" }}></Paper>

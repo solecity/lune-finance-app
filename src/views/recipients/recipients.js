@@ -8,8 +8,8 @@ import RecipientService from "shared/services/recipient";
 import Container from "@mui/material/Container";
 
 // custom components
-import { Header, Modal } from "shared/components";
-import { Toolbar, Form, Table } from "./components";
+import { Header, Toolbar, Modal } from "shared/components";
+import { Form, Table } from "./components";
 
 // styled components
 import { StyledContainer } from "./styles";
@@ -39,7 +39,11 @@ const Recipients = () => {
     <Container>
       <Header title={"Recipients"} />
       <StyledContainer>
-        <Toolbar handleForm={handleForm} setIsEdit={setIsEdit} />
+        <Toolbar
+          handleForm={handleForm}
+          setIsEdit={setIsEdit}
+          setData={setRecipient}
+        />
         <Table
           data={data}
           getData={getData}

@@ -12,9 +12,10 @@ import { ActionButton } from "shared/components";
 // styled components
 import { StyledContainer } from "./styles";
 
-const Toolbar = ({ handleForm, setIsEdit }) => {
+const Toolbar = ({ handleForm, setIsEdit, setData }) => {
   const openForm = () => {
     setIsEdit(false);
+    setData({});
 
     handleForm();
   };
@@ -23,7 +24,7 @@ const Toolbar = ({ handleForm, setIsEdit }) => {
     <StyledContainer container>
       <Grid item xs={6}>
         <Typography component="div" variant="body1" noWrap>
-          Search
+          Sort by
         </Typography>
       </Grid>
       <Grid container item xs={6} justifyContent="flex-end">
@@ -37,7 +38,8 @@ const Toolbar = ({ handleForm, setIsEdit }) => {
 
 Toolbar.propTypes = {
   handleForm: PropTypes.func.isRequired,
-  setIsEdit: PropTypes.func.isRequired
+  setIsEdit: PropTypes.func.isRequired,
+  setAccount: PropTypes.func.isRequired
 };
 
 export default Toolbar;

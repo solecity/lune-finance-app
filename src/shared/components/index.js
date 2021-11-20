@@ -1,5 +1,6 @@
 import NavBar from "./navbar/navbar";
 import Header from "./header/header";
+import Toolbar from "./toolbar/toolbar";
 import Table from "./table/table";
 import ColourCard from "./colourCard/colourCard";
 import InputTextField from "./inputs/textField/textField";
@@ -17,6 +18,7 @@ import ConfirmDelete from "./confirmDelete/confirmDelete";
 export {
   NavBar,
   Header,
+  Toolbar,
   Table,
   ColourCard,
   InputTextField,

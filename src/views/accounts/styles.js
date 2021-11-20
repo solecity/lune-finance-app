@@ -3,18 +3,9 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
-import SimpleBar from "simplebar-react";
 
 const StyledGrid = styled(Grid)`
   padding: 10px 0;
 `;
 
-const StyledList = styled(SimpleBar)`
-  max-height: calc(100vh - 200px);
-
-  .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.primary};
-  }
-`;
-
-export { StyledGrid, StyledList };
+export { StyledGrid };

@@ -8,21 +8,26 @@ import Grid from "@mui/material/Grid";
 // custom components
 import { Card } from "./components";
 
+// styled components
+import { StyledScroll } from "./styles";
+
 const Cards = ({ data, getData, handleForm, setAccount, setIsEdit }) => {
   return (
-    <Grid container spacing={1}>
-      {data.map((account, i) => (
-        <Grid item xs={12} key={i}>
-          <Card
-            getData={getData}
-            handleForm={handleForm}
-            account={account}
-            setAccount={setAccount}
-            setIsEdit={setIsEdit}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <StyledScroll>
+      <Grid container spacing={1}>
+        {data.map((account, i) => (
+          <Grid item xs={12} key={i}>
+            <Card
+              getData={getData}
+              handleForm={handleForm}
+              account={account}
+              setAccount={setAccount}
+              setIsEdit={setIsEdit}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </StyledScroll>
   );
 };
 

@@ -47,8 +47,15 @@ const StyledCardIcon = styled(({ bool }) =>
   )
 )``;
 
-const StyledCardButton = styled(Grid)`
+const StyledButtons = styled(Grid)`
+  align-items: center;
   text-align: center;
+`;
+
+const StyledAmount = styled(Grid)`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export {
@@ -57,5 +64,6 @@ export {
   StyledGrid,
   StyledInfo,
   StyledCardIcon,
-  StyledCardButton
+  StyledButtons,
+  StyledAmount
 };

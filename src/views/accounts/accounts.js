@@ -48,8 +48,8 @@ const Accounts = () => {
             data={data}
             getData={getData}
             handleForm={handleForm}
-            setIsEdit={setIsEdit}
             setAccount={setAccount}
+            setIsEdit={setIsEdit}
           />
         </Grid>
         <Grid item xs={7}>

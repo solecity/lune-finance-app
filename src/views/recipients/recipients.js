@@ -42,7 +42,7 @@ const Recipients = () => {
         <Toolbar
           handleForm={handleForm}
           setIsEdit={setIsEdit}
-          setData={setRecipient}
+          setElement={setRecipient}
         />
         <Table
           data={data}

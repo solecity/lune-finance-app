@@ -35,7 +35,7 @@ const Goals = () => {
       <Toolbar
         handleForm={handleForm}
         setIsEdit={setIsEdit}
-        setData={setGoal}
+        setElement={setGoal}
       />
       <Cards
         data={data}

@@ -40,7 +40,7 @@ const Accounts = () => {
       <Toolbar
         handleForm={handleForm}
         setIsEdit={setIsEdit}
-        setData={setAccount}
+        setElement={setAccount}
       />
       <StyledGrid container spacing={1}>
         <Grid item xs={5}>

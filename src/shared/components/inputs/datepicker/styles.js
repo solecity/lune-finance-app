@@ -43,6 +43,11 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     boxShadow: "inset 0px 2px 4px rgba(10, 72, 99, 0.5)"
   },
 
+  "& .MuiInputLabel-root": {
+    transform: "translate(10px, 10px) scale(0.9)",
+    color: "rgba(28, 28, 28, 0.4)"
+  },
+
   "& .MuiInputLabel-shrink": {
     transform: "translate(10px, -18px) scale(0.75)",
     color: "rgba(28, 28, 28, 0.4) !important"

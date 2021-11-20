@@ -12,10 +12,10 @@ import { ActionButton } from "shared/components";
 // styled components
 import { StyledContainer } from "./styles";
 
-const Toolbar = ({ handleForm, setIsEdit, setData }) => {
+const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
   const openForm = () => {
     setIsEdit(false);
-    setData({});
+    setElement({});
 
     handleForm();
   };
@@ -39,7 +39,7 @@ const Toolbar = ({ handleForm, setIsEdit, setData }) => {
 Toolbar.propTypes = {
   handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
-  setData: PropTypes.func.isRequired
+  setElement: PropTypes.func.isRequired
 };
 
 export default Toolbar;

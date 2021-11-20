@@ -21,7 +21,12 @@ import {
 } from "shared/components";
 
 // styled components
-import { StyledContainer, StyledGrid, StyledPicker } from "./styles";
+import {
+  StyledContainer,
+  StyledGrid,
+  StyledLastGrid,
+  StyledPicker
+} from "./styles";
 
 // constants
 import { CONSTANTS } from "constants/general";
@@ -74,19 +79,19 @@ const Form = ({ recipient, handleForm, getData, isEdit }) => {
   return (
     <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <StyledGrid container spacing={1}>
-          <Grid item xs={10}>
+        <Grid container spacing={1}>
+          <StyledGrid item xs={12}>
             <InputTextField
               error={Boolean(errors.name?.message)}
               helperText={errors.name?.message}
               control={control}
-              label="Name"
+              label="Name *"
               name="name"
               type="text"
             />
-          </Grid>
-          <Grid container item xs={2} justifyContent="flex-end">
-            <StyledPicker container item xs={6} justifyContent="flex-end">
+          </StyledGrid>
+          <StyledLastGrid container item>
+            <StyledPicker item xs={12}>
               <ColourButton colour={colour} action={handleColour} />
               <InputColourPicker
                 isOpen={isColourOpen}
@@ -95,8 +100,8 @@ const Form = ({ recipient, handleForm, getData, isEdit }) => {
                 setColour={setColour}
               />
             </StyledPicker>
-          </Grid>
-        </StyledGrid>
+          </StyledLastGrid>
+        </Grid>
         <Grid container item spacing={1}>
           <Grid item xs={12} sm={6}>
             <ActionButton text="Cancel" action={() => handleForm()} />

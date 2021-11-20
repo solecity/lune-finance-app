@@ -10,14 +10,18 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledGrid = styled(Grid)`
-  margin-bottom: 38px !important;
-
-  &.picker {
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
+  margin-bottom: 35px !important;
 `;
 
-export { StyledContainer, StyledGrid };
+const StyledLastGrid = styled(StyledGrid)`
+  padding-top: 0 !important;
+`;
+
+const StyledPicker = styled(Grid)`
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export { StyledContainer, StyledGrid, StyledLastGrid, StyledPicker };

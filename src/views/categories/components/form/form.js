@@ -26,7 +26,12 @@ import {
 } from "shared/components";
 
 // styled components
-import { StyledContainer, StyledGrid } from "./styles";
+import {
+  StyledContainer,
+  StyledGrid,
+  StyledLastGrid,
+  StyledPicker
+} from "./styles";
 
 // schemas
 import { schemaCategory } from "constants/schemas";
@@ -95,31 +100,29 @@ const Form = ({ formType, category, handleForm, getData, isEdit }) => {
   return (
     <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container>
-          <Grid container spacing={1}>
-            <StyledGrid item xs={12} sm={isOutcome ? 6 : 12}>
-              <InputTextField
-                error={Boolean(errors.name?.message)}
-                helperText={errors.name?.message}
-                control={control}
-                label="Name"
-                name="name"
-                type="text"
-              />
-            </StyledGrid>
-            <StyledGrid item xs={12} sm={isOutcome ? 6 : 12}>
-              <InputSelect label="Type" name="type" control={control}>
-                {TYPES.CATEGORY.map((el, i) => (
-                  <MenuItem key={i} value={el.value}>
-                    {el.name}
-                  </MenuItem>
-                ))}
-              </InputSelect>
-            </StyledGrid>
-          </Grid>
-          <Grid container spacing={1}>
+        <Grid container spacing={1}>
+          <StyledGrid item xs={12} sm={isOutcome ? 6 : 12}>
+            <InputTextField
+              error={Boolean(errors.name?.message)}
+              helperText={errors.name?.message}
+              control={control}
+              label="Name *"
+              name="name"
+              type="text"
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={isOutcome ? 6 : 12}>
+            <InputSelect label="Type *" name="type" control={control}>
+              {TYPES.CATEGORY.map((el, i) => (
+                <MenuItem key={i} value={el.value}>
+                  {el.name}
+                </MenuItem>
+              ))}
+            </InputSelect>
+          </StyledGrid>
+          <StyledLastGrid container item xs={12}>
             {type === CONSTANTS.EXPENSE && (
-              <StyledGrid item xs={12} sm={isOutcome ? 6 : 12}>
+              <Grid item xs={12} sm={isOutcome ? 6 : 12}>
                 <InputTextField
                   error={Boolean(errors.monthlyBudget?.message)}
                   helperText={errors.monthlyBudget?.message}
@@ -138,9 +141,9 @@ const Form = ({ formType, category, handleForm, getData, isEdit }) => {
                     )
                   }}
                 />
-              </StyledGrid>
+              </Grid>
             )}
-            <StyledGrid item xs={12} sm={isOutcome ? 6 : 12} className="picker">
+            <StyledPicker item xs={12} sm={isOutcome ? 6 : 12}>
               <ColourButton colour={colour} action={handleColour} />
               <InputColourPicker
                 isOpen={isColourOpen}
@@ -148,8 +151,8 @@ const Form = ({ formType, category, handleForm, getData, isEdit }) => {
                 colour={colour}
                 setColour={setColour}
               />
-            </StyledGrid>
-          </Grid>
+            </StyledPicker>
+          </StyledLastGrid>
         </Grid>
         <Grid container item spacing={1}>
           <Grid item xs={12} sm={6}>

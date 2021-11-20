@@ -9,16 +9,12 @@ const StyledContainer = styled(Container)`
   padding: 25px;
 `;
 
-const StyledFirstGrid = styled(Grid)`
-  margin-bottom: 45px;
+const StyledGrid = styled(Grid)`
+  margin-bottom: 35px !important;
 `;
 
-const StyledLastGrid = styled(Grid)`
-  margin: 15px 0 20px 0 !important;
-`;
-
-const StyledCheckbox = styled(Grid)`
-  padding-left: 0 !important;
+const StyledLastGrid = styled(StyledGrid)`
+  padding-top: 0 !important;
 `;
 
 const StyledPicker = styled(Grid)`
@@ -28,10 +24,4 @@ const StyledPicker = styled(Grid)`
   align-items: center;
 `;
 
-export {
-  StyledContainer,
-  StyledFirstGrid,
-  StyledLastGrid,
-  StyledCheckbox,
-  StyledPicker
-};
+export { StyledContainer, StyledGrid, StyledLastGrid, StyledPicker };

@@ -10,7 +10,7 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledGrid = styled(Grid)`
-  margin-bottom: 45px !important;
+  margin-bottom: 35px !important;
 `;
 
 export { StyledContainer, StyledGrid };

@@ -12,13 +12,11 @@ import DebtService from "shared/services/debt";
 
 // external components
 import Grid from "@mui/material/Grid";
-import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
 
 // custom components
 import {
   InputTextField,
-  InputSelect,
   InputDatePicker,
   FormButton,
   ActionButton

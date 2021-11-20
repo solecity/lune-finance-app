@@ -30,9 +30,8 @@ import {
 // styled components
 import {
   StyledContainer,
-  StyledFirstGrid,
+  StyledGrid,
   StyledLastGrid,
-  StyledCheckbox,
   StyledPicker
 } from "./styles";
 
@@ -100,63 +99,59 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
   return (
     <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container>
-          <StyledFirstGrid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <InputTextField
-                error={Boolean(errors.name?.message)}
-                helperText={errors.name?.message}
-                control={control}
-                label="Name *"
-                name="name"
-                type="text"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <InputSelect label="Type *" name="type" control={control}>
-                {TYPES.ACCOUNT.map((el, i) => (
-                  <MenuItem key={i} value={el.value}>
-                    {el.name}
-                  </MenuItem>
-                ))}
-              </InputSelect>
-            </Grid>
-          </StyledFirstGrid>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <InputTextField
-                error={Boolean(errors.balance?.message)}
-                helperText={errors.balance?.message}
-                control={control}
-                label="Balance *"
-                name="balance"
-                type="text"
-                InputProps={{
-                  inputProps: {
-                    min: 0,
-                    inputMode: "numeric",
-                    pattern: "[+-]?([0-9]*[.])?[0-9]+"
-                  },
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      {settings.currencySymbol}
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <InputDatePicker
-                control={control}
-                name="openingDate"
-                label="Opening Date"
-              />
-            </Grid>
-          </Grid>
-          <StyledLastGrid container spacing={1}>
-            <StyledCheckbox item xs={6}>
+        <Grid container spacing={1}>
+          <StyledGrid item xs={12} sm={6}>
+            <InputTextField
+              error={Boolean(errors.name?.message)}
+              helperText={errors.name?.message}
+              control={control}
+              label="Name *"
+              name="name"
+              type="text"
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputSelect label="Type *" name="type" control={control}>
+              {TYPES.ACCOUNT.map((el, i) => (
+                <MenuItem key={i} value={el.value}>
+                  {el.name}
+                </MenuItem>
+              ))}
+            </InputSelect>
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputTextField
+              error={Boolean(errors.balance?.message)}
+              helperText={errors.balance?.message}
+              control={control}
+              label="Balance *"
+              name="balance"
+              type="text"
+              InputProps={{
+                inputProps: {
+                  min: 0,
+                  inputMode: "numeric",
+                  pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    {settings.currencySymbol}
+                  </InputAdornment>
+                )
+              }}
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputDatePicker
+              control={control}
+              name="openingDate"
+              label="Opening Date"
+            />
+          </StyledGrid>
+          <StyledLastGrid container item xs={12}>
+            <Grid item xs={6}>
               <InputCheckbox control={control} name="hasCard" label="Card" />
-            </StyledCheckbox>
+            </Grid>
             <StyledPicker item xs={6}>
               <ColourButton colour={colour} action={handleColour} />
               <InputColourPicker

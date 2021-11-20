@@ -53,7 +53,6 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
     setIsEdit(true);
     setDebt(debt);
 
-    console.log(debt);
     handleForm();
   };
 

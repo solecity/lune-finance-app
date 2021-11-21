@@ -8,12 +8,13 @@
   },
   "homepage": "./",
   "scripts": {
-    "react-start": "react-scripts start",
+    "start": "react-scripts start",
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
     "electron-build": "electron-builder",
     "build": "yarn react-build && yarn electron-build",
+    "electron-start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn && yarn react-build"
   },
   "eslintConfig": {

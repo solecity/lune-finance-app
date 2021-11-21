@@ -15,7 +15,7 @@
     "electron-build": "electron-builder",
     "build": "yarn react-build && yarn electron-build",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "heroku-postbuild": "yarn react-build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn && yarn react-build"
   },
   "eslintConfig": {
     "extends": [

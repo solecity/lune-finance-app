@@ -19,7 +19,12 @@ import TableFooter from "@mui/material/TableFooter";
 import { EmptyTable } from "./components";
 
 // styled components
-import { StyledContainer } from "./styles";
+import {
+  StyledContainer,
+  StyledHeadCell,
+  StyledBodyCell,
+  StyledScroll
+} from "./styles";
 
 const Table = ({ columns, data }) => {
   const { getTableProps, getTableBodyProps, headerGroups, prepareRow, page } =
@@ -40,9 +45,10 @@ const Table = ({ columns, data }) => {
       {headerGroups.map((headerGroup) => (
         <TableRow key={headerGroup} {...headerGroup.getHeaderGroupProps()}>
           {headerGroup.headers.map((column) => (
-            <TableCell
+            <StyledHeadCell
               key={column.id}
               align={column.align}
+              width={column.minWidth}
               {...column.getHeaderProps(column.getSortByToggleProps())}
             >
               {column.render("Header")}
@@ -50,7 +56,7 @@ const Table = ({ columns, data }) => {
                 active={column.isSorted}
                 direction={column.isSortedDesc ? "desc" : "asc"}
               />
-            </TableCell>
+            </StyledHeadCell>
           ))}
         </TableRow>
       ))}
@@ -68,9 +74,12 @@ const Table = ({ columns, data }) => {
         return (
           <TableRow key={row.getRowProps().key} {...row.getRowProps()}>
             {row.cells.map((cell) => (
-              <TableCell key={cell.getCellProps().key} {...cell.getCellProps()}>
+              <StyledBodyCell
+                key={cell.getCellProps().key}
+                {...cell.getCellProps()}
+              >
                 {cell.render("Cell")}
-              </TableCell>
+              </StyledBodyCell>
             ))}
           </TableRow>
         );
@@ -83,13 +92,15 @@ const Table = ({ columns, data }) => {
   return (
     <Paper>
       <StyledContainer>
-        <MUITable stickyHeader size="small" {...getTableProps()}>
-          <RenderHeader />
-          <RenderBody />
-          <TableFooter>
-            <TableRow></TableRow>
-          </TableFooter>
-        </MUITable>
+        <StyledScroll>
+          <MUITable stickyHeader size="small" {...getTableProps()}>
+            <RenderHeader />
+            <RenderBody />
+            <TableFooter>
+              <TableRow></TableRow>
+            </TableFooter>
+          </MUITable>
+        </StyledScroll>
       </StyledContainer>
     </Paper>
   );

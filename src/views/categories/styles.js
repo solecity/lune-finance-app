@@ -5,10 +5,6 @@ import styled from "styled-components";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
-const StyledContainer = styled(Grid)`
-  padding: 0;
-`;
-
 const StyledSubTitle = styled(Paper)`
   margin-top: 8px;
   padding: 4px 15px;
@@ -27,4 +23,4 @@ const StyledIconButton = styled(Grid)`
   }
 `;
 
-export { StyledContainer, StyledSubTitle, StyledIconButton };
+export { StyledSubTitle, StyledIconButton };

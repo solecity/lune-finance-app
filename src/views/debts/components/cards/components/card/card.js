@@ -49,7 +49,7 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
     setPercentage(value);
   }, [debt, totalAmount]);
 
-  const openForm = () => {
+  const handleEdit = () => {
     setIsEdit(true);
     setDebt(debt);
 
@@ -108,7 +108,7 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
             <ActionButton
               isAction={false}
               icon={<Pencil />}
-              action={openForm}
+              action={handleEdit}
             />
           </Grid>
         </StyledButtons>

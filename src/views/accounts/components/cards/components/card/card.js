@@ -57,7 +57,7 @@ const AccountCard = ({
     return value;
   };
 
-  const openForm = () => {
+  const handleEdit = () => {
     setIsEdit(true);
     setAccount(account);
 
@@ -130,7 +130,7 @@ const AccountCard = ({
             <ActionButton
               isAction={false}
               icon={<Pencil />}
-              action={openForm}
+              action={handleEdit}
             />
           </Grid>
         </StyledButtons>

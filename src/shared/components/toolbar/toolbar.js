@@ -13,7 +13,7 @@ import { ActionButton } from "shared/components";
 import { StyledContainer } from "./styles";
 
 const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
-  const openForm = () => {
+  const handleOpen = () => {
     setIsEdit(false);
     setElement({});
 
@@ -29,7 +29,7 @@ const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
       </Grid>
       <Grid container item xs={6} justifyContent="flex-end">
         <Grid item xs={2}>
-          <ActionButton text={"Add"} action={openForm} />
+          <ActionButton text={"Add"} action={handleOpen} />
         </Grid>
       </Grid>
     </StyledContainer>

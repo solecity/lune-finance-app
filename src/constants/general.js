@@ -12,10 +12,11 @@ const CONSTANTS = {
   NOT_PAYED: "Not payed",
   COMPLETED: "Completed",
   NOT_COMPLETED: "Not completed",
+  DEFAULT_COLOUR: "#c1c1c1",
+  LIGHT: "light",
   INITIAL_ACCOUNT_TYPE: "cash",
   EXPENSE: "expense",
-  DEFAULT_COLOUR: "#c1c1c1",
-  LIGHT: "light"
+  INCOME: "income"
 };
 
 const TYPES = {

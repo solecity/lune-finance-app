@@ -51,7 +51,7 @@ const Cards = ({ data, getData, handleForm, setCategory, setIsEdit }) => {
                 />
                 <Grid item>
                   <StyledInnerScroll>
-                    {category.subCategories.map((el, i) => (
+                    {category.subcategories.map((el, i) => (
                       <SubCategoryCard
                         key={i}
                         getData={getData}

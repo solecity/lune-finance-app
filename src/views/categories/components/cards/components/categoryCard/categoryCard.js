@@ -70,7 +70,7 @@ const CategoryCard = ({
     insetHover: ""
   };
 
-  const openForm = () => {
+  const handleEdit = () => {
     setIsEdit(true);
     setCategory(category);
 
@@ -109,7 +109,7 @@ const CategoryCard = ({
               isSmall={true}
               icon={<Pencil />}
               colour={colour}
-              action={openForm}
+              action={handleEdit}
             />
           </StyledButton>
           <Grid item xs={2}>

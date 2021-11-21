@@ -70,7 +70,7 @@ const SubCategoryCard = ({
     insetHover: "inset"
   };
 
-  const openForm = () => {
+  const handleEdit = () => {
     setIsEditSub(true);
     setSubCategory({ ...subcategory, category });
 
@@ -111,7 +111,7 @@ const SubCategoryCard = ({
               isSmall={true}
               icon={<Pencil />}
               colour={colour}
-              action={openForm}
+              action={handleEdit}
             />
           </StyledButton>
           <Grid item xs={2}>

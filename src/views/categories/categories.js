@@ -9,21 +9,21 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
 import { Header, Modal, IconButton } from "shared/components";
 import { Form, Cards } from "./components";
-import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // styled components
-import { StyledContainer, StyledSubTitle, StyledIconButton } from "./styles";
+import { StyledSubTitle, StyledIconButton } from "./styles";
 
 // constants
 import { TYPES } from "constants/general";
 
 const Categories = () => {
-  const [expenseCategories, setExpenseCategories] = useState([]);
-  const [incomeCategories, setIncomeCategories] = useState([]);
+  const [expenseData, setExpenseData] = useState([]);
+  const [incomeData, setIncomeData] = useState([]);
   const [category, setCategory] = useState({});
   const [formType, setFormType] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +33,8 @@ const Categories = () => {
     const { data } = await CategoryService.getMany();
     const { expense, income } = data.categories;
 
-    setExpenseCategories(expense);
-    setIncomeCategories(income);
+    setExpenseData(expense);
+    setIncomeData(income);
   };
 
   const handleForm = () => setIsOpen(!isOpen);
@@ -53,7 +53,7 @@ const Categories = () => {
   return (
     <Container>
       <Header title={"Categories"} />
-      <StyledContainer container spacing={1} direction="column">
+      <Grid container spacing={1} direction="column">
         <Grid item>
           <StyledSubTitle>
             <Grid container alignItems="center">
@@ -70,7 +70,7 @@ const Categories = () => {
             </Grid>
           </StyledSubTitle>
           <Cards
-            data={expenseCategories}
+            data={expenseData}
             getData={getData}
             handleForm={handleForm}
             setCategory={setCategory}
@@ -96,14 +96,14 @@ const Categories = () => {
             </Grid>
           </StyledSubTitle>
           <Cards
-            data={incomeCategories}
+            data={incomeData}
             getData={getData}
             handleForm={handleForm}
             setCategory={setCategory}
             setIsEdit={setIsEdit}
           />
         </Grid>
-      </StyledContainer>
+      </Grid>
       <Modal
         name="category"
         handleModal={handleForm}

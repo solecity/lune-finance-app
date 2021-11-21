@@ -54,7 +54,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
     setPercentage(value);
   }, [goal, totalAmount]);
 
-  const openForm = () => {
+  const handleEdit = () => {
     setIsEdit(true);
     setGoal(goal);
 
@@ -114,7 +114,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
             <ActionButton
               isAction={false}
               icon={<Pencil />}
-              action={openForm}
+              action={handleEdit}
             />
           </Grid>
         </StyledButtons>

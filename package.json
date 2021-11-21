@@ -17,12 +17,6 @@
     "electron-start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn && yarn react-build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

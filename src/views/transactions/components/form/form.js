@@ -5,9 +5,12 @@ import PropTypes from "prop-types";
 // libraries
 import { useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+// api
+import TransactionService from "shared/services/transaction";
 
 // external components
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -17,86 +20,284 @@ import {
   InputTextField,
   InputSelect,
   InputDatePicker,
-  FormButton
+  FormButton,
+  ActionButton
 } from "shared/components";
+
+// styled components
+import { StyledContainer, StyledGrid } from "./styles";
+
+// schemas
+import { schemaTransaction } from "constants/schemas";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
 // constants
-import { TYPES } from "constants/general";
+import { CONSTANTS, TYPES } from "constants/general";
 
-const Form = ({ transaction, getData, isEdit }) => {
+const Form = ({
+  formType,
+  transaction,
+  categories,
+  recipients,
+  accounts,
+  debts,
+  getData,
+  handleForm,
+  isEdit
+}) => {
   const settings = useRecoilValue(settingsState);
 
   const {
     control,
     handleSubmit,
+    watch,
     reset,
     formState: { isSubmitSuccessful, errors }
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      description: transaction.description || "",
+      description: transaction.description || "---",
+      type: transaction.type || formType,
       category: transaction.category || "",
       subcategory: transaction.subcategory || "",
-      quantity: transaction.quantity || 0,
-      amount: transaction.amount || 0,
+      quantity: transaction.quantity || 1,
+      amount: transaction.amount || 10,
       date: transaction.date || new Date(),
-      recipient: transaction.recipient || "",
-      account: transaction.account || ""
-    }
+      recipient: transaction.recipient || 0,
+      account: transaction.account || 0,
+      from: transaction.from || 0,
+      to: transaction.to || 0,
+      debt: transaction.debt || 0
+    },
+    resolver: yupResolver(schemaTransaction)
   });
+  console.log({ errors });
+
+  const selectedType = watch("type");
+  const categoryIndex = watch("category");
+
+  const type =
+    selectedType === CONSTANTS.EXPENSE || selectedType === CONSTANTS.INCOME;
+
+  const loadTypes = () => {
+    return TYPES.TRANSACTION.map((el, i) => (
+      <MenuItem key={i} value={el.value}>
+        {el.name}
+      </MenuItem>
+    ));
+  };
+
+  const loadCategories = () => {
+    return categories
+      .filter((el) => el.type === selectedType)
+      .map((el, i) => (
+        <MenuItem key={i} value={el._id}>
+          {el.name}
+        </MenuItem>
+      ));
+  };
+
+  const loadSubCategories = () => {
+    return categories
+      .filter((el) => el._id === categoryIndex)
+      .map((el) =>
+        el.subcategories.map((el, i) => (
+          <MenuItem key={i} value={el._id}>
+            {el.name}
+          </MenuItem>
+        ))
+      );
+  };
+
+  const loadRecipients = () => {
+    return recipients.map((el, i) => (
+      <MenuItem key={i} value={el._id}>
+        {el.name}
+      </MenuItem>
+    ));
+  };
+
+  const loadAccounts = () => {
+    return accounts.map((el, i) => (
+      <MenuItem key={i} value={el._id}>
+        {el.name} ({el.type})
+      </MenuItem>
+    ));
+  };
+
+  const loadDebts = () => {
+    return debts.map((el, i) => (
+      <MenuItem key={i} value={el._id}>
+        {el.name}
+      </MenuItem>
+    ));
+  };
 
   const onSubmit = async (payload) => {
-    try {
-    } catch (error) {}
+    let res = {};
+    const { recipient, account, from, to, debt, ...data } = payload;
+
+    if (recipient !== 0) {
+      data.recipient = recipient;
+    }
+
+    if (account !== 0) {
+      data.account = account;
+    }
+
+    if (from !== 0) {
+      data.from = from;
+    }
+
+    if (to !== 0) {
+      data.to = to;
+    }
+
+    if (debt !== 0) {
+      data.debt = debt;
+    }
+
+    if (isEdit) {
+      if (type) {
+        res = await TransactionService.putInOutcome(transaction._id, data);
+      } else {
+        res = await TransactionService.putTransfer(transaction._id, data);
+      }
+    } else if (type) {
+      res = await TransactionService.postInOutcome(data);
+    } else {
+      res = await TransactionService.postTransfer(data);
+    }
+
+    if (res) {
+      handleForm();
+      getData();
+    }
   };
 
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset({
-        description: "",
+        description: "---",
+        type: formType,
         category: "",
         subcategory: "",
         quantity: 0,
         amount: 0,
         date: new Date(),
-        recipient: "",
-        account: ""
+        recipient: 0,
+        account: 0,
+        from: 0,
+        to: 0,
+        debt: 0
       });
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset, formType]);
 
   return (
-    <Container>
+    <StyledContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container>
-          <Grid item xs={12}>
-            <InputSelect label="Type" name="type" control={control}>
-              {TYPES.TRANSACTION.map((el, i) => (
-                <MenuItem key={i} value={i + 1}>
-                  {el.name}
-                </MenuItem>
-              ))}
+        <Grid container spacing={1}>
+          <StyledGrid item xs={12} sm={6}>
+            <InputSelect label="Type *" name="type" control={control}>
+              {loadTypes()}
             </InputSelect>
-          </Grid>
-          <Grid item xs={6}>
-            <InputSelect label="Category" name="category" control={control}>
-              <MenuItem value={0}>---</MenuItem>
-            </InputSelect>
-            <InputDatePicker control={control} name="date" label="Date" />
-          </Grid>
-          <Grid item xs={6}>
-            <InputSelect
-              label="SubCategory"
-              name="subcategory"
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputDatePicker control={control} name="date" label="Date *" />
+          </StyledGrid>
+          {type ? (
+            <>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect
+                  error={errors.category?.message}
+                  control={control}
+                  label="Category *"
+                  name="category"
+                >
+                  {selectedType !== -1 && loadCategories()}
+                </InputSelect>
+              </StyledGrid>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect
+                  error={errors.subcategory?.message}
+                  control={control}
+                  label="Sub-category *"
+                  name="subcategory"
+                >
+                  {categoryIndex !== -1 && loadSubCategories()}
+                </InputSelect>
+              </StyledGrid>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect
+                  label="Recipient"
+                  name="recipient"
+                  control={control}
+                >
+                  <MenuItem value={0}>---</MenuItem>
+                  {loadRecipients()}
+                </InputSelect>
+              </StyledGrid>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect label="Account" name="account" control={control}>
+                  <MenuItem value={0}>---</MenuItem>
+                  {loadAccounts()}
+                </InputSelect>
+              </StyledGrid>
+            </>
+          ) : (
+            <>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect label="From *" name="from" control={control}>
+                  <MenuItem value={0}>---</MenuItem>
+                  {loadAccounts()}
+                </InputSelect>
+              </StyledGrid>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect label="To *" name="to" control={control}>
+                  <MenuItem value={0}>---</MenuItem>
+                  {loadAccounts()}
+                </InputSelect>
+              </StyledGrid>
+            </>
+          )}
+          <StyledGrid item xs={12}>
+            <InputTextField
+              error={Boolean(errors.description?.message)}
+              helperText={errors.description?.message}
               control={control}
-            >
-              <MenuItem value={0}>---</MenuItem>
-            </InputSelect>
-            <Grid container item spacing={1}>
-              <Grid item xs={6}>
+              label="Description"
+              name="description"
+              type="text"
+            />
+          </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputTextField
+              error={Boolean(errors.amount?.message)}
+              helperText={errors.amount?.message}
+              control={control}
+              label="Amount *"
+              name="amount"
+              type="text"
+              InputProps={{
+                inputProps: {
+                  min: 0,
+                  inputMode: "numeric",
+                  pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    {settings.currencySymbol}
+                  </InputAdornment>
+                )
+              }}
+            />
+          </StyledGrid>
+          {type && (
+            <>
+              <StyledGrid item xs={12} sm={6}>
                 <InputTextField
                   error={Boolean(errors.quantity?.message)}
                   helperText={errors.quantity?.message}
@@ -108,55 +309,26 @@ const Form = ({ transaction, getData, isEdit }) => {
                     inputProps: { min: 0 }
                   }}
                 />
-              </Grid>
-              <Grid item xs={6}>
-                <InputTextField
-                  error={Boolean(errors.amount?.message)}
-                  helperText={errors.amount?.message}
-                  control={control}
-                  label="Amount"
-                  name="amount"
-                  type="number"
-                  InputProps={{
-                    inputProps: { min: 0 },
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {settings.currencySymbol}
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <InputTextField
-              error={Boolean(errors.description?.message)}
-              helperText={errors.description?.message}
-              control={control}
-              label="Description"
-              name="description"
-              type="text"
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <InputSelect label="Recipient" name="recipient" control={control}>
-              <MenuItem value={0}>---</MenuItem>
-            </InputSelect>
-          </Grid>
-          <Grid item xs={6}>
-            <InputSelect label="Account" name="account" control={control}>
-              <MenuItem value={0}>---</MenuItem>
-            </InputSelect>
-          </Grid>
+              </StyledGrid>
+              <StyledGrid item xs={12} sm={6}>
+                <InputSelect label="Debt" name="debt" control={control}>
+                  <MenuItem value={0}>---</MenuItem>
+                  {loadDebts()}
+                </InputSelect>
+              </StyledGrid>
+            </>
+          )}
           <Grid container item spacing={1}>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
+              <ActionButton text="Cancel" action={handleForm} />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <FormButton text="Save" />
             </Grid>
           </Grid>
         </Grid>
       </form>
-    </Container>
+    </StyledContainer>
   );
 };
 
@@ -165,8 +337,14 @@ Form.defaultProps = {
 };
 
 Form.propTypes = {
+  formType: PropTypes.string,
   transaction: PropTypes.object,
+  categories: PropTypes.array.isRequired,
+  recipients: PropTypes.array.isRequired,
+  accounts: PropTypes.array.isRequired,
+  debts: PropTypes.array.isRequired,
   getData: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired
 };
 

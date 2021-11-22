@@ -37,40 +37,40 @@ const StatsType = () => {
     <Grid container spacing={1}>
       <StyleGrid item xs={3}>
         <StyledCard>
-          <Typography component="div" variant="h6">
+          <StyledTypography component="div" variant="h6" className="green">
             {stats.income} {settings.currencySymbol}
-          </Typography>
-          <StyledTypography component="div" variant="body2">
+          </StyledTypography>
+          <StyledTypography component="div" variant="body2" className="label">
             Income
           </StyledTypography>
         </StyledCard>
       </StyleGrid>
       <Grid item xs={3}>
         <StyledCard>
-          <Typography component="div" variant="h6">
+          <StyledTypography component="div" variant="h6" className="red">
             {stats.expense} {settings.currencySymbol}
-          </Typography>
-          <StyledTypography component="div" variant="body2">
+          </StyledTypography>
+          <StyledTypography component="div" variant="body2" className="label">
             Expense
           </StyledTypography>
         </StyledCard>
       </Grid>
       <Grid item xs={3}>
         <StyledCard>
-          <Typography component="div" variant="h6">
+          <StyledTypography component="div" variant="h6" className="green">
             {stats.savings} {settings.currencySymbol}
-          </Typography>
-          <StyledTypography component="div" variant="body2">
+          </StyledTypography>
+          <StyledTypography component="div" variant="body2" className="label">
             Savings
           </StyledTypography>
         </StyledCard>
       </Grid>
       <Grid item xs={3}>
         <StyledCard>
-          <Typography component="div" variant="h6">
+          <StyledTypography component="div" variant="h6" className="blue">
             {stats.investment} {settings.currencySymbol}
-          </Typography>
-          <StyledTypography component="div" variant="body2">
+          </StyledTypography>
+          <StyledTypography component="div" variant="body2" className="label">
             Investment
           </StyledTypography>
         </StyledCard>

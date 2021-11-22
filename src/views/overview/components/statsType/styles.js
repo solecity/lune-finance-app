@@ -16,7 +16,21 @@ const StyledCard = styled(Card)`
 `;
 
 const StyledTypography = styled(Typography)`
-  color: ${({ theme }) => theme.colours.secondary};
+  &.green {
+    color: ${({ theme }) => theme.colours.green};
+  }
+
+  &.red {
+    color: ${({ theme }) => theme.colours.red};
+  }
+
+  &.blue {
+    color: ${({ theme }) => theme.colours.blue};
+  }
+
+  &.label {
+    color: ${({ theme }) => theme.colours.darkGrey};
+  }
 `;
 
 export { StyleGrid, StyledCard, StyledTypography };

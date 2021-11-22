@@ -51,7 +51,10 @@ const general = {
   white: "rgba(255, 255, 255, 1)",
   black: "rgba(28, 28, 28, 1)",
   grey: "rgba(213, 217, 219, 1)",
-  green: "rgba(139, 186, 93, 1)"
+  darkGrey: "rgba(160, 168, 172, 1)",
+  green: "rgba(139, 186, 93, 1)",
+  red: "rgba(217, 74, 74, 1)",
+  blue: "rgba(63, 123, 166, 1)"
 };
 
 const Light = {

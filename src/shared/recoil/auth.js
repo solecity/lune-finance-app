@@ -6,12 +6,16 @@ import { setJWT, clearJWT } from "shared/utils/jwt";
 
 export const signIn = async (payload) => {
   try {
-    const { token, user, message } = await authService.signIn(payload);
+    const { data, message } = await authService.signIn(payload);
 
-    if (token && user) {
-      setJWT(token);
+    if (data) {
+      const { token, user } = data;
 
-      return { success: true };
+      if (token && user) {
+        setJWT(token);
+
+        return { success: true };
+      }
     } else return message;
   } catch (error) {
     throw error;

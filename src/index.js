@@ -9,9 +9,6 @@ import { RecoilRoot } from "recoil";
 import Root from "./config/root";
 import ErrorBoundary from "./config/error";
 
-// styles
-import "./styles/index.css";
-
 ReactDOM.render(
   <RecoilRoot>
     <ErrorBoundary>

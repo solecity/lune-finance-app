@@ -4,9 +4,11 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colours.background};
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
     color: ${({ theme }) => theme.colours.black};
     transition: background 0.2s ease-in, color 0.2s ease-in;
-    font-family: 'Roboto', sans-serif;
   }
 
   svg {
@@ -39,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => `${theme.colours.white} !important`};
   }
   
-  .Mui-error {
+  .Mui-error, .error {
     color: ${({ theme }) => theme.colours.error} !important;
   }
 `;

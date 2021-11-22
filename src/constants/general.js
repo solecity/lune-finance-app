@@ -50,7 +50,8 @@ const COLOURS = {
 
 const VALIDATIONS = {
   ACCOUNT: ["cash", "bank", "savings", "investment"],
-  CATEGORY: ["income", "expense"]
+  CATEGORY: ["income", "expense"],
+  TRANSACTION: ["expense", "income", "transfer", "savings", "investment"]
 };
 
 export { DATE_FORMAT, IMG, CONSTANTS, TYPES, COLOURS, VALIDATIONS };

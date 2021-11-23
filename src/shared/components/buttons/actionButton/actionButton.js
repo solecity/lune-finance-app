@@ -18,6 +18,7 @@ const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
         </StyledActionButton>
       ) : isSmall ? (
         <StyledSmallCardButton
+          className="icon"
           variant="contained"
           colour={colour}
           onClick={action}
@@ -25,7 +26,7 @@ const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
           {icon}
         </StyledSmallCardButton>
       ) : (
-        <StyledCardButton variant="contained" onClick={action}>
+        <StyledCardButton className="icon" variant="contained" onClick={action}>
           {icon}
         </StyledCardButton>
       )}

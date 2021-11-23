@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     transition: background 0.2s ease-in, color 0.2s ease-in;
   }
 
-  svg {
+  .icon > svg {
     width: 1.1rem;
   }
   
@@ -53,6 +53,7 @@ const general = {
   grey: "rgba(213, 217, 219, 1)",
   darkGrey: "rgba(160, 168, 172, 1)",
   green: "rgba(139, 186, 93, 1)",
+  yellow: "rgba(221, 181, 61, 1)",
   red: "rgba(217, 74, 74, 1)",
   blue: "rgba(63, 123, 166, 1)"
 };

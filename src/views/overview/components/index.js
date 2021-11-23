@@ -1,3 +1,4 @@
 import StatsType from "./statsType/statsType";
+import Chart from "./chart/chart";
 
-export { StatsType };
+export { StatsType, Chart };

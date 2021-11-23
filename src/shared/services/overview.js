@@ -7,4 +7,10 @@ const getTypeStats = async () => {
   return res.data;
 };
 
-export default { getTypeStats };
+const getDateStats = async (params) => {
+  const res = await api().get("/transactions/stats/date", { params });
+
+  return res.data;
+};
+
+export default { getTypeStats, getDateStats };

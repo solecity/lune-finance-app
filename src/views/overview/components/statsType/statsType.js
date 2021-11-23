@@ -1,6 +1,5 @@
 // base
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
@@ -10,10 +9,14 @@ import OverviewService from "shared/services/overview";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 
 // styled components
-import { StyleGrid, StyledCard, StyledTypography } from "./styles";
+import {
+  StyleCircularProgress,
+  StyleGrid,
+  StyledCard,
+  StyledTypography
+} from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -21,12 +24,16 @@ import { settingsState } from "shared/recoil/atoms";
 const StatsType = () => {
   const settings = useRecoilValue(settingsState);
 
+  const [isLoading, setIsLoading] = useState(true);
   const [stats, setStats] = useState({});
 
   const getData = async () => {
+    setIsLoading(true);
+
     const { data } = await OverviewService.getTypeStats();
 
     setStats(data.stats);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -37,9 +44,13 @@ const StatsType = () => {
     <Grid container spacing={1}>
       <StyleGrid item xs={3}>
         <StyledCard>
-          <StyledTypography component="div" variant="h6" className="green">
-            {stats.income} {settings.currencySymbol}
-          </StyledTypography>
+          {isLoading ? (
+            <StyleCircularProgress />
+          ) : (
+            <StyledTypography component="div" variant="h6" className="green">
+              {Math.trunc(stats.income * 100) / 100} {settings.currencySymbol}
+            </StyledTypography>
+          )}
           <StyledTypography component="div" variant="body2" className="label">
             Income
           </StyledTypography>
@@ -47,9 +58,13 @@ const StatsType = () => {
       </StyleGrid>
       <Grid item xs={3}>
         <StyledCard>
-          <StyledTypography component="div" variant="h6" className="red">
-            {stats.expense} {settings.currencySymbol}
-          </StyledTypography>
+          {isLoading ? (
+            <StyleCircularProgress />
+          ) : (
+            <StyledTypography component="div" variant="h6" className="red">
+              {Math.trunc(stats.expense * 100) / 100} {settings.currencySymbol}
+            </StyledTypography>
+          )}
           <StyledTypography component="div" variant="body2" className="label">
             Expense
           </StyledTypography>
@@ -57,9 +72,13 @@ const StatsType = () => {
       </Grid>
       <Grid item xs={3}>
         <StyledCard>
-          <StyledTypography component="div" variant="h6" className="green">
-            {stats.savings} {settings.currencySymbol}
-          </StyledTypography>
+          {isLoading ? (
+            <StyleCircularProgress />
+          ) : (
+            <StyledTypography component="div" variant="h6" className="yellow">
+              {Math.trunc(stats.savings * 100) / 100} {settings.currencySymbol}
+            </StyledTypography>
+          )}
           <StyledTypography component="div" variant="body2" className="label">
             Savings
           </StyledTypography>
@@ -67,9 +86,14 @@ const StatsType = () => {
       </Grid>
       <Grid item xs={3}>
         <StyledCard>
-          <StyledTypography component="div" variant="h6" className="blue">
-            {stats.investment} {settings.currencySymbol}
-          </StyledTypography>
+          {isLoading ? (
+            <StyleCircularProgress />
+          ) : (
+            <StyledTypography component="div" variant="h6" className="blue">
+              {Math.trunc(stats.investment * 100) / 100}{" "}
+              {settings.currencySymbol}
+            </StyledTypography>
+          )}
           <StyledTypography component="div" variant="body2" className="label">
             Investment
           </StyledTypography>

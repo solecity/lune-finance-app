@@ -2,9 +2,12 @@
 import styled from "styled-components";
 
 // external components
+import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
+
+const StyleCircularProgress = styled(CircularProgress)``;
 
 const StyleGrid = styled(Grid)`
   padding: 10px 0;
@@ -24,6 +27,10 @@ const StyledTypography = styled(Typography)`
     color: ${({ theme }) => theme.colours.red};
   }
 
+  &.yellow {
+    color: ${({ theme }) => theme.colours.yellow};
+  }
+
   &.blue {
     color: ${({ theme }) => theme.colours.blue};
   }
@@ -33,4 +40,4 @@ const StyledTypography = styled(Typography)`
   }
 `;
 
-export { StyleGrid, StyledCard, StyledTypography };
+export { StyleCircularProgress, StyleGrid, StyledCard, StyledTypography };

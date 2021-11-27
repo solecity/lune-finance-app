@@ -1,5 +1,6 @@
 // base
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
@@ -21,7 +22,7 @@ import {
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const StatsType = () => {
+const StatsType = ({ year }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +31,7 @@ const StatsType = () => {
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await OverviewService.getTypeStats();
+    const { data } = await OverviewService.getTypeStats(year);
 
     setStats(data.stats);
     setIsLoading(false);
@@ -103,6 +104,8 @@ const StatsType = () => {
   );
 };
 
-StatsType.propTypes = {};
+StatsType.propTypes = {
+  year: PropTypes.object.isRequired
+};
 
 export default StatsType;

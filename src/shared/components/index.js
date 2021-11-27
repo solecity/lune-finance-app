@@ -14,6 +14,7 @@ import ColourButton from "./buttons/colourButton/colourButton";
 import IconButton from "./buttons/iconButton/iconButton";
 import Modal from "./modal/modal";
 import ConfirmDelete from "./confirmDelete/confirmDelete";
+import PieChart from "./charts/pieChart/pieChart";
 
 export {
   NavBar,
@@ -31,5 +32,6 @@ export {
   ColourButton,
   IconButton,
   Modal,
-  ConfirmDelete
+  ConfirmDelete,
+  PieChart
 };

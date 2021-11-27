@@ -16,7 +16,7 @@ const StyledPaper = styled(Paper)`
 `;
 
 const StyleGrid = styled(Grid)`
-  height: 400px;
+  height: 80%;
   justify-content: center;
   align-items: center;
 `;

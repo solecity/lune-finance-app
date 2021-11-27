@@ -7,7 +7,10 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 
-const StyleCircularProgress = styled(CircularProgress)``;
+const StyleCircularProgress = styled(CircularProgress)`
+  margin: 0 !important;
+  color: ${({ theme }) => theme.colours.secondary} !important;
+`;
 
 const StyleGrid = styled(Grid)`
   padding: 10px 0;
@@ -19,6 +22,8 @@ const StyledCard = styled(Card)`
 `;
 
 const StyledTypography = styled(Typography)`
+  margin: 6px 0 !important;
+
   &.green {
     color: ${({ theme }) => theme.colours.green};
   }
@@ -36,6 +41,7 @@ const StyledTypography = styled(Typography)`
   }
 
   &.label {
+    margin: 0 0 0 2px !important;
     color: ${({ theme }) => theme.colours.darkGrey};
   }
 `;

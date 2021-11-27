@@ -53,8 +53,8 @@ const general = {
   grey: "rgba(213, 217, 219, 1)",
   darkGrey: "rgba(160, 168, 172, 1)",
   green: "rgba(139, 186, 93, 1)",
-  yellow: "rgba(221, 181, 61, 1)",
   red: "rgba(217, 74, 74, 1)",
+  yellow: "rgba(221, 181, 61, 1)",
   blue: "rgba(63, 123, 166, 1)"
 };
 

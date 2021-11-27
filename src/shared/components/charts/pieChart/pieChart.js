@@ -14,6 +14,9 @@ import OverviewService from "shared/services/overview";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
+// custom components
+import { PieChart } from "shared/components";
+
 // styled components
 import {
   StyleCircularProgress,
@@ -25,68 +28,48 @@ import {
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const Chart = ({ year }) => {
+const CategoriesChart = ({ title, series, isLoading }) => {
   const settings = useRecoilValue(settingsState);
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState([]);
 
   const options = {
     title: {
       text: ""
     },
     chart: {
-      type: "column"
+      type: "pie",
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
     },
     credits: {
       enabled: false
     },
-    xAxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ]
+    tooltip: {
+      pointFormat: `<b>{point.percentage:.1f}%</b> : {point.y:.2f} ${settings.currencySymbol}`
     },
-    yAxis: {
-      title: { text: null },
-      labels: {
-        format: `{value} ${settings.currencySymbol}`
+    accessibility: {
+      point: {
+        valueSuffix: "%"
       }
     },
-    tooltip: {
-      valueDecimals: 2
+    legend: { itemMarginTop: 2, maxHeight: 100 },
+    plotOptions: {
+      pie: {
+        cursor: "pointer",
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
     },
-    series: stats
+    series
   };
-
-  const getData = async () => {
-    setIsLoading(true);
-
-    const { data } = await OverviewService.getMonthlyStats(year);
-
-    setStats(data.stats);
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <StyledPaper>
       <StyledTitle container>
         <Typography component="div" variant="h6" className="green">
-          Income / Outcome
+          {title}
         </Typography>
       </StyledTitle>
       {isLoading ? (
@@ -94,7 +77,7 @@ const Chart = ({ year }) => {
           <StyleCircularProgress />
         </StyleGrid>
       ) : (
-        <Grid item>
+        <Grid item xs={12}>
           <HighchartsReact highcharts={Highcharts} options={options} />
         </Grid>
       )}
@@ -102,8 +85,10 @@ const Chart = ({ year }) => {
   );
 };
 
-Chart.propTypes = {
-  year: PropTypes.object.isRequired
+CategoriesChart.propTypes = {
+  title: PropTypes.string.isRequired,
+  series: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
-export default Chart;
+export default CategoriesChart;

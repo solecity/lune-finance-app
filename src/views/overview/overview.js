@@ -23,10 +23,10 @@ const Overview = () => {
       <Header title={"Overview"} />
       <Grid container spacing={1}>
         <StatsType year={year} />
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Chart year={year} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <CategoriesChart year={year} />
         </Grid>
       </Grid>

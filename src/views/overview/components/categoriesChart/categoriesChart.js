@@ -9,7 +9,7 @@ import OverviewService from "shared/services/overview";
 import { PieChart } from "shared/components";
 
 const CategoriesChart = ({ year }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [stats, setStats] = useState([]);
 
   const getData = async () => {
@@ -22,7 +22,7 @@ const CategoriesChart = ({ year }) => {
   };
 
   useEffect(() => {
-    //getData();
+    getData();
   }, []);
 
   return <PieChart title="Expenses" series={stats} isLoading={isLoading} />;

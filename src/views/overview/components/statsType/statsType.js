@@ -38,7 +38,7 @@ const StatsType = ({ year }) => {
   };
 
   useEffect(() => {
-    getData();
+    //getData();
   }, []);
 
   return (

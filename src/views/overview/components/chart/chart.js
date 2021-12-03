@@ -79,7 +79,7 @@ const Chart = ({ year }) => {
   };
 
   useEffect(() => {
-    getData();
+    //getData();
   }, []);
 
   return (

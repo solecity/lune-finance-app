@@ -95,7 +95,6 @@ const Categories = () => {
         <Divider />
       </Grid>
       <Grid item></Grid>
-      <Grid item>{handleContent()}</Grid>
       <Modal
         name="category"
         handleModal={handleForm}

@@ -27,7 +27,7 @@ const Overview = () => {
           <Chart year={year} />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <CategoriesChart year={year} />
+          {/*<CategoriesChart year={year} />*/}
         </Grid>
       </Grid>
     </Container>

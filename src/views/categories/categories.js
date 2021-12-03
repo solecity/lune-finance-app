@@ -12,20 +12,28 @@ import Typography from "@mui/material/Typography";
 import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
-import { Header, Modal, IconButton } from "shared/components";
+import {
+  Header,
+  Toolbar,
+  Modal,
+  TabButton,
+  IconButton
+} from "shared/components";
 import { Form, Cards } from "./components";
 
 // styled components
-import { StyledSubTitle, StyledIconButton } from "./styles";
+import { StyledTabs, StyledSubTitle, StyledIconButton } from "./styles";
 
 // constants
-import { TYPES } from "constants/general";
+import { CONSTANTS, TYPES } from "constants/general";
 
 const Categories = () => {
   const [expenseData, setExpenseData] = useState([]);
   const [incomeData, setIncomeData] = useState([]);
   const [category, setCategory] = useState({});
   const [formType, setFormType] = useState("");
+  const [tab, setTab] = useState(0);
+  const [selected, setSelected] = useState(tab);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
@@ -35,6 +43,36 @@ const Categories = () => {
 
     setExpenseData(expense);
     setIncomeData(income);
+  };
+
+  const handleTab = (value) => {
+    setTab(value);
+    setSelected(value);
+  };
+
+  const handleContent = () => {
+    let data = [];
+
+    switch (tab) {
+      case 0:
+        data = expenseData;
+        break;
+      case 1:
+        data = incomeData;
+        break;
+      default:
+        break;
+    }
+
+    return (
+      <Cards
+        data={data}
+        getData={getData}
+        handleForm={handleForm}
+        setCategory={setCategory}
+        setIsEdit={setIsEdit}
+      />
+    );
   };
 
   const handleForm = () => setIsOpen(!isOpen);
@@ -53,57 +91,35 @@ const Categories = () => {
   return (
     <Container>
       <Header title={"Categories"} />
-      <Grid container spacing={1} direction="column">
-        <Grid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Outcome</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip="Add"
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.CATEGORY[1].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Cards
-            data={expenseData}
-            getData={getData}
-            handleForm={handleForm}
-            setCategory={setCategory}
-            setIsEdit={setIsEdit}
+      <StyledTabs container spacing={1}>
+        <Grid item xs={2}>
+          <TabButton
+            tab={0}
+            text="Outcome"
+            selected={selected}
+            action={() => handleTab(0)}
           />
         </Grid>
-        <Grid item>
-          <Divider />
-        </Grid>
-        <Grid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Income</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip={"Add"}
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.CATEGORY[0].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Cards
-            data={incomeData}
-            getData={getData}
-            handleForm={handleForm}
-            setCategory={setCategory}
-            setIsEdit={setIsEdit}
+        <Grid item xs={2}>
+          <TabButton
+            tab={1}
+            text="Income"
+            selected={selected}
+            action={() => handleTab(1)}
           />
         </Grid>
+      </StyledTabs>
+      <Grid item>
+        <Divider />
       </Grid>
+      <Grid item>
+        <Toolbar
+          handleForm={() => handleAddForm(TYPES.CATEGORY[selected].value)}
+          setIsEdit={setIsEdit}
+          setElement={setCategory}
+        />
+      </Grid>
+      <Grid item>{handleContent()}</Grid>
       <Modal
         name="category"
         handleModal={handleForm}

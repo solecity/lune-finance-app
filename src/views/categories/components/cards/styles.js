@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
 import SimpleBar from "simplebar-react";
 
 const StyledBoard = styled(Grid)`
-  margin-top: 8px !important;
+  margin-top: 20px !important;
   margin-bottom: 8px !important;
   display: flex;
   flex-flow: row nowrap;
@@ -20,6 +21,7 @@ const StyledGrid = styled.div`
 `;
 
 const StyledScroll = styled(SimpleBar)`
+  height: calc(100vh - 265px);
   width: 100%;
 
   .simplebar-wrapper {
@@ -36,7 +38,7 @@ const StyledScroll = styled(SimpleBar)`
 `;
 
 const StyledInnerScroll = styled(SimpleBar)`
-  max-height: 250px;
+  max-height: calc(100vh - 380px);
 
   .simplebar-scrollbar::before {
     background-color: ${({ theme }) => theme.colours.primary};

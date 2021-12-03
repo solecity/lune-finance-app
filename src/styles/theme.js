@@ -65,6 +65,8 @@ const Light = {
     primary: "rgba(42, 81, 115, 1)",
     secondary: "rgba(171, 195, 211, 1)",
     accent: "rgba(210, 220, 227, 1)",
+    highlight: "rgba(235, 166, 138, 1)",
+    darklight: "rgba(112, 61, 48, 1)",
     boxShadow: "rgba(43, 71, 75, 0.3)",
     ...general
   }

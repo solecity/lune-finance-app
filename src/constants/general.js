@@ -16,13 +16,14 @@ const CONSTANTS = {
   LIGHT: "light",
   INITIAL_ACCOUNT_TYPE: "cash",
   EXPENSE: "expense",
-  INCOME: "income"
+  INCOME: "income",
+  OUTCOME: "outcome"
 };
 
 const TYPES = {
   CATEGORY: [
-    { value: "income", name: "Income" },
-    { value: "expense", name: "Expense" }
+    { value: "expense", name: "Expense" },
+    { value: "income", name: "Income" }
   ],
   TRANSACTION: [
     { value: "income", name: "Income" },

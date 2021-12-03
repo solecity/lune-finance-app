@@ -9,6 +9,7 @@ import InputDatePicker from "./inputs/datepicker/datepicker";
 import InputColourPicker from "./inputs/colourPicker/colourPicker";
 import InputCheckbox from "./inputs/checkbox/checkbox";
 import FormButton from "./buttons/formButton/formButton";
+import TabButton from "./buttons/tabButton/tabButton";
 import ActionButton from "./buttons/actionButton/actionButton";
 import ColourButton from "./buttons/colourButton/colourButton";
 import IconButton from "./buttons/iconButton/iconButton";
@@ -28,6 +29,7 @@ export {
   InputColourPicker,
   InputCheckbox,
   FormButton,
+  TabButton,
   ActionButton,
   ColourButton,
   IconButton,

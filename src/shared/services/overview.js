@@ -15,7 +15,7 @@ const getMonthlyStats = async (params) => {
 
 const getCategoriesStats = async (params) => {
   const res = await api().get("/stats/category", { params });
-
+  console.log(res);
   return res.data;
 };
 

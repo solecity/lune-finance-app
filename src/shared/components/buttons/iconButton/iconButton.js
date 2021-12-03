@@ -11,7 +11,12 @@ import { StyledIconButton } from "./styles";
 const IconButton = ({ tooltip, icon, action }) => {
   return (
     <Tooltip title={tooltip}>
-      <StyledIconButton size="small" color="primary" onClick={action}>
+      <StyledIconButton
+        size="small"
+        color="primary"
+        onClick={action}
+        className="icon"
+      >
         {icon}
       </StyledIconButton>
     </Tooltip>

@@ -15,9 +15,7 @@ const CategoriesChart = ({ year }) => {
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await OverviewService.getCategoriesStats(year);
-
-    console.log(data);
+    //const { data } = await OverviewService.getCategoriesStats(year);
 
     //setStats(data.stats);
     setIsLoading(false);

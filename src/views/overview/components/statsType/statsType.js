@@ -43,7 +43,7 @@ const StatsType = ({ year }) => {
 
   return (
     <Grid container spacing={1}>
-      <StyleGrid item xs={3}>
+      <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <StyleCircularProgress />
@@ -57,7 +57,7 @@ const StatsType = ({ year }) => {
           </StyledTypography>
         </StyledCard>
       </StyleGrid>
-      <Grid item xs={3}>
+      <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <StyleCircularProgress />
@@ -70,8 +70,8 @@ const StatsType = ({ year }) => {
             Expense
           </StyledTypography>
         </StyledCard>
-      </Grid>
-      <Grid item xs={3}>
+      </StyleGrid>
+      <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <StyleCircularProgress />
@@ -84,8 +84,8 @@ const StatsType = ({ year }) => {
             Savings
           </StyledTypography>
         </StyledCard>
-      </Grid>
-      <Grid item xs={3}>
+      </StyleGrid>
+      <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <StyleCircularProgress />
@@ -99,7 +99,7 @@ const StatsType = ({ year }) => {
             Investment
           </StyledTypography>
         </StyledCard>
-      </Grid>
+      </StyleGrid>
     </Grid>
   );
 };

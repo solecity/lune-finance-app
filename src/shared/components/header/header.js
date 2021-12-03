@@ -11,7 +11,7 @@ import { StyledContainer } from "./styles";
 const Header = ({ title }) => {
   return (
     <StyledContainer>
-      <Typography variant="h4">{title}</Typography>
+      <Typography variant="h5">{title}</Typography>
     </StyledContainer>
   );
 };

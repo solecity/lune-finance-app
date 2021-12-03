@@ -30,7 +30,7 @@ import {
 import { settingsState } from "shared/recoil/atoms";
 
 // constants
-import { CONSTANTS, COLOURS } from "constants/general";
+import { CONSTANTS, TYPES, COLOURS } from "constants/general";
 
 const CategoryCard = ({
   getData,
@@ -42,6 +42,8 @@ const CategoryCard = ({
   const settings = useRecoilValue(settingsState);
 
   const [openConfirm, setOpenConfirm] = useState(false);
+
+  const hasBudget = category.type === TYPES.CATEGORY[0].value;
 
   const bg =
     settings.theme === CONSTANTS.LIGHT
@@ -98,9 +100,11 @@ const CategoryCard = ({
           </Typography>
         </StyledGrid>
         <StyledGrid container item xs={4} justifyContent="flex-end">
-          <Typography component="div" variant="body2">
-            {category.monthlyBudget} {settings.currencySymbol}
-          </Typography>
+          {hasBudget && (
+            <Typography component="div" variant="body2">
+              {category.monthlyBudget} {settings.currencySymbol}
+            </Typography>
+          )}
         </StyledGrid>
         <Grid container item xs={2} direction="column">
           <StyledButton item xs={2} className="bottom">

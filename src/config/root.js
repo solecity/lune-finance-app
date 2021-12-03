@@ -18,7 +18,8 @@ import App from "./app";
 import { settingsState } from "shared/recoil/atoms";
 
 // theme
-import { GlobalStyles, Light, Dark } from "styles/theme";
+import { GlobalStyles } from "styles/global";
+import { Light, Dark } from "styles/theme";
 
 // styles
 import "simplebar/dist/simplebar.min.css";

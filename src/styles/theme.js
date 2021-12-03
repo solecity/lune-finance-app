@@ -1,51 +1,3 @@
-// libraries
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyles = createGlobalStyle`
-  body {
-    background-color: ${({ theme }) => theme.colours.background};
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
-    color: ${({ theme }) => theme.colours.black};
-    transition: background 0.2s ease-in, color 0.2s ease-in;
-  }
-
-  .icon > svg {
-    width: 1.1rem;
-  }
-  
-  .MuiPaper-root {
-    border-radius: 0 !important;
-    color: ${({ theme }) => `${theme.colours.black} !important`};
-  }
-
-  .MuiFormControl-root {
-    display: block !important;
-  }
-  
-  .MuiFormHelperText-root {
-    margin-left: 10px !important;
-  }
-
-  .MuiPickersDay-root {
-    color: ${({ theme }) => `${theme.colours.black} !important`};
-  }
-
-  .MuiDivider-root {
-    border-color: ${({ theme }) => `${theme.colours.grey} !important`};
-  }
-  
-  .Mui-selected {
-    background-color: ${({ theme }) => theme.colours.primary} !important;
-    color: ${({ theme }) => `${theme.colours.white} !important`};
-  }
-  
-  .Mui-error, .error {
-    color: ${({ theme }) => theme.colours.error} !important;
-  }
-`;
-
 const general = {
   error: "rgba(208, 86, 37, 1)",
   white: "rgba(255, 255, 255, 1)",
@@ -72,7 +24,7 @@ const Light = {
 
 const Dark = {
   colours: {
-    background: "rgba(244, 244, 244, 1)",
+    background: "rgba(38, 38, 38, 1)",
     inputBackground: "rgba(252, 252, 252, 1)",
     primary: "rgba(42, 81, 115, 1)",
     secondary: "rgba(159, 185, 202, 1)",
@@ -82,4 +34,4 @@ const Dark = {
   }
 };
 
-export { GlobalStyles, Light, Dark };
+export { Light, Dark };

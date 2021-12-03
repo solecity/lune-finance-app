@@ -65,8 +65,6 @@ const CategoriesChart = ({ title, series, isLoading }) => {
     series
   };
 
-  console.log(isLoading);
-
   return (
     <StyledPaper>
       <StyledTitle container>

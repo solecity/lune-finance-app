@@ -15,14 +15,14 @@ const CategoriesChart = ({ year }) => {
   const getData = async () => {
     setIsLoading(true);
 
-    //const { data } = await OverviewService.getCategoriesStats(year);
+    const { data } = await OverviewService.getCategoriesStats(year);
 
-    //setStats(data.stats);
+    setStats(data.stats);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getData();
+    //getData();
   }, []);
 
   return <PieChart title="Expenses" series={stats} isLoading={isLoading} />;

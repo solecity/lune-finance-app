@@ -7,9 +7,6 @@ import { useRecoilValue } from "recoil";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-// api
-import OverviewService from "shared/services/overview";
-
 // external components
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";

@@ -91,14 +91,40 @@ const Categories = () => {
   return (
     <Container>
       <Header title={"Categories"} />
+      <StyledTabs container spacing={1}>
+        <Grid item xs={2}>
+          <TabButton
+            tab={0}
+            text="Outcome"
+            selected={selected}
+            action={() => handleTab(0)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TabButton
+            tab={1}
+            text="Income"
+            selected={selected}
+            action={() => handleTab(1)}
+          />
+        </Grid>
+      </StyledTabs>
       <Grid item>
         <Divider />
       </Grid>
-      <Grid item></Grid>
+      <Grid item>
+        <Toolbar
+          handleForm={() => handleAddForm(TYPES.CATEGORY[selected].value)}
+          setIsEdit={setIsEdit}
+          setElement={setCategory}
+        />
+      </Grid>
+      <Grid item>{handleContent()}</Grid>
       <Modal
         name="category"
         handleModal={handleForm}
         isOpen={isOpen}
+        z
         isEdit={isEdit}
       >
         <Form

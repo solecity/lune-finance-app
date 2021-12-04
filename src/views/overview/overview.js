@@ -13,15 +13,23 @@ import { Header } from "shared/components";
 import { StatsType, Chart, CategoriesChart } from "./components";
 
 const Overview = () => {
-  /*const year = {
+  const year = {
     start: startOfYear(new Date()),
     end: endOfYear(new Date())
-  };*/
+  };
 
   return (
     <Container>
       <Header title={"Overview"} />
-      <Grid container spacing={1}></Grid>
+      <Grid container spacing={1}>
+        <StatsType year={year} />
+        <Grid item xs={12} md={8}>
+          <Chart year={year} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          {/*<CategoriesChart year={year} />*/}
+        </Grid>
+      </Grid>
     </Container>
   );
 };

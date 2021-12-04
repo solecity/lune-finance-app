@@ -14,7 +14,48 @@ const routes = [
   },
   {
     layout: Main,
-    routes: []
+    routes: [
+      {
+        exact: true,
+        path: "/",
+        component: lazy(() => import("views/overview/overview"))
+      },
+      {
+        exact: true,
+        path: "/overview",
+        component: lazy(() => import("views/overview/overview"))
+      },
+      {
+        exact: true,
+        path: "/transactions",
+        component: lazy(() => import("views/transactions/transactions"))
+      },
+      {
+        exact: true,
+        path: "/accounts",
+        component: lazy(() => import("views/accounts/accounts"))
+      },
+      {
+        exact: true,
+        path: "/debts",
+        component: lazy(() => import("views/debts/debts"))
+      },
+      {
+        exact: true,
+        path: "/goals",
+        component: lazy(() => import("views/goals/goals"))
+      },
+      {
+        exact: true,
+        path: "/categories",
+        component: lazy(() => import("views/categories/categories"))
+      },
+      {
+        exact: true,
+        path: "/recipients",
+        component: lazy(() => import("views/recipients/recipients"))
+      }
+    ]
   }
 ];
 

@@ -34,20 +34,15 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [percentage, setPercentage] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
   const [openConfirm, setOpenConfirm] = useState(false);
 
-  const remainingAmount = debt.amount - totalAmount;
-
-  const getTotalAmount = useCallback(() => {
-    setTotalAmount(Math.floor(Math.random() * debt.amount));
-  }, [debt]);
+  const remainingAmount = debt.amount - debt.payed;
 
   const getPercentage = useCallback(() => {
-    const value = (totalAmount * 100) / debt.amount;
+    const value = (debt.payed * 100) / debt.amount;
 
     setPercentage(value);
-  }, [debt, totalAmount]);
+  }, [debt]);
 
   const handleEdit = () => {
     setIsEdit(true);
@@ -68,10 +63,6 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
   };
 
   useEffect(() => {
-    getTotalAmount();
-  }, [getTotalAmount]);
-
-  useEffect(() => {
     getPercentage();
   }, [getPercentage]);
 
@@ -86,7 +77,7 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
           <Grid container>
             <Grid item xs={6}>
               <Typography component="div" variant="subtitle2">
-                {totalAmount} {settings.currencySymbol}
+                {debt.payed} {settings.currencySymbol}
               </Typography>
             </Grid>
             <Grid container item xs={6} justifyContent="flex-end">

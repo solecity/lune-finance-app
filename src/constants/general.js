@@ -26,11 +26,11 @@ const TYPES = {
     { value: "income", name: "Income" }
   ],
   TRANSACTION: [
-    { value: "income", name: "Income" },
     { value: "expense", name: "Expense" },
-    { value: "transfer", name: "Transfer" },
+    { value: "income", name: "Income" },
     { value: "savings", name: "Savings" },
-    { value: "investment", name: "Investment" }
+    { value: "investment", name: "Investment" },
+    { value: "transfer", name: "Transfer" }
   ],
   ACCOUNT: [
     { value: "cash", name: "Cash" },

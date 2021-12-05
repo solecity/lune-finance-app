@@ -15,10 +15,12 @@ import { Header, Toolbar, Modal, TabButton } from "shared/components";
 import { Form, Cards } from "./components";
 
 // styled components
-import { StyleGrid, StyledTabs } from "./styles";
+import { StyledGrid, StyledTabs } from "./styles";
 
 // constants
 import { TYPES } from "constants/general";
+
+const tabs = ["Outcome", "Income"];
 
 const Categories = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -89,22 +91,16 @@ const Categories = () => {
     <Container>
       <Header title={"Categories"} />
       <StyledTabs container spacing={1}>
-        <Grid item xs={6} sm={4} md={2}>
-          <TabButton
-            tab={0}
-            text="Outcome"
-            selected={selected}
-            action={() => handleTab(0)}
-          />
-        </Grid>
-        <Grid item xs={6} sm={4} md={2}>
-          <TabButton
-            tab={1}
-            text="Income"
-            selected={selected}
-            action={() => handleTab(1)}
-          />
-        </Grid>
+        {tabs.map((tab, i) => (
+          <Grid item xs={6} sm={4} md={2} key={i}>
+            <TabButton
+              tab={i}
+              text={tab}
+              selected={selected}
+              action={() => handleTab(i)}
+            />
+          </Grid>
+        ))}
       </StyledTabs>
       <Grid item>
         <Divider />
@@ -118,9 +114,9 @@ const Categories = () => {
       </Grid>
       <Grid item>
         {isLoading ? (
-          <StyleGrid container>
+          <StyledGrid container>
             <CircularProgress />
-          </StyleGrid>
+          </StyledGrid>
         ) : (
           handleContent()
         )}

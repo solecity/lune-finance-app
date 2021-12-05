@@ -9,6 +9,7 @@ import AccountService from "../../shared/services/account";
 import DebtService from "../../shared/services/debt";
 
 // external components
+import CircularProgress from "@mui/material/CircularProgress";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -16,38 +17,57 @@ import Typography from "@mui/material/Typography";
 import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
-import { Header, Modal, IconButton } from "shared/components";
+import {
+  Header,
+  Toolbar,
+  Modal,
+  TabButton,
+  IconButton
+} from "shared/components";
 import { Form, Table } from "./components";
 
 // styled components
-import { StyledGrid, StyledSubTitle, StyledIconButton } from "./styles";
+import {
+  StyledGrid,
+  StyledTabs,
+  StyledSubTitle,
+  StyledIconButton
+} from "./styles";
 
 // constants
 import { TYPES } from "constants/general";
 
+const tabs = ["Expenses", "Income", "Savings", "Investments", "Transfer"];
+
 const Transactions = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [incomeData, setIncomeData] = useState([]);
-  const [outcomeData, setOutcomeData] = useState([]);
-  const [transferData, setTransferData] = useState([]);
+  const [expenseData, setExpenseData] = useState([]);
   const [savingsData, setSavingsData] = useState([]);
   const [investmentData, setInvestmentData] = useState([]);
+  const [transferData, setTransferData] = useState([]);
   const [transaction, setTransaction] = useState({});
   const [categories, setCategories] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [debts, setDebts] = useState([]);
+  const [tab, setTab] = useState(0);
+  const [selected, setSelected] = useState(tab);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [formType, setFormType] = useState("expense");
 
   const getData = async () => {
+    setIsLoading(true);
+
     const { data } = await TransactionService.getMany();
 
     setIncomeData(data.transactions.income);
-    setOutcomeData(data.transactions.expense);
+    setExpenseData(data.transactions.expense);
     setTransferData(data.transactions.transfer);
     setSavingsData(data.transactions.savings);
     setInvestmentData(data.transactions.investment);
+    setIsLoading(false);
   };
 
   const getCategories = async () => {
@@ -75,6 +95,57 @@ const Transactions = () => {
     setDebts(data.debts);
   };
 
+  const handleTab = (value) => {
+    setTab(value);
+    setSelected(value);
+  };
+
+  const handleContent = () => {
+    let data = [];
+    let isTransfer = false;
+
+    switch (tab) {
+      case 0:
+        data = expenseData;
+        isTransfer = false;
+        break;
+      case 1:
+        data = incomeData;
+        isTransfer = false;
+        break;
+      case 2:
+        data = savingsData;
+        isTransfer = true;
+        break;
+      case 3:
+        data = investmentData;
+        isTransfer = true;
+        break;
+      case 4:
+        data = transferData;
+        isTransfer = true;
+        break;
+      default:
+        break;
+    }
+
+    return (
+      <Table
+        isTransfer={isTransfer}
+        data={data}
+        getData={getData}
+        categories={categories}
+        recipients={recipients}
+        accounts={accounts}
+        debts={debts}
+        transaction={transaction}
+        setTransaction={setTransaction}
+        setIsEdit={setIsEdit}
+        handleForm={handleForm}
+      />
+    );
+  };
+
   const handleForm = () => setIsOpen(!isOpen);
 
   const handleAddForm = (type) => {
@@ -95,153 +166,36 @@ const Transactions = () => {
   return (
     <Container>
       <Header title={"Transactions"} />
-      <Grid container spacing={1} direction="column">
-        <StyledGrid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Outcome</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip="Add"
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.TRANSACTION[1].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Table
-            data={outcomeData}
-            getData={getData}
-            categories={categories}
-            recipients={recipients}
-            accounts={accounts}
-            debts={debts}
-            transaction={transaction}
-            setTransaction={setTransaction}
-            setIsEdit={setIsEdit}
-            handleForm={handleForm}
-          />
-        </StyledGrid>
-        <Grid item>
-          <Divider />
-        </Grid>
-        <StyledGrid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Income</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip="Add"
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.TRANSACTION[0].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Table
-            data={incomeData}
-            getData={getData}
-            categories={categories}
-            recipients={recipients}
-            accounts={accounts}
-            debts={debts}
-            transaction={transaction}
-            setTransaction={setTransaction}
-            setIsEdit={setIsEdit}
-            handleForm={handleForm}
-          />
-        </StyledGrid>
-        <Grid item>
-          <Divider />
-        </Grid>
-        <StyledGrid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Savings</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip="Add"
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.TRANSACTION[3].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Table
-            isTransfer={true}
-            data={savingsData}
-            getData={getData}
-            accounts={accounts}
-            transaction={transaction}
-            setTransaction={setTransaction}
-            setIsEdit={setIsEdit}
-            handleForm={handleForm}
-          />
-        </StyledGrid>
-        <Grid item>
-          <Divider />
-        </Grid>
-        <StyledGrid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Investments</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip="Add"
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.TRANSACTION[4].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Table
-            isTransfer={true}
-            data={investmentData}
-            getData={getData}
-            accounts={accounts}
-            transaction={transaction}
-            setTransaction={setTransaction}
-            setIsEdit={setIsEdit}
-            handleForm={handleForm}
-          />
-        </StyledGrid>
-        <Grid item>
-          <Divider />
-        </Grid>
-        <StyledGrid item>
-          <StyledSubTitle>
-            <Grid container alignItems="center">
-              <Grid item xs={11}>
-                <Typography variant="body1">Transfer</Typography>
-              </Grid>
-              <StyledIconButton item xs={1}>
-                <IconButton
-                  tooltip="Add"
-                  icon={<PlusCircle />}
-                  action={() => handleAddForm(TYPES.TRANSACTION[2].value)}
-                />
-              </StyledIconButton>
-            </Grid>
-          </StyledSubTitle>
-          <Table
-            isTransfer={true}
-            data={transferData}
-            getData={getData}
-            accounts={accounts}
-            transaction={transaction}
-            setTransaction={setTransaction}
-            setIsEdit={setIsEdit}
-            handleForm={handleForm}
-          />
-        </StyledGrid>
+      <StyledTabs container spacing={1}>
+        {tabs.map((tab, i) => (
+          <Grid item xs={6} sm={4} md={2} key={i}>
+            <TabButton
+              tab={i}
+              text={tab}
+              selected={selected}
+              action={() => handleTab(i)}
+            />
+          </Grid>
+        ))}
+      </StyledTabs>
+      <Grid item>
+        <Divider />
+      </Grid>
+      <Grid item>
+        <Toolbar
+          handleForm={() => handleAddForm(TYPES.TRANSACTION[selected].value)}
+          setIsEdit={setIsEdit}
+          setElement={setTransaction}
+        />
+      </Grid>
+      <Grid item>
+        {isLoading ? (
+          <StyledGrid container>
+            <CircularProgress />
+          </StyledGrid>
+        ) : (
+          handleContent()
+        )}
       </Grid>
       <Modal
         name="transaction"

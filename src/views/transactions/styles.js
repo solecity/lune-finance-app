@@ -6,7 +6,13 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
 const StyledGrid = styled(Grid)`
-  max-width: 100% !important;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledTabs = styled(Grid)`
+  margin-bottom: 20px;
 `;
 
 const StyledSubTitle = styled(Paper)`
@@ -27,4 +33,4 @@ const StyledIconButton = styled(Grid)`
   }
 `;
 
-export { StyledGrid, StyledSubTitle, StyledIconButton };
+export { StyledGrid, StyledTabs, StyledSubTitle, StyledIconButton };

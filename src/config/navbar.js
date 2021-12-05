@@ -1,7 +1,7 @@
 // external components
 import { Dashboard } from "@styled-icons/boxicons-solid/Dashboard";
 import { TransferAlt } from "@styled-icons/boxicons-regular/TransferAlt";
-import { Spreadsheet } from "@styled-icons/boxicons-regular/Spreadsheet";
+import { Book } from "@styled-icons/boxicons-regular/Book";
 import { Wallet } from "@styled-icons/boxicons-regular/Wallet";
 import { DollarCircle } from "@styled-icons/boxicons-regular/DollarCircle";
 import { Star } from "@styled-icons/boxicons-regular/Star";
@@ -20,7 +20,7 @@ const menuItems = [
     icon: TransferAlt,
     href: "/transactions"
   },
-  { name: "accounts", label: "Accounts", icon: Spreadsheet, href: "/accounts" },
+  { name: "accounts", label: "Accounts", icon: Book, href: "/accounts" },
   { name: "budgets", label: "Budgets", icon: Wallet, href: "/budgets" },
   { name: "debts", label: "Debts", icon: DollarCircle, href: "/debts" },
   { name: "goals", label: "Goals", icon: Star, href: "/goals" },

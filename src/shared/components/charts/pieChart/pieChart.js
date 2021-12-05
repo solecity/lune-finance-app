@@ -11,6 +11,7 @@ import HighchartsReact from "highcharts-react-official";
 import OverviewService from "shared/services/overview";
 
 // external components
+import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
@@ -18,12 +19,7 @@ import Typography from "@mui/material/Typography";
 import { PieChart } from "shared/components";
 
 // styled components
-import {
-  StyleCircularProgress,
-  StyledPaper,
-  StyleGrid,
-  StyledTitle
-} from "./styles";
+import { StyledPaper, StyleGrid, StyledTitle } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -74,7 +70,7 @@ const CategoriesChart = ({ title, series, isLoading }) => {
       </StyledTitle>
       {isLoading ? (
         <StyleGrid container>
-          <StyleCircularProgress />
+          <CircularProgress />
         </StyleGrid>
       ) : (
         <Grid item xs={12}>

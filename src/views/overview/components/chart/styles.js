@@ -6,10 +6,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
-const StyleCircularProgress = styled(CircularProgress)`
-  color: ${({ theme }) => theme.colours.secondary} !important;
-`;
-
 const StyledPaper = styled(Paper)`
   height: 450px;
   margin: 10px 0 !important;
@@ -26,4 +22,4 @@ const StyledTitle = styled(Grid)`
   justify-content: center;
 `;
 
-export { StyleCircularProgress, StyledPaper, StyleGrid, StyledTitle };
+export { StyledPaper, StyleGrid, StyledTitle };

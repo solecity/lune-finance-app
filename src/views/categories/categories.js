@@ -5,29 +5,23 @@ import React, { useState, useEffect } from "react";
 import CategoryService from "shared/services/category";
 
 // external components
+import CircularProgress from "@mui/material/CircularProgress";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
-import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
-import {
-  Header,
-  Toolbar,
-  Modal,
-  TabButton,
-  IconButton
-} from "shared/components";
+import { Header, Toolbar, Modal, TabButton } from "shared/components";
 import { Form, Cards } from "./components";
 
 // styled components
-import { StyledTabs, StyledSubTitle, StyledIconButton } from "./styles";
+import { StyleGrid, StyledTabs } from "./styles";
 
 // constants
-import { CONSTANTS, TYPES } from "constants/general";
+import { TYPES } from "constants/general";
 
 const Categories = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [expenseData, setExpenseData] = useState([]);
   const [incomeData, setIncomeData] = useState([]);
   const [category, setCategory] = useState({});
@@ -38,11 +32,14 @@ const Categories = () => {
   const [isEdit, setIsEdit] = useState(false);
 
   const getData = async () => {
+    setIsLoading(true);
+
     const { data } = await CategoryService.getMany();
     const { expense, income } = data.categories;
 
     setExpenseData(expense);
     setIncomeData(income);
+    setIsLoading(false);
   };
 
   const handleTab = (value) => {
@@ -92,7 +89,7 @@ const Categories = () => {
     <Container>
       <Header title={"Categories"} />
       <StyledTabs container spacing={1}>
-        <Grid item xs={2}>
+        <Grid item xs={6} sm={4} md={2}>
           <TabButton
             tab={0}
             text="Outcome"
@@ -100,7 +97,7 @@ const Categories = () => {
             action={() => handleTab(0)}
           />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6} sm={4} md={2}>
           <TabButton
             tab={1}
             text="Income"
@@ -119,12 +116,19 @@ const Categories = () => {
           setElement={setCategory}
         />
       </Grid>
-      <Grid item>{handleContent()}</Grid>
+      <Grid item>
+        {isLoading ? (
+          <StyleGrid container>
+            <CircularProgress />
+          </StyleGrid>
+        ) : (
+          handleContent()
+        )}
+      </Grid>
       <Modal
         name="category"
         handleModal={handleForm}
         isOpen={isOpen}
-        z
         isEdit={isEdit}
       >
         <Form

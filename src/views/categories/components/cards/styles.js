@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
 import SimpleBar from "simplebar-react";
 
@@ -39,6 +38,7 @@ const StyledScroll = styled(SimpleBar)`
 
 const StyledInnerScroll = styled(SimpleBar)`
   max-height: calc(100vh - 380px);
+  width: auto;
 
   .simplebar-scrollbar::before {
     background-color: ${({ theme }) => theme.colours.primary};
@@ -47,6 +47,7 @@ const StyledInnerScroll = styled(SimpleBar)`
 
 const StyledScrollWrapper = styled.div`
   display: flex;
+  width: auto;
 `;
 
 const StyledColumn = styled(Grid)`

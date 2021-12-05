@@ -11,16 +11,12 @@ import HighchartsReact from "highcharts-react-official";
 import OverviewService from "shared/services/overview";
 
 // external components
+import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 // styled components
-import {
-  StyleCircularProgress,
-  StyledPaper,
-  StyleGrid,
-  StyledTitle
-} from "./styles";
+import { StyledPaper, StyleGrid, StyledTitle } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -91,7 +87,7 @@ const Chart = ({ year }) => {
       </StyledTitle>
       {isLoading ? (
         <StyleGrid container>
-          <StyleCircularProgress />
+          <CircularProgress />
         </StyleGrid>
       ) : (
         <Grid item>

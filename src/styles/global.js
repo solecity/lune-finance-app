@@ -35,6 +35,11 @@ export const GlobalStyles = createGlobalStyle`
   .MuiDivider-root {
     border-color: ${({ theme }) => `${theme.colours.grey} !important`};
   }
+
+  .MuiCircularProgress-root {
+    margin: 0 !important;
+    color: ${({ theme }) => theme.colours.secondary} !important;
+  }
   
   .Mui-selected {
     background-color: ${({ theme }) => theme.colours.primary} !important;

@@ -9,15 +9,11 @@ import { useRecoilValue } from "recoil";
 import OverviewService from "shared/services/overview";
 
 // external components
+import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 
 // styled components
-import {
-  StyleCircularProgress,
-  StyleGrid,
-  StyledCard,
-  StyledTypography
-} from "./styles";
+import { StyleGrid, StyledCard, StyledTypography } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -46,7 +42,7 @@ const StatsType = ({ year }) => {
       <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
-            <StyleCircularProgress />
+            <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="green">
               {Math.trunc(stats.income * 100) / 100} {settings.currencySymbol}
@@ -60,7 +56,7 @@ const StatsType = ({ year }) => {
       <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
-            <StyleCircularProgress />
+            <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="red">
               {Math.trunc(stats.expense * 100) / 100} {settings.currencySymbol}
@@ -74,7 +70,7 @@ const StatsType = ({ year }) => {
       <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
-            <StyleCircularProgress />
+            <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="yellow">
               {Math.trunc(stats.savings * 100) / 100} {settings.currencySymbol}
@@ -88,7 +84,7 @@ const StatsType = ({ year }) => {
       <StyleGrid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
-            <StyleCircularProgress />
+            <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="blue">
               {Math.trunc(stats.investment * 100) / 100}{" "}

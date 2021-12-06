@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
-    color: ${({ theme }) => theme.colours.black};
+    color: ${({ theme }) => theme.colours.mainText};
     transition: background 0.2s ease-in, color 0.2s ease-in;
   }
 
@@ -16,8 +16,9 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .MuiPaper-root {
+    background-color: ${({ theme }) => theme.colours.cardBackground} !important;
     border-radius: 0 !important;
-    color: ${({ theme }) => `${theme.colours.black} !important`};
+    color: ${({ theme }) => `${theme.colours.mainText} !important`};
   }
 
   .MuiFormControl-root {

@@ -13,23 +13,29 @@ const general = {
 const Light = {
   colours: {
     background: "rgba(244, 244, 244, 1)",
+    cardBackground: "rgba(252, 252, 252, 1)",
     inputBackground: "rgba(252, 252, 252, 1)",
     primary: "rgba(42, 81, 115, 1)",
     secondary: "rgba(171, 195, 211, 1)",
     accent: "rgba(210, 220, 227, 1)",
     boxShadow: "rgba(43, 71, 75, 0.3)",
+    mainText: "rgba(28, 28, 28, 1)",
+    buttonText: "rgba(255, 255, 255, 1)",
     ...general
   }
 };
 
 const Dark = {
   colours: {
-    background: "rgba(38, 38, 38, 1)",
-    inputBackground: "rgba(252, 252, 252, 1)",
+    background: "rgba(24, 40, 53, 1)",
+    cardBackground: "rgba(33, 56, 74, 1)",
+    inputBackground: "rgba(27, 51, 70, 1)",
     primary: "rgba(42, 81, 115, 1)",
     secondary: "rgba(159, 185, 202, 1)",
     accent: "rgba(221, 229, 234, 1)",
     boxShadow: "rgba(43, 71, 75, 0.3)",
+    mainText: "rgba(255, 255, 255, 1)",
+    buttonText: "rgba(255, 255, 255, 1)",
     ...general
   }
 };

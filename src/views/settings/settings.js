@@ -74,7 +74,7 @@ const Settings = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header title={"Settings"} />
       <Grid container spacing={1}>
         <StyledGrid item xs={12} md={6}>

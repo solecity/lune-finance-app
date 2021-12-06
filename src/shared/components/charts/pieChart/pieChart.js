@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import { PieChart } from "shared/components";
 
 // styled components
-import { StyledPaper, StyleGrid, StyledTitle } from "./styles";
+import { StyledPaper, StyledGrid, StyledTitle } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -69,9 +69,9 @@ const CategoriesChart = ({ title, series, isLoading }) => {
         </Typography>
       </StyledTitle>
       {isLoading ? (
-        <StyleGrid container>
+        <StyledGrid container>
           <CircularProgress />
-        </StyleGrid>
+        </StyledGrid>
       ) : (
         <Grid item xs={12}>
           <HighchartsReact highcharts={Highcharts} options={options} />

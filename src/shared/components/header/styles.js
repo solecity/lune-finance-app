@@ -1,11 +1,8 @@
 // libraries
 import styled from "styled-components";
 
-// external components
-import Container from "@mui/material/Container";
-
-const StyledContainer = styled(Container)`
-  margin: 2rem 0;
+const StyledContainer = styled.div`
+  margin: 30px 0 !important;
   padding: 0 !important;
 `;
 

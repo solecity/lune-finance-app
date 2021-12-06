@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 
-const StyleGrid = styled(Grid)`
+const StyledGrid = styled(Grid)`
   padding: 10px 0;
 `;
 
@@ -40,4 +40,4 @@ const StyledTypography = styled(Typography)`
   }
 `;
 
-export { StyleGrid, StyledCard, StyledTypography };
+export { StyledGrid, StyledCard, StyledTypography };

@@ -22,7 +22,7 @@ const CategoriesChart = ({ year }) => {
   };
 
   useEffect(() => {
-    //getData();
+    getData();
   }, []);
 
   return <PieChart title="Expenses" series={stats} isLoading={isLoading} />;

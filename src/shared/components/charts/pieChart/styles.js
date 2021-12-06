@@ -8,10 +8,9 @@ import Grid from "@mui/material/Grid";
 
 const StyledPaper = styled(Paper)`
   height: 450px;
-  margin: 10px 0 !important;
 `;
 
-const StyleGrid = styled(Grid)`
+const StyledGrid = styled(Grid)`
   height: 80%;
   justify-content: center;
   align-items: center;
@@ -22,4 +21,4 @@ const StyledTitle = styled(Grid)`
   justify-content: center;
 `;
 
-export { StyledPaper, StyleGrid, StyledTitle };
+export { StyledPaper, StyledGrid, StyledTitle };

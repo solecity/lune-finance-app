@@ -12,6 +12,9 @@ import Grid from "@mui/material/Grid";
 import { Header } from "shared/components";
 import { StatsType, Chart, CategoriesChart } from "./components";
 
+// styled components
+import { StyledGrid } from "./styles";
+
 const Overview = () => {
   const year = {
     start: startOfYear(new Date()),
@@ -23,12 +26,12 @@ const Overview = () => {
       <Header title={"Overview"} />
       <Grid container spacing={1}>
         <StatsType year={year} />
-        <Grid item xs={12} md={8}>
+        <StyledGrid item xs={12} md={8}>
           <Chart year={year} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        </StyledGrid>
+        <StyledGrid item xs={12} sm={6} md={4}>
           <CategoriesChart year={year} />
-        </Grid>
+        </StyledGrid>
       </Grid>
     </Container>
   );

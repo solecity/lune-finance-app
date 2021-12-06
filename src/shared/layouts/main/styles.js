@@ -21,10 +21,6 @@ const StyledWrapper = styled.div`
 const StyledScroll = styled(SimpleBar)`
   width: 100%;
   max-height: calc(100vh - 10px);
-
-  .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.primary};
-  }
 `;
 
 export { StyledContainer, StyledWrapper, StyledScroll };

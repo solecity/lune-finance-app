@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 
 const StyledGrid = styled(Grid)`
   margin-top: 50px;

@@ -30,7 +30,7 @@ const StyledCreditCard = styled(CreditCard)`
   }
 
   &.disabled {
-    color: ${({ theme }) => theme.colours.grey};
+    color: ${({ theme }) => theme.colours.disabled};
   }
 `;
 

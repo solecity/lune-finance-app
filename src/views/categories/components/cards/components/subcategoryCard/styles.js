@@ -1,5 +1,6 @@
 // libraries
 import styled from "styled-components";
+import { alpha } from "@mui/material/styles";
 
 // external components
 import Grid from "@mui/material/Grid";
@@ -10,8 +11,9 @@ const StyledCard = styled(Card)`
 `;
 
 const StyledContent = styled(Grid)`
-  box-shadow: inset 0px 2px 6px ${({ theme }) => theme.colours.boxShadow};
-  border-bottom: 1px solid rgba(210, 220, 227, 0.5);
+  box-shadow: inset 0px 2px 6px
+    ${({ theme }) => alpha(theme.colours.boxShadow, 0.3)};
+  border-bottom: 1px solid ${({ theme }) => alpha(theme.colours.border, 0.5)};
 `;
 
 const StyledTypography = styled(Grid)`

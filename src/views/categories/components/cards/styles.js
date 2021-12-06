@@ -30,19 +30,11 @@ const StyledScroll = styled(SimpleBar)`
   .simplebar-content {
     height: 100%;
   }
-
-  .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.primary};
-  }
 `;
 
 const StyledInnerScroll = styled(SimpleBar)`
   max-height: calc(100vh - 380px);
   width: auto;
-
-  .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.primary};
-  }
 `;
 
 const StyledScrollWrapper = styled.div`

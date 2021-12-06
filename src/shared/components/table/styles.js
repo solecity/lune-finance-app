@@ -21,15 +21,11 @@ const StyledHeadCell = styled(TableCell)(({ theme, width }) => ({
 }));
 
 const StyledBodyCell = styled(TableCell)(({ theme, width }) => ({
-  backgroundColor: `${theme.colours.inputBackground} !important`
+  backgroundColor: `${theme.colours.secondaryBackground} !important`
 }));
 
 const StyledScroll = styled(SimpleBar)`
   width: 100%;
-
-  .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.primary};
-  }
 `;
 
 export { StyledContainer, StyledHeadCell, StyledBodyCell, StyledScroll };

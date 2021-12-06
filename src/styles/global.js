@@ -16,7 +16,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .MuiPaper-root {
-    background-color: ${({ theme }) => theme.colours.cardBackground} !important;
+    background-color: ${({ theme }) =>
+      theme.colours.secondaryBackground} !important;
     border-radius: 0 !important;
     color: ${({ theme }) => `${theme.colours.mainText} !important`};
   }
@@ -30,11 +31,11 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .MuiPickersDay-root {
-    color: ${({ theme }) => `${theme.colours.black} !important`};
+    color: ${({ theme }) => `${theme.colours.mainText} !important`};
   }
 
   .MuiDivider-root {
-    border-color: ${({ theme }) => `${theme.colours.grey} !important`};
+    border-color: ${({ theme }) => `${theme.colours.disabled} !important`};
   }
 
   .MuiCircularProgress-root {
@@ -44,10 +45,14 @@ export const GlobalStyles = createGlobalStyle`
   
   .Mui-selected {
     background-color: ${({ theme }) => theme.colours.primary} !important;
-    color: ${({ theme }) => `${theme.colours.white} !important`};
+    color: ${({ theme }) => `${theme.colours.buttonText} !important`};
   }
   
   .Mui-error, .error {
     color: ${({ theme }) => theme.colours.error} !important;
+  }
+
+  .simplebar-scrollbar::before {
+    background-color: ${({ theme }) => theme.colours.primary};
   }
 `;

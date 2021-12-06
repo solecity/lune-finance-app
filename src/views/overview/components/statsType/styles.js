@@ -36,7 +36,7 @@ const StyledTypography = styled(Typography)`
 
   &.label {
     margin: 0 0 0 2px !important;
-    color: ${({ theme }) => theme.colours.darkGrey};
+    color: ${({ theme }) => theme.colours.label};
   }
 `;
 

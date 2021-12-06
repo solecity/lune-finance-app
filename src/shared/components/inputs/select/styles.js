@@ -7,7 +7,7 @@ import InputLabel, { inputLabelClasses } from "@mui/material/InputLabel";
 
 const StyledSelect = styled(InputBase)(({ theme }) => ({
   [`&.${inputBaseClasses.root}`]: {
-    backgroundColor: theme.colours.inputBackground,
+    backgroundColor: theme.colours.secondaryBackground,
     height: "36px",
     width: "100%",
     padding: "0.35rem 0.75rem 0 0.75rem",

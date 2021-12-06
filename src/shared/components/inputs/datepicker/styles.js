@@ -12,7 +12,7 @@ const StyledFormControl = styled(FormControl)(({ theme }) => ({
   },
 
   "& .MuiSvgIcon-root": {
-    color: theme.colours.inputBackground,
+    color: theme.colours.secondaryBackground,
     fontSize: "1.3rem !important"
   }
 }));
@@ -27,7 +27,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 
   "& .MuiInputBase-input": {
-    backgroundColor: theme.colours.inputBackground,
+    backgroundColor: theme.colours.secondaryBackground,
     display: "block",
     width: "210px",
     padding: "0.5rem 0.75rem",

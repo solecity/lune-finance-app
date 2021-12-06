@@ -80,17 +80,6 @@ const TransactionsTable = ({
       )
     },
     {
-      Header: "Account",
-      id: "account",
-      key: "account",
-      align: "center",
-      minWidth: 160,
-      accessor: ({ account }) => account || "---",
-      Cell: (row) => (
-        <StyledCenterColumn>{getAccount(row.value)}</StyledCenterColumn>
-      )
-    },
-    {
       Header: "Description",
       id: "description",
       key: "description",

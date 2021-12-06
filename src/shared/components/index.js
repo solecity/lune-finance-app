@@ -3,6 +3,7 @@ import Header from "./header/header";
 import Toolbar from "./toolbar/toolbar";
 import Table from "./table/table";
 import ColourCard from "./colourCard/colourCard";
+import InputInfo from "./inputs/info/info";
 import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
 import InputDatePicker from "./inputs/datepicker/datepicker";
@@ -23,6 +24,7 @@ export {
   Toolbar,
   Table,
   ColourCard,
+  InputInfo,
   InputTextField,
   InputSelect,
   InputDatePicker,

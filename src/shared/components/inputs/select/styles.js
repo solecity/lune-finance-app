@@ -26,7 +26,7 @@ const StyledSelect = styled(InputBase)(({ theme }) => ({
   }
 }));
 
-const StyledLabel = styled(InputLabel)(({ theme }) => ({
+const StyledLabel = styled(InputLabel)(() => ({
   [`&.${inputLabelClasses.root}`]: {
     transform: "translate(10px, 10px) scale(0.9)",
     color: "rgba(28, 28, 28, 0.4) !important"

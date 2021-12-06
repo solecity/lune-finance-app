@@ -1,9 +1,12 @@
 // base
-import React from "react";
+import React, { useEffect } from "react";
 
 // libraries
 import { HashRouter, Route } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+
+// api
+import SettingsService from "shared/services/settings";
 
 // external components
 import { ThemeProvider } from "styled-components";
@@ -15,7 +18,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import App from "./app";
 
 // atoms
-import { settingsState } from "shared/recoil/atoms";
+import { isLoggedIn, settingsState } from "shared/recoil/atoms";
 
 // theme
 import { GlobalStyles } from "styles/global";
@@ -25,9 +28,20 @@ import { Light, Dark } from "styles/theme";
 import "simplebar/dist/simplebar.min.css";
 
 const Root = () => {
-  const settings = useRecoilValue(settingsState);
+  const loggedIn = useRecoilValue(isLoggedIn);
+  const [settings, setSettings] = useRecoilState(settingsState);
 
   const isDarkTheme = settings.theme === "dark";
+
+  const getSettings = async () => {
+    const { data } = await SettingsService.get();
+
+    setSettings(data.settings);
+  };
+
+  useEffect(() => {
+    if (loggedIn) getSettings();
+  }, [loggedIn]);
 
   return (
     <StylesProvider injectFirst>

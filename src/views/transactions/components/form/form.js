@@ -73,7 +73,6 @@ const Form = ({
     },
     resolver: yupResolver(schemaTransaction)
   });
-  console.log({ errors });
 
   const selectedType = watch("type");
   const categoryIndex = watch("category");
@@ -139,23 +138,23 @@ const Form = ({
     let res = {};
     const { recipient, account, from, to, debt, ...data } = payload;
 
-    if (recipient !== 0) {
+    if (recipient != 0) {
       data.recipient = recipient;
     }
 
-    if (account !== 0) {
+    if (account != 0) {
       data.account = account;
     }
 
-    if (from !== 0) {
+    if (from != 0) {
       data.from = from;
     }
 
-    if (to !== 0) {
+    if (to != 0) {
       data.to = to;
     }
 
-    if (debt !== 0) {
+    if (debt != 0) {
       data.debt = debt;
     }
 

@@ -14,6 +14,7 @@ const CONSTANTS = {
   NOT_COMPLETED: "Not completed",
   DEFAULT_COLOUR: "#c1c1c1",
   LIGHT: "light",
+  DARK: "dark",
   INITIAL_ACCOUNT_TYPE: "cash",
   EXPENSE: "expense",
   INCOME: "income",

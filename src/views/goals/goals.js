@@ -30,7 +30,7 @@ const Goals = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header title={"Goals"} />
       <Toolbar
         handleForm={handleForm}

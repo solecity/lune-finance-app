@@ -19,7 +19,7 @@ const Overview = () => {
   };
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header title={"Overview"} />
       <Grid container spacing={1}>
         <StatsType year={year} />

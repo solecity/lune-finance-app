@@ -11,9 +11,6 @@ import Container from "@mui/material/Container";
 import { Header, Toolbar, Modal } from "shared/components";
 import { Form, Table } from "./components";
 
-// styled components
-import { StyledContainer } from "./styles";
-
 const Recipients = () => {
   const [data, setData] = useState([]);
   const [recipient, setRecipient] = useState({});
@@ -38,32 +35,30 @@ const Recipients = () => {
   return (
     <Container>
       <Header title={"Recipients"} />
-      <StyledContainer>
-        <Toolbar
+      <Toolbar
+        handleForm={handleForm}
+        setIsEdit={setIsEdit}
+        setElement={setRecipient}
+      />
+      <Table
+        data={data}
+        getData={getData}
+        handleForm={handleForm}
+        setIsEdit={setIsEdit}
+      />
+      <Modal
+        name="recipient"
+        handleModal={handleForm}
+        isOpen={isOpen}
+        isEdit={isEdit}
+      >
+        <Form
+          recipient={recipient}
           handleForm={handleForm}
-          setIsEdit={setIsEdit}
-          setElement={setRecipient}
-        />
-        <Table
-          data={data}
           getData={getData}
-          handleForm={handleForm}
-          setIsEdit={setIsEdit}
-        />
-        <Modal
-          name="recipient"
-          handleModal={handleForm}
-          isOpen={isOpen}
           isEdit={isEdit}
-        >
-          <Form
-            recipient={recipient}
-            handleForm={handleForm}
-            getData={getData}
-            isEdit={isEdit}
-          />
-        </Modal>
-      </StyledContainer>
+        />
+      </Modal>
     </Container>
   );
 };

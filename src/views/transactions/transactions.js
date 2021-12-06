@@ -164,7 +164,7 @@ const Transactions = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header title={"Transactions"} />
       <StyledTabs container spacing={1}>
         {tabs.map((tab, i) => (

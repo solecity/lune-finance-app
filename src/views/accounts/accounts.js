@@ -35,7 +35,7 @@ const Accounts = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header title={"Accounts"} />
       <Toolbar
         handleForm={handleForm}

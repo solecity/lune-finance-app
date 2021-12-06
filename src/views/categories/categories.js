@@ -88,7 +88,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Header title={"Categories"} />
       <StyledTabs container spacing={1}>
         {tabs.map((tab, i) => (

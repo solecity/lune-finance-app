@@ -8,4 +8,8 @@ const StyledContainer = styled(Grid)`
   margin: 1.5rem 0;
 `;
 
-export { StyledContainer };
+const StyledGrid = styled(Grid)`
+  justify-content: flex-end;
+`;
+
+export { StyledContainer, StyledGrid };

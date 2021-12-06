@@ -1,18 +1,24 @@
 // base
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+
+// libraries
+import { useForm } from "react-hook-form";
 
 // external components
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 // custom components
-import { ActionButton } from "shared/components";
+import { InputSelect, ActionButton } from "shared/components";
 
 // styled components
-import { StyledContainer } from "./styles";
+import { StyledContainer, StyledGrid } from "./styles";
 
 const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
+  const [sortBy, setSortBy] = useState("name");
+
   const handleOpen = () => {
     setIsEdit(false);
     setElement({});
@@ -22,16 +28,11 @@ const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
 
   return (
     <StyledContainer container>
-      <Grid item xs={6}>
-        <Typography component="div" variant="body1" noWrap>
-          Sort by
-        </Typography>
-      </Grid>
-      <Grid container item xs={6} justifyContent="flex-end">
-        <Grid item xs={2}>
+      <StyledGrid container>
+        <Grid item xs={1}>
           <ActionButton text={"Add"} action={handleOpen} />
         </Grid>
-      </Grid>
+      </StyledGrid>
     </StyledContainer>
   );
 };

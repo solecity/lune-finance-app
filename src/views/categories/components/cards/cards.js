@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
-import { Modal, ActionButton, IconButton } from "shared/components";
+import { Modal, ActionButton } from "shared/components";
 import { CategoryCard, SubCategoryCard, SubCategoryForm } from "./components";
 
 // styled components

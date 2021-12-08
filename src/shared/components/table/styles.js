@@ -17,11 +17,12 @@ const StyledContainer = styled(TableContainer)(() => ({
 const StyledHeadCell = styled(TableCell)(({ theme, width }) => ({
   backgroundColor: `${theme.colours.secondary} !important`,
   minWidth: width,
-  color: `${theme.colours.white} !important`
+  color: `${theme.colours.secondaryText} !important`
 }));
 
-const StyledBodyCell = styled(TableCell)(({ theme, width }) => ({
-  backgroundColor: `${theme.colours.secondaryBackground} !important`
+const StyledBodyCell = styled(TableCell)(({ theme }) => ({
+  backgroundColor: `${theme.colours.secondaryBackground} !important`,
+  color: `${theme.colours.mainText} !important`
 }));
 
 const StyledScroll = styled(SimpleBar)`

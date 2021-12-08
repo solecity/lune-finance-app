@@ -8,29 +8,24 @@ import Tooltip from "@mui/material/Tooltip";
 // styled components
 import { StyledIconButton } from "./styles";
 
-const IconButton = ({ tooltip, icon, action }) => {
+const TableButton = ({ tooltip, icon, action }) => {
   return (
     <Tooltip title={tooltip}>
-      <StyledIconButton
-        size="small"
-        color="primary"
-        onClick={action}
-        className="icon"
-      >
+      <StyledIconButton size="small" color="primary" onClick={action}>
         {icon}
       </StyledIconButton>
     </Tooltip>
   );
 };
 
-IconButton.defaultProps = {
+TableButton.defaultProps = {
   tooltip: ""
 };
 
-IconButton.propTypes = {
+TableButton.propTypes = {
   tooltip: PropTypes.string,
   icon: PropTypes.any,
   action: PropTypes.func.isRequired
 };
 
-export default IconButton;
+export default TableButton;

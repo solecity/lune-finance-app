@@ -1,8 +1,14 @@
 // libraries
 import styled from "styled-components";
+import { alpha } from "@mui/material/styles";
 
 // external components
 import TextField, { textFieldClasses } from "@mui/material/TextField";
+import { inputBaseClasses } from "@mui/material/InputBase";
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+import { inputLabelClasses } from "@mui/material/InputLabel";
+import { inputAdornmentClasses } from "@mui/material/InputAdornment";
+import { typographyClasses } from "@mui/material/Typography";
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   [`&.${textFieldClasses.root}`]: {
@@ -10,49 +16,50 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     height: "36px"
   },
 
-  "& .MuiInputBase-input": {
+  [`.${inputBaseClasses.input}`]: {
     backgroundColor: theme.colours.secondaryBackground,
     display: "block",
     width: "100%",
     padding: "0.5rem 0.75rem",
-    boxShadow: "inset 0px 2px 4px rgba(43, 71, 75, 0.3)",
+    boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
+    color: theme.colours.mainText,
     fontSize: "0.875rem",
     fontWeight: "400",
-    lineHeight: "1.4rem"
+    lineHeight: "1.4rem",
+
+    "&:focus": {
+      height: "36px",
+      paddingTop: 0,
+      paddingBottom: 0,
+      color: theme.colours.mainText,
+      boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.primary, 0.5)}`
+    }
   },
 
-  "& .MuiInputBase-input:focus": {
-    height: "36px",
-    paddingTop: 0,
-    paddingBottom: 0,
-    color: theme.colours.black,
-    boxShadow: "inset 0px 2px 4px rgba(10, 72, 99, 0.5)"
-  },
-
-  "& .MuiOutlinedInput-notchedOutline": {
+  [`.${outlinedInputClasses.notchedOutline}`]: {
     border: "none"
   },
 
-  "& .MuiInputLabel-root": {
+  [`.${inputLabelClasses.root}`]: {
     transform: "translate(10px, 10px) scale(0.9)",
-    color: "rgba(28, 28, 28, 0.4)"
+    color: alpha(theme.colours.mainText, 0.4),
+
+    "&.Mui-focused": {
+      color: theme.colours.primary
+    }
   },
 
-  "& .MuiInputLabel-root.Mui-focused": {
-    color: theme.colours.primary
-  },
-
-  "& .MuiInputLabel-shrink": {
+  [`.${inputLabelClasses.shrink}`]: {
     transform: "translate(10px, -18px) scale(0.75)",
-    color: "rgba(28, 28, 28, 0.4)"
+    color: alpha(theme.colours.mainText, 0.4)
   },
 
-  "& .MuiInputAdornment-root": {
-    marginRight: "13px"
-  },
+  [`.${inputAdornmentClasses.root}`]: {
+    marginRight: "13px",
 
-  "& .MuiTypography-root": {
-    color: `${theme.colours.white} !important`
+    [`.${typographyClasses.root}`]: {
+      color: `${theme.colours.secondaryText} !important`
+    }
   }
 }));
 

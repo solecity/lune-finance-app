@@ -12,20 +12,21 @@ const StyledButton = styled(Button)(({ theme }) => ({
     width: "100%",
     color: theme.colours.buttonText,
     borderRadius: 0,
-    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`
-  },
+    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
 
-  "&:hover": {
-    backgroundColor: `${theme.colours.secondary} !important`
+    "&:hover": {
+      backgroundColor: `${theme.colours.secondary} !important`
+    }
   },
 
   "&.selected": {
-    backgroundColor: `${theme.colours.buttonText} !important`,
-    color: theme.colours.primary,
+    backgroundColor: `${theme.colours.selectedButton} !important`,
+    color: `${theme.colours.mainText} !important`,
     boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
 
     "&:hover": {
-      boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.primary, 0.4)}`
+      backgroundColor: `${theme.colours.selectedButton} !important`,
+      boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.primary, 0.5)}`
     }
   }
 }));

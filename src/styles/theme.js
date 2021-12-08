@@ -1,7 +1,7 @@
 const general = {
   border: "#d2dce3",
+  disabled: "#d5d9db",
   label: "#a0a8ac",
-  buttonText: "#f4f4f4",
   error: "#d95522",
   white: "#ffffff",
   black: "#1c1c1c",
@@ -21,22 +21,28 @@ const Light = {
     secondary: "#abc3d3",
     accent: "#d2dce3",
     boxShadow: "#414748",
+    selectedButton: "#f4f4f4",
     mainText: "#1c1c1c",
-    disabled: "#d5d9db",
+    secondaryText: "#f4f4f4",
+    buttonText: "#f4f4f4",
+    divider: "#d5d9db",
     ...general
   }
 };
 
 const Dark = {
   colours: {
-    background: "#182835",
+    background: "#1a2126",
     secondaryBackground: "#274053",
     primary: "#3f8aa2",
-    secondary: "#9fb9ca",
+    secondary: "#295664",
     accent: "#dde5ea",
-    boxShadow: "#414748",
+    boxShadow: "#000000",
+    selectedButton: "#295664",
     mainText: "#f4f4f4",
-    disabled: "#32444d",
+    secondaryText: "#1c1c1c",
+    buttonText: "#1c1c1c",
+    divider: "#32444d",
     ...general
   }
 };

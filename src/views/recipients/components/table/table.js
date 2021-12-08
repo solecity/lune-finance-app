@@ -13,7 +13,7 @@ import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 import {
   Table,
   ColourCard,
-  IconButton,
+  TableButton,
   ConfirmDelete
 } from "shared/components";
 
@@ -51,13 +51,13 @@ const RecipientsTable = ({ data, getData, handleForm, setIsEdit }) => {
       disableSortBy: true,
       Cell: ({ row }) => (
         <StyledCenterColumn>
-          <IconButton
+          <TableButton
             tooltip="Edit"
             hasIcon
             icon={<Pencil />}
             action={() => handleEdit(row.original)}
           />
-          <IconButton
+          <TableButton
             tooltip="Delete"
             hasIcon
             icon={<TrashAlt />}

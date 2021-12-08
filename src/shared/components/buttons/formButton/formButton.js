@@ -5,21 +5,19 @@ import PropTypes from "prop-types";
 // styled components
 import { StyledButton } from "./styles";
 
-const FormButton = ({ variant, type, text }) => {
+const FormButton = ({ type, text }) => {
   return (
-    <StyledButton variant={variant} type={type}>
+    <StyledButton variant="contained" type={type}>
       {text}
     </StyledButton>
   );
 };
 
 FormButton.defaultProps = {
-  variant: "contained",
   type: "submit"
 };
 
 FormButton.propTypes = {
-  variant: PropTypes.string,
   type: PropTypes.string,
   text: PropTypes.string
 };

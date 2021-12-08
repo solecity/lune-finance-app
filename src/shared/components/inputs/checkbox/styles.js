@@ -11,11 +11,11 @@ const StyledLabel = styled.label`
 
 const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
   [`&.${checkboxClasses.root}`]: {
-    color: theme.colours.grey
-  },
+    color: theme.colours.disabled,
 
-  "&.Mui-checked": {
-    color: `${theme.colours.green} !important`
+    "& .Mui-checked": {
+      color: `${theme.colours.green} !important`
+    }
   }
 }));
 

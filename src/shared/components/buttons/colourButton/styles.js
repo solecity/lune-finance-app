@@ -14,11 +14,11 @@ const StyledButton = styled(Button)(({ theme, colour }) => ({
     height: "30px",
     width: "100px",
     borderRadius: 0,
-    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`
-  },
+    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
 
-  "&:hover": {
-    backgroundColor: `${hexToRgba(colour, 0.5)} !important`
+    "&:hover": {
+      backgroundColor: `${alpha(colour, 0.5)} !important`
+    }
   }
 }));
 

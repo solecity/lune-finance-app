@@ -10,10 +10,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colours.mainText};
     transition: background 0.2s ease-in, color 0.2s ease-in;
   }
-
-  .icon > svg {
-    width: 1.1rem;
-  }
   
   .MuiPaper-root {
     background-color: ${({ theme }) =>
@@ -35,7 +31,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .MuiDivider-root {
-    border-color: ${({ theme }) => `${theme.colours.disabled} !important`};
+    border-color: ${({ theme }) => `${theme.colours.divider} !important`};
   }
 
   .MuiCircularProgress-root {

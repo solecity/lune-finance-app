@@ -58,7 +58,7 @@ const Form = ({
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      description: transaction.description || "---",
+      description: transaction.description || "",
       type: transaction.type || formType,
       category: transaction.category || "",
       subcategory: transaction.subcategory || "",
@@ -304,8 +304,13 @@ const Form = ({
                   label="Quantity"
                   name="quantity"
                   type="number"
+                  type="text"
                   InputProps={{
-                    inputProps: { min: 0 }
+                    inputProps: {
+                      min: 0,
+                      inputMode: "numeric",
+                      pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                    }
                   }}
                 />
               </StyledGrid>

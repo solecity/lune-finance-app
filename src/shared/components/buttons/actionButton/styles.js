@@ -17,11 +17,11 @@ const StyledActionButton = styled(StyledButton)(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     backgroundColor: theme.colours.primary,
     height: "35px",
-    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`
-  },
+    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
 
-  "&:hover": {
-    backgroundColor: `${theme.colours.secondary} !important`
+    "&:hover": {
+      backgroundColor: `${theme.colours.secondary} !important`
+    }
   }
 }));
 
@@ -30,11 +30,15 @@ const StyledCardButton = styled(StyledButton)(({ theme }) => ({
     backgroundColor: theme.colours.accent,
     boxShadow: "none",
     minWidth: "0 !important",
-    padding: "6px !important"
-  },
+    padding: "6px !important",
 
-  "&:hover": {
-    backgroundColor: `${theme.colours.secondary} !important`
+    "&:hover": {
+      backgroundColor: `${theme.colours.secondary} !important`
+    },
+
+    svg: {
+      width: "1.1rem"
+    }
   }
 }));
 
@@ -55,6 +59,10 @@ const StyledSmallCardButton = styled(StyledButton)(({ colour, theme }) => ({
         theme.colours.boxShadow,
         0.3
       )}`
+    },
+
+    svg: {
+      width: "1.1rem"
     }
   }
 }));

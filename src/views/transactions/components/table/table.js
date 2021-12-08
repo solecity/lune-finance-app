@@ -13,7 +13,7 @@ import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 
 // custom components
-import { Table, IconButton, ConfirmDelete } from "shared/components";
+import { Table, TableButton, ConfirmDelete } from "shared/components";
 
 // styled components
 import { StyledCenterColumn } from "./styles";
@@ -117,13 +117,13 @@ const TransactionsTable = ({
       disableSortBy: true,
       Cell: ({ row }) => (
         <StyledCenterColumn>
-          <IconButton
+          <TableButton
             tooltip="Edit"
             hasIcon
             icon={<Pencil />}
             action={() => handleEdit(row.original)}
           />
-          <IconButton
+          <TableButton
             tooltip="Delete"
             hasIcon
             icon={<TrashAlt />}
@@ -194,13 +194,13 @@ const TransactionsTable = ({
       disableSortBy: true,
       Cell: ({ row }) => (
         <StyledCenterColumn>
-          <IconButton
+          <TableButton
             tooltip="Edit"
             hasIcon
             icon={<Pencil />}
             action={() => handleEdit(row.original)}
           />
-          <IconButton
+          <TableButton
             tooltip="Delete"
             hasIcon
             icon={<TrashAlt />}

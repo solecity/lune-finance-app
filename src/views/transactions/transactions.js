@@ -13,26 +13,13 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
-import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 
 // custom components
-import {
-  Header,
-  Toolbar,
-  Modal,
-  TabButton,
-  IconButton
-} from "shared/components";
+import { Header, Toolbar, Modal, TabButton } from "shared/components";
 import { Form, Table } from "./components";
 
 // styled components
-import {
-  StyledGrid,
-  StyledTabs,
-  StyledSubTitle,
-  StyledIconButton
-} from "./styles";
+import { StyledGrid, StyledTabs } from "./styles";
 
 // constants
 import { TYPES } from "constants/general";

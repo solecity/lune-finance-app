@@ -13,7 +13,7 @@ const ColourButton = ({ colour, action }) => {
 };
 
 ColourButton.defaultProps = {
-  colour: CONSTANTS.INITIAL_ACCOUNT_TYPE
+  colour: CONSTANTS.DEFAULT_COLOUR
 };
 
 ColourButton.propTypes = {

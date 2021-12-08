@@ -13,7 +13,7 @@ import FormButton from "./buttons/formButton/formButton";
 import TabButton from "./buttons/tabButton/tabButton";
 import ActionButton from "./buttons/actionButton/actionButton";
 import ColourButton from "./buttons/colourButton/colourButton";
-import IconButton from "./buttons/iconButton/iconButton";
+import TableButton from "./buttons/tableButton/tableButton";
 import Modal from "./modal/modal";
 import ConfirmDelete from "./confirmDelete/confirmDelete";
 import PieChart from "./charts/pieChart/pieChart";
@@ -34,7 +34,7 @@ export {
   TabButton,
   ActionButton,
   ColourButton,
-  IconButton,
+  TableButton,
   Modal,
   ConfirmDelete,
   PieChart

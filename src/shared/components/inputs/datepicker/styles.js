@@ -6,6 +6,7 @@ import { alpha } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
 import TextField, { textFieldClasses } from "@mui/material/TextField";
 import { inputBaseClasses } from "@mui/material/InputBase";
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
 import { inputAdornmentClasses } from "@mui/material/InputAdornment";
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import { svgIconClasses } from "@mui/material/SvgIcon";
@@ -28,7 +29,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     backgroundColor: theme.colours.secondary
   },
 
-  "& .MuiOutlinedInput-notchedOutline": {
+  [`.${outlinedInputClasses.notchedOutline}`]: {
     border: "none"
   },
 

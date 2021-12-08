@@ -2,12 +2,15 @@
 import React, { Suspense, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 
+// external components
+import LinearProgress from "@mui/material/LinearProgress";
+
 // config
 import { routes } from "config/routes";
 
 const renderRoutes = (routes) =>
   routes ? (
-    <Suspense fallback={<div>Not found</div>}>
+    <Suspense fallback={<LinearProgress />}>
       <Switch>
         {routes.map((route, i) => {
           const Layout = route.layout || Fragment;

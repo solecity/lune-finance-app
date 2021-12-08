@@ -33,7 +33,7 @@ const StyledSelect = styled(InputBase)(({ theme }) => ({
     paddingTop: 0,
     paddingBottom: 0,
     color: theme.colours.mainText,
-    boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.primary, 0.4)}`
+    boxShadow: `inset 0px 2px 4px ${alpha(theme.colours.primary, 0.5)}`
   }
 }));
 

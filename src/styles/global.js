@@ -1,54 +1,85 @@
 // libraries
 import { createGlobalStyle } from "styled-components";
+import { alpha } from "@mui/material/styles";
 
-export const GlobalStyles = createGlobalStyle`
-  body {
-    background-color: ${({ theme }) => theme.colours.background};
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
-    color: ${({ theme }) => theme.colours.mainText};
-    transition: background 0.2s ease-in, color 0.2s ease-in;
-  }
-  
-  .MuiPaper-root {
-    background-color: ${({ theme }) =>
-      theme.colours.secondaryBackground} !important;
-    border-radius: 0 !important;
-    color: ${({ theme }) => `${theme.colours.mainText} !important`};
-  }
+// external components
+import { linearProgressClasses } from "@mui/material/LinearProgress";
+import { circularProgressClasses } from "@mui/material/CircularProgress";
+import { dividerClasses } from "@mui/material/Divider";
+import { paperClasses } from "@mui/material/Paper";
+import { formControlClasses } from "@mui/material/FormControl";
+import { formHelperTextClasses } from "@mui/material/FormHelperText";
+import { typographyClasses } from "@mui/material/Typography";
+import { svgIconClasses } from "@mui/material/SvgIcon";
 
-  .MuiFormControl-root {
-    display: block !important;
-  }
-  
-  .MuiFormHelperText-root {
-    margin-left: 10px !important;
-  }
+export const GlobalStyles = createGlobalStyle(({ theme }) => ({
+  body: {
+    backgroundColor: theme.colours.background,
+    margin: 0,
+    fontFamily: "'Roboto', sans-serif",
+    boxSizing: "border-box",
+    color: theme.colours.mainText,
+    transition: "background 0.2s ease-in, color 0.2s ease-in"
+  },
 
-  .MuiPickersDay-root {
-    color: ${({ theme }) => `${theme.colours.mainText} !important`};
-  }
+  [`.${paperClasses.root}`]: {
+    backgroundColor: `${theme.colours.secondaryBackground} !important`,
+    borderRadius: "0 !important",
+    color: `${theme.colours.mainText} !important`
+  },
 
-  .MuiDivider-root {
-    border-color: ${({ theme }) => `${theme.colours.divider} !important`};
-  }
+  [`.${dividerClasses.root}`]: {
+    borderColor: `${theme.colours.divider} !important`
+  },
 
-  .MuiCircularProgress-root {
-    margin: 0 !important;
-    color: ${({ theme }) => theme.colours.secondary} !important;
-  }
-  
-  .Mui-selected {
-    background-color: ${({ theme }) => theme.colours.primary} !important;
-    color: ${({ theme }) => `${theme.colours.buttonText} !important`};
-  }
-  
-  .Mui-error, .error {
-    color: ${({ theme }) => theme.colours.error} !important;
-  }
+  [`.${linearProgressClasses.root}`]: {
+    backgroundColor: `${theme.colours.secondary} !important`
+  },
 
-  .simplebar-scrollbar::before {
-    background-color: ${({ theme }) => theme.colours.primary};
+  [`.${linearProgressClasses.bar}`]: {
+    backgroundColor: `${theme.colours.primary} !important`
+  },
+
+  [`.${circularProgressClasses.root}`]: {
+    margin: "0 !important",
+    color: `${theme.colours.secondary} !important`
+  },
+
+  [`.${formControlClasses.root}`]: {
+    display: "block !important"
+  },
+
+  [`.${formHelperTextClasses.root}`]: {
+    marginLeft: "10px !important"
+  },
+
+  [`.${typographyClasses.root}`]: {
+    color: `${theme.colours.mainText} !important`
+  },
+
+  [`.${svgIconClasses.root}`]: {
+    color: `${theme.colours.mainText} !important`
+  },
+
+  ".MuiPickersDay-root": {
+    backgroundColor: `${theme.colours.selectedButton} !important`,
+    color: `${theme.colours.mainText} !important`
+  },
+
+  ".MuiPickersDay-today:not(.Mui-selected)": {
+    border: `1px solid ${alpha(theme.colours.mainText, 0.5)} !important`
+  },
+
+  ".Mui-error, .error": {
+    color: `${theme.colours.error} !important`
+  },
+
+  ".Mui-selected": {
+    backgroundColor: `${theme.colours.primary} !important`,
+    color: `${theme.colours.buttonText} !important`
+  },
+
+  ".simplebar-scrollbar::before": {
+    backgroundColor: theme.colours.primary
   }
-`;
+}));

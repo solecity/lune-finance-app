@@ -8,7 +8,7 @@ import Button, { buttonClasses } from "@mui/material/Button";
 const StyledButton = styled(Button)(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     width: "100%",
-    color: theme.colours.buttonText,
+    color: theme.colours.secondaryText,
     borderRadius: 0
   }
 }));

@@ -227,6 +227,7 @@ const Form = ({
                   name="subcategory"
                 >
                   {categoryIndex !== -1 && loadSubCategories()}
+                  {!categoryIndex && <MenuItem value={0}>---</MenuItem>}
                 </InputSelect>
               </StyledGrid>
               <StyledGrid item xs={12} sm={6}>

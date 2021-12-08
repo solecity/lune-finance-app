@@ -12,8 +12,8 @@ const StyledCard = styled(Card)`
 
 const StyledContent = styled(Grid)`
   box-shadow: inset 0px 2px 6px
-    ${({ theme }) => alpha(theme.colours.boxShadow, 0.3)};
-  border-bottom: 1px solid ${({ theme }) => alpha(theme.colours.border, 0.5)};
+    ${({ theme }) => alpha(theme.colours.boxShadow, 0.4)};
+  border-bottom: 1px solid ${({ theme }) => alpha(theme.colours.divider, 0.5)};
 `;
 
 const StyledTypography = styled(Grid)`

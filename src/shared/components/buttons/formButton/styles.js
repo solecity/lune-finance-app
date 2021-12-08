@@ -10,7 +10,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     backgroundColor: theme.colours.primary,
     height: "35px",
     width: "100%",
-    color: theme.colours.buttonText,
+    color: theme.colours.secondaryText,
     borderRadius: 0,
     boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
 

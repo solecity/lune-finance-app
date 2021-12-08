@@ -26,7 +26,7 @@ const StyledColour = styled(Grid)(({ colour }) => ({
 }));
 
 const StyledButton = styled(Grid)`
-  border-bottom: 1px solid ${({ theme }) => theme.colours.buttonText};
+  border-bottom: 1px solid ${({ theme }) => theme.colours.secondaryText};
 `;
 
 export { StyledCard, StyledContent, StyledGrid, StyledColour, StyledButton };

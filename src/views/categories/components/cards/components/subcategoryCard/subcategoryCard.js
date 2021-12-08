@@ -51,20 +51,14 @@ const SubCategoryCard = ({
       ? COLOURS.ACCENT_LIGHT
       : COLOURS.ACCENT_DARK;
 
-  const boxShadow =
-    settings.theme === CONSTANTS.LIGHT
-      ? COLOURS.BOX_SHADOW
-      : COLOURS.BOX_SHADOW;
-
   const font =
     settings.theme === CONSTANTS.LIGHT
       ? COLOURS.SECONDARY_LIGHT
-      : COLOURS.SECONDARY_DARK;
+      : COLOURS.WHITE;
 
   const colour = {
     bg,
     bgHover,
-    boxShadow,
     font,
     inset: "",
     insetHover: "inset"

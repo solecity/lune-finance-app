@@ -12,13 +12,11 @@ import AccountService from "shared/services/account";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import { RadioCircle } from "@styled-icons/boxicons-regular/RadioCircle";
 import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 
 // custom components
-import { ActionButton, ConfirmDelete } from "shared/components";
+import { ColourCard, ActionButton, ConfirmDelete } from "shared/components";
 
 // styled components
 import {
@@ -81,9 +79,7 @@ const AccountCard = ({
         <StyledGrid container>
           <Grid container item xs={9}>
             <Grid item xs={1}>
-              <Avatar sx={{ bgcolor: account.colour, width: 25, height: 25 }}>
-                <RadioCircle />
-              </Avatar>
+              <ColourCard colour={account.colour} />
             </Grid>
             <StyledInfo item xs={11}>
               <Grid container item xs={12}>

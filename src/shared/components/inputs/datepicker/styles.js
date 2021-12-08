@@ -13,13 +13,13 @@ import { svgIconClasses } from "@mui/material/SvgIcon";
 
 const StyledFormControl = styled(FormControl)(({ theme }) => ({
   [`.${inputAdornmentClasses.root}`]: {
-    backgroundColor: theme.colours.buttonText,
+    backgroundColor: theme.colours.secondaryText,
     marginLeft: "0 !important",
     marginRight: "15px !important"
   },
 
   [`.${svgIconClasses.root}`]: {
-    color: theme.colours.buttonText,
+    color: theme.colours.secondaryText,
     fontSize: "1.3rem !important"
   }
 }));

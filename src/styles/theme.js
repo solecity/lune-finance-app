@@ -1,9 +1,8 @@
 const general = {
-  border: "#d2dce3",
   disabled: "#d5d9db",
   label: "#a0a8ac",
   error: "#d95522",
-  white: "#ffffff",
+  white: "#fcfcfc",
   black: "#1c1c1c",
   grey: "#d5d9db",
   darkGrey: "#a0a8ac",
@@ -23,9 +22,8 @@ const Light = {
     boxShadow: "#414748",
     selectedButton: "#f4f4f4",
     mainText: "#1c1c1c",
-    secondaryText: "#f4f4f4",
-    buttonText: "#f4f4f4",
-    divider: "#d5d9db",
+    secondaryText: "#fcfcfc",
+    divider: "#d2dce3",
     ...general
   }
 };
@@ -36,12 +34,11 @@ const Dark = {
     secondaryBackground: "#292E32",
     primary: "#E1AE21",
     secondary: "#5F6D74",
-    accent: "#C25F3E",
+    accent: "#8D9DA5",
     boxShadow: "#000000",
     selectedButton: "#1e1f23",
-    mainText: "#f3f0ea",
+    mainText: "#fcfcfc",
     secondaryText: "#1c1c1c",
-    buttonText: "#1c1c1c",
     divider: "#3D4348",
     ...general
   }

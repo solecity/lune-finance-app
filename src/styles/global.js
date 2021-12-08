@@ -76,7 +76,7 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
 
   ".Mui-selected": {
     backgroundColor: `${theme.colours.primary} !important`,
-    color: `${theme.colours.buttonText} !important`
+    color: `${theme.colours.secondaryText} !important`
   },
 
   ".simplebar-scrollbar::before": {

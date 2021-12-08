@@ -32,7 +32,7 @@ const schemaTransaction = yup.object().shape({
   }),
   recipient: yup.string(),
   account: yup.string(),
-  description: yup.string().max(255).required(TRANSACTION.REQUIRED_NAME),
+  description: yup.string().max(255),
   amount: yup
     .number()
     .min(0, TRANSACTION.INVALID_AMOUNT)

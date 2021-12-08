@@ -11,8 +11,9 @@ const StyledItem = styled(ListItem)`
 
 const StyledIcon = styled(ListItemIcon)`
   min-width: 30px !important;
-  font-size: 18px;
   margin-right: 5px;
+  font-size: 18px;
+  color: ${({ theme }) => `${theme.colours.mainText} !important`};
 `;
 
 const StyledLabel = styled.span`

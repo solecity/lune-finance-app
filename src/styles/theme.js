@@ -32,17 +32,17 @@ const Light = {
 
 const Dark = {
   colours: {
-    background: "#1a2126",
-    secondaryBackground: "#274053",
-    primary: "#3f8aa2",
-    secondary: "#295664",
-    accent: "#dde5ea",
+    background: "#1e1f23;",
+    secondaryBackground: "#292E32",
+    primary: "#E1AE21",
+    secondary: "#5F6D74",
+    accent: "#C25F3E",
     boxShadow: "#000000",
-    selectedButton: "#295664",
-    mainText: "#f4f4f4",
+    selectedButton: "#1e1f23",
+    mainText: "#f3f0ea",
     secondaryText: "#1c1c1c",
     buttonText: "#1c1c1c",
-    divider: "#32444d",
+    divider: "#3D4348",
     ...general
   }
 };

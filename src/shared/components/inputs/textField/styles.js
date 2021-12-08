@@ -58,7 +58,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     marginRight: "13px",
 
     [`.${typographyClasses.root}`]: {
-      color: `${theme.colours.secondaryText} !important`
+      color: `${theme.colours.mainText} !important`
     }
   }
 }));

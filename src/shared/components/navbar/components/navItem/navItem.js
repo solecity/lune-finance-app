@@ -14,7 +14,9 @@ import { StyledItem, StyledIcon, StyledLabel } from "./styles";
 const NavItem = ({ label, icon: Icon, href }) => {
   return (
     <StyledItem button component={Link} to={href}>
-      <StyledIcon>{Icon && <Icon size="20" />}</StyledIcon>
+      <StyledIcon>
+        <Icon size="20" />
+      </StyledIcon>
       <ListItemText>
         <StyledLabel>{label}</StyledLabel>
       </ListItemText>

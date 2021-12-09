@@ -16,6 +16,7 @@ const CONSTANTS = {
   LIGHT: "light",
   DARK: "dark",
   INITIAL_ACCOUNT_TYPE: "cash",
+  INITIAL_LANGUAGE: "en",
   EXPENSE: "expense",
   INCOME: "income",
   OUTCOME: "outcome"

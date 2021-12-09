@@ -44,11 +44,9 @@ import { settingsState } from "shared/recoil/atoms";
 import { CONSTANTS } from "constants/general";
 
 const Settings = () => {
-  const [settings, setSettings] = useRecoilState(settingsState);
-
   const [user, setUser] = useState({});
-  const [language, setLanguage] = useState("en");
-  const [theme, setTheme] = useState(settings.theme === CONSTANTS.LIGHT);
+  const [language, setLanguage] = useState(CONSTANTS.INITIAL_LANGUAGE);
+  const [theme, setTheme] = useState(true);
 
   const getUser = () => {
     const loggedUser = getLoggedUser();
@@ -59,19 +57,25 @@ const Settings = () => {
   const getSettings = () => {
     const userSettings = getUserSettings();
 
-    setSettings(userSettings);
+    console.log(userSettings);
+
+    setLanguage(userSettings.language);
+    setTheme(userSettings.theme === CONSTANTS.LIGHT);
     setUserSettings(userSettings);
   };
 
   const handleTheme = async (event) => {
-    const value = event.target.checked ? CONSTANTS.LIGHT : CONSTANTS.DARK;
-
     setTheme(event.target.checked);
-    setSettings({ ...settings, theme: value });
+
+    const value = event.target.checked ? CONSTANTS.LIGHT : CONSTANTS.DARK;
 
     const { data } = await SettingsService.patch(user._id, { theme: value });
 
     setUserSettings(data.settings);
+  };
+
+  const handleLanguage = (event) => {
+    setLanguage(event.target.value);
   };
 
   useEffect(() => {
@@ -117,6 +121,7 @@ const Settings = () => {
                   input={<StyledSelect />}
                   name="language"
                   value={language}
+                  onChange={handleLanguage}
                 >
                   <MenuItem value="en">En</MenuItem>
                   <MenuItem value="pt">Pt</MenuItem>
@@ -130,11 +135,7 @@ const Settings = () => {
                   <StyledIcon item className={theme ? "" : "selected"}>
                     <Moon />
                   </StyledIcon>
-                  <Switch
-                    size="small"
-                    checked={console.log(theme)}
-                    onChange={handleTheme}
-                  />
+                  <Switch size="small" checked={theme} onChange={handleTheme} />
                   <StyledIcon item className={theme ? "selected" : ""}>
                     <Sun />
                   </StyledIcon>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 // libraries
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 // api
 import UserService from "shared/services/user";
@@ -33,6 +33,10 @@ import {
   StyledSwitch
 } from "./styles";
 
+// utils
+import { getLoggedUser } from "shared/utils/user";
+import { getUserSettings, setUserSettings } from "shared/utils/settings";
+
 // atoms
 import { settingsState } from "shared/recoil/atoms";
 
@@ -40,32 +44,34 @@ import { settingsState } from "shared/recoil/atoms";
 import { CONSTANTS } from "constants/general";
 
 const Settings = () => {
-  const setSettingsState = useSetRecoilState(settingsState);
+  const [settings, setSettings] = useRecoilState(settingsState);
 
   const [user, setUser] = useState({});
   const [language, setLanguage] = useState("en");
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(settings.theme === CONSTANTS.LIGHT);
 
-  const getUser = async () => {
-    const { data } = await UserService.me();
+  const getUser = () => {
+    const loggedUser = getLoggedUser();
 
-    setUser(data.user);
+    setUser(loggedUser);
   };
 
-  const getSettings = async () => {
-    const { data } = await SettingsService.get();
+  const getSettings = () => {
+    const userSettings = getUserSettings();
 
-    setLanguage(data.settings.language);
-    setTheme(data.settings.theme === CONSTANTS.LIGHT);
+    setSettings(userSettings);
+    setUserSettings(userSettings);
   };
 
   const handleTheme = async (event) => {
     const value = event.target.checked ? CONSTANTS.LIGHT : CONSTANTS.DARK;
 
     setTheme(event.target.checked);
-    setSettingsState({ ...settingsState, theme: value });
+    setSettings({ ...settings, theme: value });
 
-    await SettingsService.patch({ theme: value });
+    const { data } = await SettingsService.patch(user._id, { theme: value });
+
+    setUserSettings(data.settings);
   };
 
   useEffect(() => {
@@ -124,7 +130,11 @@ const Settings = () => {
                   <StyledIcon item className={theme ? "" : "selected"}>
                     <Moon />
                   </StyledIcon>
-                  <Switch size="small" checked={theme} onChange={handleTheme} />
+                  <Switch
+                    size="small"
+                    checked={console.log(theme)}
+                    onChange={handleTheme}
+                  />
                   <StyledIcon item className={theme ? "selected" : ""}>
                     <Sun />
                   </StyledIcon>

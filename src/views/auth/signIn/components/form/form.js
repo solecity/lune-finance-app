@@ -9,6 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 // api
 import { signIn } from "shared/recoil/auth";
+import { saveUser } from "shared/recoil/user";
+import { saveSettings } from "shared/recoil/settings";
 
 // external components
 import Grid from "@mui/material/Grid";
@@ -23,7 +25,7 @@ import { StyledInputTextField } from "./styles";
 import { schemaSignIn } from "constants/schemas";
 
 // atoms
-import { isLoggedIn } from "shared/recoil/atoms";
+import { isLoggedIn, settingsState } from "shared/recoil/atoms";
 
 const SignInForm = ({ onSubmitSuccess }) => {
   const setLoggedIn = useSetRecoilState(isLoggedIn);
@@ -51,6 +53,10 @@ const SignInForm = ({ onSubmitSuccess }) => {
     if (res.success) {
       setLoggedIn(true);
 
+      const user = await saveUser();
+
+      saveSettings(user._id);
+
       onSubmitSuccess();
     } else {
       setGeneralError(res);
@@ -73,7 +79,7 @@ const SignInForm = ({ onSubmitSuccess }) => {
             name="password"
             type="password"
           />
-          <FormButton variant="contained" text="Sign In" />
+          <FormButton text="Sign In" />
         </form>
       </Grid>
     </Grid>

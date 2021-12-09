@@ -1,12 +1,9 @@
 // base
-import React, { useEffect } from "react";
+import React from "react";
 
 // libraries
 import { HashRouter, Route } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-
-// api
-import SettingsService from "shared/services/settings";
+import { useRecoilValue } from "recoil";
 
 // external components
 import { ThemeProvider } from "styled-components";
@@ -18,7 +15,10 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import App from "./app";
 
 // atoms
-import { isLoggedIn, settingsState } from "shared/recoil/atoms";
+import { settingsState } from "shared/recoil/atoms";
+
+// constants
+import { CONSTANTS } from "constants/general";
 
 // theme
 import { GlobalStyles } from "styles/global";
@@ -28,24 +28,12 @@ import { Light, Dark } from "styles/theme";
 import "simplebar/dist/simplebar.min.css";
 
 const Root = () => {
-  const loggedIn = useRecoilValue(isLoggedIn);
-  const [settings, setSettings] = useRecoilState(settingsState);
+  const settings = useRecoilValue(settingsState);
 
-  const isDarkTheme = settings.theme === "dark";
-
-  const getSettings = async () => {
-    const { data } = await SettingsService.get();
-
-    setSettings(data.settings);
-  };
-
-  useEffect(() => {
-    if (loggedIn) getSettings();
-  }, [loggedIn]);
-
+  const theme = settings.theme === CONSTANTS.LIGHT ? Light : Dark;
   return (
     <StylesProvider injectFirst>
-      <ThemeProvider theme={isDarkTheme ? Dark : Light}>
+      <ThemeProvider theme={theme}>
         <GlobalStyles />
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <HashRouter>

@@ -59,6 +59,11 @@ const routes = [
         exact: true,
         path: "/settings",
         component: lazy(() => import("views/settings/settings"))
+      },
+      {
+        exact: true,
+        path: "/logout",
+        component: lazy(() => import("views/logout/logout"))
       }
     ]
   }

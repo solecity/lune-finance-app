@@ -3,6 +3,7 @@ import authService from "shared/services/auth";
 
 // utils
 import { setJWT, clearJWT } from "shared/utils/jwt";
+import { clearLoggedUser } from "shared/utils/user";
 
 export const signIn = async (payload) => {
   try {
@@ -22,4 +23,7 @@ export const signIn = async (payload) => {
   }
 };
 
-export const signOut = async () => clearJWT();
+export const signOut = () => {
+  clearJWT();
+  clearLoggedUser();
+};

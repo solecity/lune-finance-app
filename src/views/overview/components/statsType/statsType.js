@@ -13,7 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 
 // styled components
-import { StyledGrid, StyledCard, StyledTypography } from "./styles";
+import { StyledCard, StyledTypography } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -39,7 +39,7 @@ const StatsType = ({ year }) => {
 
   return (
     <>
-      <StyledGrid item xs={6} sm={3}>
+      <Grid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <CircularProgress />
@@ -52,8 +52,8 @@ const StatsType = ({ year }) => {
             Income
           </StyledTypography>
         </StyledCard>
-      </StyledGrid>
-      <StyledGrid item xs={6} sm={3}>
+      </Grid>
+      <Grid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <CircularProgress />
@@ -66,8 +66,8 @@ const StatsType = ({ year }) => {
             Expense
           </StyledTypography>
         </StyledCard>
-      </StyledGrid>
-      <StyledGrid item xs={6} sm={3}>
+      </Grid>
+      <Grid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <CircularProgress />
@@ -80,8 +80,8 @@ const StatsType = ({ year }) => {
             Savings
           </StyledTypography>
         </StyledCard>
-      </StyledGrid>
-      <StyledGrid item xs={6} sm={3}>
+      </Grid>
+      <Grid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
             <CircularProgress />
@@ -95,7 +95,7 @@ const StatsType = ({ year }) => {
             Investment
           </StyledTypography>
         </StyledCard>
-      </StyledGrid>
+      </Grid>
     </>
   );
 };

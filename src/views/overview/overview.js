@@ -26,12 +26,12 @@ const Overview = () => {
       <Header title={"Overview"} />
       <Grid container spacing={1}>
         <StatsType year={year} />
-        <StyledGrid item xs={12} md={8}>
+        <Grid item sm={12} md={8}>
           <Chart year={year} />
-        </StyledGrid>
-        <StyledGrid item xs={12} sm={6} md={4}>
+        </Grid>
+        <Grid item sm={12} md={4}>
           <CategoriesChart year={year} />
-        </StyledGrid>
+        </Grid>
       </Grid>
     </Container>
   );

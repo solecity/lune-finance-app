@@ -81,5 +81,18 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
 
   ".simplebar-scrollbar::before": {
     backgroundColor: theme.colours.primary
+  },
+
+  ".highcharts-background": {
+    fill: `${theme.colours.secondaryBackground} !important`
+  },
+
+  ".highcharts-yaxis-grid > .highcharts-grid-line": {
+    fill: `${theme.colours.divider} !important`,
+    stroke: `${theme.colours.divider} !important`
+  },
+
+  ".highcharts-legend-item > text": {
+    fill: `${theme.colours.mainText} !important`
   }
 }));

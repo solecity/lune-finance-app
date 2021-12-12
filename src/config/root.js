@@ -31,6 +31,7 @@ const Root = () => {
   const settings = useRecoilValue(settingsState);
 
   const theme = settings.theme === CONSTANTS.LIGHT ? Light : Dark;
+
   return (
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>

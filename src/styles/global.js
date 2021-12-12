@@ -3,14 +3,12 @@ import { createGlobalStyle } from "styled-components";
 import { alpha } from "@mui/material/styles";
 
 // external components
-import { linearProgressClasses } from "@mui/material/LinearProgress";
 import { circularProgressClasses } from "@mui/material/CircularProgress";
 import { dividerClasses } from "@mui/material/Divider";
 import { paperClasses } from "@mui/material/Paper";
 import { formControlClasses } from "@mui/material/FormControl";
 import { formHelperTextClasses } from "@mui/material/FormHelperText";
 import { typographyClasses } from "@mui/material/Typography";
-import { svgIconClasses } from "@mui/material/SvgIcon";
 
 export const GlobalStyles = createGlobalStyle(({ theme }) => ({
   body: {
@@ -30,14 +28,6 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
 
   [`.${dividerClasses.root}`]: {
     borderColor: `${theme.colours.divider} !important`
-  },
-
-  [`.${linearProgressClasses.root}`]: {
-    backgroundColor: `${theme.colours.secondary} !important`
-  },
-
-  [`.${linearProgressClasses.bar}`]: {
-    backgroundColor: `${theme.colours.primary} !important`
   },
 
   [`.${circularProgressClasses.root}`]: {

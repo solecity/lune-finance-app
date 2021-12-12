@@ -3,6 +3,7 @@ import Header from "./header/header";
 import Toolbar from "./toolbar/toolbar";
 import Table from "./table/table";
 import ColourCard from "./colourCard/colourCard";
+import LinearProgress from "./linearProgress/linearProgress";
 import InputInfo from "./inputs/info/info";
 import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
@@ -24,6 +25,7 @@ export {
   Toolbar,
   Table,
   ColourCard,
+  LinearProgress,
   InputInfo,
   InputTextField,
   InputSelect,

@@ -37,6 +37,7 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
   const [openConfirm, setOpenConfirm] = useState(false);
 
   const remainingAmount = debt.amount - debt.payed;
+  const payed = debt.amount === debt.payed ? "payed" : "";
 
   const getPercentage = useCallback(() => {
     const value = (debt.payed * 100) / debt.amount;
@@ -73,7 +74,11 @@ const DebtCard = ({ getData, handleForm, debt, setDebt, setIsEdit }) => {
           <StyledName component="div" variant="body1" noWrap>
             {debt.name}
           </StyledName>
-          <StyledLinearProgress variant="determinate" value={percentage} />
+          <StyledLinearProgress
+            variant="determinate"
+            value={percentage}
+            className={payed}
+          />
           <Grid container>
             <Grid item xs={6}>
               <Typography component="div" variant="subtitle2">

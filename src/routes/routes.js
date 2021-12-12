@@ -2,8 +2,8 @@
 import React, { Suspense, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 
-// external components
-import LinearProgress from "@mui/material/LinearProgress";
+// custom components
+import { LinearProgress } from "shared/components";
 
 // config
 import { routes } from "config/routes";

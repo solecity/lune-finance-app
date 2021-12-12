@@ -22,19 +22,23 @@ const StyledName = styled(Typography)`
 `;
 
 const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  margin: "15px 0 5px 0",
+  borderRadius: "5px",
+
   [`&.${linearProgressClasses.root}`]: {
-    borderRadius: "5px",
     height: "6px",
-    margin: "15px 0 5px 0"
+    backgroundColor: theme.colours.secondary
   },
 
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.colours.accent
-  },
-
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
+  [`.${linearProgressClasses.bar}`]: {
+    borderRadius: "5px",
     backgroundColor: theme.colours.primary
+  },
+
+  "&.payed": {
+    [`.${linearProgressClasses.bar}`]: {
+      backgroundColor: `${theme.colours.green} !important`
+    }
   }
 }));
 

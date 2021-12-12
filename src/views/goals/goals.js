@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 
 // custom components
 import { Header, Toolbar, Modal } from "shared/components";
-import { Form, Cards } from "./components";
+import { FundsBar, Form, Cards } from "./components";
 
 const Goals = () => {
   const [data, setData] = useState([]);
@@ -32,6 +32,7 @@ const Goals = () => {
   return (
     <Container maxWidth="xl">
       <Header title={"Goals"} />
+      <FundsBar />
       <Toolbar
         handleForm={handleForm}
         setIsEdit={setIsEdit}

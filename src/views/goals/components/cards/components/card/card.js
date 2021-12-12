@@ -38,21 +38,17 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [percentage, setPercentage] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
   const [openConfirm, setOpenConfirm] = useState(false);
 
   const image = goal.image || IMG;
-  const remainingAmount = goal.amount - totalAmount;
-
-  const getTotalAmount = useCallback(() => {
-    setTotalAmount(Math.floor(Math.random() * goal.amount));
-  }, [goal]);
+  const remainingAmount = goal.amount - goal.allocated;
+  const completed = goal.amount === goal.allocated ? "completed" : "";
 
   const getPercentage = useCallback(() => {
-    const value = (totalAmount * 100) / goal.amount;
+    const value = (goal.allocated * 100) / goal.amount;
 
     setPercentage(value);
-  }, [goal, totalAmount]);
+  }, [goal]);
 
   const handleEdit = () => {
     setIsEdit(true);
@@ -73,10 +69,6 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   };
 
   useEffect(() => {
-    getTotalAmount();
-  }, [getTotalAmount]);
-
-  useEffect(() => {
     getPercentage();
   }, [getPercentage]);
 
@@ -88,11 +80,15 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
           <StyledName component="div" variant="body1" noWrap>
             {goal.name}
           </StyledName>
-          <StyledLinearProgress variant="determinate" value={percentage} />
+          <StyledLinearProgress
+            variant="determinate"
+            value={percentage}
+            className={completed}
+          />
           <Grid container>
             <Grid item xs={6}>
               <Typography component="div" variant="subtitle2">
-                {totalAmount} {settings.currencySymbol}
+                {goal.allocated} {settings.currencySymbol}
               </Typography>
             </Grid>
             <Grid container item xs={6} justifyContent="flex-end">

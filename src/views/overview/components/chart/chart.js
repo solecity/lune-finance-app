@@ -8,7 +8,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 // api
-import OverviewService from "shared/services/overview";
+import StatsService from "shared/services/stats";
 
 // external components
 import CircularProgress from "@mui/material/CircularProgress";
@@ -69,7 +69,7 @@ const Chart = ({ year }) => {
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await OverviewService.getMonthlyStats(year);
+    const { data } = await StatsService.getMonthlyStats(year);
 
     setStats(data.stats);
     setIsLoading(false);

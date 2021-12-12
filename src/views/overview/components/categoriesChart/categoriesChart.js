@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // api
-import OverviewService from "shared/services/overview";
+import StatsService from "shared/services/stats";
 
 // custom components
 import { PieChart } from "shared/components";
@@ -15,7 +15,7 @@ const CategoriesChart = ({ year }) => {
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await OverviewService.getCategoriesStats(year);
+    const { data } = await StatsService.getCategoriesStats(year);
 
     setStats(data.stats);
     setIsLoading(false);

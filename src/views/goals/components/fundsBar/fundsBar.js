@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
+import { startOfYear, endOfYear } from "date-fns";
 
 // api
 import StatsService from "shared/services/stats";
@@ -18,11 +19,16 @@ import { StyledCard, StyledTypography } from "./styles";
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const StatsType = ({ year }) => {
+const FundsBar = () => {
   const settings = useRecoilValue(settingsState);
 
   const [isLoading, setIsLoading] = useState(true);
   const [stats, setStats] = useState({});
+
+  const year = {
+    start: startOfYear(new Date()),
+    end: endOfYear(new Date())
+  };
 
   const getData = async () => {
     setIsLoading(true);
@@ -38,35 +44,7 @@ const StatsType = ({ year }) => {
   }, []);
 
   return (
-    <>
-      <Grid item xs={6} sm={3}>
-        <StyledCard>
-          {isLoading ? (
-            <CircularProgress />
-          ) : (
-            <StyledTypography component="div" variant="h6" className="green">
-              {Math.trunc(stats.income * 100) / 100} {settings.currencySymbol}
-            </StyledTypography>
-          )}
-          <StyledTypography component="div" variant="body2" className="label">
-            Income
-          </StyledTypography>
-        </StyledCard>
-      </Grid>
-      <Grid item xs={6} sm={3}>
-        <StyledCard>
-          {isLoading ? (
-            <CircularProgress />
-          ) : (
-            <StyledTypography component="div" variant="h6" className="red">
-              {Math.trunc(stats.expense * 100) / 100} {settings.currencySymbol}
-            </StyledTypography>
-          )}
-          <StyledTypography component="div" variant="body2" className="label">
-            Expense
-          </StyledTypography>
-        </StyledCard>
-      </Grid>
+    <Grid container spacing={1}>
       <Grid item xs={6} sm={3}>
         <StyledCard>
           {isLoading ? (
@@ -77,7 +55,7 @@ const StatsType = ({ year }) => {
             </StyledTypography>
           )}
           <StyledTypography component="div" variant="body2" className="label">
-            Savings
+            Total
           </StyledTypography>
         </StyledCard>
       </Grid>
@@ -87,21 +65,18 @@ const StatsType = ({ year }) => {
             <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="blue">
-              {Math.trunc(stats.investment * 100) / 100}{" "}
-              {settings.currencySymbol}
+              0 {settings.currencySymbol}
             </StyledTypography>
           )}
           <StyledTypography component="div" variant="body2" className="label">
-            Investment
+            Allocated
           </StyledTypography>
         </StyledCard>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
-StatsType.propTypes = {
-  year: PropTypes.object.isRequired
-};
+FundsBar.propTypes = {};
 
-export default StatsType;
+export default FundsBar;

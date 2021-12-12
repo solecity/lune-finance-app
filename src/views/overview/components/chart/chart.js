@@ -13,10 +13,11 @@ import OverviewService from "shared/services/overview";
 // external components
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
 // styled components
-import { StyledPaper, StyleGrid, StyledTitle } from "./styles";
+import { StyleGrid, StyledTitle } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -79,7 +80,7 @@ const Chart = ({ year }) => {
   }, []);
 
   return (
-    <StyledPaper>
+    <Paper>
       <StyledTitle container>
         <Typography component="div" variant="h6" className="green">
           Income / Outcome
@@ -94,7 +95,7 @@ const Chart = ({ year }) => {
           <HighchartsReact highcharts={Highcharts} options={options} />
         </Grid>
       )}
-    </StyledPaper>
+    </Paper>
   );
 };
 

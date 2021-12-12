@@ -57,10 +57,6 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
     color: `${theme.colours.mainText} !important`
   },
 
-  [`.${svgIconClasses.root}`]: {
-    color: `${theme.colours.mainText} !important`
-  },
-
   ".MuiPickersDay-root": {
     backgroundColor: `${theme.colours.selectedButton} !important`,
     color: `${theme.colours.mainText} !important`

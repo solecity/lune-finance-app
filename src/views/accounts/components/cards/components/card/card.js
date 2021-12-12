@@ -22,6 +22,7 @@ import { ColourCard, ActionButton, ConfirmDelete } from "shared/components";
 import {
   StyledContent,
   StyledGrid,
+  StyledColour,
   StyledInfo,
   StyledCardIcon,
   StyledButtons,
@@ -76,35 +77,31 @@ const AccountCard = ({
   return (
     <Card>
       <StyledContent>
+        <StyledColour container colour={account.colour} />
         <StyledGrid container>
-          <Grid container item xs={9}>
-            <Grid item xs={1}>
-              <ColourCard colour={account.colour} />
-            </Grid>
-            <StyledInfo item xs={11}>
-              <Grid container item xs={12}>
-                <Grid item>
-                  <Typography component="div" variant="body1" noWrap>
-                    {account.name}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <StyledCardIcon bool={account.hasCard} />
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography component="div" variant="body2">
-                  {getType(account.type)}
+          <Grid item xs={9}>
+            <Grid container item xs={12}>
+              <Grid item>
+                <Typography component="div" variant="body1" noWrap>
+                  {account.name}
                 </Typography>
               </Grid>
-              {account.openingDate && (
-                <Grid item xs={12}>
-                  <Typography component="div" variant="body2" noWrap>
-                    Opened since {account.openingDate}
-                  </Typography>
-                </Grid>
-              )}
-            </StyledInfo>
+              <Grid item>
+                <StyledCardIcon bool={account.hasCard} />
+              </Grid>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography component="div" variant="body2">
+                {getType(account.type)}
+              </Typography>
+            </Grid>
+            {account.openingDate && (
+              <Grid item xs={12}>
+                <Typography component="div" variant="body2" noWrap>
+                  Opened since {account.openingDate}
+                </Typography>
+              </Grid>
+            )}
           </Grid>
           <Grid item xs={3}>
             <StyledAmount item xs={12}>

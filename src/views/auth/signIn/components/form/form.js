@@ -25,7 +25,7 @@ import { StyledInputTextField } from "./styles";
 import { schemaSignIn } from "constants/schemas";
 
 // atoms
-import { isLoggedIn, settingsState } from "shared/recoil/atoms";
+import { isLoggedIn } from "shared/recoil/atoms";
 
 const SignInForm = ({ onSubmitSuccess }) => {
   const setLoggedIn = useSetRecoilState(isLoggedIn);
@@ -48,18 +48,21 @@ const SignInForm = ({ onSubmitSuccess }) => {
   const password = watch("password");
 
   const onSubmit = async ({ password }) => {
-    const res = await signIn({ password });
+    try {
+      const res = await signIn({ password });
+      if (res.success) {
+        setLoggedIn(true);
 
-    if (res.success) {
-      setLoggedIn(true);
+        const user = await saveUser();
 
-      const user = await saveUser();
+        saveSettings(user._id);
 
-      saveSettings(user._id);
-
-      onSubmitSuccess();
-    } else {
-      setGeneralError(res);
+        onSubmitSuccess();
+      } else {
+        setGeneralError(res);
+      }
+    } catch (err) {
+      console.log("Server down");
     }
   };
 

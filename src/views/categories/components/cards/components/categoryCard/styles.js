@@ -22,7 +22,8 @@ const StyledGrid = styled(Grid)`
 `;
 
 const StyledColour = styled(Grid)(({ colour }) => ({
-  backgroundColor: `${colour} !important`
+  backgroundColor: `${colour} !important`,
+  width: "5px !important"
 }));
 
 const StyledButton = styled(Grid)`

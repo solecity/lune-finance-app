@@ -87,7 +87,9 @@ const CategoryCard = ({
   return (
     <StyledCard>
       <StyledContent container spacing={1}>
-        <StyledColour container item xs={1} colour={category.colour} />
+        <Grid container item xs={1}>
+          <StyledColour colour={category.colour} />
+        </Grid>
         <StyledGrid container item xs={5}>
           <Typography component="div" variant="body2" noWrap>
             {category.name}

@@ -17,9 +17,10 @@ const StyledGrid = styled(Grid)`
   padding: 16px;
 `;
 
-const StyledInfo = styled(Grid)`
-  padding-left: 15px;
-`;
+const StyledColour = styled(Grid)(({ colour }) => ({
+  backgroundColor: `${colour} !important`,
+  height: "6px"
+}));
 
 const StyledCreditCard = styled(CreditCard)`
   width: 22px;
@@ -56,7 +57,7 @@ const StyledAmount = styled(Grid)`
 export {
   StyledContent,
   StyledGrid,
-  StyledInfo,
+  StyledColour,
   StyledCardIcon,
   StyledButtons,
   StyledAmount

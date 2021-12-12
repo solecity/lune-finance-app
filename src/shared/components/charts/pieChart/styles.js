@@ -3,12 +3,7 @@ import styled from "styled-components";
 
 // external components
 import CircularProgress from "@mui/material/CircularProgress";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-
-const StyledPaper = styled(Paper)`
-  height: 450px;
-`;
 
 const StyledGrid = styled(Grid)`
   height: 80%;
@@ -21,4 +16,4 @@ const StyledTitle = styled(Grid)`
   justify-content: center;
 `;
 
-export { StyledPaper, StyledGrid, StyledTitle };
+export { StyledGrid, StyledTitle };

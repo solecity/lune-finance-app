@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Grid from "@mui/material/Grid";
 
 const StyledGrid = styled(Grid)`
-  padding-top: 0 !important;
+  margin-bottom: 10px !important;
 `;
 
 export { StyledGrid };

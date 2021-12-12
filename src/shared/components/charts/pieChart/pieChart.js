@@ -1,5 +1,5 @@
 // base
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // libraries
@@ -7,19 +7,14 @@ import { useRecoilValue } from "recoil";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-// api
-import OverviewService from "shared/services/overview";
-
 // external components
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-// custom components
-import { PieChart } from "shared/components";
-
 // styled components
-import { StyledPaper, StyledGrid, StyledTitle } from "./styles";
+import { StyledGrid, StyledTitle } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
@@ -62,7 +57,7 @@ const CategoriesChart = ({ title, series, isLoading }) => {
   };
 
   return (
-    <StyledPaper>
+    <Paper>
       <StyledTitle container>
         <Typography component="div" variant="h6" className="green">
           {title}
@@ -77,7 +72,7 @@ const CategoriesChart = ({ title, series, isLoading }) => {
           <HighchartsReact highcharts={Highcharts} options={options} />
         </Grid>
       )}
-    </StyledPaper>
+    </Paper>
   );
 };
 

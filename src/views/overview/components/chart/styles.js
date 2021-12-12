@@ -2,12 +2,7 @@
 import styled from "styled-components";
 
 // external components
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-
-const StyledPaper = styled(Paper)`
-  height: 450px;
-`;
 
 const StyleGrid = styled(Grid)`
   height: 400px;
@@ -20,4 +15,4 @@ const StyledTitle = styled(Grid)`
   justify-content: center;
 `;
 
-export { StyledPaper, StyleGrid, StyledTitle };
+export { StyleGrid, StyledTitle };

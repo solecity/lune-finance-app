@@ -17,8 +17,13 @@ export const signIn = async (payload) => {
 
         return { success: true };
       }
-    } else return message;
+    } else if (message) {
+      return message;
+    } else {
+      return false;
+    }
   } catch (error) {
+    console.log("eeee");
     throw error;
   }
 };

@@ -19,17 +19,15 @@ const apiExport = () => {
   api.interceptors.response.use(
     (response) => response,
     (error) => {
-      const status = error.response.status;
+      try {
+        if (error.response.status === StatusCodes.UNAUTHORIZED) {
+          clearJWT();
 
-      if (status === StatusCodes.UNAUTHORIZED) {
-        clearJWT();
-
-        return error.response.data;
-      }
-
-      if (status === StatusCodes.CONFLICT) {
-        return error.response.data;
-      } else {
+          return error.response.data;
+        } else if (error.response.status === StatusCodes.CONFLICT) {
+          return error.response.data;
+        }
+      } catch (err) {
         return error;
       }
     }

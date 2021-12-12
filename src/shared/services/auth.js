@@ -4,7 +4,7 @@ import api from "./api";
 const signIn = async (payload) => {
   const res = await api().post("/auth/signin", payload);
 
-  return res.data;
+  return res ? res.data : {};
 };
 
 export default { signIn };

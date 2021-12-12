@@ -18,7 +18,7 @@ const createWindow = () => {
 
   mainWindow.loadURL(appUrl);
 
-  mainWindow.webContents.openDevTools();
+  if (isDev) mainWindow.webContents.openDevTools();
 };
 
 app.whenReady().then(() => {

@@ -45,7 +45,7 @@ import { CONSTANTS } from "constants/general";
 
 const Settings = () => {
   const [user, setUser] = useState({});
-  const [language, setLanguage] = useState(CONSTANTS.INITIAL_LANGUAGE);
+  const [language, setLanguage] = useState(CONSTANTS.DEFAULT_LANGUAGE);
   const [theme, setTheme] = useState(true);
 
   const getUser = () => {

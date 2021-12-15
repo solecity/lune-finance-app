@@ -28,7 +28,7 @@ const InputColourPicker = ({ isOpen, handleColour, colour, setColour }) => {
 };
 
 InputColourPicker.defaultProps = {
-  colour: CONSTANTS.INITIAL_ACCOUNT_TYPE
+  colour: CONSTANTS.DEFAULT_ACCOUNT_TYPE
 };
 
 InputColourPicker.propTypes = {

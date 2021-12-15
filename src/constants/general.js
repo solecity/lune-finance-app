@@ -15,11 +15,12 @@ const CONSTANTS = {
   DEFAULT_COLOUR: "#c1c1c1",
   LIGHT: "light",
   DARK: "dark",
-  INITIAL_ACCOUNT_TYPE: "cash",
-  INITIAL_LANGUAGE: "en",
+  DEFAULT_ACCOUNT_TYPE: "cash",
+  DEFAULT_LANGUAGE: "en",
   EXPENSE: "expense",
   INCOME: "income",
-  OUTCOME: "outcome"
+  OUTCOME: "outcome",
+  INVESTMENT: "investment"
 };
 
 const TYPES = {

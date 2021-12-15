@@ -6,6 +6,12 @@ const getMany = async (params) => {
   return res ? res.data : { accounts: [], totalPages: 0 };
 };
 
+const getGoalsFunds = async () => {
+  const res = await api().get("/accounts/goals");
+
+  return res ? res.data : { accounts: [] };
+};
+
 const post = async (payload) => {
   const res = await api().post("/accounts", payload);
 
@@ -26,6 +32,7 @@ const deleteOne = async (id) => {
 
 export default {
   getMany,
+  getGoalsFunds,
   post,
   put,
   deleteOne

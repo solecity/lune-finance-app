@@ -20,7 +20,8 @@ const schemaAccount = yup.object().shape({
     .typeError(ACCOUNT.INVALID_BALANCE)
     .required(ACCOUNT.REQUIRED_BALANCE),
   openingDate: yup.string().nullable(true),
-  hasCard: yup.bool()
+  hasCard: yup.bool(),
+  allocateGoal: yup.bool()
 });
 
 export { schemaAccount };

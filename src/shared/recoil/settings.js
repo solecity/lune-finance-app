@@ -8,7 +8,7 @@ export const saveSettings = async (user) => {
   try {
     const { data } = await settingsService.getOne(user);
 
-    if (data !== null) {
+    if (data.settings !== null) {
       setUserSettings(data.settings);
     } else {
       const settings = await settingsService.post(user);

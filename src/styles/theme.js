@@ -21,8 +21,9 @@ const Light = {
     accent: "#d2dce3",
     boxShadow: "#414748",
     selectedButton: "#fcfcfc",
-    mainText: "#1c1c1c",
+    mainText: "#292a2b",
     secondaryText: "#fcfcfc",
+    accentText: "#4e5455",
     divider: "#d2dce3",
     ...general
   }
@@ -38,7 +39,8 @@ const Dark = {
     boxShadow: "#000000",
     selectedButton: "#292E32",
     mainText: "#fcfcfc",
-    secondaryText: "#1c1c1c",
+    secondaryText: "#292a2b",
+    accentText: "#4e5455",
     divider: "#3D4348",
     ...general
   }

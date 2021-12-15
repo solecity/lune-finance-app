@@ -13,11 +13,12 @@ const StyledIcon = styled(ListItemIcon)`
   min-width: 30px !important;
   margin-right: 5px;
   font-size: 18px;
-  color: ${({ theme }) => `${theme.colours.mainText} !important`};
+  color: ${({ theme }) => `${theme.colours.accentText} !important`};
 `;
 
 const StyledLabel = styled.span`
   font-size: 0.8rem;
+  color: ${({ theme }) => `${theme.colours.accentText} !important`};
 `;
 
 export { StyledItem, StyledIcon, StyledLabel };

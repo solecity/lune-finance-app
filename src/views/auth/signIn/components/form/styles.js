@@ -2,10 +2,10 @@
 import styled from "styled-components";
 
 // custom components
-import { InputTextField } from "shared/components";
+import Grid from "@mui/material/Grid";
 
-const StyledInputTextField = styled(InputTextField)`
-  margin-bottom: 40px !important;
+const StyledGrid = styled(Grid)`
+  margin-bottom: 30px !important;
 `;
 
-export { StyledInputTextField };
+export { StyledGrid };

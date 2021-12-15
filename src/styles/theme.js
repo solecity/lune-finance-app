@@ -23,7 +23,6 @@ const Light = {
     selectedButton: "#fcfcfc",
     mainText: "#292a2b",
     secondaryText: "#fcfcfc",
-    accentText: "#4e5455",
     divider: "#d2dce3",
     ...general
   }

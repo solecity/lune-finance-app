@@ -16,10 +16,10 @@ import { saveSettings } from "shared/recoil/settings";
 import Grid from "@mui/material/Grid";
 
 // custom components
-import { FormButton } from "shared/components";
+import { InputTextField, FormButton } from "shared/components";
 
 // styled components
-import { StyledInputTextField } from "./styles";
+import { StyledGrid } from "./styles";
 
 // schemas
 import { schemaSignIn } from "constants/schemas";
@@ -27,7 +27,7 @@ import { schemaSignIn } from "constants/schemas";
 // atoms
 import { isLoggedIn } from "shared/recoil/atoms";
 
-const SignInForm = ({ onSubmitSuccess }) => {
+const Form = ({ onSubmitSuccess }) => {
   const setLoggedIn = useSetRecoilState(isLoggedIn);
 
   const [generalError, setGeneralError] = useState("");
@@ -40,16 +40,19 @@ const SignInForm = ({ onSubmitSuccess }) => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
+      email: "",
       password: ""
     },
     resolver: yupResolver(schemaSignIn)
   });
 
+  const email = watch("email");
   const password = watch("password");
 
-  const onSubmit = async ({ password }) => {
+  const onSubmit = async (payload) => {
     try {
-      const res = await signIn({ password });
+      const res = await signIn(payload);
+
       if (res.success) {
         setLoggedIn(true);
 
@@ -67,14 +70,24 @@ const SignInForm = ({ onSubmitSuccess }) => {
   };
 
   useEffect(() => {
-    if (password) setGeneralError("");
+    if (email || password) setGeneralError("");
   }, [password]);
 
   return (
-    <Grid container justifyContent="center">
-      <Grid item xs={12} sm={4}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <StyledInputTextField
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Grid container spacing={1}>
+        <StyledGrid item xs={12}>
+          <InputTextField
+            error={Boolean(errors.email?.message) || Boolean(generalError)}
+            helperText={errors.email?.message}
+            control={control}
+            label="Email"
+            name="email"
+            type="email"
+          />
+        </StyledGrid>
+        <StyledGrid item xs={12}>
+          <InputTextField
             error={Boolean(errors.password?.message) || Boolean(generalError)}
             helperText={errors.password?.message || generalError}
             control={control}
@@ -82,19 +95,19 @@ const SignInForm = ({ onSubmitSuccess }) => {
             name="password"
             type="password"
           />
-          <FormButton text="Sign In" />
-        </form>
+        </StyledGrid>
       </Grid>
-    </Grid>
+      <FormButton text="Sign In" />
+    </form>
   );
 };
 
-SignInForm.defaultProps = {
+Form.defaultProps = {
   onSubmitSuccess: () => {}
 };
 
-SignInForm.propTypes = {
+Form.propTypes = {
   onSubmitSuccess: PropTypes.func
 };
 
-export default SignInForm;
+export default Form;

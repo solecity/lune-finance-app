@@ -24,7 +24,7 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const StyledPaper = styled(Paper)`
-  background-color: ${({ theme }) => theme.colours.accent} !important;
+  background-color: ${({ theme }) => theme.colours.primary} !important;
   width: 50px;
   padding-top: 45px;
   overflow-x: hidden;

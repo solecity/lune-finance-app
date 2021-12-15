@@ -10,7 +10,7 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledGrid = styled(Grid)`
-  margin-bottom: 35px !important;
+  margin-bottom: 30px !important;
 `;
 
 const StyledLastGrid = styled(StyledGrid)`

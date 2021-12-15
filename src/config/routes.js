@@ -37,6 +37,11 @@ const routes = [
       },
       {
         exact: true,
+        path: "/budgets",
+        component: lazy(() => import("views/commingSoon"))
+      },
+      {
+        exact: true,
         path: "/debts",
         component: lazy(() => import("views/debts/debts"))
       },
@@ -54,6 +59,16 @@ const routes = [
         exact: true,
         path: "/recipients",
         component: lazy(() => import("views/recipients/recipients"))
+      },
+      {
+        exact: true,
+        path: "/analytics",
+        component: lazy(() => import("views/commingSoon"))
+      },
+      {
+        exact: true,
+        path: "/calculators",
+        component: lazy(() => import("views/commingSoon"))
       },
       {
         exact: true,

@@ -7,4 +7,10 @@ const signIn = async (payload) => {
   return res ? res.data : {};
 };
 
-export default { signIn };
+const signUp = async (payload) => {
+  const res = await api().post("/auth/signup", payload);
+
+  return res ? res.data : {};
+};
+
+export default { signIn, signUp };

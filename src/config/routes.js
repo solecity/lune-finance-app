@@ -13,6 +13,11 @@ const routes = [
     component: lazy(() => import("views/auth/signIn/signIn"))
   },
   {
+    exact: true,
+    path: "/signup",
+    component: lazy(() => import("views/auth/signUp/signUp"))
+  },
+  {
     layout: Main,
     routes: [
       {

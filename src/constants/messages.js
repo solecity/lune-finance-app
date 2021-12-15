@@ -1,5 +1,11 @@
-const SIGNIN = {
-  PASSWORD_REQUIRED: "Password is a required field"
+const AUTH = {
+  REQUIRED_NAME: "Name is a required field",
+  REQUIRED_EMAIL: "Email is a required field",
+  REQUIRED_PASSWORD: "Password is a required field",
+  REQUIRED_CONFIRM_PASSWORD: "Confirm password is a required field",
+  INVALID_EMAIL: "Invalid email",
+  INVALID_PASSWORD: "Password needs to be at least 4 characters",
+  INVALID_PASSWORDS: "Passwords don't match"
 };
 
 const ACCOUNT = {
@@ -35,4 +41,4 @@ const TRANSACTION = {
   INVALID_QUANTITY: "Invalid quantity value"
 };
 
-export { SIGNIN, ACCOUNT, CATEGORY, SUBCATEGORY, TRANSACTION };
+export { AUTH, ACCOUNT, CATEGORY, SUBCATEGORY, TRANSACTION };

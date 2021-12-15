@@ -14,6 +14,8 @@ import AccountService from "shared/services/account";
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
+import { Star } from "@styled-icons/boxicons-solid/Star";
+import { CreditCard } from "@styled-icons/boxicons-regular/CreditCard";
 
 // custom components
 import {
@@ -31,6 +33,7 @@ import {
 import {
   StyledContainer,
   StyledGrid,
+  StyledCheckbox,
   StyledLastGrid,
   StyledPicker
 } from "./styles";
@@ -61,10 +64,12 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
     mode: "onBlur",
     defaultValues: {
       name: account.name || "",
-      type: account.type || CONSTANTS.INITIAL_ACCOUNT_TYPE,
+      type: account.type || CONSTANTS.DEFAULT_ACCOUNT_TYPE,
       balance: account.balance || 0,
       openingDate: account.openingDate || new Date(),
-      hasCard: account.hasCard || false
+      colour: account.colour || CONSTANTS.DEFAULT_COLOUR,
+      hasCard: account.hasCard || false,
+      allocateGoal: account.allocateGoal || false
     },
     resolver: yupResolver(schemaAccount)
   });
@@ -88,10 +93,12 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
     if (isSubmitSuccessful) {
       reset({
         name: "",
-        type: CONSTANTS.INITIAL_ACCOUNT_TYPE,
+        type: CONSTANTS.DEFAULT_ACCOUNT_TYPE,
         balance: 0,
         openingDate: new Date(),
-        hasCard: false
+        colour: CONSTANTS.DEFAULT_COLOUR,
+        hasCard: false,
+        allocateGoal: false
       });
     }
   }, [isSubmitSuccessful, reset]);
@@ -149,10 +156,25 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
             />
           </StyledGrid>
           <StyledLastGrid container item xs={12}>
-            <Grid item xs={6}>
-              <InputCheckbox control={control} name="hasCard" label="Card" />
-            </Grid>
-            <StyledPicker item xs={6}>
+            <StyledCheckbox item xs={6} sm={4}>
+              <InputCheckbox
+                control={control}
+                name="hasCard"
+                label="Card"
+                icon={CreditCard}
+                iconClass="green"
+              />
+            </StyledCheckbox>
+            <StyledCheckbox item xs={6} sm={4}>
+              <InputCheckbox
+                control={control}
+                name="allocateGoal"
+                label="Allocate Goal"
+                icon={Star}
+                iconClass="yellow"
+              />
+            </StyledCheckbox>
+            <StyledPicker item xs={12} sm={4}>
               <ColourButton colour={colour} action={handleColour} />
               <InputColourPicker
                 isOpen={isColourOpen}

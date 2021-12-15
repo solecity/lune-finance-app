@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
 const StyledContainer = styled(Container)`
-  padding: 25px;
+  padding-bottom: 25px;
 `;
 
 const StyledGrid = styled(Grid)`

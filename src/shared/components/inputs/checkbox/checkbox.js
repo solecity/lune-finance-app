@@ -9,9 +9,9 @@ import { Controller } from "react-hook-form";
 import FormControl from "@mui/material/FormControl";
 
 // styled components
-import { StyledLabel, StyledCheckbox, StyledIcon } from "./styles";
+import { StyledLabel, StyledCheckbox } from "./styles";
 
-const InputCheckbox = ({ label, name, control }) => {
+const InputCheckbox = ({ label, name, control, icon: Icon, iconClass }) => {
   return (
     <FormControl fullWidth size="small">
       <StyledLabel>{label}</StyledLabel>
@@ -23,9 +23,10 @@ const InputCheckbox = ({ label, name, control }) => {
             label={label}
             variant="outlined"
             size="small"
-            icon={<StyledIcon />}
-            checkedIcon={<StyledIcon />}
+            icon={<Icon />}
+            checkedIcon={<Icon />}
             checked={field.value}
+            className={iconClass}
             {...field}
           />
         )}
@@ -35,13 +36,16 @@ const InputCheckbox = ({ label, name, control }) => {
 };
 
 InputCheckbox.defaultProps = {
-  label: ""
+  label: "",
+  iconClass: ""
 };
 
 InputCheckbox.propTypes = {
-  label: PropTypes.string,
-  name: PropTypes.string,
-  control: PropTypes.any
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  control: PropTypes.any.isRequired,
+  icon: PropTypes.any,
+  iconClass: PropTypes.string
 };
 
 export default InputCheckbox;

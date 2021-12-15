@@ -13,6 +13,10 @@ const StyledGrid = styled(Grid)`
   margin-bottom: 30px !important;
 `;
 
+const StyledCheckbox = styled(Grid)`
+  padding-bottom: 10px;
+`;
+
 const StyledLastGrid = styled(StyledGrid)`
   padding-top: 0 !important;
 `;
@@ -24,4 +28,10 @@ const StyledPicker = styled(Grid)`
   align-items: center;
 `;
 
-export { StyledContainer, StyledGrid, StyledLastGrid, StyledPicker };
+export {
+  StyledContainer,
+  StyledGrid,
+  StyledCheckbox,
+  StyledLastGrid,
+  StyledPicker
+};

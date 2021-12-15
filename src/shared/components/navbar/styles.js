@@ -1,5 +1,6 @@
 // libraries
 import styled from "styled-components";
+import { alpha } from "@mui/material/styles";
 
 // external components
 import Drawer from "@mui/material/Drawer";
@@ -23,10 +24,13 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const StyledPaper = styled(Paper)`
+  background-color: ${({ theme }) => theme.colours.accent} !important;
   width: 50px;
+  padding-top: 45px;
   overflow-x: hidden;
   border-radius: 0px;
-  padding-top: 45px;
+  border: none !important;
+  box-shadow: 1px 0px 4px ${({ theme }) => alpha(theme.colours.boxShadow, 0.3)} !important;
 
   &:hover {
     width: 180px;

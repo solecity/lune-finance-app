@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
   },
 
   [`.${paperClasses.root}`]: {
-    backgroundColor: `${theme.colours.secondaryBackground} !important`,
+    backgroundColor: theme.colours.secondaryBackground,
     borderRadius: "0 !important",
     color: `${theme.colours.mainText} !important`
   },

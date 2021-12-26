@@ -44,7 +44,7 @@ const StyledScrollWrapper = styled.div`
 
 const StyledColumn = styled(Grid)`
   min-width: 300px;
-  margin-right: 10px !important;
+  margin-right: 8px !important;
 `;
 
 const StyledColumnButton = styled(Card)`

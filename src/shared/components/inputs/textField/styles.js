@@ -16,6 +16,10 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     height: "36px"
   },
 
+  [`.${inputBaseClasses.root}`]: {
+    paddingRight: "0 !important"
+  },
+
   [`.${inputBaseClasses.input}`]: {
     backgroundColor: theme.colours.secondaryBackground,
     display: "block",
@@ -56,6 +60,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 
   [`.${inputAdornmentClasses.root}`]: {
     marginRight: "13px",
+    marginLeft: "13px",
 
     [`.${typographyClasses.root}`]: {
       color: `${theme.colours.secondaryText} !important`

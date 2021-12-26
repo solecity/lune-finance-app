@@ -2,16 +2,24 @@
 import styled from "styled-components";
 
 // external components
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import SimpleBar from "simplebar-react";
 
-const StyledCard = styled(Card)`
-  padding: 10px;
-  text-align: center;
+const StyledContainer = styled(Container)`
+  width: 550px !important;
+  padding: 0 !important;
 `;
 
-const StyledTypography = styled(Typography)`
-  margin: 6px 0 !important;
+const StyledScroll = styled(SimpleBar)`
+  height: 200px;
+
+  .simplebar-wrapper {
+    height: 100%;
+  }
+
+  .simplebar-content {
+    height: 100%;
+  }
 `;
 
-export { StyledCard, StyledTypography };
+export { StyledContainer, StyledScroll };

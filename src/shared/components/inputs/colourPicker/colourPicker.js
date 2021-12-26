@@ -10,7 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import { StyledPicker, StyledSwatch } from "./styles";
 
 // constants
-import { CONSTANTS } from "constants/general";
+import { DEFAULT } from "constants/general";
 
 const InputColourPicker = ({ isOpen, handleColour, colour, setColour }) => {
   const handleChange = (colour) => setColour(colour.hex);
@@ -28,7 +28,7 @@ const InputColourPicker = ({ isOpen, handleColour, colour, setColour }) => {
 };
 
 InputColourPicker.defaultProps = {
-  colour: CONSTANTS.DEFAULT_ACCOUNT_TYPE
+  colour: DEFAULT.ACCOUNT_TYPE
 };
 
 InputColourPicker.propTypes = {

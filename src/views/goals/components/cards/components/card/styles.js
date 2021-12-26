@@ -7,7 +7,6 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 const StyledContent = styled(CardContent)`
@@ -16,10 +15,6 @@ const StyledContent = styled(CardContent)`
 
 const StyledGrid = styled(Grid)`
   padding: 16px;
-`;
-
-const StyledCardMedia = styled(CardMedia)`
-  height: 160px;
 `;
 
 const StyledName = styled(Typography)`
@@ -51,7 +46,6 @@ const StyledButtons = styled(Grid)`
 export {
   StyledContent,
   StyledGrid,
-  StyledCardMedia,
   StyledName,
   StyledLinearProgress,
   StyledButtons

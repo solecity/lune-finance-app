@@ -29,13 +29,11 @@ import {
 } from "./styles";
 
 // constants
-import { CONSTANTS } from "constants/general";
+import { DEFAULT } from "constants/general";
 
 const Form = ({ recipient, handleForm, getData, isEdit }) => {
   const [isColourOpen, setIsColourOpen] = useState(false);
-  const [colour, setColour] = useState(
-    recipient.colour || CONSTANTS.DEFAULT_COLOUR
-  );
+  const [colour, setColour] = useState(recipient.colour || DEFAULT.COLOUR);
 
   const {
     control,
@@ -46,7 +44,7 @@ const Form = ({ recipient, handleForm, getData, isEdit }) => {
     mode: "onBlur",
     defaultValues: {
       name: recipient.name || "",
-      colour: recipient.colour || CONSTANTS.DEFAULT_COLOUR
+      colour: recipient.colour || DEFAULT.COLOUR
     }
   });
 
@@ -71,7 +69,7 @@ const Form = ({ recipient, handleForm, getData, isEdit }) => {
     if (isSubmitSuccessful) {
       reset({
         name: "",
-        colour: CONSTANTS.DEFAULT_COLOUR
+        colour: DEFAULT.COLOUR
       });
     }
   }, [isSubmitSuccessful, reset]);

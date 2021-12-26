@@ -3,8 +3,6 @@ import { Light, Dark } from "styles/theme";
 
 const DATE_FORMAT = "dd/MM/yyyy";
 
-const IMG = "/static/images/no-image.png";
-
 const CONSTANTS = {
   YES: "Yes",
   NO: "No",
@@ -12,15 +10,19 @@ const CONSTANTS = {
   NOT_PAYED: "Not payed",
   COMPLETED: "Completed",
   NOT_COMPLETED: "Not completed",
-  DEFAULT_COLOUR: "#c1c1c1",
   LIGHT: "light",
   DARK: "dark",
-  DEFAULT_ACCOUNT_TYPE: "cash",
-  DEFAULT_LANGUAGE: "en",
   EXPENSE: "expense",
   INCOME: "income",
   OUTCOME: "outcome",
   INVESTMENT: "investment"
+};
+
+const DEFAULT = {
+  COLOUR: "#c1c1c1",
+  THEME: "light",
+  ACCOUNT_TYPE: "cash",
+  LANGUAGE: "en"
 };
 
 const TYPES = {
@@ -58,4 +60,4 @@ const VALIDATIONS = {
   TRANSACTION: ["expense", "income", "transfer", "savings", "investment"]
 };
 
-export { DATE_FORMAT, IMG, CONSTANTS, TYPES, COLOURS, VALIDATIONS };
+export { DATE_FORMAT, CONSTANTS, DEFAULT, TYPES, COLOURS, VALIDATIONS };

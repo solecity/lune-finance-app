@@ -41,11 +41,11 @@ import { getUserSettings, setUserSettings } from "shared/utils/settings";
 import { settingsState } from "shared/recoil/atoms";
 
 // constants
-import { CONSTANTS } from "constants/general";
+import { CONSTANTS, DEFAULT } from "constants/general";
 
 const Settings = () => {
   const [user, setUser] = useState({});
-  const [language, setLanguage] = useState(CONSTANTS.DEFAULT_LANGUAGE);
+  const [language, setLanguage] = useState(DEFAULT.LANGUAGE);
   const [theme, setTheme] = useState(true);
 
   const getUser = () => {
@@ -60,7 +60,7 @@ const Settings = () => {
     console.log(userSettings);
 
     setLanguage(userSettings.language);
-    setTheme(userSettings.theme === CONSTANTS.LIGHT);
+    setTheme(userSettings.theme === DEFAULT.THEME);
     setUserSettings(userSettings);
   };
 

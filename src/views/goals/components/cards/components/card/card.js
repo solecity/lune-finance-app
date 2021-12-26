@@ -22,7 +22,6 @@ import { ActionButton, ConfirmDelete } from "shared/components";
 import {
   StyledContent,
   StyledGrid,
-  StyledCardMedia,
   StyledName,
   StyledLinearProgress,
   StyledButtons
@@ -31,24 +30,32 @@ import {
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-// constants
-import { IMG } from "constants/general";
-
 const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   const settings = useRecoilValue(settingsState);
 
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [remainingAmount, setRemainingAmount] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [openConfirm, setOpenConfirm] = useState(false);
 
-  const image = goal.image || IMG;
-  const remainingAmount = goal.amount - goal.allocated;
-  const completed = goal.amount === goal.allocated ? "completed" : "";
+  const completed = remainingAmount === 0 ? "completed" : "";
 
-  const getPercentage = useCallback(() => {
-    const value = (goal.allocated * 100) / goal.amount;
+  const getRemainingAmount = () => {
+    let total = 0;
 
+    goal.allocated.forEach((el) => {
+      total += el.amount;
+    });
+
+    setTotalAmount(total);
+    setRemainingAmount(goal.amount - total);
+  };
+
+  const getPercentage = () => {
+    const value = (totalAmount * 100) / goal.amount;
+    console.log(value);
     setPercentage(value);
-  }, [goal]);
+  };
 
   const handleEdit = () => {
     setIsEdit(true);
@@ -69,12 +76,12 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
   };
 
   useEffect(() => {
+    getRemainingAmount();
     getPercentage();
-  }, [getPercentage]);
+  }, [totalAmount]);
 
   return (
     <Card>
-      <StyledCardMedia component="img" image={image} alt={goal.name} />
       <StyledContent>
         <StyledGrid>
           <StyledName component="div" variant="body1" noWrap>
@@ -88,7 +95,7 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
           <Grid container>
             <Grid item xs={6}>
               <Typography component="div" variant="subtitle2">
-                {goal.allocated} {settings.currencySymbol}
+                {/*goal.allocated*/} {settings.currencySymbol}
               </Typography>
             </Grid>
             <Grid container item xs={6} justifyContent="flex-end">

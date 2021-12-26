@@ -45,15 +45,13 @@ import { schemaAccount } from "constants/schemas";
 import { settingsState } from "shared/recoil/atoms";
 
 // constants
-import { CONSTANTS, TYPES } from "constants/general";
+import { DEFAULT, TYPES } from "constants/general";
 
 const Form = ({ account, handleForm, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isColourOpen, setIsColourOpen] = useState(false);
-  const [colour, setColour] = useState(
-    account.colour || CONSTANTS.DEFAULT_COLOUR
-  );
+  const [colour, setColour] = useState(account.colour || DEFAULT.COLOUR);
 
   const {
     control,
@@ -64,10 +62,10 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
     mode: "onBlur",
     defaultValues: {
       name: account.name || "",
-      type: account.type || CONSTANTS.DEFAULT_ACCOUNT_TYPE,
+      type: account.type || DEFAULT.ACCOUNT_TYPE,
       balance: account.balance || 0,
       openingDate: account.openingDate || new Date(),
-      colour: account.colour || CONSTANTS.DEFAULT_COLOUR,
+      colour: account.colour || DEFAULT.COLOUR,
       hasCard: account.hasCard || false,
       allocateGoal: account.allocateGoal || false
     },
@@ -93,10 +91,10 @@ const Form = ({ account, handleForm, getData, isEdit }) => {
     if (isSubmitSuccessful) {
       reset({
         name: "",
-        type: CONSTANTS.DEFAULT_ACCOUNT_TYPE,
+        type: DEFAULT.ACCOUNT_TYPE,
         balance: 0,
         openingDate: new Date(),
-        colour: CONSTANTS.DEFAULT_COLOUR,
+        colour: DEFAULT.COLOUR,
         hasCard: false,
         allocateGoal: false
       });

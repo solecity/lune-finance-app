@@ -6,14 +6,14 @@ import PropTypes from "prop-types";
 import { StyledButton } from "./styles";
 
 // constants
-import { CONSTANTS } from "constants/general";
+import { DEFAULT } from "constants/general";
 
 const ColourButton = ({ colour, action }) => {
   return <StyledButton variant="container" colour={colour} onClick={action} />;
 };
 
 ColourButton.defaultProps = {
-  colour: CONSTANTS.DEFAULT_COLOUR
+  colour: DEFAULT.COLOUR
 };
 
 ColourButton.propTypes = {

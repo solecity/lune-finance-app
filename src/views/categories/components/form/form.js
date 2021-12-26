@@ -40,15 +40,13 @@ import { schemaCategory } from "constants/schemas";
 import { settingsState } from "shared/recoil/atoms";
 
 // constants
-import { CONSTANTS, TYPES } from "constants/general";
+import { CONSTANTS, DEFAULT, TYPES } from "constants/general";
 
 const Form = ({ formType, category, handleForm, getData, isEdit }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isColourOpen, setIsColourOpen] = useState(false);
-  const [colour, setColour] = useState(
-    category.colour || CONSTANTS.DEFAULT_COLOUR
-  );
+  const [colour, setColour] = useState(category.colour || DEFAULT.COLOUR);
 
   const {
     control,
@@ -62,7 +60,7 @@ const Form = ({ formType, category, handleForm, getData, isEdit }) => {
       name: category.name || "",
       type: category.type || formType,
       monthlyBudget: category.monthlyBudget || 0,
-      colour: category.colour || CONSTANTS.DEFAULT_COLOUR
+      colour: category.colour || DEFAULT.COLOUR
     },
     resolver: yupResolver(schemaCategory)
   });
@@ -92,7 +90,7 @@ const Form = ({ formType, category, handleForm, getData, isEdit }) => {
         name: "",
         type: formType,
         monthlyBudget: 0,
-        colour: CONSTANTS.DEFAULT_COLOUR
+        colour: DEFAULT.COLOUR
       });
     }
   }, [isSubmitSuccessful, reset, formType]);
@@ -129,10 +127,12 @@ const Form = ({ formType, category, handleForm, getData, isEdit }) => {
                   control={control}
                   label="Monthly Budget"
                   name="monthlyBudget"
-                  type="number"
+                  type="text"
                   InputProps={{
                     inputProps: {
-                      min: 0
+                      min: 0,
+                      inputMode: "numeric",
+                      pattern: "[+-]?([0-9]*[.])?[0-9]+"
                     },
                     startAdornment: (
                       <InputAdornment position="start">

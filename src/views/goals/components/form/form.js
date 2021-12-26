@@ -35,14 +35,13 @@ const Form = ({ goal, handleForm, getData, isEdit }) => {
     mode: "onBlur",
     defaultValues: {
       name: goal.name || "",
-      amount: goal.amount || 0,
-      image: goal.image || ""
+      amount: goal.amount || 0
     }
   });
 
   const onSubmit = async (payload) => {
     const res = isEdit
-      ? await GoalService.put(goal._id, payload)
+      ? await GoalService.patch(goal._id, payload)
       : await GoalService.post(payload);
 
     if (res) {
@@ -55,69 +54,56 @@ const Form = ({ goal, handleForm, getData, isEdit }) => {
     if (isSubmitSuccessful) {
       reset({
         name: "",
-        amount: 0,
-        image: ""
+        amount: 0
       });
     }
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <StyledContainer>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={1}>
-          <StyledGrid item xs={12} sm={6}>
-            <InputTextField
-              error={Boolean(errors.name?.message)}
-              helperText={errors.name?.message}
-              control={control}
-              label="Name *"
-              name="name"
-              type="text"
-            />
-          </StyledGrid>
-          <StyledGrid item xs={12} sm={6}>
-            <InputTextField
-              error={Boolean(errors.amount?.message)}
-              helperText={errors.amount?.message}
-              control={control}
-              label="Amount *"
-              name="amount"
-              type="text"
-              InputProps={{
-                inputProps: {
-                  min: 0,
-                  inputMode: "numeric",
-                  pattern: "[+-]?([0-9]*[.])?[0-9]+"
-                },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    {settings.currencySymbol}
-                  </InputAdornment>
-                )
-              }}
-            />
-          </StyledGrid>
-          <StyledGrid item xs={12}>
-            <InputTextField
-              error={Boolean(errors.image?.message)}
-              helperText={errors.image?.message}
-              control={control}
-              label="Image url"
-              name="image"
-              type="text"
-            />
-          </StyledGrid>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Grid container spacing={1}>
+        <StyledGrid item xs={12}>
+          <InputTextField
+            error={Boolean(errors.name?.message)}
+            helperText={errors.name?.message}
+            control={control}
+            label="Name *"
+            name="name"
+            type="text"
+          />
+        </StyledGrid>
+        <StyledGrid item xs={12}>
+          <InputTextField
+            error={Boolean(errors.amount?.message)}
+            helperText={errors.amount?.message}
+            control={control}
+            label="Amount *"
+            name="amount"
+            type="text"
+            InputProps={{
+              inputProps: {
+                min: 0,
+                inputMode: "numeric",
+                pattern: "[+-]?([0-9]*[.])?[0-9]+"
+              },
+              endAdornment: (
+                <InputAdornment position="end">
+                  {settings.currencySymbol}
+                </InputAdornment>
+              )
+            }}
+          />
+        </StyledGrid>
+      </Grid>
+      <Grid container item spacing={1}>
+        <Grid item xs={12} sm={6}>
+          <ActionButton text="Cancel" action={handleForm} />
         </Grid>
-        <Grid container item spacing={1}>
-          <Grid item xs={12} sm={6}>
-            <ActionButton text="Cancel" action={handleForm} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormButton text="Save" />
-          </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormButton />
         </Grid>
-      </form>
-    </StyledContainer>
+      </Grid>
+    </form>
   );
 };
 

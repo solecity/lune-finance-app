@@ -107,7 +107,11 @@ const TransactionsTable = ({
       align: "center",
       minWidth: 80,
       accessor: ({ quantity }) => quantity || 0,
-      Cell: (row) => <StyledCenterColumn>{row.value}</StyledCenterColumn>
+      Cell: (row) => (
+        <StyledCenterColumn>
+          {row.value === 0 ? "*" : row.value}
+        </StyledCenterColumn>
+      )
     },
     {
       Header: "Actions",

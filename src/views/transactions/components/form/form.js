@@ -310,7 +310,7 @@ const Form = ({
                     inputProps: {
                       min: 0,
                       inputMode: "numeric",
-                      pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                      pattern: "([0-9]*[.])?[0-9]+$|^$"
                     }
                   }}
                 />

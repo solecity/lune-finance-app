@@ -10,17 +10,17 @@ import Grid from "@mui/material/Grid";
 
 // custom components
 import { Header, Toolbar, Modal, TabButton } from "shared/components";
-import { FundsBar, Form, FundsList, Cards } from "./components";
+import { GoalsAccounts, Form, FundsList, Cards } from "./components";
 
 // styled components
-import { StyledTabs } from "./styles";
+import { StyledContainer, StyledTabs, StyledDivider } from "./styles";
 
 const tabs = ["Info", "Allocate"];
 
 const Goals = () => {
   const [data, setData] = useState([]);
   const [goal, setGoal] = useState({});
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(1);
   const [selected, setSelected] = useState(tab);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -50,7 +50,7 @@ const Goals = () => {
           />
         );
       case 1:
-        return <FundsList />;
+        return <FundsList goal={goal} />;
       default:
         break;
     }
@@ -63,7 +63,7 @@ const Goals = () => {
   return (
     <Container maxWidth="xl">
       <Header title={"Goals"} />
-      <FundsBar />
+      <GoalsAccounts />
       <Toolbar
         handleForm={handleForm}
         setIsEdit={setIsEdit}
@@ -82,10 +82,10 @@ const Goals = () => {
         isOpen={isOpen}
         isEdit={isEdit}
       >
-        <Container>
+        <StyledContainer>
           <StyledTabs container spacing={1}>
             {tabs.map((tab, i) => (
-              <Grid item xs={6} sm={4} md={2} key={i}>
+              <Grid item xs={12} sm={3} key={i}>
                 <TabButton
                   tab={i}
                   text={tab}
@@ -95,8 +95,9 @@ const Goals = () => {
               </Grid>
             ))}
           </StyledTabs>
-        </Container>
-        {handleContent()}
+          <StyledDivider />
+          {handleContent()}
+        </StyledContainer>
       </Modal>
     </Container>
   );

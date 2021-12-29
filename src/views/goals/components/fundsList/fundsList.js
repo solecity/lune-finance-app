@@ -1,26 +1,23 @@
 // base
 import React, { useState, useEffect } from "react";
-
-// api
-import AccountService from "shared/services/account";
+import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
 
-// external components
-import CircularProgress from "@mui/material/CircularProgress";
-import Grid from "@mui/material/Grid";
+// api
+import AccountService from "shared/services/account";
+
+// custom components
+import { Card } from "./components";
 
 // styled components
-import { StyledCard, StyledTypography } from "./styles";
+import { StyledContainer, StyledScroll } from "./styles";
 
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-// constants
-import { CONSTANTS } from "constants/general";
-
-const FundsList = () => {
+const FundsList = ({ goal }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +28,7 @@ const FundsList = () => {
 
     const { data } = await AccountService.getGoalsFunds();
 
-    console.log(data);
+    setAccounts(data.accounts);
     setIsLoading(false);
   };
 
@@ -40,14 +37,18 @@ const FundsList = () => {
   }, []);
 
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={6} sm={3}>
-        <CircularProgress />
-      </Grid>
-    </Grid>
+    <StyledContainer>
+      <StyledScroll>
+        {accounts.map((account, i) => (
+          <Card key={i} account={account} goal={goal} />
+        ))}
+      </StyledScroll>
+    </StyledContainer>
   );
 };
 
-FundsList.propTypes = {};
+FundsList.propTypes = {
+  goal: PropTypes.object.isRequired
+};
 
 export default FundsList;

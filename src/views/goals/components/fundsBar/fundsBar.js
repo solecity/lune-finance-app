@@ -7,7 +7,7 @@ import { useRecoilValue } from "recoil";
 import { startOfYear, endOfYear } from "date-fns";
 
 // api
-import StatsService from "shared/services/stats";
+import AccountService from "shared/services/account";
 
 // external components
 import CircularProgress from "@mui/material/CircularProgress";
@@ -23,7 +23,7 @@ const FundsBar = () => {
   const settings = useRecoilValue(settingsState);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState({});
+  const [funds, setFunds] = useState({});
 
   const year = {
     start: startOfYear(new Date()),
@@ -33,9 +33,9 @@ const FundsBar = () => {
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await StatsService.getTypeStats(year);
+    const { data } = await AccountService.getGoalsFunds();
 
-    setStats(data.stats);
+    //setFunds(data.funds);
     setIsLoading(false);
   };
 
@@ -51,7 +51,7 @@ const FundsBar = () => {
             <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="yellow">
-              {Math.trunc(stats.savings * 100) / 100} {settings.currencySymbol}
+              {Math.trunc(funds * 100) / 100} {settings.currencySymbol}
             </StyledTypography>
           )}
           <StyledTypography component="div" variant="body2" className="label">

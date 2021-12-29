@@ -9,6 +9,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   [`&.${buttonClasses.root}`]: {
     backgroundColor: theme.colours.primary,
     height: "35px",
+    minWidth: "35px",
     width: "100%",
     color: theme.colours.secondaryText,
     borderRadius: 0,
@@ -20,4 +21,14 @@ const StyledButton = styled(Button)(({ theme }) => ({
   }
 }));
 
-export { StyledButton };
+const StyledIconButton = styled(StyledButton)(({ theme }) => ({
+  [`&.${buttonClasses.root}`]: {
+    padding: 0,
+
+    svg: {
+      width: "1.1rem"
+    }
+  }
+}));
+
+export { StyledButton, StyledIconButton };

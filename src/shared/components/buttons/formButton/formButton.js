@@ -3,23 +3,33 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
-import { StyledButton } from "./styles";
+import { StyledButton, StyledIconButton } from "./styles";
 
-const FormButton = ({ type, text }) => {
+const FormButton = ({ text, icon: Icon, isIcon }) => {
   return (
-    <StyledButton variant="contained" type={type}>
-      {text}
-    </StyledButton>
+    <>
+      {isIcon ? (
+        <StyledIconButton variant="contained" type="submit">
+          <Icon />
+        </StyledIconButton>
+      ) : (
+        <StyledButton variant="contained" type="submit">
+          {text}
+        </StyledButton>
+      )}
+    </>
   );
 };
 
 FormButton.defaultProps = {
-  type: "submit"
+  text: "Save",
+  isIcon: false
 };
 
 FormButton.propTypes = {
-  type: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  icon: PropTypes.any,
+  isIcon: PropTypes.bool
 };
 
 export default FormButton;

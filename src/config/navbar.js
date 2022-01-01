@@ -7,6 +7,7 @@ import { DollarCircle } from "@styled-icons/boxicons-regular/DollarCircle";
 import { Star } from "@styled-icons/boxicons-regular/Star";
 import { Tag } from "@styled-icons/boxicons-regular/Tag";
 import { UserCircle } from "@styled-icons/boxicons-regular/UserCircle";
+import { ShoppingBag } from "@styled-icons/boxicons-regular/ShoppingBag";
 import { BarChart } from "@styled-icons/boxicons-regular/BarChart";
 import { Calculator } from "@styled-icons/boxicons-regular/Calculator";
 import { Cog } from "@styled-icons/boxicons-regular/Cog";
@@ -30,6 +31,12 @@ const menuItems = [
     label: "Recipients",
     icon: UserCircle,
     href: "/recipients"
+  },
+  {
+    name: "shops",
+    label: "Shops",
+    icon: ShoppingBag,
+    href: "/shops"
   },
   { name: "analytics", label: "Analytics", icon: BarChart, href: "/analytics" },
   {

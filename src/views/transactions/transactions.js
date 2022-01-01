@@ -7,6 +7,7 @@ import CategoryService from "../../shared/services/category";
 import RecipientService from "../../shared/services/recipient";
 import AccountService from "../../shared/services/account";
 import DebtService from "../../shared/services/debt";
+import ShopService from "../../shared/services/shop";
 
 // external components
 import CircularProgress from "@mui/material/CircularProgress";
@@ -38,9 +39,10 @@ const Transactions = () => {
   const [recipients, setRecipients] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [debts, setDebts] = useState([]);
+  const [shops, setShops] = useState([]);
   const [tab, setTab] = useState(0);
   const [selected, setSelected] = useState(tab);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
   const [formType, setFormType] = useState("expense");
 
@@ -80,6 +82,12 @@ const Transactions = () => {
     const { data } = await DebtService.getMany();
 
     setDebts(data.debts);
+  };
+
+  const getShops = async () => {
+    const { data } = await ShopService.getMany();
+
+    setShops(data.shops);
   };
 
   const handleTab = (value) => {
@@ -148,6 +156,7 @@ const Transactions = () => {
     getRecipients();
     getAccounts();
     getDebts();
+    getShops();
   }, []);
 
   return (
@@ -197,6 +206,7 @@ const Transactions = () => {
           recipients={recipients}
           accounts={accounts}
           debts={debts}
+          shops={shops}
           getData={getData}
           handleForm={handleForm}
           isEdit={isEdit}

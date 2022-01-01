@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 // api
-import RecipientService from "shared/services/recipient";
+import ShopService from "shared/services/shop";
 
 // external components
 import Container from "@mui/material/Container";
@@ -11,24 +11,24 @@ import Container from "@mui/material/Container";
 import { Header, Toolbar, Modal } from "shared/components";
 import { Form, Table } from "./components";
 
-const Recipients = () => {
+const Shops = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [recipient, setRecipient] = useState({});
+  const [shop, setShop] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await RecipientService.getMany();
+    const { data } = await ShopService.getMany();
 
-    setData(data.recipients);
+    setData(data.shops);
     setIsLoading(false);
   };
 
   const handleForm = (value) => {
-    setRecipient(value);
+    setShop(value);
     setIsOpen(!isOpen);
   };
 
@@ -38,11 +38,11 @@ const Recipients = () => {
 
   return (
     <Container maxWidth="xl">
-      <Header title={"Recipients"} />
+      <Header title={"Shops"} />
       <Toolbar
         handleForm={handleForm}
         setIsEdit={setIsEdit}
-        setElement={setRecipient}
+        setElement={setShop}
       />
       <Table
         data={data}
@@ -51,13 +51,13 @@ const Recipients = () => {
         setIsEdit={setIsEdit}
       />
       <Modal
-        name="recipient"
+        name="shop"
         handleModal={handleForm}
         isOpen={isOpen}
         isEdit={isEdit}
       >
         <Form
-          recipient={recipient}
+          shop={shop}
           handleForm={handleForm}
           getData={getData}
           isEdit={isEdit}
@@ -67,6 +67,6 @@ const Recipients = () => {
   );
 };
 
-Recipients.propTypes = {};
+Shops.propTypes = {};
 
-export default Recipients;
+export default Shops;

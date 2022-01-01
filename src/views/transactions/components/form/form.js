@@ -43,6 +43,7 @@ const Form = ({
   recipients,
   accounts,
   debts,
+  shops,
   getData,
   handleForm,
   isEdit
@@ -69,7 +70,8 @@ const Form = ({
       account: transaction.account || 0,
       from: transaction.from || 0,
       to: transaction.to || 0,
-      debt: transaction.debt || 0
+      debt: transaction.debt || 0,
+      shop: transaction.shop || 0
     },
     resolver: yupResolver(schemaTransaction)
   });
@@ -128,6 +130,14 @@ const Form = ({
 
   const loadDebts = () => {
     return debts.map((el, i) => (
+      <MenuItem key={i} value={el._id}>
+        {el.name}
+      </MenuItem>
+    ));
+  };
+
+  const loadShops = () => {
+    return shops.map((el, i) => (
       <MenuItem key={i} value={el._id}>
         {el.name}
       </MenuItem>
@@ -273,6 +283,26 @@ const Form = ({
               type="text"
             />
           </StyledGrid>
+          {type && (
+            <StyledGrid item xs={12} sm={6}>
+              <InputTextField
+                error={Boolean(errors.quantity?.message)}
+                helperText={errors.quantity?.message}
+                control={control}
+                label="Quantity"
+                name="quantity"
+                type="number"
+                type="text"
+                InputProps={{
+                  inputProps: {
+                    min: 0,
+                    inputMode: "numeric",
+                    pattern: "([0-9]*[.])?[0-9]+$|^$"
+                  }
+                }}
+              />
+            </StyledGrid>
+          )}
           <StyledGrid item xs={12} sm={6}>
             <InputTextField
               error={Boolean(errors.amount?.message)}
@@ -287,8 +317,8 @@ const Form = ({
                   inputMode: "numeric",
                   pattern: "[+-]?([0-9]*[.])?[0-9]+"
                 },
-                startAdornment: (
-                  <InputAdornment position="start">
+                endAdornment: (
+                  <InputAdornment position="end">
                     {settings.currencySymbol}
                   </InputAdornment>
                 )
@@ -296,33 +326,19 @@ const Form = ({
             />
           </StyledGrid>
           {type && (
-            <>
-              <StyledGrid item xs={12} sm={6}>
-                <InputTextField
-                  error={Boolean(errors.quantity?.message)}
-                  helperText={errors.quantity?.message}
-                  control={control}
-                  label="Quantity"
-                  name="quantity"
-                  type="number"
-                  type="text"
-                  InputProps={{
-                    inputProps: {
-                      min: 0,
-                      inputMode: "numeric",
-                      pattern: "([0-9]*[.])?[0-9]+$|^$"
-                    }
-                  }}
-                />
-              </StyledGrid>
-              <StyledGrid item xs={12} sm={6}>
-                <InputSelect label="Debt" name="debt" control={control}>
-                  <MenuItem value={0}>---</MenuItem>
-                  {loadDebts()}
-                </InputSelect>
-              </StyledGrid>
-            </>
+            <StyledGrid item xs={12} sm={6}>
+              <InputSelect label="Debt" name="debt" control={control}>
+                <MenuItem value={0}>---</MenuItem>
+                {loadDebts()}
+              </InputSelect>
+            </StyledGrid>
           )}
+          <StyledGrid item xs={12} sm={6}>
+            <InputSelect label="Shop" name="shop" control={control}>
+              <MenuItem value={0}>---</MenuItem>
+              {loadShops()}
+            </InputSelect>
+          </StyledGrid>
           <Grid container item spacing={1}>
             <Grid item xs={12} sm={6}>
               <ActionButton text="Cancel" action={handleForm} />
@@ -348,6 +364,7 @@ Form.propTypes = {
   recipients: PropTypes.array.isRequired,
   accounts: PropTypes.array.isRequired,
   debts: PropTypes.array.isRequired,
+  shops: PropTypes.array.isRequired,
   getData: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired

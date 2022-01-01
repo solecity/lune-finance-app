@@ -7,6 +7,7 @@ import LinearProgress from "./linearProgress/linearProgress";
 import InputInfo from "./inputs/info/info";
 import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
+import InputAutocomplete from "./inputs/autocomplete/autocomplete";
 import InputDatePicker from "./inputs/datepicker/datepicker";
 import InputColourPicker from "./inputs/colourPicker/colourPicker";
 import InputCheckbox from "./inputs/checkbox/checkbox";
@@ -29,6 +30,7 @@ export {
   InputInfo,
   InputTextField,
   InputSelect,
+  InputAutocomplete,
   InputDatePicker,
   InputColourPicker,
   InputCheckbox,

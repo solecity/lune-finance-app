@@ -41,7 +41,9 @@ const schemaTransaction = yup.object().shape({
   quantity: yup
     .number()
     .min(0, TRANSACTION.INVALID_QUANTITY)
-    .typeError(TRANSACTION.INVALID_QUANTITY)
+    .typeError(TRANSACTION.INVALID_QUANTITY),
+  debt: yup.string(),
+  shop: yup.string()
 });
 
 export { schemaTransaction };

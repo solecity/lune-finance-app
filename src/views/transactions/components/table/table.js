@@ -11,6 +11,8 @@ import TransactionService from "shared/services/transaction";
 // external components
 import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
 import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
+import { Check } from "@styled-icons/boxicons-regular/Check";
+import { CheckDouble } from "@styled-icons/boxicons-regular/CheckDouble";
 
 // custom components
 import { Table, TableButton, ConfirmDelete } from "shared/components";
@@ -31,13 +33,30 @@ const TransactionsTable = ({
   transaction,
   setTransaction,
   setIsEdit,
-  handleForm
+  handleForm,
+  currentPage,
+  setCurrentPage
 }) => {
   const settings = useRecoilValue(settingsState);
 
   const [openConfirm, setOpenConfirm] = useState(false);
 
   const COLUMNS_INOUTCOME = [
+    {
+      Header: "",
+      id: "isValidated",
+      key: "isValidated",
+      minWidth: 10,
+      accessor: ({ isValidated }) => isValidated || false,
+      Cell: ({ row }) => (
+        <TableButton
+          tooltip="Validate"
+          hasIcon
+          icon={row.original.isValidated ? <CheckDouble /> : <Check />}
+          action={() => handleValidate(row.original)}
+        />
+      )
+    },
     {
       Header: "Date",
       id: "date",
@@ -139,6 +158,21 @@ const TransactionsTable = ({
   ];
 
   const COLUMNS_TRANSFER = [
+    {
+      Header: "",
+      id: "isValidated",
+      key: "isValidated",
+      minWidth: 10,
+      accessor: ({ isValidated }) => isValidated || false,
+      Cell: ({ row }) => (
+        <TableButton
+          tooltip="Validate"
+          hasIcon
+          icon={row.original.isValidated ? <CheckDouble /> : <Check />}
+          action={() => handleValidate(row.original)}
+        />
+      )
+    },
     {
       Header: "Date",
       id: "date",
@@ -280,11 +314,24 @@ const TransactionsTable = ({
     }
   };
 
+  const handleValidate = async (transaction) => {
+    const res = await TransactionService.validateTransaction(transaction._id);
+
+    if (res) {
+      getData();
+    }
+  };
+
   const COLUMNS = isTransfer ? COLUMNS_TRANSFER : COLUMNS_INOUTCOME;
 
   return (
     <>
-      <Table columns={COLUMNS} data={data} />
+      <Table
+        columns={COLUMNS}
+        data={data}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       <ConfirmDelete
         open={openConfirm}
         handleClose={handleConfirm}

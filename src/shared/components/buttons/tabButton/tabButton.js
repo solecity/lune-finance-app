@@ -15,8 +15,8 @@ const TabButton = ({ tab, selected, text, action }) => {
 };
 
 TabButton.propTypes = {
-  tab: PropTypes.number.isRequired,
-  selected: PropTypes.number.isRequired,
+  tab: PropTypes.string.isRequired,
+  selected: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired
 };

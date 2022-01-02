@@ -22,40 +22,35 @@ import { Form, Table } from "./components";
 // styled components
 import { StyledGrid, StyledTabs } from "./styles";
 
-// constants
-import { TYPES } from "constants/general";
-
-const tabs = ["Expenses", "Income", "Savings", "Investments", "Transfer"];
+const tabs = [
+  { value: "expense", label: "Expenses" },
+  { value: "income", label: "Income" },
+  { value: "savings", label: "Savings" },
+  { value: "investments", label: "Investments" },
+  { value: "transfer", label: "Transfer" }
+];
 
 const Transactions = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [incomeData, setIncomeData] = useState([]);
-  const [expenseData, setExpenseData] = useState([]);
-  const [savingsData, setSavingsData] = useState([]);
-  const [investmentData, setInvestmentData] = useState([]);
-  const [transferData, setTransferData] = useState([]);
+  const [data, setData] = useState({});
   const [transaction, setTransaction] = useState({});
   const [categories, setCategories] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [debts, setDebts] = useState([]);
   const [shops, setShops] = useState([]);
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState("expense");
   const [selected, setSelected] = useState(tab);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [formType, setFormType] = useState("expense");
+  const [currentPage, setCurrentPage] = useState(0);
 
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await TransactionService.getMany();
+    const { data } = await TransactionService.getMany({ type: selected });
 
-    setIncomeData(data.transactions.income);
-    setExpenseData(data.transactions.expense);
-    setTransferData(data.transactions.transfer);
-    setSavingsData(data.transactions.savings);
-    setInvestmentData(data.transactions.investment);
+    setData(data.transactions);
     setIsLoading(false);
   };
 
@@ -90,34 +85,22 @@ const Transactions = () => {
     setShops(data.shops);
   };
 
-  const handleTab = (value) => {
+  const handleTab = async (value) => {
     setTab(value);
     setSelected(value);
   };
 
   const handleContent = () => {
-    let data = [];
     let isTransfer = false;
 
-    switch (tab) {
-      case 0:
-        data = expenseData;
+    switch (selected) {
+      case "expense":
+      case "income":
         isTransfer = false;
         break;
-      case 1:
-        data = incomeData;
-        isTransfer = false;
-        break;
-      case 2:
-        data = savingsData;
-        isTransfer = true;
-        break;
-      case 3:
-        data = investmentData;
-        isTransfer = true;
-        break;
-      case 4:
-        data = transferData;
+      case "transfer":
+      case "savings":
+      case "investments":
         isTransfer = true;
         break;
       default:
@@ -137,27 +120,31 @@ const Transactions = () => {
         setTransaction={setTransaction}
         setIsEdit={setIsEdit}
         handleForm={handleForm}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     );
   };
 
   const handleForm = () => setIsOpen(!isOpen);
 
-  const handleAddForm = (type) => {
-    setFormType(type);
+  const handleAddForm = () => {
     setTransaction({});
 
     handleForm();
   };
 
   useEffect(() => {
-    getData();
     getCategories();
     getRecipients();
     getAccounts();
     getDebts();
     getShops();
   }, []);
+
+  useEffect(() => {
+    getData();
+  }, [selected]);
 
   return (
     <Container maxWidth="xl">
@@ -166,10 +153,10 @@ const Transactions = () => {
         {tabs.map((tab, i) => (
           <Grid item xs={6} sm={4} md={2} key={i}>
             <TabButton
-              tab={i}
-              text={tab}
+              tab={tab.value}
+              text={tab.label}
               selected={selected}
-              action={() => handleTab(i)}
+              action={() => handleTab(tab.value)}
             />
           </Grid>
         ))}
@@ -179,7 +166,7 @@ const Transactions = () => {
       </Grid>
       <Grid item>
         <Toolbar
-          handleForm={() => handleAddForm(TYPES.TRANSACTION[selected].value)}
+          handleForm={handleAddForm}
           setIsEdit={setIsEdit}
           setElement={setTransaction}
         />
@@ -200,7 +187,7 @@ const Transactions = () => {
         isEdit={isEdit}
       >
         <Form
-          formType={formType}
+          formType={selected}
           transaction={transaction}
           categories={categories}
           recipients={recipients}

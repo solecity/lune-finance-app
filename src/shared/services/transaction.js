@@ -30,6 +30,12 @@ const putTransfer = async (id, payload) => {
   return res.data;
 };
 
+const validateTransaction = async (id) => {
+  const res = await api().patch(`/transactions/${id}/validate`);
+
+  return res.data;
+};
+
 const deleteOne = async (id) => {
   const res = await api().delete(`/transactions/${id}`);
 
@@ -42,5 +48,6 @@ export default {
   postTransfer,
   putInOutcome,
   putTransfer,
+  validateTransaction,
   deleteOne
 };

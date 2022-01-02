@@ -112,32 +112,8 @@ const Form = ({
       );
   };
 
-  const loadRecipients = () => {
-    return recipients.map((el, i) => (
-      <MenuItem key={i} value={el._id}>
-        {el.name}
-      </MenuItem>
-    ));
-  };
-
-  const loadAccounts = () => {
-    return accounts.map((el, i) => (
-      <MenuItem key={i} value={el._id}>
-        {el.name} ({el.type})
-      </MenuItem>
-    ));
-  };
-
-  const loadDebts = () => {
-    return debts.map((el, i) => (
-      <MenuItem key={i} value={el._id}>
-        {el.name}
-      </MenuItem>
-    ));
-  };
-
-  const loadShops = () => {
-    return shops.map((el, i) => (
+  const loadSelect = (arr) => {
+    return arr.map((el, i) => (
       <MenuItem key={i} value={el._id}>
         {el.name}
       </MenuItem>
@@ -146,7 +122,7 @@ const Form = ({
 
   const onSubmit = async (payload) => {
     let res = {};
-    const { recipient, account, from, to, debt, ...data } = payload;
+    const { recipient, account, from, to, debt, shop, ...data } = payload;
 
     if (recipient != 0) {
       data.recipient = recipient;
@@ -166,6 +142,10 @@ const Form = ({
 
     if (debt != 0) {
       data.debt = debt;
+    }
+
+    if (shop != 0) {
+      data.shop = shop;
     }
 
     if (isEdit) {
@@ -200,7 +180,8 @@ const Form = ({
         account: 0,
         from: 0,
         to: 0,
-        debt: 0
+        debt: 0,
+        shop: 0
       });
     }
   }, [isSubmitSuccessful, reset, formType]);
@@ -247,13 +228,13 @@ const Form = ({
                   control={control}
                 >
                   <MenuItem value={0}>---</MenuItem>
-                  {loadRecipients()}
+                  {loadSelect(recipients)}
                 </InputSelect>
               </StyledGrid>
               <StyledGrid item xs={12} sm={6}>
                 <InputSelect label="Account" name="account" control={control}>
                   <MenuItem value={0}>---</MenuItem>
-                  {loadAccounts()}
+                  {loadSelect(accounts)}
                 </InputSelect>
               </StyledGrid>
             </>
@@ -262,13 +243,13 @@ const Form = ({
               <StyledGrid item xs={12} sm={6}>
                 <InputSelect label="From *" name="from" control={control}>
                   <MenuItem value={0}>---</MenuItem>
-                  {loadAccounts()}
+                  {loadSelect(accounts)}
                 </InputSelect>
               </StyledGrid>
               <StyledGrid item xs={12} sm={6}>
                 <InputSelect label="To *" name="to" control={control}>
                   <MenuItem value={0}>---</MenuItem>
-                  {loadAccounts()}
+                  {loadSelect(accounts)}
                 </InputSelect>
               </StyledGrid>
             </>
@@ -325,20 +306,20 @@ const Form = ({
               }}
             />
           </StyledGrid>
+          <StyledGrid item xs={12} sm={6}>
+            <InputSelect label="Shop" name="shop" control={control}>
+              <MenuItem value={0}>---</MenuItem>
+              {loadSelect(shops)}
+            </InputSelect>
+          </StyledGrid>
           {type && (
             <StyledGrid item xs={12} sm={6}>
               <InputSelect label="Debt" name="debt" control={control}>
                 <MenuItem value={0}>---</MenuItem>
-                {loadDebts()}
+                {loadSelect(debts)}
               </InputSelect>
             </StyledGrid>
           )}
-          <StyledGrid item xs={12} sm={6}>
-            <InputSelect label="Shop" name="shop" control={control}>
-              <MenuItem value={0}>---</MenuItem>
-              {loadShops()}
-            </InputSelect>
-          </StyledGrid>
           <Grid container item spacing={1}>
             <Grid item xs={12} sm={6}>
               <ActionButton text="Cancel" action={handleForm} />

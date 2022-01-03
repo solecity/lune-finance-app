@@ -22,7 +22,8 @@ const DEFAULT = {
   COLOUR: "#c1c1c1",
   THEME: "light",
   ACCOUNT_TYPE: "cash",
-  LANGUAGE: "en"
+  LANGUAGE: "en",
+  ROWS_PER_PAGE: 15
 };
 
 const TYPES = {

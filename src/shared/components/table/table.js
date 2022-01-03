@@ -1,5 +1,5 @@
 // base
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // libraries
@@ -11,12 +11,11 @@ import { default as MUITable } from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import TableFooter from "@mui/material/TableFooter";
 
 // custom components
-import { EmptyTable } from "./components";
+import { EmptyTable, Pagination } from "./components";
 
 // styled components
 import {
@@ -26,12 +25,20 @@ import {
   StyledScroll
 } from "./styles";
 
-const Table = ({ columns, data }) => {
+const Table = ({
+  columns,
+  data,
+  total,
+  currentPage,
+  rowsPerPage,
+  setCurrentPage
+}) => {
   const { getTableProps, getTableBodyProps, headerGroups, prepareRow, page } =
     useTable(
       {
         columns,
-        data
+        data,
+        manualPagination: true
       },
       useSortBy,
       usePagination,
@@ -39,6 +46,10 @@ const Table = ({ columns, data }) => {
         hooks.allColumns.push((columns) => [...columns]);
       }
     );
+
+  const handleChangePage = (e, newPage) => {
+    setCurrentPage(newPage);
+  };
 
   const RenderHeader = () => (
     <TableHead>
@@ -96,12 +107,15 @@ const Table = ({ columns, data }) => {
           <MUITable stickyHeader size="small" {...getTableProps()}>
             <RenderHeader />
             <RenderBody />
-            <TableFooter>
-              <TableRow></TableRow>
-            </TableFooter>
           </MUITable>
         </StyledScroll>
       </StyledContainer>
+      <Pagination
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+        count={total}
+        onPageChange={handleChangePage}
+      />
     </Paper>
   );
 };

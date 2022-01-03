@@ -33,9 +33,7 @@ const TransactionsTable = ({
   transaction,
   setTransaction,
   setIsEdit,
-  handleForm,
-  currentPage,
-  setCurrentPage
+  handleForm
 }) => {
   const settings = useRecoilValue(settingsState);
 
@@ -61,7 +59,7 @@ const TransactionsTable = ({
       Header: "Date",
       id: "date",
       key: "date",
-      minWidth: 70,
+      minWidth: 80,
       accessor: ({ date }) => date || "---",
       Cell: (row) => <div>{row.value}</div>
     },
@@ -326,12 +324,7 @@ const TransactionsTable = ({
 
   return (
     <>
-      <Table
-        columns={COLUMNS}
-        data={data}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <Table columns={COLUMNS} data={data} />
       <ConfirmDelete
         open={openConfirm}
         handleClose={handleConfirm}

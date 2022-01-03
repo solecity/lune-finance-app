@@ -20,7 +20,16 @@ import {
 // styled components
 import { StyledCenterColumn } from "./styles";
 
-const ShopsTable = ({ data, getData, handleForm, setIsEdit }) => {
+const ShopsTable = ({
+  data,
+  getData,
+  handleForm,
+  setIsEdit,
+  total,
+  currentPage,
+  rowsPerPage,
+  setCurrentPage
+}) => {
   const [shop, setShop] = useState({});
   const [openConfirm, setOpenConfirm] = useState(false);
 
@@ -90,7 +99,14 @@ const ShopsTable = ({ data, getData, handleForm, setIsEdit }) => {
 
   return (
     <>
-      <Table columns={COLUMNS} data={data} />
+      <Table
+        columns={COLUMNS}
+        data={data}
+        total={total}
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <ConfirmDelete
         open={openConfirm}
         handleClose={handleConfirm}

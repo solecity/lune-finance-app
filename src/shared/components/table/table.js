@@ -12,7 +12,6 @@ import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
-import TableFooter from "@mui/material/TableFooter";
 
 // custom components
 import { EmptyTable, Pagination } from "./components";
@@ -122,7 +121,11 @@ const Table = ({
 
 Table.propTypes = {
   columns: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired
 };
 
 export default Table;

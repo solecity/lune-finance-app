@@ -22,6 +22,9 @@ import { Form, Table } from "./components";
 // styled components
 import { StyledGrid, StyledTabs } from "./styles";
 
+// constants
+import { DEFAULT } from "constants/general";
+
 const tabs = [
   { value: "expense", label: "Expenses" },
   { value: "income", label: "Income" },
@@ -32,7 +35,7 @@ const tabs = [
 
 const Transactions = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [transaction, setTransaction] = useState({});
   const [categories, setCategories] = useState([]);
   const [recipients, setRecipients] = useState([]);
@@ -43,22 +46,29 @@ const Transactions = () => {
   const [selected, setSelected] = useState(tab);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [total, setTotal] = useState(0);
 
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await TransactionService.getMany({ type: selected });
+    const query = {
+      type: selected,
+      page: currentPage,
+      perPage: DEFAULT.ROWS_PER_PAGE
+    };
+
+    const { data } = await TransactionService.getMany(query);
 
     setData(data.transactions);
+    setTotal(data.total);
     setIsLoading(false);
   };
 
   const getCategories = async () => {
     const { data } = await CategoryService.getMany();
-    const arr = data.categories.expense.concat(data.categories.income);
 
-    setCategories(arr);
+    setCategories(data.categories);
   };
 
   const getRecipients = async () => {
@@ -116,11 +126,11 @@ const Transactions = () => {
         recipients={recipients}
         accounts={accounts}
         debts={debts}
-        transaction={transaction}
-        setTransaction={setTransaction}
-        setIsEdit={setIsEdit}
         handleForm={handleForm}
+        setIsEdit={setIsEdit}
+        total={total}
         currentPage={currentPage}
+        rowsPerPage={DEFAULT.ROWS_PER_PAGE}
         setCurrentPage={setCurrentPage}
       />
     );
@@ -144,7 +154,7 @@ const Transactions = () => {
 
   useEffect(() => {
     getData();
-  }, [selected]);
+  }, [currentPage, selected]);
 
   return (
     <Container maxWidth="xl">

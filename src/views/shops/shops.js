@@ -11,16 +11,17 @@ import Container from "@mui/material/Container";
 import { Header, Toolbar, Modal } from "shared/components";
 import { Form, Table } from "./components";
 
+// constants
 import { DEFAULT } from "constants/general";
 
 const Shops = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [shop, setShop] = useState({});
-  const [total, setTotal] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [total, setTotal] = useState(0);
 
   const getData = async () => {
     setIsLoading(true);

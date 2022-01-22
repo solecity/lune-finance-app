@@ -123,6 +123,10 @@ ShopsTable.propTypes = {
   getData: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
   row: PropTypes.object
 };
 

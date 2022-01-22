@@ -20,7 +20,16 @@ import {
 // styled components
 import { StyledCenterColumn } from "./styles";
 
-const RecipientsTable = ({ data, getData, handleForm, setIsEdit }) => {
+const RecipientsTable = ({
+  data,
+  getData,
+  handleForm,
+  setIsEdit,
+  total,
+  currentPage,
+  rowsPerPage,
+  setCurrentPage
+}) => {
   const [recipient, setRecipient] = useState({});
   const [openConfirm, setOpenConfirm] = useState(false);
 
@@ -90,7 +99,14 @@ const RecipientsTable = ({ data, getData, handleForm, setIsEdit }) => {
 
   return (
     <>
-      <Table columns={COLUMNS} data={data} />
+      <Table
+        columns={COLUMNS}
+        data={data}
+        total={total}
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <ConfirmDelete
         open={openConfirm}
         handleClose={handleConfirm}
@@ -107,6 +123,10 @@ RecipientsTable.propTypes = {
   getData: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
   row: PropTypes.object
 };
 

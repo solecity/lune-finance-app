@@ -30,13 +30,16 @@ const TransactionsTable = ({
   categories,
   recipients,
   accounts,
-  transaction,
-  setTransaction,
+  handleForm,
   setIsEdit,
-  handleForm
+  total,
+  currentPage,
+  rowsPerPage,
+  setCurrentPage
 }) => {
   const settings = useRecoilValue(settingsState);
 
+  const [transaction, setTransaction] = useState({});
   const [openConfirm, setOpenConfirm] = useState(false);
 
   const COLUMNS_INOUTCOME = [
@@ -293,9 +296,8 @@ const TransactionsTable = ({
 
   const handleEdit = (transaction) => {
     setIsEdit(true);
-    setTransaction(transaction);
 
-    handleForm();
+    handleForm(transaction);
   };
 
   const handleConfirm = (transaction) => {
@@ -324,7 +326,14 @@ const TransactionsTable = ({
 
   return (
     <>
-      <Table columns={COLUMNS} data={data} />
+      <Table
+        columns={COLUMNS}
+        data={data}
+        total={total}
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <ConfirmDelete
         open={openConfirm}
         handleClose={handleConfirm}
@@ -347,10 +356,12 @@ TransactionsTable.propTypes = {
   categories: PropTypes.array,
   recipients: PropTypes.array,
   accounts: PropTypes.array,
-  transaction: PropTypes.object,
-  setTransaction: PropTypes.func.isRequired,
-  setIsEdit: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
+  setIsEdit: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
   row: PropTypes.object
 };
 

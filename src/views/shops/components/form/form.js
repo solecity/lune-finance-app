@@ -51,18 +51,16 @@ const Form = ({ shop, handleForm, getData, isEdit }) => {
   const handleColour = () => setIsColourOpen(!isColourOpen);
 
   const onSubmit = async (payload) => {
-    try {
-      payload.colour = colour;
+    payload.colour = colour;
 
-      const res = isEdit
-        ? await ShopService.put(shop._id, payload)
-        : await ShopService.post(payload);
+    const res = isEdit
+      ? await ShopService.put(shop._id, payload)
+      : await ShopService.post(payload);
 
-      if (res) {
-        handleForm();
-        getData();
-      }
-    } catch (error) {}
+    if (res) {
+      handleForm();
+      getData();
+    }
   };
 
   useEffect(() => {

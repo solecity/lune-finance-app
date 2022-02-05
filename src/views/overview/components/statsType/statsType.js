@@ -22,20 +22,20 @@ const StatsType = ({ year }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState({});
+  const [data, setData] = useState({});
 
   const getData = async () => {
     setIsLoading(true);
 
     const { data } = await StatsService.getTypeStats(year);
 
-    setStats(data.stats);
+    setData(data.stats);
     setIsLoading(false);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [year]);
 
   return (
     <>
@@ -45,7 +45,7 @@ const StatsType = ({ year }) => {
             <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="green">
-              {Math.trunc(stats.income * 100) / 100} {settings.currencySymbol}
+              {Math.trunc(data.income * 100) / 100} {settings.currencySymbol}
             </StyledTypography>
           )}
           <StyledTypography component="div" variant="body2" className="label">
@@ -59,7 +59,7 @@ const StatsType = ({ year }) => {
             <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="red">
-              {Math.trunc(stats.expense * 100) / 100} {settings.currencySymbol}
+              {Math.trunc(data.expense * 100) / 100} {settings.currencySymbol}
             </StyledTypography>
           )}
           <StyledTypography component="div" variant="body2" className="label">
@@ -73,7 +73,7 @@ const StatsType = ({ year }) => {
             <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="yellow">
-              {Math.trunc(stats.savings * 100) / 100} {settings.currencySymbol}
+              {Math.trunc(data.savings * 100) / 100} {settings.currencySymbol}
             </StyledTypography>
           )}
           <StyledTypography component="div" variant="body2" className="label">
@@ -87,7 +87,7 @@ const StatsType = ({ year }) => {
             <CircularProgress />
           ) : (
             <StyledTypography component="div" variant="h6" className="blue">
-              {Math.trunc(stats.investment * 100) / 100}{" "}
+              {Math.trunc(data.investment * 100) / 100}{" "}
               {settings.currencySymbol}
             </StyledTypography>
           )}

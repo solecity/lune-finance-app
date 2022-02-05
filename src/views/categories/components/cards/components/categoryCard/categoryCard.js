@@ -90,18 +90,18 @@ const CategoryCard = ({
         <Grid container item xs={1}>
           <StyledColour colour={category.colour} />
         </Grid>
-        <StyledGrid container item xs={5}>
+        <StyledGrid container item xs={hasBudget ? 5 : 9}>
           <Typography component="div" variant="body2" noWrap>
             {category.name}
           </Typography>
         </StyledGrid>
-        <StyledGrid container item xs={4} justifyContent="flex-end">
-          {hasBudget && (
+        {hasBudget && (
+          <StyledGrid container item xs={4} justifyContent="flex-end">
             <Typography component="div" variant="body2">
               {category.monthlyBudget} {settings.currencySymbol}
             </Typography>
-          )}
-        </StyledGrid>
+          </StyledGrid>
+        )}
         <Grid container item xs={2} direction="column">
           <StyledButton item xs={2} className="bottom">
             <ActionButton

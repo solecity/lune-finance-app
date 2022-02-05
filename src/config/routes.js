@@ -43,7 +43,7 @@ const routes = [
       {
         exact: true,
         path: "/budgets",
-        component: lazy(() => import("views/commingSoon"))
+        component: lazy(() => import("views/budgets/budgets"))
       },
       {
         exact: true,
@@ -87,8 +87,8 @@ const routes = [
       },
       {
         exact: true,
-        path: "/logout",
-        component: lazy(() => import("views/logout/logout"))
+        path: "/signout",
+        component: lazy(() => import("views/auth/signOut/signOut"))
       }
     ]
   }

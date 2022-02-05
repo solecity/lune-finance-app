@@ -20,58 +20,33 @@ import { StyledGrid, StyledTabs } from "./styles";
 // constants
 import { TYPES } from "constants/general";
 
-const tabs = ["Outcome", "Income"];
+const tabs = [
+  { value: "expense", label: "Outcome" },
+  { value: "income", label: "Income" }
+];
 
 const Categories = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [expenseData, setExpenseData] = useState([]);
-  const [incomeData, setIncomeData] = useState([]);
+  const [data, setData] = useState([]);
   const [category, setCategory] = useState({});
   const [formType, setFormType] = useState("");
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState("expense");
   const [selected, setSelected] = useState(tab);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
   const getData = async () => {
     setIsLoading(true);
+    console.log(selected);
+    const { data } = await CategoryService.getMany({ type: selected });
 
-    const { data } = await CategoryService.getMany();
-    const { expense, income } = data.categories;
-
-    setExpenseData(expense);
-    setIncomeData(income);
+    setData(data.categories);
     setIsLoading(false);
   };
 
   const handleTab = (value) => {
     setTab(value);
     setSelected(value);
-  };
-
-  const handleContent = () => {
-    let data = [];
-
-    switch (tab) {
-      case 0:
-        data = expenseData;
-        break;
-      case 1:
-        data = incomeData;
-        break;
-      default:
-        break;
-    }
-
-    return (
-      <Cards
-        data={data}
-        getData={getData}
-        handleForm={handleForm}
-        setCategory={setCategory}
-        setIsEdit={setIsEdit}
-      />
-    );
   };
 
   const handleForm = () => setIsOpen(!isOpen);
@@ -85,7 +60,7 @@ const Categories = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [selected]);
 
   return (
     <Container maxWidth="xl">
@@ -94,10 +69,10 @@ const Categories = () => {
         {tabs.map((tab, i) => (
           <Grid item xs={6} sm={4} md={2} key={i}>
             <TabButton
-              tab={i}
-              text={tab}
+              tab={tab.value}
+              text={tab.label}
               selected={selected}
-              action={() => handleTab(i)}
+              action={() => handleTab(tab.value)}
             />
           </Grid>
         ))}
@@ -118,7 +93,13 @@ const Categories = () => {
             <CircularProgress />
           </StyledGrid>
         ) : (
-          handleContent()
+          <Cards
+            data={data}
+            getData={getData}
+            handleForm={handleForm}
+            setCategory={setCategory}
+            setIsEdit={setIsEdit}
+          />
         )}
       </Grid>
       <Modal

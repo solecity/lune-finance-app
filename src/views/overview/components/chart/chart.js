@@ -26,7 +26,7 @@ const Chart = ({ year }) => {
   const settings = useRecoilValue(settingsState);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState([]);
+  const [data, setData] = useState([]);
 
   const options = {
     title: {
@@ -63,7 +63,7 @@ const Chart = ({ year }) => {
     tooltip: {
       valueDecimals: 2
     },
-    series: stats
+    series: data
   };
 
   const getData = async () => {
@@ -71,13 +71,13 @@ const Chart = ({ year }) => {
 
     const { data } = await StatsService.getMonthlyStats(year);
 
-    setStats(data.stats);
+    setData(data.stats);
     setIsLoading(false);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [year]);
 
   return (
     <Paper>

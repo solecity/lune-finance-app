@@ -15,17 +15,11 @@ const App = () => {
 
   const token = getJWT();
 
-  if (
-    !token &&
-    !(location.pathname === "/signin" || location.pathname === "/signup")
-  ) {
+  if (!token && !(location.pathname === "/signin")) {
     return <Redirect to="/signin" />;
   }
 
-  if (
-    token &&
-    (location.pathname === "/signin" || location.pathname === "/signup")
-  ) {
+  if (token && location.pathname === "/signin") {
     return <Redirect to="/" />;
   }
 

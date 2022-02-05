@@ -12,14 +12,11 @@ import { signIn } from "shared/recoil/auth";
 import { saveUser } from "shared/recoil/user";
 import { saveSettings } from "shared/recoil/settings";
 
-// external components
-import Grid from "@mui/material/Grid";
-
 // custom components
 import { InputTextField, FormButton } from "shared/components";
 
 // styled components
-import { StyledGrid } from "./styles";
+import { StyledContainer } from "./styles";
 
 // schemas
 import { schemaSignIn } from "constants/schemas";
@@ -75,8 +72,8 @@ const Form = ({ onSubmitSuccess }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Grid container spacing={1}>
-        <StyledGrid item xs={12}>
+      <StyledContainer>
+        <div>
           <InputTextField
             error={Boolean(errors.email?.message) || Boolean(generalError)}
             helperText={errors.email?.message}
@@ -85,8 +82,8 @@ const Form = ({ onSubmitSuccess }) => {
             name="email"
             type="email"
           />
-        </StyledGrid>
-        <StyledGrid item xs={12}>
+        </div>
+        <div>
           <InputTextField
             error={Boolean(errors.password?.message) || Boolean(generalError)}
             helperText={errors.password?.message || generalError}
@@ -95,9 +92,9 @@ const Form = ({ onSubmitSuccess }) => {
             name="password"
             type="password"
           />
-        </StyledGrid>
-      </Grid>
-      <FormButton text="Sign In" />
+        </div>
+        <FormButton text="Sign In" />
+      </StyledContainer>
     </form>
   );
 };

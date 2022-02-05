@@ -14,10 +14,10 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
   body: {
     backgroundColor: theme.colours.background,
     margin: 0,
-    fontFamily: "'Roboto', sans-serif",
     boxSizing: "border-box",
+    fontFamily: "'Roboto', sans-serif",
     color: theme.colours.mainText,
-    transition: "background 0.2s ease-in, color 0.2s ease-in"
+    transition: "backgroundColor 0.2s ease-in, color 0.2s ease-in"
   },
 
   [`.${paperClasses.root}`]: {

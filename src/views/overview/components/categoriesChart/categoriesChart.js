@@ -10,22 +10,22 @@ import { PieChart } from "shared/components";
 
 const CategoriesChart = ({ year }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState([]);
+  const [data, setData] = useState([]);
 
   const getData = async () => {
     setIsLoading(true);
 
     const { data } = await StatsService.getCategoriesStats(year);
 
-    setStats(data.stats);
+    setData(data.stats);
     setIsLoading(false);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [year]);
 
-  return <PieChart title="Expenses" series={stats} isLoading={isLoading} />;
+  return <PieChart title="Expenses" series={data} isLoading={isLoading} />;
 };
 
 CategoriesChart.propTypes = {

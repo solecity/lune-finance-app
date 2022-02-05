@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 // api
 import { signOut } from "shared/recoil/auth";
 
-const Logout = () => {
+const SignOut = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -18,6 +18,6 @@ const Logout = () => {
   return null;
 };
 
-Logout.propTypes = {};
+SignOut.propTypes = {};
 
-export default Logout;
+export default SignOut;

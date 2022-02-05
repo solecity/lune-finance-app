@@ -49,7 +49,7 @@ const menuItems = [
 
 const footerItems = [
   { name: "settings", label: "Settings", icon: Cog, href: "/settings" },
-  { name: "logout", label: "Logout", icon: LogOutCircle, href: "/logout" }
+  { name: "logout", label: "Logout", icon: LogOutCircle, href: "/signout" }
 ];
 
 export { menuItems, footerItems };

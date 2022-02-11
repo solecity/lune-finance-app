@@ -17,52 +17,11 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
     boxSizing: "border-box",
     fontFamily: "'Roboto', sans-serif",
     color: theme.colours.mainText,
-    transition: "backgroundColor 0.2s ease-in, color 0.2s ease-in"
-  },
-
-  [`.${paperClasses.root}`]: {
-    backgroundColor: theme.colours.secondaryBackground,
-    borderRadius: "0 !important",
-    color: `${theme.colours.mainText} !important`
-  },
-
-  [`.${dividerClasses.root}`]: {
-    borderColor: `${theme.colours.divider} !important`
-  },
-
-  [`.${circularProgressClasses.root}`]: {
-    margin: "0 !important",
-    color: `${theme.colours.secondary} !important`
-  },
-
-  [`.${formControlClasses.root}`]: {
-    display: "block !important"
-  },
-
-  [`.${formHelperTextClasses.root}`]: {
-    marginLeft: "10px !important"
-  },
-
-  [`.${typographyClasses.root}`]: {
-    color: `${theme.colours.mainText} !important`
-  },
-
-  ".MuiPickersDay-root": {
-    backgroundColor: `${theme.colours.selectedButton} !important`,
-    color: `${theme.colours.mainText} !important`
-  },
-
-  ".MuiPickersDay-today:not(.Mui-selected)": {
-    border: `1px solid ${alpha(theme.colours.mainText, 0.5)} !important`
+    transition: "all 0.2s ease-in"
   },
 
   ".Mui-error, .error": {
     color: `${theme.colours.error} !important`
-  },
-
-  ".Mui-selected": {
-    backgroundColor: `${theme.colours.primary} !important`,
-    color: `${theme.colours.secondaryText} !important`
   },
 
   ".simplebar-scrollbar::before": {
@@ -70,7 +29,7 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
   },
 
   ".highcharts-background": {
-    fill: `${theme.colours.secondaryBackground} !important`
+    fill: theme.colours.backgroundLight
   },
 
   ".highcharts-yaxis-grid > .highcharts-grid-line": {
@@ -79,6 +38,49 @@ export const GlobalStyles = createGlobalStyle(({ theme }) => ({
   },
 
   ".highcharts-legend-item > text": {
-    fill: `${theme.colours.mainText} !important`
+    fontWeight: `${theme.fontWeight.medium} !important`,
+    fill: `${theme.colours.mainText} !important`,
+    color: `${theme.colours.mainText} !important`
+  },
+
+  ".highcharts-legend-item-hidden > text": {
+    fill: `${theme.colours.disabled} !important`,
+    color: `${theme.colours.disabled} !important`
   }
+
+  // [`.${paperClasses.root}`]: {
+  //   backgroundColor: theme.colours.secondaryBackground,
+  //   borderRadius: "0 !important",
+  //   color: `${theme.colours.mainText} !important`
+  // },
+
+  // [`.${dividerClasses.root}`]: {
+  //   borderColor: `${theme.colours.divider} !important`
+  // },
+
+  // [`.${formControlClasses.root}`]: {
+  //   display: "block !important"
+  // },
+
+  // [`.${formHelperTextClasses.root}`]: {
+  //   marginLeft: "10px !important"
+  // },
+
+  // [`.${typographyClasses.root}`]: {
+  //   color: `${theme.colours.mainText} !important`
+  // },
+
+  // ".MuiPickersDay-root": {
+  //   backgroundColor: `${theme.colours.selectedButton} !important`,
+  //   color: `${theme.colours.mainText} !important`
+  // },
+
+  // ".MuiPickersDay-today:not(.Mui-selected)": {
+  //   border: `1px solid ${alpha(theme.colours.mainText, 0.5)} !important`
+  // },
+
+  // ".Mui-selected": {
+  //   backgroundColor: `${theme.colours.primary} !important`,
+  //   color: `${theme.colours.secondaryText} !important`
+  // },
 }));

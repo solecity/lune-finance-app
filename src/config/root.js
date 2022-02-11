@@ -17,12 +17,9 @@ import App from "./app";
 // atoms
 import { settingsState } from "shared/recoil/atoms";
 
-// constants
-import { CONSTANTS } from "constants/general";
-
 // theme
 import { GlobalStyles } from "styles/global";
-import { Light, Dark } from "styles/theme";
+import themes from "styles/theme";
 
 // styles
 import "simplebar/dist/simplebar.min.css";
@@ -30,7 +27,7 @@ import "simplebar/dist/simplebar.min.css";
 const Root = () => {
   const settings = useRecoilValue(settingsState);
 
-  const theme = settings.theme === CONSTANTS.LIGHT ? Light : Dark;
+  const theme = themes[settings.theme];
 
   return (
     <StylesProvider injectFirst>

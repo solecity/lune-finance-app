@@ -1,5 +1,5 @@
 // theme
-import { Light, Dark } from "styles/theme";
+import themes from "styles/theme";
 
 const DATE_FORMAT = "dd/MM/yyyy";
 
@@ -47,12 +47,12 @@ const TYPES = {
 };
 
 const COLOURS = {
-  WHITE: Light.colours.white,
-  SECONDARY_LIGHT: Light.colours.secondary,
-  SECONDARY_DARK: Dark.colours.secondary,
-  ACCENT_LIGHT: Light.colours.accent,
-  ACCENT_DARK: Light.colours.accent,
-  BOX_SHADOW: Light.colours.boxShadow
+  WHITE: themes.light.colours.white,
+  SECONDARY_LIGHT: themes.light.colours.secondary,
+  SECONDARY_DARK: themes.dark.colours.secondary,
+  ACCENT_LIGHT: themes.light.colours.accent,
+  ACCENT_DARK: themes.light.colours.accent,
+  BOX_SHADOW: themes.light.colours.boxShadow
 };
 
 const VALIDATIONS = {

@@ -1,35 +1,69 @@
+import { alpha } from "@mui/material/styles";
+
 const colours = {
-  white: "#ffffff",
-  black: "#000000",
-  offWhiteLight: "#fcfcfc",
-  offWhite: "#f4f4f4",
-  greyLight: "#d5d9db",
-  grey: "#a0a8ac",
-  greyDark: "#414748",
-  greyDarker: "#292a2b",
-  greyDarkest: "#1c1c1c",
-  green: "#81b54e",
-  orange: "#d95522",
-  red: "#e04343",
-  redDark: "#B11E19",
-  yellow: "#ddb53d",
-  yellowDark: "#e1ae21",
+  backgroundDefault: "#FCFCFC",
+  backgroundPaper: "#d5d9db",
+  backgroundDisabled: "#F0F0F0",
+  textPrimary: "#1C1C1C",
+  textSecondary: "#414748",
+  textTertiary: "#929697",
+  textDisabled: "#C4C8CA",
+  textAltPrimary: "#FEFEFE",
   blueLighter: "#d2dce3",
-  blueLight: "#abc3d3",
-  blue: "#3f7ba6",
-  blueDark: "#2a5173"
+  primaryLight: "#8FACC0",
+  primaryMain: "#4375A1",
+  primaryDark: "#2A5173",
+  secondaryLight: "#ECC9D3",
+  secondaryMain: "#D5A4B1",
+  secondaryDark: "#AC7A88",
+  warningLight: "#FFF1A9",
+  warningMain: "#FFD91B",
+  warningDark: "#AE9209",
+  infoLight: "#B5D6FF",
+  infoMain: "#58A0F8",
+  infoDark: "#2470CD",
+  successLight: "#CBE7A7",
+  successMain: "#8CBC54",
+  successDark: "#578033",
+  errorLight: "#FFC8C8",
+  errorMain: "#DC4141",
+  errorDark: "#900808",
+  othersIncome: "#81B54E",
+  othersOutcome: "#EE6632",
+  othersSavings: "#EFBD25",
+  othersInvestments: "#337AAD",
+  actionActive: "#9AA1A7",
+  actionHover: "#BABFC3",
+  actionSelected: "#D1D7DC",
+  actionDisabled: "#E0E0E0",
+  actionBorder: "#FEFEFE"
 };
 
 const font = {
-  textSmall: "14px",
-  titleSmall: "20px",
-  header: "32px"
+  h1: "48px",
+  h2: "34px",
+  h3: "24px",
+  h4: "20px",
+  h5: "18px",
+  textLarge: "16px",
+  textMedium: "14px",
+  textSmall: "12px"
 };
 
 const fontWeight = {
   light: "300",
   base: "400",
   medium: "500"
+};
+
+const lineHeight = {
+  h1: "56px",
+  h2: "40px",
+  h3: "32px",
+  h4: "24px",
+  large: "20px",
+  base: "16px",
+  small: "14px"
 };
 
 const spacing = {
@@ -45,10 +79,16 @@ const spacing = {
   s10: "40px",
   s12: "48px",
   s16: "64px",
-  s20: "80px",
+  s20: "72px",
   s24: "96px",
-  s30: "112px",
   s32: "128px"
+};
+
+const shadows = {
+  base: `0px 2px 4px ${alpha(colours.textPrimary, 0.25)}`,
+  inner: `inset 0px 2px 4px ${alpha(colours.textPrimary, 0.25)}`,
+  innerFocus: `inset 0px 2px 4px  ${alpha(colours.primaryDark, 0.6)}`,
+  innerAlert: `inset 0px 2px 4px  ${alpha(colours.errorMain, 0.6)}`
 };
 
 const navbar = {
@@ -58,7 +98,7 @@ const navbar = {
 };
 
 const input = {
-  height: "36px",
+  height: "40px",
   labelColour: colours.grey
 };
 
@@ -74,7 +114,9 @@ const boxShadow = {
 const general = {
   font,
   fontWeight,
+  lineHeight,
   spacing,
+  shadows,
   navbar,
   input,
   button,

@@ -6,31 +6,16 @@ import PropTypes from "prop-types";
 import StatsService from "shared/services/stats";
 
 // custom components
-import { BarChart } from "shared/components";
+import { PieChart } from "shared/components";
 
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec"
-];
-
-const Chart = ({ year }) => {
+const ExpenseChart = ({ year }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getData = async () => {
     setIsLoading(true);
 
-    const { data } = await StatsService.getMonthlyStats(year);
+    const { data } = await StatsService.getCategoriesStats(year);
 
     setData(data.stats);
     setIsLoading(false);
@@ -40,18 +25,11 @@ const Chart = ({ year }) => {
     getData();
   }, [year]);
 
-  return (
-    <BarChart
-      title="Income / Outcome"
-      series={data}
-      categories={months}
-      isLoading={isLoading}
-    />
-  );
+  return <PieChart title="Expenses" series={data} isLoading={isLoading} />;
 };
 
-Chart.propTypes = {
+ExpenseChart.propTypes = {
   year: PropTypes.object.isRequired
 };
 
-export default Chart;
+export default ExpenseChart;

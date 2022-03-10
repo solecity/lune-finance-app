@@ -1,16 +1,11 @@
 // libraries
 import styled from "styled-components";
 
-// external components
-import Grid from "@mui/material/Grid";
-
-const StyledGrid = styled(Grid)`
-  margin-bottom: 10px !important;
+const StyledCharts = styled.div`
+  margin-top: ${({ theme }) => theme.spacing.s8};
+  display: grid;
+  grid-template-columns: 3.15fr 1fr;
+  gap: ${({ theme }) => theme.spacing.s8};
 `;
 
-const StyledTabs = styled(Grid)`
-  margin-bottom: 20px;
-  justify-content: flex-end;
-`;
-
-export { StyledGrid, StyledTabs };
+export { StyledCharts };

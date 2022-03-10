@@ -1,6 +1,5 @@
-import Toolbar from "./toolbar/toolbar";
-import StatsType from "./statsType/statsType";
-import Chart from "./chart/chart";
-import CategoriesChart from "./categoriesChart/categoriesChart";
+// import Toolbar from "./toolbar/toolbar";
 
-export { Toolbar, StatsType, Chart, CategoriesChart };
+export { default as StatsType } from "./statsType/statsType";
+export { default as Chart } from "./chart/chart";
+export { default as ExpenseChart } from "./expenseChart/expenseChart";

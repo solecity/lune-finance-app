@@ -9,7 +9,6 @@ import {
   StyledScroll,
   StyledDrawer,
   StyledLogo,
-  StyledNavBar,
   StyledMenu,
   StyledFooter,
   StyledText
@@ -48,7 +47,7 @@ const NavBar = () => {
     <StyledDrawer onMouseEnter={openNavBar} onMouseLeave={closeNavBar}>
       <StyledScroll className="hello">
         {handleLogo()}
-        <StyledNavBar>
+        <div>
           <StyledMenu>
             <div>
               {menuItems.map((item) => (
@@ -61,7 +60,6 @@ const NavBar = () => {
                 />
               ))}
             </div>
-
             <div>
               {footerItems.map((item) => (
                 <NavItem
@@ -77,11 +75,11 @@ const NavBar = () => {
           <StyledFooter>
             <hr className="divider" />
             <StyledText>
-              {navBarOpen ? <p className="copyright">LUNE © 2022</p> : null}
+              <p className="copyright">{navBarOpen ? "LUNE © 2022" : ""}</p>
               <p className="version">v 0.1.0</p>
             </StyledText>
           </StyledFooter>
-        </StyledNavBar>
+        </div>
       </StyledScroll>
     </StyledDrawer>
   );

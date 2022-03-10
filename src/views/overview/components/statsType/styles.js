@@ -1,38 +1,19 @@
 // libraries
 import styled from "styled-components";
 
-// external components
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
+const StyledStats = styled.div`
+  width: 100%;
+  margin-top: ${({ theme }) => theme.spacing.s10};
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: ${({ theme }) => theme.spacing.s8};
 
-const StyledCard = styled(Card)`
-  padding: 10px;
-  text-align: center;
-`;
-
-const StyledTypography = styled(Typography)`
-  margin: 6px 0 !important;
-
-  &.green {
-    color: ${({ theme }) => `${theme.colours.green} !important`};
+  // TODO screen size
+  @media screen and (max-width: 768px) {
   }
 
-  &.red {
-    color: ${({ theme }) => `${theme.colours.red} !important`};
-  }
-
-  &.yellow {
-    color: ${({ theme }) => `${theme.colours.yellow} !important`};
-  }
-
-  &.blue {
-    color: ${({ theme }) => `${theme.colours.blue} !important`};
-  }
-
-  &.label {
-    margin: 0 0 0 2px !important;
-    color: ${({ theme }) => `${theme.colours.label} !important`};
+  @media screen and (max-width: 375px) {
   }
 `;
 
-export { StyledCard, StyledTypography };
+export { StyledStats };

@@ -16,7 +16,7 @@ import { StyledCard, StyledTitle } from "styles/default/chartCard";
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const PieChart = ({ title, series, isLoading }) => {
+const Chart = ({ title, series, categories, isLoading }) => {
   const settings = useRecoilValue(settingsState);
 
   const options = {
@@ -24,31 +24,22 @@ const PieChart = ({ title, series, isLoading }) => {
       text: ""
     },
     chart: {
-      type: "pie",
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false
+      type: "column"
     },
     credits: {
       enabled: false
     },
+    xAxis: {
+      categories
+    },
+    yAxis: {
+      title: { text: null },
+      labels: {
+        format: `{value} ${settings.currencySymbol}`
+      }
+    },
     tooltip: {
-      pointFormat: `<b>{point.percentage:.1f}%</b> : {point.y:.2f} ${settings.currencySymbol}`
-    },
-    accessibility: {
-      point: {
-        valueSuffix: "%"
-      }
-    },
-    legend: { itemMarginTop: 2, maxHeight: 100 },
-    plotOptions: {
-      pie: {
-        cursor: "pointer",
-        dataLabels: {
-          enabled: false
-        },
-        showInLegend: true
-      }
+      valueDecimals: 2
     },
     series
   };
@@ -69,10 +60,11 @@ const PieChart = ({ title, series, isLoading }) => {
   );
 };
 
-PieChart.propTypes = {
+Chart.propTypes = {
   title: PropTypes.string.isRequired,
   series: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired
 };
 
-export default PieChart;
+export default Chart;

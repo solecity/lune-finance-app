@@ -4,17 +4,13 @@ import React, { useState, useEffect } from "react";
 // libraries
 import { getYear, subYears, startOfYear, endOfYear } from "date-fns";
 
-// external components
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-
 // custom components
-import { Header, TabButton } from "shared/components";
-import { Toolbar, StatsType, Chart, CategoriesChart } from "./components";
+import { Container, Header, Tabs } from "shared/components";
+// import { Toolbar, CategoriesChart } from "./components";
+import { StatsType, Chart, ExpenseChart } from "./components";
 
 // styled components
-import { StyledGrid, StyledTabs } from "./styles";
+import { StyledCharts } from "./styles";
 
 const Overview = () => {
   const currentYear = String(getYear(new Date()));
@@ -30,11 +26,6 @@ const Overview = () => {
   const [stats, setStats] = useState({});
 
   const tabs = [lastYear, currentYear];
-
-  const handleTab = async (value) => {
-    setTab(value);
-    setSelected(value);
-  };
 
   const handleContent = () => {
     let year = {};
@@ -57,15 +48,13 @@ const Overview = () => {
     }
 
     return (
-      <>
+      <div>
         <StatsType year={year} isLoading={isLoading} data={stats} />
-        <StyledGrid item sm={12} md={8}>
+        <StyledCharts>
           <Chart year={year} />
-        </StyledGrid>
-        <StyledGrid item sm={12} md={4}>
-          <CategoriesChart year={year} />
-        </StyledGrid>
-      </>
+          <ExpenseChart year={year} />
+        </StyledCharts>
+      </div>
     );
   };
 
@@ -74,26 +63,15 @@ const Overview = () => {
   }, [selected]);
 
   return (
-    <Container maxWidth="xl">
+    <Container>
       <Header title={"Overview"} />
-      <StyledTabs container spacing={1}>
-        {tabs.map((tab, i) => (
-          <Grid item xs={6} sm={4} md={2} key={i}>
-            <TabButton
-              tab={tab}
-              text={tab}
-              selected={selected}
-              action={() => handleTab(tab)}
-            />
-          </Grid>
-        ))}
-      </StyledTabs>
-      <Grid item>
-        <Divider />
-      </Grid>
-      <Grid container spacing={1}>
-        {handleContent()}
-      </Grid>
+      <Tabs
+        tabs={tabs}
+        setTab={setTab}
+        selected={selected}
+        setSelected={setSelected}
+      />
+      {handleContent()}
     </Container>
   );
 };

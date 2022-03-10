@@ -1,5 +1,6 @@
 // libraries
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledList = styled.li`
   width: 100%;
@@ -16,7 +17,7 @@ const StyledList = styled.li`
   }
 `;
 
-const StyledItem = styled.a`
+const StyledLink = styled(Link)`
   padding: ${({ theme }) => theme.spacing.s2};
   display: inline-flex;
   align-items: center;
@@ -25,6 +26,11 @@ const StyledItem = styled.a`
   svg {
     height: ${({ theme }) => theme.spacing.s6};
     width: ${({ theme }) => theme.spacing.s6};
+
+    @media screen and (max-height: 900px) {
+      height: ${({ theme }) => theme.spacing.s5};
+      width: ${({ theme }) => theme.spacing.s5};
+    }
   }
 `;
 
@@ -36,4 +42,4 @@ const StyledLabel = styled.span`
   letter-spacing: 0.8px;
 `;
 
-export { StyledList, StyledItem, StyledLabel };
+export { StyledList, StyledLink, StyledLabel };

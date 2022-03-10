@@ -3,14 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
-import { StyledContainer, StyleTitle } from "./styles";
+import { StyleTitle } from "./styles";
 
 const Header = ({ title }) => {
-  return (
-    <StyledContainer>
-      <StyleTitle>{title}</StyleTitle>
-    </StyledContainer>
-  );
+  return <StyleTitle>{title}</StyleTitle>;
 };
 
 Header.propTypes = {

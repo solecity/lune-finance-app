@@ -37,24 +37,32 @@ const StyledScroll = styled(SimpleBar)`
 
 const StyledLogo = styled.div`
   width: 50%;
-  margin: ${({ theme }) => theme.spacing.s6};
+  margin-top: ${({ theme }) => theme.spacing.s6};
+  margin-bottom: ${({ theme }) => theme.spacing.s6};
+  margin-left: ${({ theme }) => theme.spacing.s6};
   margin-right: 0;
 
   &.icon {
     margin-left: ${({ theme }) => theme.spacing.s7};
   }
-`;
 
-const StyledNavBar = styled.div`
-  display: block;
+  @media screen and (max-height: 900px) {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledMenu = styled.ul`
-  height: calc(100vh - 18vh);
+  height: calc(100vh - 22vh);
+  margin: 0;
   padding: ${({ theme }) => theme.spacing.s5} ${({ theme }) => theme.spacing.s6};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${({ theme }) => theme.spacing.s20};
+
+  @media screen and (max-height: 900px) {
+    height: calc(100vh - 24vh);
+    gap: 0;
+  }
 `;
 
 const StyledFooter = styled.div`
@@ -68,6 +76,7 @@ const StyledText = styled.div`
   line-height: ${({ theme }) => theme.lineHeight.base};
 
   .copyright {
+    min-height: ${({ theme }) => theme.spacing.s6};
     margin-bottom: ${({ theme }) => theme.spacing.s2};
     font-size: ${({ theme }) => theme.font.textMedium};
     letter-spacing: 0.25px;
@@ -83,7 +92,6 @@ export {
   StyledDrawer,
   StyledScroll,
   StyledLogo,
-  StyledNavBar,
   StyledMenu,
   StyledFooter,
   StyledText

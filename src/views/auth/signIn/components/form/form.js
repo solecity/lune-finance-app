@@ -58,27 +58,19 @@ const Form = ({ onSubmitSuccess }) => {
   const password = watch("password");
 
   const onSubmit = async (payload) => {
-    if (email === "test@lune.com" && password === "1234") {
-      setLoggedIn(true);
+    try {
+      const res = await signIn(payload);
 
-      onSubmitSuccess();
-    } else {
-      setGeneralError("Invalid Credentials");
+      if (res.success) {
+        setLoggedIn(true);
+
+        onSubmitSuccess();
+      } else {
+        setGeneralError(res);
+      }
+    } catch (err) {
+      console.log("Server down");
     }
-
-    // try {
-    //   const res = await signIn(payload);
-
-    //   if (res.success) {
-    //     setLoggedIn(true);
-
-    //     onSubmitSuccess();
-    //   } else {
-    //     setGeneralError(res);
-    //   }
-    // } catch (err) {
-    //   console.log("Server down");
-    // }
   };
 
   useEffect(() => {

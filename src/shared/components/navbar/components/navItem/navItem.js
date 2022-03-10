@@ -3,22 +3,22 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
-import { StyledList, StyledItem, StyledLabel } from "./styles";
+import { StyledList, StyledLink, StyledLabel } from "./styles";
 
 const NavItem = ({ label, icon: Icon, href, navBarOpen }) => {
   const handleItem = () => {
     if (navBarOpen) {
       return (
-        <StyledItem href={href}>
+        <StyledLink to={href}>
           <Icon />
           <StyledLabel>{label}</StyledLabel>
-        </StyledItem>
+        </StyledLink>
       );
     } else {
       return (
-        <StyledItem href={href}>
+        <StyledLink href={href}>
           <Icon />
-        </StyledItem>
+        </StyledLink>
       );
     }
   };
@@ -27,9 +27,9 @@ const NavItem = ({ label, icon: Icon, href, navBarOpen }) => {
 };
 
 NavItem.propTypes = {
-  label: PropTypes.string,
-  icon: PropTypes.any,
-  href: PropTypes.string
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.any.isRequired,
+  href: PropTypes.string.isRequired
 };
 
 export default NavItem;

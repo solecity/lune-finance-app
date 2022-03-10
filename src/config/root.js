@@ -27,11 +27,9 @@ import "simplebar/dist/simplebar.min.css";
 const Root = () => {
   const settings = useRecoilValue(settingsState);
 
-  const theme = themes[settings.theme];
-
   return (
     <StylesProvider injectFirst>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={themes[settings.theme]}>
         <GlobalStyles />
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <HashRouter>

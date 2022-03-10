@@ -2,16 +2,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// external components
-import Typography from "@mui/material/Typography";
-
 // styled components
-import { StyledContainer } from "./styles";
+import { StyledContainer, StyleTitle } from "./styles";
 
 const Header = ({ title }) => {
   return (
     <StyledContainer>
-      <Typography variant="h5">{title}</Typography>
+      <StyleTitle>{title}</StyleTitle>
     </StyledContainer>
   );
 };

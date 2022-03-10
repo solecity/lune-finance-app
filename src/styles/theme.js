@@ -1,26 +1,10 @@
-import { colours, general } from "./variables.js";
+// variables
+import { colours, shadows } from "./lightTheme.js";
+import { general } from "./variables.js";
 
 const light = {
-  colours: {
-    primary: colours.blueDark,
-    secondary: colours.blueLight,
-    accent: colours.blueLighter,
-    background: colours.offWhite,
-    backgroundLight: colours.offWhiteLight,
-    boxShadow: colours.greyDark,
-    selectedButton: colours.oofWhite,
-    mainText: colours.greyDarker,
-    secondaryText: colours.offWhite,
-    divider: colours.blueLighter,
-    disabled: colours.greyLight,
-    label: colours.grey,
-    error: colours.redDark,
-    link: colours.blueLight,
-    income: colours.green,
-    expense: colours.orange,
-    savings: colours.yellow,
-    investment: colours.blue
-  },
+  colours,
+  shadows,
   ...general
 };
 

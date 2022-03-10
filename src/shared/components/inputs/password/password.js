@@ -5,10 +5,17 @@ import PropTypes from "prop-types";
 // libraries
 import { Controller } from "react-hook-form";
 
-// styled components
-import { StyledFormControl, StyledInput } from "styles/default";
+// external components
+import InputAdornment from "@mui/material/InputAdornment";
 
-const InputTextField = ({
+// styled components
+import { StyledFormControl } from "styles/default";
+import { StyledPassword } from "./styles";
+
+// icons
+import { Eye } from "shared/icons";
+
+const InputPassword = ({
   name,
   control,
   error,
@@ -22,10 +29,17 @@ const InputTextField = ({
         name={name}
         control={control}
         render={({ field }) => (
-          <StyledInput
+          <StyledPassword
             error={error}
             helperText={helperText}
             size="small"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Eye size="20" />
+                </InputAdornment>
+              )
+            }}
             fullWidth
             {...props}
             {...field}
@@ -36,11 +50,11 @@ const InputTextField = ({
   );
 };
 
-InputTextField.defaultProps = {
+InputPassword.defaultProps = {
   label: ""
 };
 
-InputTextField.propTypes = {
+InputPassword.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
@@ -50,4 +64,4 @@ InputTextField.propTypes = {
   isRequired: PropTypes.bool
 };
 
-export default InputTextField;
+export default InputPassword;

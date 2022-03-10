@@ -9,14 +9,25 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 // api
 import { signIn } from "shared/recoil/auth";
-import { saveUser } from "shared/recoil/user";
-import { saveSettings } from "shared/recoil/settings";
 
 // custom components
-import { InputTextField, FormButton } from "shared/components";
+import {
+  InputTextField,
+  InputPassword,
+  InputCheckbox,
+  FormButton
+} from "shared/components";
 
 // styled components
-import { StyledContainer } from "./styles";
+import {
+  StyledContainer,
+  StyledText,
+  StyledLink,
+  StyledPasswordLink
+} from "./styles";
+
+// icons
+import { CheckboxOutlineBlank } from "shared/icons";
 
 // schemas
 import { schemaSignIn } from "constants/schemas";
@@ -37,8 +48,8 @@ const Form = ({ onSubmitSuccess }) => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      email: "",
-      password: ""
+      email: "test@lune.com",
+      password: "1234"
     },
     resolver: yupResolver(schemaSignIn)
   });
@@ -47,23 +58,27 @@ const Form = ({ onSubmitSuccess }) => {
   const password = watch("password");
 
   const onSubmit = async (payload) => {
-    try {
-      const res = await signIn(payload);
+    if (email === "test@lune.com" && password === "1234") {
+      setLoggedIn(true);
 
-      if (res.success) {
-        setLoggedIn(true);
-
-        const user = await saveUser();
-
-        saveSettings(user._id);
-
-        onSubmitSuccess();
-      } else {
-        setGeneralError(res);
-      }
-    } catch (err) {
-      console.log("Server down");
+      onSubmitSuccess();
+    } else {
+      setGeneralError("Invalid Credentials");
     }
+
+    // try {
+    //   const res = await signIn(payload);
+
+    //   if (res.success) {
+    //     setLoggedIn(true);
+
+    //     onSubmitSuccess();
+    //   } else {
+    //     setGeneralError(res);
+    //   }
+    // } catch (err) {
+    //   console.log("Server down");
+    // }
   };
 
   useEffect(() => {
@@ -73,27 +88,35 @@ const Form = ({ onSubmitSuccess }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <StyledContainer>
-        <div>
-          <InputTextField
-            error={Boolean(errors.email?.message) || Boolean(generalError)}
-            helperText={errors.email?.message}
-            control={control}
-            label="Email"
-            name="email"
-            type="email"
-          />
-        </div>
-        <div>
-          <InputTextField
-            error={Boolean(errors.password?.message) || Boolean(generalError)}
-            helperText={errors.password?.message || generalError}
-            control={control}
-            label="Password"
-            name="password"
-            type="password"
-          />
-        </div>
+        <InputTextField
+          control={control}
+          name="email"
+          type="email"
+          label="Email"
+          error={Boolean(errors.email?.message) || Boolean(generalError)}
+          helperText={errors.email?.message}
+        />
+        <InputPassword
+          control={control}
+          name="password"
+          type="password"
+          label="Password"
+          error={Boolean(errors.password?.message) || Boolean(generalError)}
+          helperText={errors.password?.message}
+        />
+        <InputCheckbox
+          control={control}
+          label="Remember my email"
+          name="rememberEmail"
+        />
+        <StyledPasswordLink>
+          <StyledLink>Forgot password?</StyledLink>
+        </StyledPasswordLink>
         <FormButton text="Sign In" />
+        <StyledText>
+          Don't have an account?{" "}
+          <StyledLink href="/sign-up">Sign up</StyledLink>
+        </StyledText>
       </StyledContainer>
     </form>
   );

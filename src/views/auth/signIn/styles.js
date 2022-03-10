@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     margin: 0 ${({ theme }) => theme.spacing.s5};
   }
 `;

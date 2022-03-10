@@ -6,7 +6,7 @@ import SimpleBar from "simplebar-react";
 
 const StyledContainer = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   top: 0;
   left: 0;
   display: flex;

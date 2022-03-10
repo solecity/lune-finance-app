@@ -5,8 +5,6 @@ import styled from "styled-components";
 import LinearProgress from "@mui/material/LinearProgress";
 
 const StyledLinearProgress = styled(LinearProgress)`
-  z-index: 1;
-
   .MuiLinearProgress-root {
     background-color: ${({ theme }) => theme.colours.actionDisabled};
   }

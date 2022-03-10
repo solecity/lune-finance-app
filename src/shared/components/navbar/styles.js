@@ -36,8 +36,13 @@ const StyledScroll = styled(SimpleBar)`
 `;
 
 const StyledLogo = styled.div`
-  width: 90%;
+  width: 50%;
   margin: ${({ theme }) => theme.spacing.s6};
+  margin-right: 0;
+
+  &.icon {
+    margin-left: ${({ theme }) => theme.spacing.s7};
+  }
 `;
 
 const StyledNavBar = styled.div`

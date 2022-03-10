@@ -32,13 +32,13 @@ const NavBar = () => {
     if (navBarOpen) {
       return (
         <StyledLogo>
-          <LogoAlt />{" "}
+          <LogoAlt />
         </StyledLogo>
       );
     } else {
       return (
-        <StyledLogo>
-          <IconAlt />{" "}
+        <StyledLogo className="icon">
+          <IconAlt />
         </StyledLogo>
       );
     }

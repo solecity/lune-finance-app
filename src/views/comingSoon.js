@@ -4,7 +4,7 @@ import React from "react";
 // external components
 import Grid from "@mui/material/Grid";
 
-const CommingSoon = () => {
+const ComingSoon = () => {
   return (
     <Grid
       container
@@ -12,11 +12,11 @@ const CommingSoon = () => {
       alignItems="center"
       style={{ height: "100vh" }}
     >
-      <h1>Comming soon</h1>
+      <h1>Coming soon</h1>
     </Grid>
   );
 };
 
-CommingSoon.propTypes = {};
+ComingSoon.propTypes = {};
 
-export default CommingSoon;
+export default ComingSoon;

@@ -2,18 +2,18 @@
 import styled from "styled-components";
 
 // external components
-import LinearProgress, {
-  linearProgressClasses
-} from "@mui/material/LinearProgress";
+import LinearProgress from "@mui/material/LinearProgress";
 
-const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  [`.${linearProgressClasses.root}`]: {
-    backgroundColor: `${theme.colours.secondary} !important`
-  },
+const StyledLinearProgress = styled(LinearProgress)`
+  z-index: 1;
 
-  [`.${linearProgressClasses.bar}`]: {
-    backgroundColor: `${theme.colours.primary} !important`
+  .MuiLinearProgress-root {
+    background-color: ${({ theme }) => theme.colours.actionDisabled};
   }
-}));
+
+  .MuiLinearProgress-bar {
+    background-color: ${({ theme }) => theme.colours.primaryDark};
+  }
+`;
 
 export { StyledLinearProgress };

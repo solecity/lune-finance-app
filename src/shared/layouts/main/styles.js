@@ -5,8 +5,10 @@ import styled from "styled-components";
 import SimpleBar from "simplebar-react";
 
 const StyledContainer = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   overflow: hidden;
 `;

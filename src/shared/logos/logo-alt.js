@@ -4,8 +4,8 @@ export const LogoAlt = () => {
   return (
     <svg
       width="98"
-      height="36"
-      viewBox="0 0 98 29"
+      height="32"
+      viewBox="0 0 98 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

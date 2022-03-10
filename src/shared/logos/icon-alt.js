@@ -3,8 +3,8 @@ import React from "react";
 export const IconAlt = () => {
   return (
     <svg
-      width="36"
-      height="36"
+      width="32"
+      height="32"
       viewBox="0 0 36 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

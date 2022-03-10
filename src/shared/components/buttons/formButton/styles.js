@@ -1,34 +1,17 @@
 // libraries
 import styled from "styled-components";
-import { alpha } from "@mui/material/styles";
 
-// external components
-import Button, { buttonClasses } from "@mui/material/Button";
+// styled components
+import { StyledButton } from "styles/default";
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    backgroundColor: theme.colours.primary,
-    height: "35px",
-    minWidth: "35px",
-    width: "100%",
-    color: theme.colours.secondaryText,
-    borderRadius: 0,
-    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
-
-    "&:hover": {
-      backgroundColor: `${theme.colours.secondary} !important`
-    }
-  }
-}));
-
+// TODO icon button
 const StyledIconButton = styled(StyledButton)(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    padding: 0,
-
-    svg: {
-      width: "1.1rem"
-    }
-  }
+  // [`&.${buttonClasses.root}`]: {
+  //   padding: 0,
+  //   svg: {
+  //     width: "1.1rem"
+  //   }
+  // }
 }));
 
-export { StyledButton, StyledIconButton };
+export { StyledIconButton };

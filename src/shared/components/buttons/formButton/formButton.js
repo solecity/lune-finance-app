@@ -3,7 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
-import { StyledButton, StyledIconButton } from "./styles";
+import { StyledButton } from "styles/default";
+import { StyledIconButton } from "./styles";
 
 const FormButton = ({ text, icon: Icon, isIcon }) => {
   return (

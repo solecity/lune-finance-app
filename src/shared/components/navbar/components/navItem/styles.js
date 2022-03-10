@@ -1,24 +1,39 @@
 // libraries
 import styled from "styled-components";
 
-// external components
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
+const StyledList = styled.li`
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing.s4};
+  padding: 0;
+  list-style: none;
 
-const StyledItem = styled(ListItem)`
-  padding: 10px 0 10px 18px;
+  &:hover {
+    background-color: ${({ theme }) => theme.colours.primaryMain};
+  }
+
+  &:active {
+    background-color: ${({ theme }) => theme.colours.primaryLight};
+  }
 `;
 
-const StyledIcon = styled(ListItemIcon)`
-  min-width: 30px !important;
-  margin-right: 5px;
-  font-size: 18px;
-  color: ${({ theme }) => `${theme.colours.white} !important`};
+const StyledItem = styled.a`
+  padding: ${({ theme }) => theme.spacing.s2};
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  svg {
+    height: ${({ theme }) => theme.spacing.s6};
+    width: ${({ theme }) => theme.spacing.s6};
+  }
 `;
 
 const StyledLabel = styled.span`
-  font-size: 0.8rem;
-  color: ${({ theme }) => `${theme.colours.white} !important`};
+  margin-left: ${({ theme }) => theme.spacing.s4};
+  color: ${({ theme }) => theme.colours.textAltPrimary};
+  font-size: ${({ theme }) => theme.font.textMedium};
+  line-height: ${({ theme }) => theme.lineHeight.base};
+  letter-spacing: 0.8px;
 `;
 
-export { StyledItem, StyledIcon, StyledLabel };
+export { StyledList, StyledItem, StyledLabel };

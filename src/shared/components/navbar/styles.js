@@ -1,68 +1,85 @@
 // libraries
 import styled from "styled-components";
-import { alpha } from "@mui/material/styles";
 
 // external components
-import Drawer from "@mui/material/Drawer";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
+import SimpleBar from "simplebar-react";
 
-const StyledDrawer = styled(Drawer)`
-  width: 50px;
+const StyledDrawer = styled.div`
+  background-color: ${({ theme }) => theme.colours.primaryDark};
+  height: 100vh;
+  width: ${({ theme }) => theme.spacing.s14};
+  overflow-x: hidden;
   flex-shrink: 0;
   white-space: nowrap;
-  overflow-x: hidden;
+  color: ${({ theme }) => theme.colours.textAltPrimary};
 
   &:hover {
-    width: 180px;
-    transition: width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95);
+    width: ${({ theme }) => theme.spacing.s33};
+    transition: width 0.4s cubic-bezier(0.64, 0.11, 0.38, 0.95);
+
+    .divider {
+      width: 80%;
+    }
   }
 
   &:not(:hover) {
-    transition: width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95);
+    transition: width 0.4s cubic-bezier(0.64, 0.11, 0.38, 0.95);
+
+    .divider {
+      width: 60%;
+    }
   }
 `;
 
-const StyledPaper = styled(Paper)`
-  background-color: ${({ theme }) => theme.colours.primary} !important;
-  width: 50px;
-  padding-top: 45px;
-  overflow-x: hidden;
-  border-radius: 0px;
-  border: none !important;
-  box-shadow: 1px 0px 4px ${({ theme }) => alpha(theme.colours.boxShadow, 0.3)} !important;
-
-  &:hover {
-    width: 180px;
-    transition: width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95);
-  }
-
-  &:not(:hover) {
-    transition: width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95);
-  }
+const StyledScroll = styled(SimpleBar)`
+  height: 100vh;
 `;
 
-const StyledNavBarBox = styled(Box)`
-  min-height: calc(100vh - 22vh);
+const StyledLogo = styled.div`
+  width: 90%;
+  margin: ${({ theme }) => theme.spacing.s6};
 `;
 
-const StyledMenuList = styled(Box)`
-  overflow: hidden;
-  padding-top: 30px;
+const StyledNavBar = styled.div`
+  display: block;
+`;
 
-  &:hover {
-    overflow: visible;
+const StyledMenu = styled.ul`
+  height: calc(100vh - 18vh);
+  padding: ${({ theme }) => theme.spacing.s5} ${({ theme }) => theme.spacing.s6};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const StyledFooter = styled.div`
+  width: 100%;
+  margin: 0;
+`;
+
+const StyledText = styled.div`
+  margin: 0;
+  text-align: center;
+  line-height: ${({ theme }) => theme.lineHeight.base};
+
+  .copyright {
+    margin-bottom: ${({ theme }) => theme.spacing.s2};
+    font-size: ${({ theme }) => theme.font.textMedium};
+    letter-spacing: 0.25px;
   }
-`;
 
-const StyledMenuBox = styled(Box)`
-  min-height: calc(100vh - 22vh);
+  .version {
+    font-size: ${({ theme }) => theme.font.textSmall};
+    letter-spacing: 0.4px;
+  }
 `;
 
 export {
   StyledDrawer,
-  StyledPaper,
-  StyledNavBarBox,
-  StyledMenuList,
-  StyledMenuBox
+  StyledScroll,
+  StyledLogo,
+  StyledNavBar,
+  StyledMenu,
+  StyledFooter,
+  StyledText
 };

@@ -2,26 +2,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// libraries
-import { Link } from "react-router-dom";
-
-// external components
-import ListItemText from "@mui/material/ListItemText";
-
 // styled components
-import { StyledItem, StyledIcon, StyledLabel } from "./styles";
+import { StyledList, StyledItem, StyledLabel } from "./styles";
 
-const NavItem = ({ label, icon: Icon, href }) => {
-  return (
-    <StyledItem button component={Link} to={href}>
-      <StyledIcon>
-        <Icon size="20" />
-      </StyledIcon>
-      <ListItemText>
-        <StyledLabel>{label}</StyledLabel>
-      </ListItemText>
-    </StyledItem>
-  );
+const NavItem = ({ label, icon: Icon, href, navBarOpen }) => {
+  const handleItem = () => {
+    if (navBarOpen) {
+      return (
+        <StyledItem href={href}>
+          <Icon />
+          <StyledLabel>{label}</StyledLabel>
+        </StyledItem>
+      );
+    } else {
+      return (
+        <StyledItem href={href}>
+          <Icon />
+        </StyledItem>
+      );
+    }
+  };
+
+  return <StyledList>{handleItem()}</StyledList>;
 };
 
 NavItem.propTypes = {

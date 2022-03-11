@@ -1,45 +1,42 @@
-import NavBar from "./navbar/navbar";
-import Header from "./header/header";
+export { default as NavBar } from "./navbar/navbar";
+export { default as Container } from "./container/container";
+export { default as Header } from "./header/header";
+export { default as LinearProgress } from "./linearProgress/linearProgress";
+export { default as InputTextField } from "./inputs/textField/textField";
+export { default as InputPassword } from "./inputs/password/password";
+export { default as InputCheckbox } from "./inputs/checkbox/checkbox";
+export { default as Tabs } from "./tabs/tabs";
+export { default as FormButton } from "./buttons/formButton/formButton";
+export { default as ActionButton } from "./buttons/actionButton/actionButton";
+export { default as BarChart } from "./charts/barChart/barChart";
+export { default as PieChart } from "./charts/pieChart/pieChart";
+
+export { default as TabButton } from "./buttons/tabButton/tabButton";
+
 import Toolbar from "./toolbar/toolbar";
 import Table from "./table/table";
 import ColourCard from "./colourCard/colourCard";
-import LinearProgress from "./linearProgress/linearProgress";
 import InputInfo from "./inputs/info/info";
-import InputTextField from "./inputs/textField/textField";
 import InputSelect from "./inputs/select/select";
 import InputAutocomplete from "./inputs/autocomplete/autocomplete";
 import InputDatePicker from "./inputs/datepicker/datepicker";
 import InputColourPicker from "./inputs/colourPicker/colourPicker";
-import InputCheckbox from "./inputs/checkbox/checkbox";
-import FormButton from "./buttons/formButton/formButton";
-import TabButton from "./buttons/tabButton/tabButton";
-import ActionButton from "./buttons/actionButton/actionButton";
 import ColourButton from "./buttons/colourButton/colourButton";
 import TableButton from "./buttons/tableButton/tableButton";
 import Modal from "./modal/modal";
 import ConfirmDelete from "./confirmDelete/confirmDelete";
-import PieChart from "./charts/pieChart/pieChart";
 
 export {
-  NavBar,
-  Header,
   Toolbar,
   Table,
   ColourCard,
-  LinearProgress,
   InputInfo,
-  InputTextField,
   InputSelect,
   InputAutocomplete,
   InputDatePicker,
   InputColourPicker,
-  InputCheckbox,
-  FormButton,
-  TabButton,
-  ActionButton,
   ColourButton,
   TableButton,
   Modal,
-  ConfirmDelete,
-  PieChart
+  ConfirmDelete
 };

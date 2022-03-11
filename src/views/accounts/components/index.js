@@ -1,4 +1,2 @@
-import Form from "./form/form";
-import Cards from "./cards/cards";
-
-export { Form, Cards };
+export { default as Cards } from "./cards/cards";
+export { default as Form } from "./form/form";

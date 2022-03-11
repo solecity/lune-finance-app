@@ -5,7 +5,7 @@ import styled from "styled-components";
 import SimpleBar from "simplebar-react";
 
 const StyledList = styled.div`
-  margin: ${({ theme }) => theme.spacing.s10} 0;
+  margin: ${({ theme }) => theme.spacing.s8} 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.s8};

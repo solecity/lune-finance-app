@@ -11,7 +11,14 @@ import { Card } from "./components";
 // styled components
 import { StyledList, StyledScroll } from "./styles";
 
-const Cards = ({ data, getData, handleForm, setAccount, setIsEdit }) => {
+const Cards = ({
+  data,
+  getData,
+  handleForm,
+  handleConfirm,
+  setAccount,
+  setIsEdit
+}) => {
   return (
     <StyledScroll>
       <StyledList>
@@ -20,6 +27,7 @@ const Cards = ({ data, getData, handleForm, setAccount, setIsEdit }) => {
             key={i}
             getData={getData}
             handleForm={handleForm}
+            handleConfirm={handleConfirm}
             account={account}
             setAccount={setAccount}
             setIsEdit={setIsEdit}
@@ -34,6 +42,7 @@ Cards.propTypes = {
   data: PropTypes.array.isRequired,
   getData: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
+  handleConfirm: PropTypes.func.isRequired,
   setAccount: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired
 };

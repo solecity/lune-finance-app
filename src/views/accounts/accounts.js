@@ -4,23 +4,30 @@ import React, { useState, useEffect } from "react";
 // api
 import AccountService from "shared/services/account";
 
-// external components
-import Container from "@mui/material/Container";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-
 // custom components
-import { Header, Toolbar, Modal } from "shared/components";
-import { Form, Cards } from "./components";
+import {
+  Container,
+  Header,
+  Tabs,
+  Toolbar,
+  ConfirmDelete
+} from "shared/components";
+// import { Modal } from "shared/components";
+import { Cards, Form } from "./components";
 
 // styled components
-import { StyledGrid } from "./styles";
+// import { StyledGrid } from "./styles";
+
+const tabs = ["all", "cash", "bank", "savings", "investment", "crypto"];
 
 const Accounts = () => {
   const [data, setData] = useState([]);
   const [account, setAccount] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [tab, setTab] = useState("all");
+  const [selected, setSelected] = useState(tab);
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   const getData = async () => {
     const { data } = await AccountService.getMany();
@@ -30,46 +37,68 @@ const Accounts = () => {
 
   const handleForm = () => setIsOpen(!isOpen);
 
+  const handleConfirm = () => setOpenConfirm(!openConfirm);
+
+  const handleDelete = async () => {
+    const res = await AccountService.deleteOne(account._id);
+
+    if (res) {
+      setOpenConfirm(false);
+      getData();
+    }
+  };
+
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Container maxWidth="xl">
-      <Header title={"Accounts"} />
-      <Toolbar
-        handleForm={handleForm}
-        setIsEdit={setIsEdit}
-        setElement={setAccount}
-      />
-      <StyledGrid container spacing={1}>
-        <Grid item xs={5}>
-          <Cards
-            data={data}
-            getData={getData}
-            handleForm={handleForm}
-            setAccount={setAccount}
-            setIsEdit={setIsEdit}
-          />
-        </Grid>
-        <Grid item xs={7}>
-          <Paper style={{ height: "calc(100vh - 200px)" }}></Paper>
-        </Grid>
-      </StyledGrid>
-      <Modal
-        name="account"
-        handleModal={handleForm}
-        isOpen={isOpen}
-        isEdit={isEdit}
-      >
-        <Form
-          account={account}
-          handleForm={handleForm}
-          getData={getData}
-          isEdit={isEdit}
+    <>
+      <Container>
+        <Header title={"Accounts"} />
+        <Tabs
+          tabs={tabs}
+          setTab={setTab}
+          selected={selected}
+          setSelected={setSelected}
         />
-      </Modal>
-    </Container>
+        <Toolbar
+          handleForm={handleForm}
+          setIsEdit={setIsEdit}
+          setElement={setAccount}
+        />
+        <Cards
+          data={data}
+          getData={getData}
+          handleForm={handleForm}
+          handleConfirm={handleConfirm}
+          setAccount={setAccount}
+          setIsEdit={setIsEdit}
+        />
+      </Container>
+
+      <ConfirmDelete
+        open={openConfirm}
+        handleClose={handleConfirm}
+        handleDelete={handleDelete}
+        item="account"
+        name={account.name}
+      />
+    </>
+
+    //   <Modal
+    //     name="account"
+    //     handleModal={handleForm}
+    //     isOpen={isOpen}
+    //     isEdit={isEdit}
+    //   >
+    //     <Form
+    //       account={account}
+    //       handleForm={handleForm}
+    //       getData={getData}
+    //       isEdit={isEdit}
+    //     />
+    //   </Modal>
   );
 };
 

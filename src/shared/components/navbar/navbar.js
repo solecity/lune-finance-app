@@ -10,8 +10,8 @@ import {
   StyledDrawer,
   StyledLogo,
   StyledMenu,
-  StyledFooter,
-  StyledText
+  StyledDivider,
+  StyledFooter
 } from "./styles";
 
 // config
@@ -70,15 +70,15 @@ const NavBar = () => {
                   navBarOpen={navBarOpen}
                 />
               ))}
+              <StyledDivider />
+              <StyledFooter>
+                <p className="copyright">
+                  {navBarOpen ? "LUNE © 2022" : "aaaa"}
+                </p>
+                <p className="version">v 0.1.0</p>
+              </StyledFooter>
             </div>
           </StyledMenu>
-          <StyledFooter>
-            <hr className="divider" />
-            <StyledText>
-              <p className="copyright">{navBarOpen ? "LUNE © 2022" : ""}</p>
-              <p className="version">v 0.1.0</p>
-            </StyledText>
-          </StyledFooter>
         </div>
       </StyledScroll>
     </StyledDrawer>

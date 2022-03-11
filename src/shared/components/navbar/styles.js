@@ -24,10 +24,6 @@ const StyledDrawer = styled.div`
 
   &:not(:hover) {
     transition: width 0.4s cubic-bezier(0.64, 0.11, 0.38, 0.95);
-
-    .divider {
-      width: 60%;
-    }
   }
 `;
 
@@ -48,7 +44,7 @@ const StyledLogo = styled.div`
   }
 
   @media screen and (max-height: 900px) {
-    margin-bottom: 0;
+    margin-bottom: ${({ theme }) => theme.spacing.s2};
   }
 `;
 
@@ -61,17 +57,16 @@ const StyledMenu = styled.ul`
   gap: ${({ theme }) => theme.spacing.s20};
 
   @media screen and (max-height: 900px) {
-    height: calc(100vh - 24vh);
     gap: 0;
   }
 `;
 
-const StyledFooter = styled.div`
-  width: 100%;
+const StyledDivider = styled.hr`
   margin: 0;
 `;
 
-const StyledText = styled.div`
+const StyledFooter = styled.div`
+  width: 100%;
   margin: 0;
   text-align: center;
   line-height: ${({ theme }) => theme.lineHeight.base};
@@ -87,6 +82,14 @@ const StyledText = styled.div`
     font-size: ${({ theme }) => theme.fontSize.textSmall};
     letter-spacing: 0.4px;
   }
+
+  @media screen and (max-height: 900px) {
+    line-height: ${({ theme }) => theme.lineHeight.small};
+
+    .copyright {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 export {
@@ -94,6 +97,6 @@ export {
   StyledScroll,
   StyledLogo,
   StyledMenu,
-  StyledFooter,
-  StyledText
+  StyledDivider,
+  StyledFooter
 };

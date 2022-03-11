@@ -23,10 +23,10 @@ const InputTextField = ({
         control={control}
         render={({ field }) => (
           <StyledInput
-            error={error}
-            helperText={helperText}
             size="small"
             fullWidth
+            error={error}
+            helperText={helperText}
             {...props}
             {...field}
           />

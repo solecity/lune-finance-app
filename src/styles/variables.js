@@ -1,5 +1,5 @@
 const font = {
-  base: "'Roboto', sans-serif"
+  base: "'Roboto', 'Helvetica', 'Arial', sans-serif"
 };
 
 const fontSize = {
@@ -77,9 +77,15 @@ const navbar = {
 };
 
 const height = {
-  small: "32px",
-  base: "36px",
-  medium: "40px"
+  small: "24px",
+  base: "32px",
+  medium: "36px",
+  large: "40px"
+};
+
+const coloursBasic = {
+  white: "#FEFEFE",
+  black: "#1C1C1C"
 };
 
 const boxShadow = {
@@ -98,4 +104,4 @@ const general = {
   height
 };
 
-export { boxShadow, general };
+export { coloursBasic, boxShadow, general };

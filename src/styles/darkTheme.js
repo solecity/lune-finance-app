@@ -2,17 +2,17 @@
 import { alpha } from "@mui/material/styles";
 
 // styles
-import { boxShadow } from "./variables.js";
+import { coloursBasic, boxShadow } from "./variables.js";
 
 const colours = {
   backgroundDefault: "#1e1f23",
   backgroundPaper: "#292E32",
   backgroundDisabled: "#F0F0F0",
-  textPrimary: "#1C1C1C",
+  textPrimary: coloursBasic.black,
   textSecondary: "#292a2b",
   textTertiary: "#4e5455",
   textDisabled: "#C4C8CA",
-  textAltPrimary: "#FEFEFE",
+  textAltPrimary: coloursBasic.white,
   blueLighter: "#d2dce3",
   primaryLight: "#8FACC0",
   primaryMain: "#E1AE21",
@@ -40,9 +40,9 @@ const colours = {
   actionHover: "#BABFC3",
   actionSelected: "#292E32",
   actionDisabled: "#E0E0E0",
-  actionBorder: "#FEFEFE",
+  actionBorder: coloursBasic.white,
   dividerLight: "#3D4348",
-  dividerDark: "#1C1C1C"
+  dividerDark: coloursBasic.black
 };
 
 const shadows = {

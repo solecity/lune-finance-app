@@ -5,20 +5,20 @@ import { alpha } from "@mui/material/styles";
 import { boxShadow } from "./variables.js";
 
 const colours = {
-  backgroundDefault: "#F4F4F4",
-  backgroundPaper: "#FCFCFC",
+  backgroundDefault: "#1e1f23",
+  backgroundPaper: "#292E32",
   backgroundDisabled: "#F0F0F0",
   textPrimary: "#1C1C1C",
-  textSecondary: "#414748",
-  textTertiary: "#929697",
+  textSecondary: "#292a2b",
+  textTertiary: "#4e5455",
   textDisabled: "#C4C8CA",
   textAltPrimary: "#FEFEFE",
   blueLighter: "#d2dce3",
   primaryLight: "#8FACC0",
-  primaryMain: "#4375A1",
+  primaryMain: "#E1AE21",
   primaryDark: "#2A5173",
   secondaryLight: "#ECC9D3",
-  secondaryMain: "#D5A4B1",
+  secondaryMain: "#5F6D74",
   secondaryDark: "#AC7A88",
   warningLight: "#FFF1A9",
   warningMain: "#FFD91B",
@@ -38,10 +38,10 @@ const colours = {
   othersInvestments: "#337AAD",
   actionActive: "#9AA1A7",
   actionHover: "#BABFC3",
-  actionSelected: "#D1D7DC",
+  actionSelected: "#292E32",
   actionDisabled: "#E0E0E0",
   actionBorder: "#FEFEFE",
-  dividerLight: "#DCE1E7",
+  dividerLight: "#3D4348",
   dividerDark: "#1C1C1C"
 };
 
@@ -53,10 +53,12 @@ const shadows = {
 };
 
 const borders = {
-  actionDefault: `1.5px solid ${colours.actionBorder}`,
-  actionActive: `1.5px solid ${colours.actionBorder}`
+  action: `1px solid ${colours.actionBorder}`,
+  inner: `${boxShadow.internal} ${alpha(colours.textPrimary, 0.25)}`,
+  innerFocus: `${boxShadow.internal}  ${alpha(colours.primaryDark, 0.6)}`,
+  innerAlert: `${boxShadow.internal}  ${alpha(colours.errorMain, 0.6)}`
 };
 
-const lightTheme = { colours, shadows, borders };
+const darkTheme = { colours, shadows, borders };
 
-export { lightTheme };
+export { darkTheme };

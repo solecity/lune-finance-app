@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Edit = () => {
+export const Plus = () => {
   return (
     <svg
       width="24"
@@ -10,7 +10,14 @@ export const Edit = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M22.08 1.91233C20.44 0.272331 18.72 1.14233 17.7 2.19233L1.59998 18.3023L1 23.0023L5.69 22.4023L21.81 6.28233C22.85 5.27233 23.72 3.55233 22.08 1.91233Z"
+        d="M7 12H17"
+        stroke="#FEFEFE"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 7V17"
         stroke="#FEFEFE"
         strokeWidth="1.5"
         strokeLinecap="round"

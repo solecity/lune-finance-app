@@ -23,3 +23,4 @@ export { Star } from "./star";
 export { DollarCircle } from "./dollar-circle";
 export { SignOut } from "./sign-out";
 export { CreditCard } from "./creditCard";
+export { Plus } from "./plus";

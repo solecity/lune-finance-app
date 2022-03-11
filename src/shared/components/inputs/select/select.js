@@ -7,15 +7,15 @@ import { Controller } from "react-hook-form";
 
 // external components
 import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
 import Select from "@mui/material/Select";
+import FormHelperText from "@mui/material/FormHelperText";
 
 // styled components
 import { StyledSelect, StyledLabel } from "./styles";
 
 const InputSelect = ({ label, name, control, error, isRequired, children }) => {
   return (
-    <FormControl fullWidth size="small" required={isRequired}>
+    <FormControl required={isRequired} fullWidth>
       <StyledLabel>{label}</StyledLabel>
       <Controller
         name={name}
@@ -32,7 +32,8 @@ const InputSelect = ({ label, name, control, error, isRequired, children }) => {
           </Select>
         )}
       />
-      <FormHelperText className="error">{error}</FormHelperText>
+      {/* TODO */}
+      {/* <FormHelperText className="error">{error}</FormHelperText> */}
     </FormControl>
   );
 };

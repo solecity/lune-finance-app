@@ -2,25 +2,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// external components
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogActions from "@mui/material/DialogActions";
-import Button from "@mui/material/Button";
+// custom components
+import { MessageButton } from "shared/components";
+
+// styled components
+import {
+  StyledOverlay,
+  StyledDialog,
+  StyledText,
+  StyledButtons
+} from "./styles";
 
 const ConfirmDelete = ({ open, handleClose, handleDelete, item, name }) => {
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>
-        {`Are you sure you want to delete the ${item} "${name}"?`}
-      </DialogTitle>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleDelete} autoFocus>
-          Delete
-        </Button>
-      </DialogActions>
-    </Dialog>
+    <StyledOverlay className={open ? "overlay" : null}>
+      <StyledDialog open={open} onClose={handleClose}>
+        <StyledText>
+          {`Are you sure you want to delete the ${item} "${name}"?`}
+        </StyledText>
+        <StyledButtons>
+          <MessageButton
+            className="secondary"
+            text="Cancel"
+            action={handleClose}
+          />
+          <MessageButton text="Confirm" action={handleDelete} />
+        </StyledButtons>
+      </StyledDialog>
+    </StyledOverlay>
   );
 };
 

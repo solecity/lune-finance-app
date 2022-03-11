@@ -4,12 +4,14 @@ import styled from "styled-components";
 // external components
 import Grid from "@mui/material/Grid";
 
-const StyledContainer = styled(Grid)`
-  margin: 1.5rem 0;
+const StyledToolbar = styled.div`
+  margin-top: ${({ theme }) => theme.spacing.s8};
+  display: inline-flex;
+  gap: ${({ theme }) => theme.spacing.s7};
 `;
 
 const StyledGrid = styled(Grid)`
   justify-content: flex-end;
 `;
 
-export { StyledContainer, StyledGrid };
+export { StyledToolbar, StyledGrid };

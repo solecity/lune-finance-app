@@ -5,42 +5,29 @@ import { alpha } from "@mui/material/styles";
 // external components
 import Button, { buttonClasses } from "@mui/material/Button";
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    width: "100%",
-    color: theme.colours.secondaryText,
-    borderRadius: 0
+// custom components
+import { StyledButton } from "styles/default";
+
+const StyledDefaultButton = styled(StyledButton)`
+  width: auto;
+  padding: ${({ theme }) => theme.spacing.s3};
+`;
+
+const StyledCardButton = styled(StyledButton)`
+  background-color: ${({ theme }) => theme.colours.secondaryLight};
+  height: ${({ theme }) => theme.height.base};
+  border: ${({ theme }) => theme.borders.actionDefault};
+  box-shadow: none;
+
+  svg {
+    height: ${({ theme }) => theme.spacing.s5};
+    width: ${({ theme }) => theme.spacing.s5};
   }
-}));
 
-const StyledActionButton = styled(StyledButton)(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    backgroundColor: theme.colours.primary,
-    height: "35px",
-    boxShadow: `0px 2px 4px ${alpha(theme.colours.boxShadow, 0.3)}`,
-
-    "&:hover": {
-      backgroundColor: `${theme.colours.secondary} !important`
-    }
+  &:hover {
+    background-color: ${({ theme }) => theme.colours.secondaryDark};
   }
-}));
-
-const StyledCardButton = styled(StyledButton)(({ theme }) => ({
-  [`&.${buttonClasses.root}`]: {
-    backgroundColor: theme.colours.accent,
-    boxShadow: "none",
-    minWidth: "0 !important",
-    padding: "6px !important",
-
-    "&:hover": {
-      backgroundColor: `${theme.colours.secondary} !important`
-    },
-
-    svg: {
-      width: "1.1rem"
-    }
-  }
-}));
+`;
 
 const StyledSmallCardButton = styled(StyledButton)(({ colour, theme }) => ({
   [`&.${buttonClasses.root}`]: {
@@ -67,4 +54,4 @@ const StyledSmallCardButton = styled(StyledButton)(({ colour, theme }) => ({
   }
 }));
 
-export { StyledActionButton, StyledCardButton, StyledSmallCardButton };
+export { StyledDefaultButton, StyledCardButton, StyledSmallCardButton };

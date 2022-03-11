@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 
 const StyledInput = styled(TextField)`
   background-color: ${({ theme }) => theme.colours.backgroundPaper};
-  height: ${({ theme }) => theme.height.base};
+  height: ${({ theme }) => theme.height.medium};
   box-shadow: ${({ theme }) => theme.shadows.inner};
   border: none;
   font-family: ${({ theme }) => theme.font.base};
@@ -26,7 +26,7 @@ const StyledInput = styled(TextField)`
   }
 
   .MuiInputLabel-root {
-    transform: translate(10px, 10px) scale(0.9);
+    transform: translate(10px, 10px);
     color: ${({ theme }) => theme.colours.textTertiary};
     font-size: ${({ theme }) => theme.fontSize.textLarge};
   }
@@ -37,7 +37,7 @@ const StyledInput = styled(TextField)`
   }
 
   .MuiInputLabel-shrink {
-    transform: translate(10px, -18px) scale(0.75);
+    transform: translate(10px, -18px);
     color: ${({ theme }) => theme.colours.textTertiary};
     font-size: ${({ theme }) => theme.fontSize.textMedium};
   }

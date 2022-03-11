@@ -23,6 +23,11 @@ const StyledLink = styled(Link)`
   align-items: center;
   text-decoration: none;
 
+  svg {
+    height: ${({ theme }) => theme.spacing.s6};
+    width: ${({ theme }) => theme.spacing.s6};
+  }
+
   @media screen and (max-height: 900px) {
     svg {
       height: ${({ theme }) => theme.spacing.s5};

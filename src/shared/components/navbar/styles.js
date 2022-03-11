@@ -38,11 +38,6 @@ const StyledLogo = styled.div`
   margin-left: ${({ theme }) => theme.spacing.s7};
   margin-right: 0;
 
-  svg {
-    height: auto;
-    width: auto;
-  }
-
   @media screen and (max-height: 900px) {
     margin-bottom: ${({ theme }) => theme.spacing.s2};
   }

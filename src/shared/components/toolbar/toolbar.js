@@ -5,19 +5,27 @@ import PropTypes from "prop-types";
 // libraries
 import { useForm } from "react-hook-form";
 
-// external components
-import Grid from "@mui/material/Grid";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-
 // custom components
 import { InputSelect, ActionButton } from "shared/components";
 
 // styled components
-import { StyledContainer, StyledGrid } from "./styles";
+import { StyledToolbar, StyledGrid } from "./styles";
+
+// icons
+import { Plus } from "shared/icons";
 
 const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
   const [sortBy, setSortBy] = useState("name");
+
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitSuccessful, errors }
+  } = useForm({
+    mode: "onBlur",
+    defaultValues: {}
+  });
 
   const handleOpen = () => {
     setIsEdit(false);
@@ -27,13 +35,10 @@ const Toolbar = ({ handleForm, setIsEdit, setElement }) => {
   };
 
   return (
-    <StyledContainer container>
-      <StyledGrid container>
-        <Grid item xs={1}>
-          <ActionButton text={"Add"} action={handleOpen} />
-        </Grid>
-      </StyledGrid>
-    </StyledContainer>
+    <StyledToolbar>
+      <ActionButton icon={<Plus />} action={handleOpen} />
+      <InputSelect label="Sort" name="sort" control={control} />
+    </StyledToolbar>
   );
 };
 

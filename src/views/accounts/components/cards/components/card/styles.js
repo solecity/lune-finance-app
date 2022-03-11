@@ -43,6 +43,11 @@ const StyledCardIcon = styled.div`
   display: flex;
   align-items: center;
   padding: 0 ${({ theme }) => theme.spacing.s3};
+
+  svg {
+    height: ${({ theme }) => theme.spacing.s6};
+    width: ${({ theme }) => theme.spacing.s6};
+  }
 `;
 
 const StyledAmount = styled.div`

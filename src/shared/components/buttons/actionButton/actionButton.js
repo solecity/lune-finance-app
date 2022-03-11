@@ -3,8 +3,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // styled components
+//import { StyledCardButton } from "styles/default";
 import {
-  StyledActionButton,
+  StyledDefaultButton,
   StyledCardButton,
   StyledSmallCardButton
 } from "./styles";
@@ -13,23 +14,29 @@ const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
   return (
     <>
       {isAction ? (
-        <StyledActionButton variant="contained" onClick={action}>
-          {text}
-        </StyledActionButton>
-      ) : isSmall ? (
-        <StyledSmallCardButton
-          variant="contained"
-          colour={colour}
-          onClick={action}
-        >
+        <StyledDefaultButton type="button" onClick={action}>
           {icon}
-        </StyledSmallCardButton>
+        </StyledDefaultButton>
       ) : (
-        <StyledCardButton variant="contained" onClick={action}>
+        <StyledCardButton type="button" onClick={action}>
           {icon}
         </StyledCardButton>
       )}
     </>
+
+    // TODO
+
+    // <>
+    //isSmall ? (
+    //     <StyledSmallCardButton type="button" colour={colour} onClick={action}>
+    //       {icon}
+    //     </StyledSmallCardButton>
+    //   ) : (
+    //     <StyledCardButton onClick={action}>
+    //       {icon}
+    //     </StyledCardButton>
+    //   )}
+    // </>
   );
 };
 

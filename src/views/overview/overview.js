@@ -6,7 +6,7 @@ import { getYear, subYears, startOfYear, endOfYear } from "date-fns";
 
 // custom components
 import { Container, Header, Tabs } from "shared/components";
-// import { Toolbar, CategoriesChart } from "./components";
+// import { Toolbar } from "./components";
 import { StatsType, Chart, ExpenseChart } from "./components";
 
 // styled components

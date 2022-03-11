@@ -6,59 +6,97 @@ import styled from "styled-components";
 
 // external components
 import Grid from "@mui/material/Grid";
-import CardContent from "@mui/material/CardContent";
-import { CreditCard } from "@styled-icons/boxicons-regular/CreditCard";
 
-const StyledContent = styled(CardContent)`
-  padding: 0 !important;
+const StyledCard = styled.div`
+  background-color: ${({ theme }) => theme.colours.backgroundPaper};
+  box-shadow: ${({ theme }) => theme.shadows.base};
 `;
 
-const StyledGrid = styled(Grid)`
-  padding: 16px;
-`;
-
-const StyledColour = styled(Grid)(({ colour }) => ({
+const StyledColour = styled.div(({ theme, colour }) => ({
   backgroundColor: `${colour} !important`,
-  height: "6px"
+  height: `${theme.spacing.s2}`
 }));
 
-const StyledCreditCard = styled(CreditCard)`
-  width: 22px;
-  padding-left: 10px;
-
-  &.green {
-    color: ${({ theme }) => theme.colours.green};
-  }
-
-  &.disabled {
-    color: ${({ theme }) => theme.colours.disabled};
-  }
+const StyledContent = styled.div`
+  margin: ${({ theme }) => theme.spacing.s5} ${({ theme }) => theme.spacing.s7};
 `;
 
-const StyledCardIcon = styled(({ bool }) =>
-  bool ? (
-    <StyledCreditCard className="green" />
-  ) : (
-    <StyledCreditCard className="disabled" />
-  )
-)``;
+const StyledHeader = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-bottom: ${({ theme }) => theme.spacing.sZ};
+`;
 
-const StyledButtons = styled(Grid)`
+const StyledTitle = styled.div`
+  display: inline-flex;
   align-items: center;
-  text-align: center;
 `;
 
-const StyledAmount = styled(Grid)`
+const StyledName = styled.div`
+  font-weight: ${({ theme }) => theme.fontWeight.base};
+  font-size: ${({ theme }) => theme.fontSize.textMedium};
+  line-height: ${({ theme }) => theme.lineHeight.h4};
+  letter-spacing: 0.25px;
+`;
+
+const StyledCardIcon = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 ${({ theme }) => theme.spacing.s3};
+`;
+
+const StyledAmount = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  font-weight: ${({ theme }) => theme.fontWeight.light};
+  font-size: ${({ theme }) => theme.fontSize.textSmall};
+  line-height: ${({ theme }) => theme.lineHeight.small};
+  letter-spacing: 0.25px;
+`;
+
+const StyledValue = styled.p`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: ${({ theme }) => theme.fontWeight.light};
+  font-size: ${({ theme }) => theme.fontSize.textSmall};
+  line-height: ${({ theme }) => theme.lineHeight.small};
+  letter-spacing: -0.15px;
+`;
+
+const StyledDetails = styled.div`
+  font-weight: ${({ theme }) => theme.fontWeight.light};
+  font-size: ${({ theme }) => theme.fontSize.textSmall};
+  line-height: ${({ theme }) => theme.lineHeight.small};
+  letter-spacing: -0.15px;
+`;
+
+const StyledText = styled.p`
+  margin: 0;
+
+  &:first-child {
+    margin-bottom: ${({ theme }) => theme.spacing.s1};
+  }
+`;
+
+const StyledButtons = styled.div`
+  width: 100%;
+  display: inline-flex;
+  text-align: center;
 `;
 
 export {
-  StyledContent,
-  StyledGrid,
+  StyledCard,
   StyledColour,
+  StyledHeader,
+  StyledTitle,
+  StyledName,
+  StyledContent,
   StyledCardIcon,
-  StyledButtons,
-  StyledAmount
+  StyledAmount,
+  StyledValue,
+  StyledDetails,
+  StyledText,
+  StyledButtons
 };

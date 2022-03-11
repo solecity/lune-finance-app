@@ -23,11 +23,8 @@ const StyledLink = styled(Link)`
   align-items: center;
   text-decoration: none;
 
-  svg {
-    height: ${({ theme }) => theme.spacing.s6};
-    width: ${({ theme }) => theme.spacing.s6};
-
-    @media screen and (max-height: 900px) {
+  @media screen and (max-height: 900px) {
+    svg {
       height: ${({ theme }) => theme.spacing.s5};
       width: ${({ theme }) => theme.spacing.s5};
     }
@@ -37,7 +34,7 @@ const StyledLink = styled(Link)`
 const StyledLabel = styled.span`
   margin-left: ${({ theme }) => theme.spacing.s4};
   color: ${({ theme }) => theme.colours.textAltPrimary};
-  font-size: ${({ theme }) => theme.font.textMedium};
+  font-size: ${({ theme }) => theme.fontSize.textMedium};
   line-height: ${({ theme }) => theme.lineHeight.base};
   letter-spacing: 0.8px;
 `;

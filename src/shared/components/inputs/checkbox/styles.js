@@ -4,8 +4,8 @@ import styled from "styled-components";
 const StyledCheckbox = styled.label`
   display: inline-flex;
   align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-size: ${({ theme }) => theme.font.textMedium};
+  font-family: ${({ theme }) => theme.font.base};
+  font-size: ${({ theme }) => theme.fontSize.textMedium};
   line-height: ${({ theme }) => theme.lineHeight.h4};
 `;
 
@@ -15,12 +15,12 @@ const StyledInput = styled.input`
   width: ${({ theme }) => theme.spacing.s5};
   margin: 0 ${({ theme }) => theme.spacing.s3} 0 0;
   cursor: pointer;
-  border: 1.5px solid ${({ theme }) => theme.colours.actionActive};
+  border: ${({ theme }) => theme.borders.actionActive};
   appearance: none;
 
   &:checked {
     background-color: ${({ theme }) => theme.colours.secondaryDark};
-    border: 1.5px solid ${({ theme }) => theme.colours.actionBorder};
+    border: ${({ theme }) => theme.borders.actionDefault};
   }
 `;
 

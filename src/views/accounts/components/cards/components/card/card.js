@@ -20,13 +20,18 @@ import { ColourCard, ActionButton, ConfirmDelete } from "shared/components";
 
 // styled components
 import {
-  StyledContent,
-  StyledGrid,
+  StyledCard,
   StyledColour,
-  StyledInfo,
+  StyledContent,
+  StyledHeader,
+  StyledTitle,
+  StyledName,
   StyledCardIcon,
-  StyledButtons,
-  StyledAmount
+  StyledAmount,
+  StyledValue,
+  StyledDetails,
+  StyledText,
+  StyledButtons
 } from "./styles";
 
 // atom
@@ -34,6 +39,12 @@ import { settingsState } from "shared/recoil/atoms";
 
 // constants
 import { TYPES } from "constants/general";
+
+// styles
+import themes from "styles/theme";
+
+// icons
+import { CreditCard } from "shared/icons";
 
 const AccountCard = ({
   getData,
@@ -45,6 +56,11 @@ const AccountCard = ({
   const settings = useRecoilValue(settingsState);
 
   const [openConfirm, setOpenConfirm] = useState(false);
+
+  const cardColour = {
+    active: themes[settings.theme].colours.successMain,
+    disabled: themes[settings.theme].colours.actionHover
+  };
 
   const getType = (type) => {
     let value = "";
@@ -75,59 +91,49 @@ const AccountCard = ({
   };
 
   return (
-    <Card>
-      <StyledContent>
-        <StyledColour container colour={account.colour} />
-        <StyledGrid container>
-          <Grid item xs={9}>
-            <Grid container item xs={12}>
-              <Grid item>
-                <Typography component="div" variant="body1" noWrap>
-                  {account.name}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <StyledCardIcon bool={account.hasCard} />
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography component="div" variant="body2">
-                {getType(account.type)}
-              </Typography>
-            </Grid>
-            {account.openingDate && (
-              <Grid item xs={12}>
-                <Typography component="div" variant="body2" noWrap>
-                  Opened since {account.openingDate}
-                </Typography>
-              </Grid>
-            )}
-          </Grid>
-          <Grid item xs={3}>
-            <StyledAmount item xs={12}>
-              <Typography component="div" variant="body1">
+    <>
+      <StyledCard>
+        <StyledColour colour={account.colour} />
+        <StyledContent>
+          <StyledHeader>
+            <StyledTitle>
+              <StyledName>{account.name}</StyledName>
+              <StyledCardIcon>
+                <CreditCard
+                  colour={
+                    account.hasCard ? cardColour.active : cardColour.disabled
+                  }
+                />
+              </StyledCardIcon>
+            </StyledTitle>
+            <StyledAmount>
+              <StyledValue>
                 {account.balance} {settings.currencySymbol}
-              </Typography>
+              </StyledValue>
             </StyledAmount>
-          </Grid>
-        </StyledGrid>
-        <StyledButtons container spacing={0.125}>
-          <Grid item xs={6}>
-            <ActionButton
-              isAction={false}
-              icon={<TrashAlt />}
-              action={handleConfirm}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <ActionButton
-              isAction={false}
-              icon={<Pencil />}
-              action={handleEdit}
-            />
-          </Grid>
+          </StyledHeader>
+          <StyledDetails>
+            <StyledText component="div" variant="body2">
+              {getType(account.type)}
+            </StyledText>
+            <StyledText>
+              {account.openingDate ? `Opened since ${account.openingDate}` : ""}
+            </StyledText>
+          </StyledDetails>
+        </StyledContent>
+        <StyledButtons>
+          <ActionButton
+            isAction={false}
+            icon={<TrashAlt />}
+            action={handleConfirm}
+          />
+          <ActionButton
+            isAction={false}
+            icon={<Pencil />}
+            action={handleEdit}
+          />
         </StyledButtons>
-      </StyledContent>
+      </StyledCard>
       <ConfirmDelete
         open={openConfirm}
         handleClose={handleConfirm}
@@ -135,7 +141,7 @@ const AccountCard = ({
         item="account"
         name={account.name}
       />
-    </Card>
+    </>
   );
 };
 

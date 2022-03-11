@@ -6,9 +6,11 @@ import { StyledButton } from "styles/default";
 
 const StyledTab = styled(StyledButton)`
   width: ${({ theme }) => theme.spacing.s28};
+  margin-right: ${({ theme }) => theme.spacing.s4};
+  text-transform: capitalize;
 
-  &:first-child {
-    margin-right: ${({ theme }) => theme.spacing.s4};
+  &:last-child {
+    margin-right: 0;
   }
 `;
 

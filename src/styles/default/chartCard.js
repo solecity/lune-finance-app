@@ -11,7 +11,7 @@ const StyledCard = styled.div`
 
 const StyledTitle = styled.h6`
   margin: 0;
-  font-size: ${({ theme }) => theme.font.h4};
+  font-size: ${({ theme }) => theme.fontSize.h4};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   line-height: ${({ theme }) => theme.lineHeight.h4};
   letter-spacing: 0.15px;

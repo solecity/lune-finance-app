@@ -1,4 +1,3 @@
 export { StyledInput } from "./input";
-export { StyledButton } from "./button";
-export { StyledCardButton } from "./cardButton";
+export { StyledButton, StyledCardButton } from "./buttons";
 export { StyledFormControl } from "./formControl";

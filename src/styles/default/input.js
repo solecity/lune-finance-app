@@ -9,7 +9,7 @@ const StyledInput = styled(TextField)`
   height: ${({ theme }) => theme.height.base};
   box-shadow: ${({ theme }) => theme.shadows.inner};
   border: none;
-  font-family: "Roboto", sans-serif;
+  font-family: ${({ theme }) => theme.font.base};
   line-height: ${({ theme }) => theme.lineHeight.h4}
 
   .MuiInputBase-input:focus {
@@ -28,18 +28,18 @@ const StyledInput = styled(TextField)`
   .MuiInputLabel-root {
     transform: translate(10px, 10px) scale(0.9);
     color: ${({ theme }) => theme.colours.textTertiary};
-    font-size: ${({ theme }) => theme.font.textLarge};
+    font-size: ${({ theme }) => theme.fontSize.textLarge};
   }
 
   .MuiInputLabel-root.Mui-focused {
     color: ${({ theme }) => theme.colours.primaryDark};
-    font-size: ${({ theme }) => theme.font.textMedium};
+    font-size: ${({ theme }) => theme.fontSize.textMedium};
   }
 
   .MuiInputLabel-shrink {
     transform: translate(10px, -18px) scale(0.75);
     color: ${({ theme }) => theme.colours.textTertiary};
-    font-size: ${({ theme }) => theme.font.textMedium};
+    font-size: ${({ theme }) => theme.fontSize.textMedium};
   }
 `;
 

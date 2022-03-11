@@ -39,11 +39,12 @@ const StyledLogo = styled.div`
   width: 50%;
   margin-top: ${({ theme }) => theme.spacing.s6};
   margin-bottom: ${({ theme }) => theme.spacing.s6};
-  margin-left: ${({ theme }) => theme.spacing.s6};
+  margin-left: ${({ theme }) => theme.spacing.s7};
   margin-right: 0;
 
-  &.icon {
-    margin-left: ${({ theme }) => theme.spacing.s7};
+  svg {
+    height: auto;
+    width: auto;
   }
 
   @media screen and (max-height: 900px) {
@@ -78,12 +79,12 @@ const StyledText = styled.div`
   .copyright {
     min-height: ${({ theme }) => theme.spacing.s6};
     margin-bottom: ${({ theme }) => theme.spacing.s2};
-    font-size: ${({ theme }) => theme.font.textMedium};
+    font-size: ${({ theme }) => theme.fontSize.textMedium};
     letter-spacing: 0.25px;
   }
 
   .version {
-    font-size: ${({ theme }) => theme.font.textSmall};
+    font-size: ${({ theme }) => theme.fontSize.textSmall};
     letter-spacing: 0.4px;
   }
 `;

@@ -9,14 +9,14 @@ const StyledContainer = styled.div`
 `;
 
 const StyledText = styled.p`
-  font-size: ${({ theme }) => theme.font.textLarge};
+  font-size: ${({ theme }) => theme.fontSize.textLarge};
   line-height: ${({ theme }) => theme.lineHeight.h4};
   letter-spacing: 0.5px;
 `;
 
 const StyledLink = styled.a`
   color: ${({ theme }) => theme.colours.primaryLight};
-  font-size: ${({ theme }) => theme.font.textLarge};
+  font-size: ${({ theme }) => theme.fontSize.textLarge};
   line-height: ${({ theme }) => theme.lineHeight.h4};
   text-decoration: none;
   letter-spacing: 0.5px;

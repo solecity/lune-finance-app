@@ -1,4 +1,8 @@
 const font = {
+  base: "'Roboto', sans-serif"
+};
+
+const fontSize = {
   h1: "48px",
   h2: "34px",
   h3: "24px",
@@ -73,7 +77,9 @@ const navbar = {
 };
 
 const height = {
-  base: "40px"
+  small: "32px",
+  base: "36px",
+  medium: "40px"
 };
 
 const boxShadow = {
@@ -83,6 +89,7 @@ const boxShadow = {
 
 const general = {
   font,
+  fontSize,
   fontWeight,
   lineHeight,
   svg,

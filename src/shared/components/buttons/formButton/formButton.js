@@ -10,13 +10,11 @@ const FormButton = ({ text, icon: Icon, isIcon }) => {
   return (
     <>
       {isIcon ? (
-        <StyledIconButton variant="contained" type="submit">
+        <StyledIconButton type="submit">
           <Icon />
         </StyledIconButton>
       ) : (
-        <StyledButton variant="contained" type="submit">
-          {text}
-        </StyledButton>
+        <StyledButton type="submit">{text}</StyledButton>
       )}
     </>
   );

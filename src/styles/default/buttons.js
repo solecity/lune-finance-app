@@ -8,8 +8,8 @@ const StyledButton = styled.button`
   border: none;
   color: ${({ theme }) => theme.colours.textAltPrimary};
   box-shadow: ${({ theme }) => theme.shadows.base};
-  font-family: "Roboto", sans-serif;
-  font-size: ${({ theme }) => theme.font.textLarge};
+  font-family: ${({ theme }) => theme.font.base};
+  font-size: ${({ theme }) => theme.fontSize.textLarge};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   line-height: ${({ theme }) => theme.lineHeight.h4};
   letter-spacing: 1.2px;
@@ -26,4 +26,15 @@ const StyledButton = styled.button`
   }
 `;
 
-export { StyledButton };
+const StyledCardButton = styled(StyledButton)`
+  background-color: ${({ theme }) => theme.colours.secondaryLight};
+  height: ${({ theme }) => theme.height.small};
+  border: ${({ theme }) => theme.borders.actionDefault};
+  box-shadow: none;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colours.secondaryDark};
+  }
+`;
+
+export { StyledButton, StyledCardButton };

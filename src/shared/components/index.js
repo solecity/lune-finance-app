@@ -1,7 +1,9 @@
 export { default as NavBar } from "./navbar/navbar";
 export { default as Container } from "./container/container";
 export { default as Header } from "./header/header";
-export { default as LinearProgress } from "./linearProgress/linearProgress";
+export { default as Toolbar } from "./toolbar/toolbar";
+export { default as LoadingBar } from "./bars/loadingBar/loadingBar";
+export { default as ProgressBar } from "./bars/progressBar/progressBar";
 export { default as InputTextField } from "./inputs/textField/textField";
 export { default as InputPassword } from "./inputs/password/password";
 export { default as InputSelect } from "./inputs/select/select";
@@ -12,31 +14,15 @@ export { default as ActionButton } from "./buttons/actionButton/actionButton";
 export { default as MessageButton } from "./buttons/messageButton/messageButton";
 export { default as BarChart } from "./charts/barChart/barChart";
 export { default as PieChart } from "./charts/pieChart/pieChart";
+export { default as ConfirmDelete } from "./confirmDelete/confirmDelete";
 
 export { default as TabButton } from "./buttons/tabButton/tabButton";
-
-import Toolbar from "./toolbar/toolbar";
-import Table from "./table/table";
-import ColourCard from "./colourCard/colourCard";
-import InputInfo from "./inputs/info/info";
-import InputAutocomplete from "./inputs/autocomplete/autocomplete";
-import InputDatePicker from "./inputs/datepicker/datepicker";
-import InputColourPicker from "./inputs/colourPicker/colourPicker";
-import ColourButton from "./buttons/colourButton/colourButton";
-import TableButton from "./buttons/tableButton/tableButton";
-import Modal from "./modal/modal";
-import ConfirmDelete from "./confirmDelete/confirmDelete";
-
-export {
-  Toolbar,
-  Table,
-  ColourCard,
-  InputInfo,
-  InputAutocomplete,
-  InputDatePicker,
-  InputColourPicker,
-  ColourButton,
-  TableButton,
-  Modal,
-  ConfirmDelete
-};
+export { default as Table } from "./table/table";
+export { default as ColourCard } from "./colourCard/colourCard";
+export { default as InputInfo } from "./inputs/info/info";
+export { default as InputAutocomplete } from "./inputs/autocomplete/autocomplete";
+export { default as InputDatePicker } from "./inputs/datepicker/datepicker";
+export { default as InputColourPicker } from "./inputs/colourPicker/colourPicker";
+export { default as ColourButton } from "./buttons/colourButton/colourButton";
+export { default as TableButton } from "./buttons/tableButton/tableButton";
+export { default as Modal } from "./modal/modal";

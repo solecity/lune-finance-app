@@ -3,14 +3,14 @@ import React, { Suspense, Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 
 // custom components
-import { LinearProgress } from "shared/components";
+import { LoadingBar } from "shared/components";
 
 // config
 import { routes } from "config/routes";
 
 const renderRoutes = (routes) =>
   routes ? (
-    <Suspense fallback={<LinearProgress />}>
+    <Suspense fallback={<LoadingBar />}>
       <Switch>
         {routes.map((route, i) => {
           const Layout = route.layout || Fragment;

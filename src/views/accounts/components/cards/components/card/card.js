@@ -1,12 +1,12 @@
 // base
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // libraries
 import { useRecoilValue } from "recoil";
 
 // custom components
-import { ColourCard, ActionButton } from "shared/components";
+import { ActionButton } from "shared/components";
 
 // styled components
 import {

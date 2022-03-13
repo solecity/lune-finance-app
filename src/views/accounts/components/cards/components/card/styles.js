@@ -1,11 +1,5 @@
-// base
-import React from "react";
-
 // libraries
 import styled from "styled-components";
-
-// external components
-import Grid from "@mui/material/Grid";
 
 const StyledCard = styled.div`
   background-color: ${({ theme }) => theme.colours.backgroundPaper};

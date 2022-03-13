@@ -2,9 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// external components
-import Grid from "@mui/material/Grid";
-
 // custom components
 import { Card } from "./components";
 

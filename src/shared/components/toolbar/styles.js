@@ -10,8 +10,4 @@ const StyledToolbar = styled.div`
   gap: ${({ theme }) => theme.spacing.s7};
 `;
 
-const StyledGrid = styled(Grid)`
-  justify-content: flex-end;
-`;
-
-export { StyledToolbar, StyledGrid };
+export { StyledToolbar };

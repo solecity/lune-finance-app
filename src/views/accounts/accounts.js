@@ -15,9 +15,6 @@ import {
 // import { Modal } from "shared/components";
 import { Cards, Form } from "./components";
 
-// styled components
-// import { StyledGrid } from "./styles";
-
 const tabs = ["all", "cash", "bank", "savings", "investment", "crypto"];
 
 const Accounts = () => {

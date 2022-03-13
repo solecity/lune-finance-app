@@ -4,12 +4,15 @@ import React, { useState, useEffect } from "react";
 // api
 import GoalService from "shared/services/goal";
 
-// external components
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-
 // custom components
-import { Header, Toolbar, Modal, TabButton } from "shared/components";
+import {
+  Container,
+  Header,
+  Toolbar,
+  Modal,
+  TabButton,
+  ConfirmDelete
+} from "shared/components";
 import { GoalsAccounts, Form, FundsList, Cards } from "./components";
 
 // styled components
@@ -24,6 +27,7 @@ const Goals = () => {
   const [selected, setSelected] = useState(tab);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   const getData = async () => {
     const { data } = await GoalService.getMany();
@@ -31,75 +35,99 @@ const Goals = () => {
     setData(data.goals);
   };
 
-  const handleTab = (value) => {
-    setTab(value);
-    setSelected(value);
-  };
+  // const handleTab = (value) => {
+  //   setTab(value);
+  //   setSelected(value);
+  // };
 
   const handleForm = () => setIsOpen(!isOpen);
 
-  const handleContent = () => {
-    switch (tab) {
-      case 0:
-        return (
-          <Form
-            goal={goal}
-            handleForm={handleForm}
-            getData={getData}
-            isEdit={isEdit}
-          />
-        );
-      case 1:
-        return <FundsList goal={goal} />;
-      default:
-        break;
+  const handleConfirm = () => setOpenConfirm(!openConfirm);
+
+  const handleDelete = async () => {
+    const res = await GoalService.deleteOne(goal._id);
+
+    if (res) {
+      setOpenConfirm(false);
+      getData();
     }
   };
+
+  // const handleContent = () => {
+  //   switch (tab) {
+  //     case 0:
+  //       return (
+  //         <Form
+  //           goal={goal}
+  //           handleForm={handleForm}
+  //           getData={getData}
+  //           isEdit={isEdit}
+  //         />
+  //       );
+  //     case 1:
+  //       return <FundsList goal={goal} />;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Container maxWidth="xl">
-      <Header title={"Goals"} />
-      <GoalsAccounts />
-      <Toolbar
-        handleForm={handleForm}
-        setIsEdit={setIsEdit}
-        setElement={setGoal}
+    <>
+      <Container>
+        <Header title={"Goals"} />
+        {/* <GoalsAccounts /> */}
+        <Toolbar
+          hasStatus
+          handleForm={handleForm}
+          setIsEdit={setIsEdit}
+          setElement={setGoal}
+        />
+        <Cards
+          data={data}
+          getData={getData}
+          handleForm={handleForm}
+          handleConfirm={handleConfirm}
+          setGoal={setGoal}
+          setIsEdit={setIsEdit}
+        />
+      </Container>
+
+      <ConfirmDelete
+        open={openConfirm}
+        handleClose={handleConfirm}
+        handleDelete={() => handleDelete(goal._id)}
+        item="goal"
+        name={goal.name}
       />
-      <Cards
-        data={data}
-        getData={getData}
-        handleForm={handleForm}
-        setGoal={setGoal}
-        setIsEdit={setIsEdit}
-      />
-      <Modal
-        name="goal"
-        handleModal={handleForm}
-        isOpen={isOpen}
-        isEdit={isEdit}
-      >
-        <StyledContainer>
-          <StyledTabs container spacing={1}>
-            {tabs.map((tab, i) => (
-              <Grid item xs={12} sm={3} key={i}>
-                <TabButton
-                  tab={i}
-                  text={tab}
-                  selected={selected}
-                  action={() => handleTab(i)}
-                />
-              </Grid>
-            ))}
-          </StyledTabs>
-          <StyledDivider />
-          {handleContent()}
-        </StyledContainer>
-      </Modal>
-    </Container>
+    </>
+
+    // <Modal
+    //     name="goal"
+    //     handleModal={handleForm}
+    //     isOpen={isOpen}
+    //     isEdit={isEdit}
+    //   >
+    //     <StyledContainer>
+    //       <StyledTabs container spacing={1}>
+    //         {tabs.map((tab, i) => (
+    //           <Grid item xs={12} sm={3} key={i}>
+    //             <TabButton
+    //               tab={i}
+    //               text={tab}
+    //               selected={selected}
+    //               action={() => handleTab(i)}
+    //             />
+    //           </Grid>
+    //         ))}
+    //       </StyledTabs>
+    //       <StyledDivider />
+    //       {handleContent()}
+    //     </StyledContainer>
+    //   </Modal>
   );
 };
 

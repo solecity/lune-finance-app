@@ -1,5 +1,5 @@
 // base
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // libraries
@@ -12,16 +12,14 @@ import GoalService from "shared/services/goal";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
-import { TrashAlt } from "@styled-icons/boxicons-regular/TrashAlt";
 
 // custom components
-import { ActionButton, ConfirmDelete } from "shared/components";
+import { ActionButton, ProgressBar } from "shared/components";
 
 // styled components
 import {
+  StyledCard,
   StyledContent,
-  StyledGrid,
   StyledName,
   StyledLinearProgress,
   StyledButtons
@@ -30,15 +28,29 @@ import {
 // atom
 import { settingsState } from "shared/recoil/atoms";
 
-const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
+// icons
+import { Trash, Edit } from "shared/icons";
+
+const GoalCard = ({
+  getData,
+  handleForm,
+  handleConfirm,
+  goal,
+  setGoal,
+  setIsEdit
+}) => {
   const settings = useRecoilValue(settingsState);
 
-  const [totalAmount, setTotalAmount] = useState(0);
+  const [allocatedAmount, setAllocatedAmount] = useState(0);
   const [remainingAmount, setRemainingAmount] = useState(0);
-  const [percentage, setPercentage] = useState(0);
-  const [openConfirm, setOpenConfirm] = useState(false);
+  const [percentage, setPercentage] = useState(10);
 
-  const completed = remainingAmount === 0 ? "completed" : "";
+  const getPercentage = () => {
+    const value = (allocatedAmount * 100) / goal.amount;
+
+    if (value >= 100) setPercentage(100);
+    else setPercentage(value);
+  };
 
   const getRemainingAmount = () => {
     let total = 0;
@@ -47,14 +59,10 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
       total += el.amount;
     });
 
-    setTotalAmount(total);
-    setRemainingAmount(goal.amount - total);
-  };
+    console.log({ total });
 
-  const getPercentage = () => {
-    const value = (totalAmount * 100) / goal.amount;
-    console.log(value);
-    setPercentage(value);
+    setAllocatedAmount(total);
+    setRemainingAmount(goal.amount - total);
   };
 
   const handleEdit = () => {
@@ -64,78 +72,39 @@ const GoalCard = ({ getData, handleForm, goal, setGoal, setIsEdit }) => {
     handleForm();
   };
 
-  const handleConfirm = async () => setOpenConfirm(!openConfirm);
-
-  const handleDelete = async () => {
-    const res = await GoalService.deleteOne(goal._id);
-
-    if (res) {
-      setOpenConfirm(false);
-      getData();
-    }
-  };
-
   useEffect(() => {
     getRemainingAmount();
     getPercentage();
-  }, [totalAmount]);
+  }, [allocatedAmount]);
 
   return (
-    <Card>
+    <StyledCard>
       <StyledContent>
-        <StyledGrid>
-          <StyledName component="div" variant="body1" noWrap>
-            {goal.name}
-          </StyledName>
-          <StyledLinearProgress
-            variant="determinate"
-            value={percentage}
-            className={completed}
-          />
-          <Grid container>
-            <Grid item xs={6}>
-              <Typography component="div" variant="subtitle2">
-                {/*goal.allocated*/} {settings.currencySymbol}
-              </Typography>
-            </Grid>
-            <Grid container item xs={6} justifyContent="flex-end">
-              <Typography component="div" variant="subtitle2">
-                {remainingAmount} {settings.currencySymbol}
-              </Typography>
-            </Grid>
-          </Grid>
-        </StyledGrid>
-        <StyledButtons container spacing={0.125}>
-          <Grid item xs={6}>
-            <ActionButton
-              isAction={false}
-              icon={<TrashAlt />}
-              action={handleConfirm}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <ActionButton
-              isAction={false}
-              icon={<Pencil />}
-              action={handleEdit}
-            />
-          </Grid>
-        </StyledButtons>
+        <StyledName>{goal.name}</StyledName>
+        {console.log({ percentage, allocatedAmount, remainingAmount })}
+        <ProgressBar
+          percentage={percentage}
+          allocated={allocatedAmount}
+          remaining={remainingAmount}
+          currency={settings.currencySymbol}
+        />
       </StyledContent>
-      <ConfirmDelete
-        open={openConfirm}
-        handleClose={handleConfirm}
-        handleDelete={() => handleDelete(goal._id)}
-        item="goal"
-        name={goal.name}
-      />
-    </Card>
+      <StyledButtons>
+        <ActionButton
+          isAction={false}
+          icon={<Trash />}
+          action={handleConfirm}
+        />
+        <ActionButton isAction={false} icon={<Edit />} action={handleEdit} />
+      </StyledButtons>
+    </StyledCard>
   );
 };
 
 GoalCard.propTypes = {
   getData: PropTypes.func.isRequired,
   handleForm: PropTypes.func.isRequired,
+  handleConfirm: PropTypes.func.isRequired,
   goal: PropTypes.object.isRequired,
   setGoal: PropTypes.func.isRequired,
   setIsEdit: PropTypes.func.isRequired

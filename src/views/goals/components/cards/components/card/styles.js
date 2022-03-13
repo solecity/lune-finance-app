@@ -9,16 +9,20 @@ import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-const StyledContent = styled(CardContent)`
-  padding: 0 !important;
+const StyledCard = styled.div`
+  background-color: ${({ theme }) => theme.colours.backgroundPaper};
+  box-shadow: ${({ theme }) => theme.shadows.base};
 `;
 
-const StyledGrid = styled(Grid)`
-  padding: 16px;
+const StyledContent = styled.div`
+  margin: ${({ theme }) => theme.spacing.s5} ${({ theme }) => theme.spacing.s7};
 `;
 
-const StyledName = styled(Typography)`
-  margin-bottom: 10px;
+const StyledName = styled.div`
+  font-weight: ${({ theme }) => theme.fontWeight.base};
+  font-size: ${({ theme }) => theme.fontSize.textLarge};
+  line-height: ${({ theme }) => theme.lineHeight.h4};
+  letter-spacing: 0.5px;
 `;
 
 const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -38,14 +42,15 @@ const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
   }
 }));
 
-const StyledButtons = styled(Grid)`
-  align-items: center;
+const StyledButtons = styled.div`
+  width: 100%;
+  display: inline-flex;
   text-align: center;
 `;
 
 export {
+  StyledCard,
   StyledContent,
-  StyledGrid,
   StyledName,
   StyledLinearProgress,
   StyledButtons

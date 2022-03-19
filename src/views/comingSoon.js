@@ -2,18 +2,22 @@
 import React from "react";
 
 // external components
-import Grid from "@mui/material/Grid";
+import { Container } from "shared/components";
 
 const ComingSoon = () => {
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      style={{ height: "100vh" }}
-    >
-      <h1>Coming soon</h1>
-    </Grid>
+    <Container>
+      <h1
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        Coming soon
+      </h1>
+    </Container>
   );
 };
 

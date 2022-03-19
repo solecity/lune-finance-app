@@ -7,7 +7,7 @@ import Main from "shared/layouts/main";
 const routes = [
   {
     exact: true,
-    path: "/signin",
+    path: "/sign-in",
     component: lazy(() => import("views/auth/signIn/signIn"))
   },
   {
@@ -16,17 +16,17 @@ const routes = [
       {
         exact: true,
         path: "/",
-        component: lazy(() => import("views/overview/overview"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/overview",
-        component: lazy(() => import("views/overview/overview"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/transactions",
-        component: lazy(() => import("views/transactions/transactions"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
@@ -36,51 +36,51 @@ const routes = [
       {
         exact: true,
         path: "/budgets",
-        component: lazy(() => import("views/budgets/budgets"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/debts",
-        component: lazy(() => import("views/debts/debts"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/goals",
-        component: lazy(() => import("views/goals/goals"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/categories",
-        component: lazy(() => import("views/categories/categories"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/recipients",
-        component: lazy(() => import("views/recipients/recipients"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/shops",
-        component: lazy(() => import("views/shops/shops"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/analytics",
-        component: lazy(() => import("views/commingSoon"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/calculators",
-        component: lazy(() => import("views/commingSoon"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
         path: "/settings",
-        component: lazy(() => import("views/settings/settings"))
+        component: lazy(() => import("views/comingSoon"))
       },
       {
         exact: true,
-        path: "/signout",
+        path: "/sign-out",
         component: lazy(() => import("views/auth/signOut/signOut"))
       }
     ]

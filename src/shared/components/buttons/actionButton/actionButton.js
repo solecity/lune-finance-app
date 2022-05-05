@@ -10,12 +10,20 @@ import {
   StyledSmallCardButton
 } from "./styles";
 
-const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
+const ActionButton = ({
+  isAction,
+  isSmall,
+  text,
+  icon,
+  colour,
+  variant,
+  action
+}) => {
   return (
     <>
       {isAction ? (
-        <StyledDefaultButton type="button" onClick={action}>
-          {icon}
+        <StyledDefaultButton type="button" className={variant} onClick={action}>
+          {icon || text}
         </StyledDefaultButton>
       ) : (
         <StyledCardButton type="button" onClick={action}>
@@ -24,7 +32,7 @@ const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
       )}
     </>
 
-    // TODO
+    // TODO small card button
 
     // <>
     //isSmall ? (
@@ -42,7 +50,8 @@ const ActionButton = ({ isAction, isSmall, text, icon, colour, action }) => {
 
 ActionButton.defaultProps = {
   isAction: true,
-  isSmall: false
+  isSmall: false,
+  variant: ""
 };
 
 ActionButton.propTypes = {
@@ -51,6 +60,7 @@ ActionButton.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.any,
   colour: PropTypes.object,
+  variant: PropTypes.string,
   action: PropTypes.func.isRequired
 };
 

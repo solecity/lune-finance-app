@@ -11,9 +11,7 @@ import { StyledIconButton } from "./styles";
 const TableButton = ({ tooltip, icon, action }) => {
   return (
     <Tooltip title={tooltip}>
-      <StyledIconButton size="small" color="primary" onClick={action}>
-        {icon}
-      </StyledIconButton>
+      <StyledIconButton onClick={action}>{icon}</StyledIconButton>
     </Tooltip>
   );
 };
@@ -23,8 +21,8 @@ TableButton.defaultProps = {
 };
 
 TableButton.propTypes = {
-  tooltip: PropTypes.string,
-  icon: PropTypes.any,
+  tooltip: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
   action: PropTypes.func.isRequired
 };
 

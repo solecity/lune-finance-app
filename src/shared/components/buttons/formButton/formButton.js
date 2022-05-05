@@ -9,7 +9,7 @@ import { StyledIconButton } from "./styles";
 const FormButton = ({ text, icon: Icon, isIcon }) => {
   return (
     <>
-      {/* TODO */}
+      {/* TODO icon form button*/}
       {isIcon ? (
         <StyledIconButton type="submit">
           <Icon />

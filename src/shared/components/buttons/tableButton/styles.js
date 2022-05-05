@@ -1,17 +1,21 @@
 // libraries
 import styled from "styled-components";
 
-// external components
-import IconButton, { iconButtonClasses } from "@mui/material/IconButton";
+const StyledIconButton = styled.button`
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  [`&.${iconButtonClasses.root}`]: {
-    color: theme.colours.secondary
-  },
-
-  svg: {
-    width: "1.1rem"
+  svg {
+    height: ${({ theme }) => theme.spacing.s5};
+    width: ${({ theme }) => theme.spacing.s5};
   }
-}));
+
+  svg > path {
+    stroke: ${({ theme }) => theme.colours.primaryLight};
+  }
+`;
 
 export { StyledIconButton };

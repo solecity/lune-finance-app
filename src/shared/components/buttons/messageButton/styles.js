@@ -12,7 +12,7 @@ const StyledMessageButton = styled(StyledButton)`
   font-size: ${({ theme }) => theme.fontSize.textSmall};
   font-weight: ${({ theme }) => theme.fontWeight.base};
   line-height: ${({ theme }) => theme.lineHeight.base};
-  letter-spacing: 0.8px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls6};
 
   &:hover {
     background-color: ${({ theme }) => theme.colours.secondaryLight};

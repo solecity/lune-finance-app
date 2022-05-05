@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { alpha } from "@mui/material/styles";
 
 // external components
-import Button, { buttonClasses } from "@mui/material/Button";
+import { buttonClasses } from "@mui/material/Button";
 
 // custom components
 import { StyledButton } from "styles/default";
@@ -11,11 +11,19 @@ import { StyledButton } from "styles/default";
 const StyledDefaultButton = styled(StyledButton)`
   width: auto;
   padding: ${({ theme }) => theme.spacing.s3};
+
+  &.secondary {
+    background-color: ${({ theme }) => theme.colours.actionActive};
+
+    :hover {
+      background-color: ${({ theme }) => theme.colours.actionHover};
+    }
+  }
 `;
 
 const StyledCardButton = styled(StyledButton)`
   background-color: ${({ theme }) => theme.colours.secondaryLight};
-  height: ${({ theme }) => theme.height.base};
+  height: ${({ theme }) => theme.spacing.s8};
   border: ${({ theme }) => theme.borders.actionDefault};
   box-shadow: none;
 

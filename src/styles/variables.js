@@ -29,6 +29,16 @@ const lineHeight = {
   small: "14px"
 };
 
+const letterSpacing = {
+  ls1: "-0.15px",
+  ls2: "0.15px",
+  ls3: "0.25px",
+  ls4: "0.4px",
+  ls5: "0.5px",
+  ls6: "0.8px",
+  ls7: "1.2px"
+};
+
 const svg = {
   size: "10px",
   distance: "1.5px"
@@ -67,20 +77,15 @@ const spacing = {
   s30: "200px",
   s31: "208px",
   s32: "216px",
-  s33: "224px"
+  s33: "224px",
+  s34: "310px",
+  s35: "400px"
 };
 
 const navbar = {
   open: "180px",
   closed: "50px",
   transition: "width 0.5s cubic-bezier(0.64, 0.11, 0.38, 0.95)"
-};
-
-const height = {
-  small: "24px",
-  base: "32px",
-  medium: "36px",
-  large: "40px"
 };
 
 const coloursBasic = {
@@ -98,10 +103,10 @@ const general = {
   fontSize,
   fontWeight,
   lineHeight,
+  letterSpacing,
   svg,
   spacing,
-  navbar,
-  height
+  navbar
 };
 
 export { coloursBasic, boxShadow, general };

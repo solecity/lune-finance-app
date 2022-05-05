@@ -2,18 +2,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// external components
-import TableBody from "@mui/material/TableBody";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
+// styled components
+import { StyledCell } from "./styles";
 
 const EmptyTable = ({ emptyMessage, colCount }) => {
   return (
-    <TableBody>
-      <TableRow>
-        <TableCell colSpan={colCount}>{emptyMessage}</TableCell>
-      </TableRow>
-    </TableBody>
+    <tbody>
+      <tr>
+        <StyledCell colSpan={colCount}>{emptyMessage}</StyledCell>
+      </tr>
+    </tbody>
   );
 };
 

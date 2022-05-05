@@ -6,7 +6,7 @@ const StyleTitle = styled.h2`
   font-size: ${({ theme }) => theme.spacing.s8};
   font-weight: ${({ theme }) => theme.fontWeight.base};
   line-height: ${({ theme }) => theme.spacing.s10};
-  letter-spacing: 0.25px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls3};
 `;
 
 export { StyleTitle };

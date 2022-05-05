@@ -41,7 +41,7 @@ const StyledLabel = styled.span`
   color: ${({ theme }) => theme.colours.textAltPrimary};
   font-size: ${({ theme }) => theme.fontSize.textMedium};
   line-height: ${({ theme }) => theme.lineHeight.base};
-  letter-spacing: 0.8px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls6};
 `;
 
 export { StyledList, StyledLink, StyledLabel };

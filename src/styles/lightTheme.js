@@ -54,8 +54,9 @@ const shadows = {
 };
 
 const borders = {
-  actionDefault: `1.5px solid ${colours.actionBorder}`,
-  actionActive: `1.5px solid ${colours.actionBorder}`
+  actionDefault: `1px solid ${colours.actionBorder}`,
+  actionActive: `1px solid ${colours.actionActive}`,
+  tableCell: `1px solid ${colours.dividerLight}`
 };
 
 const lightTheme = { colours, shadows, borders };

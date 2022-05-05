@@ -16,7 +16,7 @@ const NavItem = ({ label, icon: Icon, href, navBarOpen }) => {
       );
     } else {
       return (
-        <StyledLink href={href}>
+        <StyledLink to={href}>
           <Icon />
         </StyledLink>
       );

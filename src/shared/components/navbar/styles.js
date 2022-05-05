@@ -70,12 +70,12 @@ const StyledFooter = styled.div`
     min-height: ${({ theme }) => theme.spacing.s6};
     margin-bottom: ${({ theme }) => theme.spacing.s2};
     font-size: ${({ theme }) => theme.fontSize.textMedium};
-    letter-spacing: 0.25px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.ls3};
   }
 
   .version {
     font-size: ${({ theme }) => theme.fontSize.textSmall};
-    letter-spacing: 0.4px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.ls4};
   }
 
   @media screen and (max-height: 900px) {

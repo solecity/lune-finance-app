@@ -3,8 +3,11 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colours.primaryDark};
-  height: ${({ theme }) => theme.height.base};
+  height: ${({ theme }) => theme.spacing.s10};
   width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   color: ${({ theme }) => theme.colours.textAltPrimary};
   box-shadow: ${({ theme }) => theme.shadows.base};
@@ -12,11 +15,13 @@ const StyledButton = styled.button`
   font-size: ${({ theme }) => theme.fontSize.textLarge};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   line-height: ${({ theme }) => theme.lineHeight.h4};
-  letter-spacing: 1.2px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls7};
   text-transform: uppercase;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     background-color: ${({ theme }) => theme.colours.primaryMain};
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.selected {
@@ -26,15 +31,4 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledCardButton = styled(StyledButton)`
-  background-color: ${({ theme }) => theme.colours.secondaryLight};
-  height: ${({ theme }) => theme.height.small};
-  border: ${({ theme }) => theme.borders.actionDefault};
-  box-shadow: none;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colours.secondaryDark};
-  }
-`;
-
-export { StyledButton, StyledCardButton };
+export { StyledButton };

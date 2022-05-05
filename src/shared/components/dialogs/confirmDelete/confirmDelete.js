@@ -6,17 +6,13 @@ import PropTypes from "prop-types";
 import { MessageButton } from "shared/components";
 
 // styled components
-import {
-  StyledOverlay,
-  StyledDialog,
-  StyledText,
-  StyledButtons
-} from "./styles";
+import { StyledOverlay, StyledDialog } from "styles/default";
+import { StyledText, StyledButtons } from "./styles";
 
-const ConfirmDelete = ({ open, handleClose, handleDelete, item, name }) => {
+const ConfirmDelete = ({ isOpen, handleClose, handleDelete, item, name }) => {
   return (
-    <StyledOverlay className={open ? "overlay" : null}>
-      <StyledDialog open={open} onClose={handleClose}>
+    <StyledOverlay className={isOpen ? "overlay" : null}>
+      <StyledDialog open={isOpen} onClose={handleClose}>
         <StyledText>
           {`Are you sure you want to delete the ${item} "${name}"?`}
         </StyledText>
@@ -34,10 +30,10 @@ const ConfirmDelete = ({ open, handleClose, handleDelete, item, name }) => {
 };
 
 ConfirmDelete.propTypes = {
-  open: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
-  item: PropTypes.string,
+  item: PropTypes.string.isRequired,
   name: PropTypes.string
 };
 

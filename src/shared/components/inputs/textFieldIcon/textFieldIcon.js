@@ -14,7 +14,8 @@ import { StyledInputIcon } from "./styles";
 
 const InputTextFieldIcon = ({
   name,
-  type,
+  label,
+  required,
   icon: Icon,
   inputProps,
   control,
@@ -29,8 +30,8 @@ const InputTextFieldIcon = ({
         control={control}
         render={({ field }) => (
           <StyledInputIcon
-            type={type}
             size="small"
+            label={`${label} ${required ? "*" : ""}`}
             InputProps={{
               inputProps: inputProps,
               endAdornment: (
@@ -40,8 +41,6 @@ const InputTextFieldIcon = ({
               )
             }}
             fullWidth
-            error={error}
-            helperText={helperText}
             {...props}
             {...field}
           />
@@ -52,17 +51,17 @@ const InputTextFieldIcon = ({
 };
 
 InputTextFieldIcon.defaultProps = {
-  type: "text"
+  label: "",
+  required: false
 };
 
 InputTextFieldIcon.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  label: PropTypes.string,
+  required: PropTypes.bool,
   icon: PropTypes.any.isRequired,
   inputProps: PropTypes.object,
-  control: PropTypes.any.isRequired,
-  error: PropTypes.bool,
-  helperText: PropTypes.string
+  control: PropTypes.any.isRequired
 };
 
 export default InputTextFieldIcon;

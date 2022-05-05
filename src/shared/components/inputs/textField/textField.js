@@ -5,49 +5,42 @@ import PropTypes from "prop-types";
 // libraries
 import { Controller } from "react-hook-form";
 
-// styled components
-import { StyledFormControl, StyledInput } from "styles/default";
+// external components
+import FormControl from "@mui/material/FormControl";
 
-const InputTextField = ({
-  name,
-  control,
-  error,
-  helperText,
-  isRequired,
-  ...props
-}) => {
+// styled components
+import { StyledInput } from "styles/default";
+
+const InputTextField = ({ name, label, required, control, ...props }) => {
   return (
-    <StyledFormControl required={isRequired} fullWidth>
+    <FormControl fullWidth>
       <Controller
         name={name}
         control={control}
         render={({ field }) => (
           <StyledInput
             size="small"
+            label={`${label} ${required ? "*" : ""}`}
             fullWidth
-            error={error}
-            helperText={helperText}
             {...props}
             {...field}
           />
         )}
       />
-    </StyledFormControl>
+    </FormControl>
   );
 };
 
 InputTextField.defaultProps = {
-  label: ""
+  label: "",
+  required: false
 };
 
 InputTextField.propTypes = {
+  name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  name: PropTypes.string,
-  type: PropTypes.string,
-  control: PropTypes.any,
-  error: PropTypes.bool,
-  helperText: PropTypes.string,
-  isRequired: PropTypes.bool
+  required: PropTypes.bool,
+  control: PropTypes.any.isRequired
 };
 
 export default InputTextField;

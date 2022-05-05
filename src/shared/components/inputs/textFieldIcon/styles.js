@@ -6,6 +6,7 @@ import { StyledInput } from "styles/default";
 
 const StyledInputIcon = styled(StyledInput)`
   background-color: ${({ theme }) => theme.colours.primaryLight};
+  box-shadow: none;
 
   .MuiInputBase-input {
     background-color: ${({ theme }) => theme.colours.backgroundPaper};
@@ -13,7 +14,10 @@ const StyledInputIcon = styled(StyledInput)`
   }
 
   .MuiInputAdornment-root {
-    margin-right: -${({ theme }) => theme.spacing.s2};
+    width: ${({ theme }) => theme.spacing.s10};
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
   }
 `;
 

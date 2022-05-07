@@ -2,16 +2,22 @@
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  width: 400px;
+  width: ${({ theme }) => theme.spacing.s35};
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${({ theme }) => theme.spacing.s1};
+`;
+
+const StyledInputs = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing.s8};
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${({ theme }) => theme.spacing.s12};
 `;
 
 const StyledText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.textLarge};
   line-height: ${({ theme }) => theme.lineHeight.h4};
-  letter-spacing: 0.5px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls5};
 `;
 
 const StyledLink = styled.a`
@@ -19,7 +25,7 @@ const StyledLink = styled.a`
   font-size: ${({ theme }) => theme.fontSize.textLarge};
   line-height: ${({ theme }) => theme.lineHeight.h4};
   text-decoration: none;
-  letter-spacing: 0.5px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls5};
 `;
 
 const StyledPasswordLink = styled.div`
@@ -28,4 +34,10 @@ const StyledPasswordLink = styled.div`
   justify-content: flex-end;
 `;
 
-export { StyledContainer, StyledText, StyledLink, StyledPasswordLink };
+export {
+  StyledContainer,
+  StyledInputs,
+  StyledText,
+  StyledLink,
+  StyledPasswordLink
+};

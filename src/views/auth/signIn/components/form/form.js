@@ -13,7 +13,7 @@ import { signIn } from "shared/recoil/auth";
 // custom components
 import {
   InputTextField,
-  InputPassword,
+  InputTextFieldIcon,
   InputCheckbox,
   FormButton
 } from "shared/components";
@@ -21,19 +21,20 @@ import {
 // styled components
 import {
   StyledContainer,
+  StyledInputs,
   StyledText,
   StyledLink,
   StyledPasswordLink
 } from "./styles";
-
-// icons
-import { CheckboxOutlineBlank } from "shared/icons";
 
 // schemas
 import { schemaSignIn } from "constants/schemas";
 
 // atoms
 import { isLoggedIn } from "shared/recoil/atoms";
+
+// icons
+import { Eye } from "shared/icons";
 
 const Form = ({ onSubmitSuccess }) => {
   const setLoggedIn = useSetRecoilState(isLoggedIn);
@@ -69,7 +70,7 @@ const Form = ({ onSubmitSuccess }) => {
         setGeneralError(res);
       }
     } catch (err) {
-      console.log("Server down");
+      console.log("Server down", err);
     }
   };
 
@@ -78,24 +79,27 @@ const Form = ({ onSubmitSuccess }) => {
   }, [password]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <StyledContainer>
-        <InputTextField
-          control={control}
-          name="email"
-          type="email"
-          label="Email"
-          error={Boolean(errors.email?.message) || Boolean(generalError)}
-          helperText={errors.email?.message}
-        />
-        <InputPassword
-          control={control}
-          name="password"
-          type="password"
-          label="Password"
-          error={Boolean(errors.password?.message) || Boolean(generalError)}
-          helperText={errors.password?.message}
-        />
+    <StyledContainer>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <StyledInputs>
+          <InputTextField
+            label="Email"
+            name="email"
+            type="email"
+            control={control}
+            error={Boolean(errors.email?.message) || Boolean(generalError)}
+            helperText={errors.email?.message}
+          />
+          <InputTextFieldIcon
+            label="Password"
+            name="password"
+            type="password"
+            icon={Eye}
+            control={control}
+            error={Boolean(errors.password?.message) || Boolean(generalError)}
+            helperText={errors.password?.message}
+          />
+        </StyledInputs>
         <InputCheckbox
           control={control}
           label="Remember my email"
@@ -105,12 +109,12 @@ const Form = ({ onSubmitSuccess }) => {
           <StyledLink>Forgot password?</StyledLink>
         </StyledPasswordLink>
         <FormButton text="Sign In" />
-        <StyledText>
+        {/* <StyledText>
           Don't have an account?{" "}
           <StyledLink href="/sign-up">Sign up</StyledLink>
-        </StyledText>
-      </StyledContainer>
-    </form>
+        </StyledText> */}
+      </form>
+    </StyledContainer>
   );
 };
 

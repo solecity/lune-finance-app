@@ -10,6 +10,9 @@ import { Form } from "./components";
 // styled components
 import { StyledContainer, StyledTitle } from "./styles";
 
+// logo
+import { LogoHorizontal } from "shared/logoHorizontal";
+
 const SignIn = () => {
   const history = useHistory();
 
@@ -17,7 +20,9 @@ const SignIn = () => {
 
   return (
     <StyledContainer>
-      <StyledTitle>LUNE</StyledTitle>
+      <StyledTitle>
+        <LogoHorizontal />
+      </StyledTitle>
       <Form onSubmitSuccess={handleSubmit} />
     </StyledContainer>
   );

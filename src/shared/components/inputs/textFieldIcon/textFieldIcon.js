@@ -19,8 +19,6 @@ const InputTextFieldIcon = ({
   icon: Icon,
   inputProps,
   control,
-  error,
-  helperText,
   ...props
 }) => {
   return (

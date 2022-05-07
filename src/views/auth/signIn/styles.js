@@ -14,9 +14,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledTitle = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.s7};
-  font-size: 32px;
-  color: ${({ theme }) => theme.colours.primary};
+  margin-bottom: ${({ theme }) => theme.spacing.s10};
 `;
 
 export { StyledContainer, StyledTitle };

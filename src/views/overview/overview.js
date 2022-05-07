@@ -6,7 +6,6 @@ import { getYear, subYears, startOfYear, endOfYear } from "date-fns";
 
 // custom components
 import { Container, Header, Tabs } from "shared/components";
-// import { Toolbar } from "./components";
 import { StatsType, Chart, ExpenseChart } from "./components";
 
 // styled components
@@ -22,44 +21,24 @@ const Overview = () => {
     start: startOfYear(new Date()),
     end: endOfYear(new Date())
   });
-  const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState({});
 
   const tabs = [lastYear, currentYear];
 
-  const handleContent = () => {
-    let year = {};
-
-    switch (selected) {
-      case currentYear:
-        year = {
-          start: startOfYear(new Date()),
-          end: endOfYear(new Date())
-        };
-        break;
-      case lastYear:
-        year = {
-          start: startOfYear(subYears(new Date(), 1)),
-          end: endOfYear(subYears(new Date(), 1))
-        };
-        break;
-      default:
-        break;
-    }
-
-    return (
-      <div>
-        <StatsType year={year} isLoading={isLoading} data={stats} />
-        <StyledCharts>
-          <Chart year={year} />
-          <ExpenseChart year={year} />
-        </StyledCharts>
-      </div>
-    );
+  const handleTabs = () => {
+    if (selected === currentYear)
+      setYear({
+        start: startOfYear(new Date()),
+        end: endOfYear(new Date())
+      });
+    else
+      setYear({
+        start: startOfYear(subYears(new Date(), 1)),
+        end: endOfYear(subYears(new Date(), 1))
+      });
   };
 
   useEffect(() => {
-    handleContent();
+    handleTabs();
   }, [selected]);
 
   return (
@@ -71,7 +50,11 @@ const Overview = () => {
         selected={selected}
         setSelected={setSelected}
       />
-      {handleContent()}
+      <StatsType year={year} />
+      <StyledCharts>
+        <Chart year={year} />
+        <ExpenseChart year={year} />
+      </StyledCharts>
     </Container>
   );
 };

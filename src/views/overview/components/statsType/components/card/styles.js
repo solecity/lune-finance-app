@@ -1,11 +1,9 @@
 // libraries
 import styled from "styled-components";
 
-const StyledCard = styled.div`
-  background-color: ${({ theme }) => theme.colours.backgroundPaper};
+const StyledContent = styled.div`
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.s4} 0;
-  box-shadow: ${({ theme }) => theme.shadows.base};
+  padding: ${({ theme }) => theme.spacing.s6} 0;
   text-align: center;
 `;
 
@@ -15,7 +13,7 @@ const StyledTitle = styled.h4`
   font-size: ${({ theme }) => theme.fontSize.h4};
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   line-height: ${({ theme }) => theme.lineHeight.h4};
-  letter-spacing: 0.15px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls2};
 
   &.income {
     color: ${({ theme }) => theme.colours.othersIncome};
@@ -40,7 +38,7 @@ const StyledText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.textMedium};
   font-weight: ${({ theme }) => theme.fontWeight.base};
   line-height: ${({ theme }) => theme.lineHeight.h4};
-  letter-spacing: 0.25px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing.ls3};
 `;
 
-export { StyledCard, StyledTitle, StyledText };
+export { StyledContent, StyledTitle, StyledText };

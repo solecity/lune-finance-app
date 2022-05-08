@@ -15,6 +15,7 @@ const ExpenseChart = ({ year }) => {
   const getData = async () => {
     setIsLoading(true);
 
+    // TODO check data
     const { data } = await StatsService.getCategoriesStats(year);
 
     setData(data.stats);

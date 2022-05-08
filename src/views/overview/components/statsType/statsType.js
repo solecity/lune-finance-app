@@ -12,9 +12,6 @@ import { Card } from "./components";
 import { StyledStats } from "./styles";
 
 const StatsType = ({ year }) => {
-  // TODO get saved currency
-  const currency = "€";
-
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
 
@@ -38,28 +35,24 @@ const StatsType = ({ year }) => {
         data={data.income}
         label="Income"
         type="income"
-        currency={currency}
       />
       <Card
         isLoading={isLoading}
         data={data.expense}
         label="Expenses"
         type="expense"
-        currency={currency}
       />
       <Card
         isLoading={isLoading}
         data={data.savings}
         label="Savings"
         type="savings"
-        currency={currency}
       />
       <Card
         isLoading={isLoading}
         data={data.investment}
         label="Investments"
         type="investment"
-        currency={currency}
       />
     </StyledStats>
   );

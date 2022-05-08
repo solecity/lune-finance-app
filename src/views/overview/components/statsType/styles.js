@@ -6,7 +6,7 @@ const StyledStats = styled.div`
   margin-top: ${({ theme }) => theme.spacing.s10};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing.s8};
+  gap: ${({ theme }) => theme.spacing.s6};
 
   // TODO screen size
   @media screen and (max-width: 768px) {

@@ -12,7 +12,10 @@ import { DefaultCard } from "shared/components";
 // styled components
 import { StyledContent, StyledTitle, StyledText } from "./styles";
 
-const StatsType = ({ isLoading, data, label, type, currency }) => {
+const StatsType = ({ isLoading, data, label, type }) => {
+  // TODO get saved currency
+  const currency = "€";
+
   return (
     <DefaultCard>
       <StyledContent>
@@ -29,12 +32,16 @@ const StatsType = ({ isLoading, data, label, type, currency }) => {
   );
 };
 
+StatsType.defaultProps = {
+  isLoading: true,
+  data: 0
+};
+
 StatsType.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  data: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool,
+  data: PropTypes.number,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  currency: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired
 };
 
 export default StatsType;

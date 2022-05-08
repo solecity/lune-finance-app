@@ -3,21 +3,19 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // libraries
-import { useRecoilValue } from "recoil";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 // external components
+// TODO add custom loader
 import CircularProgress from "@mui/material/CircularProgress";
 
-// styled components
-import { StyledCard, StyledTitle } from "styles/default/chartCard";
-
-// atom
-import { settingsState } from "shared/recoil/atoms";
+// custom components
+import { ChartCard } from "shared/components";
 
 const PieChart = ({ title, series, isLoading }) => {
-  const settings = useRecoilValue(settingsState);
+  // TODO get saved currency
+  const currency = "€";
 
   const options = {
     title: {
@@ -33,7 +31,7 @@ const PieChart = ({ title, series, isLoading }) => {
       enabled: false
     },
     tooltip: {
-      pointFormat: `<b>{point.percentage:.1f}%</b> : {point.y:.2f} ${settings.currencySymbol}`
+      pointFormat: `<b>{point.percentage:.1f}%</b> : {point.y:.2f} ${currency}`
     },
     accessibility: {
       point: {
@@ -54,18 +52,13 @@ const PieChart = ({ title, series, isLoading }) => {
   };
 
   return (
-    <StyledCard>
-      <StyledTitle>{title}</StyledTitle>
+    <ChartCard title={title} isLoading={isLoading}>
       {isLoading ? (
-        <div>
-          <CircularProgress />
-        </div>
+        <CircularProgress />
       ) : (
-        <div>
-          <HighchartsReact highcharts={Highcharts} options={options} />
-        </div>
+        <HighchartsReact highcharts={Highcharts} options={options} />
       )}
-    </StyledCard>
+    </ChartCard>
   );
 };
 

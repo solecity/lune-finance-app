@@ -15,7 +15,7 @@ import {
   InputTextField,
   InputTextFieldIcon,
   InputCheckbox,
-  FormButton
+  DefaultButton
 } from "shared/components";
 
 // styled components
@@ -30,12 +30,18 @@ import {
 // schemas
 import { schemaSignIn } from "constants/schemas";
 
+// utils
+import { getEmail, setEmail } from "shared/utils/auth";
+
 // atoms
 import { isLoggedIn } from "shared/recoil/atoms";
 
 // icons
 import { Eye } from "shared/icons";
 
+// TODO add toast general error message
+// TODO forgot password flow
+// TODO replace recoil with context
 const Form = ({ onSubmitSuccess }) => {
   const setLoggedIn = useSetRecoilState(isLoggedIn);
 
@@ -49,8 +55,9 @@ const Form = ({ onSubmitSuccess }) => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      email: "test@lune.com",
-      password: "1234"
+      email: "" || getEmail(),
+      password: "1234",
+      rememberEmail: Boolean(getEmail())
     },
     resolver: yupResolver(schemaSignIn)
   });
@@ -60,6 +67,8 @@ const Form = ({ onSubmitSuccess }) => {
 
   const onSubmit = async (payload) => {
     try {
+      if (payload.rememberEmail) setEmail(email);
+
       const res = await signIn(payload);
 
       if (res.success) {
@@ -79,8 +88,8 @@ const Form = ({ onSubmitSuccess }) => {
   }, [password]);
 
   return (
-    <StyledContainer>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <StyledContainer>
         <StyledInputs>
           <InputTextField
             label="Email"
@@ -90,6 +99,7 @@ const Form = ({ onSubmitSuccess }) => {
             error={Boolean(errors.email?.message) || Boolean(generalError)}
             helperText={errors.email?.message}
           />
+
           <InputTextFieldIcon
             label="Password"
             name="password"
@@ -100,21 +110,24 @@ const Form = ({ onSubmitSuccess }) => {
             helperText={errors.password?.message}
           />
         </StyledInputs>
+
         <InputCheckbox
-          control={control}
           label="Remember my email"
           name="rememberEmail"
+          control={control}
         />
         <StyledPasswordLink>
           <StyledLink>Forgot password?</StyledLink>
         </StyledPasswordLink>
-        <FormButton text="Sign In" />
-        {/* <StyledText>
+
+        <DefaultButton type="submit" text="Sign In" />
+
+        <StyledText>
           Don't have an account?{" "}
           <StyledLink href="/sign-up">Sign up</StyledLink>
-        </StyledText> */}
-      </form>
-    </StyledContainer>
+        </StyledText>
+      </StyledContainer>
+    </form>
   );
 };
 

@@ -4,9 +4,12 @@ import styled from "styled-components";
 // styled components
 import { StyledInput } from "styles/default";
 
-const StyledInputIcon = styled(StyledInput)`
-  background-color: ${({ theme }) => theme.colours.primaryLight};
-  box-shadow: none;
+const StyledIconInput = styled(StyledInput)`
+  .MuiInputBase-root {
+    background-color: ${({ theme }) => theme.colours.primaryLight};
+    padding-right: 0;
+    border-radius: 0;
+  }
 
   .MuiInputBase-input {
     background-color: ${({ theme }) => theme.colours.backgroundPaper};
@@ -14,11 +17,10 @@ const StyledInputIcon = styled(StyledInput)`
   }
 
   .MuiInputAdornment-root {
-    width: ${({ theme }) => theme.spacing.s10};
-    margin-left: 0;
+    margin: 10px;
     display: flex;
     justify-content: center;
   }
 `;
 
-export { StyledInputIcon };
+export { StyledIconInput };

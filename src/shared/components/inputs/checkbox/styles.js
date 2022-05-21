@@ -14,9 +14,9 @@ const StyledInput = styled.input`
   height: ${({ theme }) => theme.spacing.s5};
   width: ${({ theme }) => theme.spacing.s5};
   margin: 0 ${({ theme }) => theme.spacing.s3} 0 0;
-  cursor: pointer;
   border: ${({ theme }) => theme.borders.actionActive};
   appearance: none;
+  cursor: pointer;
 
   &:checked {
     background-color: ${({ theme }) => theme.colours.secondaryDark};

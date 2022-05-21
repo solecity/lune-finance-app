@@ -9,42 +9,40 @@ import { Controller } from "react-hook-form";
 import InputAdornment from "@mui/material/InputAdornment";
 
 // styled components
-import { StyledFormControl } from "styles/default";
-import { StyledInputIcon } from "./styles";
+import { StyledInputIcon } from "styles/default";
 
 const InputTextFieldIcon = ({
-  name,
   label,
+  name,
+  control,
   required,
   icon: Icon,
   inputProps,
-  control,
   ...props
 }) => {
   return (
-    <StyledFormControl fullWidth>
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <StyledInputIcon
-            size="small"
-            label={`${label} ${required ? "*" : ""}`}
-            InputProps={{
-              inputProps: inputProps,
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Icon />
-                </InputAdornment>
-              )
-            }}
-            fullWidth
-            {...props}
-            {...field}
-          />
-        )}
-      />
-    </StyledFormControl>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <StyledInputIcon
+          size="small"
+          label={`${label} ${required ? "*" : ""}`}
+          InputProps={{
+            inputProps: inputProps,
+            endAdornment: (
+              <InputAdornment position="end">
+                {/* TODO add button  */}
+                <Icon />
+              </InputAdornment>
+            )
+          }}
+          fullWidth
+          {...props}
+          {...field}
+        />
+      )}
+    />
   );
 };
 
@@ -54,12 +52,12 @@ InputTextFieldIcon.defaultProps = {
 };
 
 InputTextFieldIcon.propTypes = {
-  name: PropTypes.string.isRequired,
   label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  control: PropTypes.any.isRequired,
   required: PropTypes.bool,
   icon: PropTypes.any.isRequired,
-  inputProps: PropTypes.object,
-  control: PropTypes.any.isRequired
+  inputProps: PropTypes.object
 };
 
 export default InputTextFieldIcon;

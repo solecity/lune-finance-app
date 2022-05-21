@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledContainer = styled.div`
   width: ${({ theme }) => theme.spacing.s35};
+  margin: ${({ theme }) => theme.spacing.s8} ${({ theme }) => theme.spacing.s7};
   display: grid;
   grid-template-columns: 1fr;
 `;

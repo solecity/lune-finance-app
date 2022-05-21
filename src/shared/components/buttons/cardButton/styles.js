@@ -8,19 +8,6 @@ import { buttonClasses } from "@mui/material/Button";
 // custom components
 import { StyledButton } from "styles/default";
 
-const StyledDefaultButton = styled(StyledButton)`
-  width: auto;
-  padding: ${({ theme }) => theme.spacing.s3};
-
-  &.secondary {
-    background-color: ${({ theme }) => theme.colours.actionActive};
-
-    :hover {
-      background-color: ${({ theme }) => theme.colours.actionHover};
-    }
-  }
-`;
-
 const StyledCardButton = styled(StyledButton)`
   background-color: ${({ theme }) => theme.colours.secondaryLight};
   height: ${({ theme }) => theme.spacing.s8};
@@ -62,4 +49,4 @@ const StyledSmallCardButton = styled(StyledButton)(({ colour, theme }) => ({
   }
 }));
 
-export { StyledDefaultButton, StyledCardButton, StyledSmallCardButton };
+export { StyledCardButton, StyledSmallCardButton };
